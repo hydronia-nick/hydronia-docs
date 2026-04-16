@@ -1,20 +1,24 @@
-# Hydronia Documentation
+---
+title: Home
+template: home.html
+hide:
+  - navigation
+  - toc
+---
 
-Welcome to the Hydronia documentation portal. This site is under active construction.
+## What's documented here
 
-## What lives here
+The Hydronia documentation portal hosts reference manuals, tutorials, and technical guides for our modeling suite.
 
-The Hydronia documentation suite covers our complete modeling stack:
+- **QGIS Plugins** — RiverFlow2D, OilFlow2D, and HydroBID Flood — modeling environment, data preparation, and results visualization inside QGIS.
+- **Hydronia DIP** — *(coming soon)* Data Input Program for fine-grained model parameterization.
+- **Numerical engines** — *(coming soon)* RiverFlow2D and OilFlow2D solver references.
+- **Tutorials** — *(coming soon)* Step-by-step workflows for common modeling tasks.
 
-- **QGIS Plugins** — RiverFlow2D, OilFlow2D, and HydroBID Flood interfaces for QGIS.
-- **Hydronia DIP** — Data Input Program for model parameterization.
-- **Numerical engines** — RiverFlow2D and OilFlow2D solvers.
-- **Tutorials** — step-by-step workflows for common modeling tasks.
+## First release
 
-## Scope of the first release
-
-The initial portal release is the **QGIS Plugin Reference Manual**, migrated from LaTeX into this markdown-based portal.
+The initial portal scope is the **QGIS Plugin Reference Manual**, being migrated from LaTeX into this markdown-based portal. Content will fill in over time as migration progresses.
 
 ## About Hydronia
 
-Hydronia LLC is an engineering consulting firm specializing in hydrologic and hydraulic modeling of 2D and 3D free-surface flow, sediment transport, and pollutant discharge. Learn more at [hydronia.com](https://hydronia.com).
+Hydronia LLC is an engineering consulting firm established in 1989, specializing in hydrologic and hydraulic modeling of 2D and 3D free-surface flow, sediment transport, and pollutant discharge. Learn more at [hydronia.com](https://hydronia.com).

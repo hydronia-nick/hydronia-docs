@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+
+{# Custom home template — hero section above the normal content flow. #}
+
+{% block tabs %}
+  {{ super() }}
+
+  <section class="hy-hero">
+    <div class="hy-hero__bg" aria-hidden="true"></div>
+    <div class="hy-hero__inner">
+      <img
+        src="{{ 'assets/logos/hydronia-logo.png' | url }}"
+        alt="Hydronia"
+        class="hy-hero__logo"
+      />
+      <h1 class="hy-hero__title">Documentation</h1>
+      <p class="hy-hero__tagline">
+        Hydraulic and environmental modeling software — reference manuals,
+        tutorials, and technical guides for the complete Hydronia suite.
+      </p>
+      <div class="hy-hero__cta">
+        <a href="{{ 'qgis-plugins/' | url }}" class="md-button md-button--primary">
+          QGIS Plugin Reference
+        </a>
+        <a href="https://hydronia.com" class="md-button">
+          hydronia.com &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block content %}
+  <div class="hy-home-content">
+    {{ super() }}
+  </div>
+{% endblock %}

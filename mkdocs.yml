@@ -11,6 +11,7 @@ copyright: Copyright &copy; Hydronia LLC
 
 theme:
   name: material
+  custom_dir: docs/overrides
   language: en
   font:
     text: Inter
