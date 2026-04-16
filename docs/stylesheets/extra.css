@@ -1,0 +1,8 @@
+/* Hydronia brand overrides — extend as we finalize the theme. */
+
+:root {
+  --md-primary-fg-color: #0b5a9e;
+  --md-primary-fg-color--light: #3278be;
+  --md-primary-fg-color--dark: #073f6e;
+  --md-accent-fg-color: #0b5a9e;
+}
