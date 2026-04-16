@@ -3,10 +3,6 @@ site_description: Official documentation for Hydronia's modeling suite.
 site_author: Hydronia LLC
 site_url: https://hydronia-nick.github.io/hydronia-docs/
 
-repo_name: hydronia-nick/hydronia-docs
-repo_url: https://github.com/hydronia-nick/hydronia-docs
-edit_uri: edit/main/docs/
-
 copyright: Copyright &copy; Hydronia LLC
 
 theme:
@@ -16,10 +12,6 @@ theme:
   font:
     text: Inter
     code: JetBrains Mono
-  icon:
-    repo: fontawesome/brands/github
-    edit: material/pencil
-    view: material/eye
   features:
     - navigation.instant
     - navigation.tracking
@@ -34,8 +26,6 @@ theme:
     - search.share
     - content.code.copy
     - content.code.annotate
-    - content.action.edit
-    - content.action.view
     - content.tabs.link
   palette:
     - media: "(prefers-color-scheme)"
@@ -121,8 +111,6 @@ extra_css:
 
 extra:
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/hydronia-nick
     - icon: fontawesome/solid/globe
       link: https://hydronia.com
 
