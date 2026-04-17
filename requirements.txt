@@ -3,3 +3,6 @@ mkdocs-material==9.5.44
 mkdocs-glightbox==0.4.0
 mkdocs-caption==1.2.0
 pymdown-extensions==10.12
+# Pin pygments below 2.19 — newer versions reject filename=None passed by
+# pymdown-extensions 10.12, breaking the build on CI.
+pygments<2.19
