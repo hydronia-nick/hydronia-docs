@@ -89,10 +89,6 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark
-  - pymdownx.snippets:
-      base_path:
-        - snippets
-      check_paths: true
   - pymdownx.smartsymbols
   - pymdownx.superfences:
       custom_fences:
@@ -126,49 +122,31 @@ nav:
       - Interface Overview: getting-started/interface-overview.md
   - RiverFlow2D:
       - riverflow2d/index.md
-      - Pre-Simulation:
-          - New Project: riverflow2d/new-project.md
-          - TriMesh Generation: riverflow2d/trimesh.md
-      - Simulation:
-          - Export: riverflow2d/export.md
-      - Results & Visualization:
-          - Maps: riverflow2d/maps.md
-          - Animation: riverflow2d/animation.md
-          - Cross Sections: riverflow2d/cross-sections.md
-      - Tools & Menus:
-          - RF2D Tools: riverflow2d/tools.md
-          - Context Menus: riverflow2d/context-menus.md
-      - Reference:
-          - Appendix: riverflow2d/appendix.md
+      - New Project: riverflow2d/new-project.md
+      - Export: riverflow2d/export.md
+      - Results vs Time Maps: riverflow2d/maps.md
+      - Animation: riverflow2d/animation.md
+      - Cross Sections: riverflow2d/cross-sections.md
+      - Tools: riverflow2d/tools.md
+      - Context Menus: riverflow2d/context-menus.md
+      - Appendix — Layer Attributes: riverflow2d/appendix.md
   - OilFlow2D:
       - oilflow2d/index.md
-      - Pre-Simulation:
-          - New Project: oilflow2d/new-project.md
-          - TriMesh Generation: oilflow2d/trimesh.md
-          - Spill Sources & Oil Properties: oilflow2d/spill-sources.md
-      - Simulation:
-          - Export: oilflow2d/export.md
-      - Results & Visualization:
-          - Maps: oilflow2d/maps.md
-          - Animation: oilflow2d/animation.md
-      - Tools & Menus:
-          - OF2D Tools: oilflow2d/tools.md
-          - Context Menus: oilflow2d/context-menus.md
-      - Reference:
-          - Appendix: oilflow2d/appendix.md
+      - New Project: oilflow2d/new-project.md
+      - Export: oilflow2d/export.md
+      - Results vs Time Maps: oilflow2d/maps.md
+      - Animation: oilflow2d/animation.md
+      - Cross Sections: oilflow2d/cross-sections.md
+      - Tools: oilflow2d/tools.md
+      - Context Menus: oilflow2d/context-menus.md
+      - Appendix — Layer Attributes: oilflow2d/appendix.md
   - HydroBID Flood:
       - hydrobid-flood/index.md
-      - Pre-Simulation:
-          - New Project: hydrobid-flood/new-project.md
-          - TriMesh Generation: hydrobid-flood/trimesh.md
-      - Simulation:
-          - Export: hydrobid-flood/export.md
-      - Results & Visualization:
-          - Maps: hydrobid-flood/maps.md
-          - Animation: hydrobid-flood/animation.md
-          - Cross Sections: hydrobid-flood/cross-sections.md
-      - Tools & Menus:
-          - HBF Tools: hydrobid-flood/tools.md
-          - Context Menus: hydrobid-flood/context-menus.md
-      - Reference:
-          - Appendix: hydrobid-flood/appendix.md
+      - New Project: hydrobid-flood/new-project.md
+      - Export: hydrobid-flood/export.md
+      - Results vs Time Maps: hydrobid-flood/maps.md
+      - Animation: hydrobid-flood/animation.md
+      - Cross Sections: hydrobid-flood/cross-sections.md
+      - Tools: hydrobid-flood/tools.md
+      - Context Menus: hydrobid-flood/context-menus.md
+      - Appendix — Layer Attributes: hydrobid-flood/appendix.md
