@@ -1,20 +1,20 @@
-/* Hydronia brand overrides — extend as we finalize the theme. */
+/* Hydronia brand overrides — authoritative palette from marketing/BRAND.md. */
 
 :root {
-  --md-primary-fg-color: #13315c;
-  --md-primary-fg-color--light: #3a6b9c;
-  --md-primary-fg-color--dark: #0b2545;
-  --md-accent-fg-color: #1c4775;
+  --md-primary-fg-color: #014589;
+  --md-primary-fg-color--light: #5974B1;
+  --md-primary-fg-color--dark: #0E367C;
+  --md-accent-fg-color: #014589;
 
   --hy-hero-height: 520px;
   --hy-hero-bg: url("../assets/hero/mesh-hero.svg");
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #3a6b9c;
-  --md-primary-fg-color--light: #5e8fba;
-  --md-primary-fg-color--dark: #1c4775;
-  --md-accent-fg-color: #8db3d3;
+  --md-primary-fg-color: #5974B1;
+  --md-primary-fg-color--light: #8fa4ce;
+  --md-primary-fg-color--dark: #014589;
+  --md-accent-fg-color: #8fa4ce;
 }
 
 /* ----- Home hero ----- */
@@ -70,7 +70,7 @@
   font-weight: 700;
   line-height: 1.05;
   margin: 0 0 0.75rem;
-  color: var(--md-primary-fg-color--dark);
+  color: #0E367C;
   letter-spacing: -0.02em;
 }
 

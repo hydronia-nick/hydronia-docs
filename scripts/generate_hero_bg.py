@@ -23,16 +23,16 @@ from pathlib import Path
 # Three palette variants so we can show each and decide. Each palette is a
 # list of (hex_color, alpha) tuples sampled when drawing each triangle.
 PALETTES: dict[str, list[tuple[str, float]]] = {
-    # Subdued professional — matches hydronia.com restraint. Cool blues only.
+    # Subdued professional — official Hydronia palette from marketing/BRAND.md.
     "subdued": [
-        ("#0b2545", 0.18),  # deep navy
-        ("#13315c", 0.18),
-        ("#1c4775", 0.18),
-        ("#3a6b9c", 0.16),
-        ("#5e8fba", 0.14),
-        ("#8db3d3", 0.12),
-        ("#b6cee2", 0.10),
-        ("#dbe7f0", 0.08),
+        ("#0E367C", 0.18),  # secondary (dark blue)
+        ("#014589", 0.18),  # primary
+        ("#2c5fa0", 0.16),  # interpolated
+        ("#5974B1", 0.14),  # tertiary (light blue)
+        ("#8fa4ce", 0.12),  # lighter tertiary
+        ("#b6c4e0", 0.10),
+        ("#dbe3f0", 0.08),
+        ("#eef2f9", 0.06),
     ],
     # Cool flow — water-coded, adds teal + cyan highlights.
     "cool": [
