@@ -34,7 +34,13 @@ Installing the solver does not automatically enable the QGIS plugin. You need to
 
 1. Launch QGIS.
 2. Open **Plugins → Manage and Install Plugins**.
+
+    ![QGIS plugin manager with RiverFlow selected](img/install_qgis_plugins_dialog.png){ width=78% }
+
 3. In the **Installed** tab, locate the plugin (RiverFlow2D, OilFlow2D, or HydroBID Flood) and tick its checkbox.
+
+    ![QGIS Installed tab with the plugin checkbox ticked](img/install_qgis_installed_tab.png){ width=78% }
+
 4. Close the dialog. The plugin's toolbar appears immediately in QGIS.
 
 If the plugin is not listed under **Installed**, the installer did not register it correctly — re-run the installer as Administrator and reboot again.
@@ -63,5 +69,9 @@ If support asks you to share your license details, the activation files are:
 
 - **Standalone**: `C:\ProgramData\AVU\RF2DA.ini`
 - **Network License Server**: `C:\Program Files\Hydronia\LicenseManager\RF2DA.ini`
+
+The file usually looks like this in Notepad:
+
+![RF2DA.ini open in Notepad](img/install_rf2da_ini.png){ width=45% }
 
 Open with Notepad and send the contents to support — never share these files in public channels.

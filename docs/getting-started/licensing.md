@@ -21,9 +21,20 @@ Do this on the machine that will run the software.
    - **Check for Updates**
 4. Click **Reactivate License**.
 5. When the activation dialog opens, select **Configure as a standalone program**.
+
+    ![Standalone activation dialog with the standalone option selected](img/install_activation_mode_selection.png){ width=55% }
+
 6. Enter the license key Hydronia sent you.
+
+    ![Standalone activation dialog with the license key field](img/install_activation_standalone_key_entry.png){ width=55% }
+
 7. Click **OK**. CopyMinder contacts its server to validate the key.
+
+    ![CopyMinder validation prompt](img/install_copyminder_validation.png){ width=55% }
+
 8. Fill out the **Product Registration** dialog with your details.
+
+    ![Product Registration form](img/install_product_registration_form.png){ width=60% }
 
 Once registration finishes, the software is licensed on that machine. You can now [enable the QGIS plugin](installation.md#enabling-the-qgis-plugin).
 
@@ -40,19 +51,37 @@ The Network Administrator needs a CopyMinder license key configured for network 
 2. **Control Data → Options → License**.
 3. Click **Install Network License Server**.
 4. CMServer's configuration window opens.
+
+    ![CMServer configuration window](img/install_cmserver_configuration.png){ width=55% }
+
 5. Under **Startup Modes**, pick:
    - **Service** *(recommended)* — runs as a Windows background service; no login required on the server.
    - **Application** — requires an interactive login on the server. Use only if your IT policy forbids services.
 6. Under **Network Configuration**, choose **Automatic**.
 7. Click **Start**.
 8. When prompted for a **License Key**, enter the network license key from Hydronia Support.
+
+    ![Network server license key entry dialog](img/install_network_server_key_entry.png){ width=55% }
+
 9. Accept the firewall prompt — choose **Automatically Configure Windows Firewall**.
+
+    ![Firewall prompt](img/install_firewall_prompt.png){ width=50% }
+
 10. Fill out **Product Registration** with your organization's details.
+
+    ![Network server Product Registration form](img/install_network_server_registration_form.png){ width=60% }
+
 11. On success, you'll see a confirmation message. The server is now ready for clients.
+
+    ![CMServer success message](img/install_cmserver_success.png){ width=40% }
 
 ### Checking who's using a network license
 
-In the CMServer viewer, every active license appears with the client's machine name or IP and username. If CMServer is running as a service, open the viewer from a command prompt:
+In the CMServer viewer, every active license appears with the client's machine name or IP and username.
+
+![CMServer viewer showing active users](img/install_cmserver_viewer.png){ width=78% }
+
+If CMServer is running as a service, open the viewer from a command prompt:
 
 ```bat
 cmserver /viewer
@@ -71,6 +100,9 @@ Install the software first (see [Installation](installation.md)), then:
 3. Select **Configure as a Network Client**.
 4. In most cases the client auto-detects the CopyMinder server on the LAN and fills in the details.
 5. If auto-detection fails, enter the server's IP address or hostname followed by **`:10589`** — for example `LenovoJJ:10589` or `10.0.0.12:10589`.
+
+    ![Network client server name dialog](img/install_network_client_server_name_dialog.png){ width=55% }
+
 6. Click **OK**. The client should start working immediately.
 
 Repeat for each client machine. Clients can be installed on as many computers as you want — only the configured number of **concurrent** users is capped.
