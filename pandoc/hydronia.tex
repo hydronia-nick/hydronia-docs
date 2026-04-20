@@ -1,0 +1,197 @@
+\documentclass[letter,10pt,openany]{book}
+
+\usepackage[$if(geometry)$$geometry$$else$letterpaper,inner=1.5in,outer=1.0in,top=0.75in,bottom=1.0in,headheight=14pt$endif$]{geometry}
+\usepackage{fontspec}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage[sf]{titlesec}
+\usepackage{tocloft}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{setspace}
+\usepackage{etoolbox}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}%
+}
+\providecommand{\passthrough}[1]{#1}
+
+\definecolor{hydroniaPrimary}{HTML}{014589}
+\definecolor{hydroniaDark}{HTML}{0E367C}
+\definecolor{hydroniaAccent}{HTML}{5974B1}
+\colorlet{tableheadcolor}{hydroniaAccent!20}
+
+\setmainfont{$if(mainfont)$$mainfont$$else$TeX Gyre Heros$endif$}
+\setsansfont{$if(sansfont)$$sansfont$$else$TeX Gyre Heros$endif$}
+\setmonofont{$if(monofont)$$monofont$$else$TeX Gyre Cursor$endif$}
+\renewcommand{\familydefault}{\sfdefault}
+
+\setlength{\parindent}{0pt}
+\onehalfspacing
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+\captionsetup{margin=9pt,font=small,labelfont=bf,labelsep=endash}
+\captionsetup[figure]{labelfont=bf}
+\captionsetup[table]{labelfont=bf}
+
+\renewcommand{\cfttoctitlefont}{\huge\sffamily\color{hydroniaPrimary}}
+\renewcommand{\cftloftitlefont}{\huge\sffamily\color{hydroniaPrimary}}
+\renewcommand{\cftlottitlefont}{\huge\sffamily\color{hydroniaPrimary}}
+\setlength{\cftfignumwidth}{3em}
+
+\graphicspath{{./}{./img/}{./images/}{./converted_graphics/}}
+
+\def\rflo{\mbox{\sffamily RiverFlow2D}}
+\def\rf2d{\mbox{\sffamily RiverFlow2D}}
+\def\of2d{\mbox{\sffamily OilFlow2D}}
+\def\hbflood{\mbox{\sffamily HydroBID Flood}}
+\newcommand{\qgis}{\mbox{\sffamily QGIS}}
+\newcommand{\rfqgis}{\rf2d{} QGIS plugin}
+\newcommand{\hbfqgis}{\hbflood{} QGIS plugin}
+\newcommand{\ofqgis}{\of2d{} QGIS plugin}
+\def\dip{\mbox{\sffamily DIP}}
+\def\rfpgpu{\mbox{\sffamily RiverFlow2D GPU}}
+\def\rfe{\mbox{\sffamily RiverFlow2D FE}}
+\def\rfp{\mbox{\sffamily RiverFlow2D Plus}}
+\def\rfpsms{\mbox{\sffamily RiverFlow2D SMS edition}}
+\newcommand{\sms}{\mbox{\sffamily SMS}}
+\newcommand{\gmsh}{\mbox{\sffamily GMSH}}
+
+\newcommand{\HydroniaLang}{$if(lang)$$lang$$else$en$endif$}
+\newcommand{\HydroniaCopyrightYears}{$if(copyrightYears)$$copyrightYears$$else$2011-2026$endif$}
+
+\ifdefstring{\HydroniaLang}{es}{%
+  \renewcommand{\contentsname}{Contenido}
+  \renewcommand{\listfigurename}{Lista de Figuras}
+  \renewcommand{\listtablename}{Lista de Tablas}
+  \renewcommand{\figurename}{Figura}
+  \renewcommand{\tablename}{Tabla}
+}{%
+  \renewcommand{\contentsname}{Content}
+  \renewcommand{\listfigurename}{List of Figures}
+  \renewcommand{\listtablename}{List of Tables}
+  \renewcommand{\figurename}{Figure}
+  \renewcommand{\tablename}{Table}
+}
+
+\fancyhf{}
+\fancyhead[LE]{\sffamily \rightmark}
+\fancyhead[RE]{\sffamily \thepage}
+\fancyhead[RO]{\sffamily \leftmark}
+\fancyhead[LO]{\sffamily \thepage}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \fancyfoot[C]{\sffamily\thepage}
+}
+
+$if(useQuotchap)$
+\usepackage[avantgarde]{quotchap}
+\renewcommand\sectfont{\sffamily\color{hydroniaPrimary}}
+$else$
+\newcommand{\HydroniaChapterRule}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\sffamily\color{hydroniaPrimary}}{\thechapter\HydroniaChapterRule\color{hydroniaPrimary}{|}\HydroniaChapterRule}{0pt}{\Huge\sffamily\color{hydroniaPrimary}}
+$endif$
+
+\titleformat{\section}{\LARGE\sffamily\raggedright\color{hydroniaPrimary}}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\Large\sffamily\raggedright\color{hydroniaPrimary}}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\large\sffamily\raggedright\color{hydroniaPrimary}}{\thesubsubsection}{0.5em}{}
+
+\hypersetup{
+  $if(hidelinks)$
+  hidelinks,
+  $else$
+  colorlinks=true,
+  linkcolor=hydroniaPrimary,
+  urlcolor=hydroniaPrimary,
+  citecolor=hydroniaPrimary,
+  $endif$
+  pdftitle={$title$},
+  pdfauthor={$author$},
+  pdfsubject={$subject$},
+  pdfkeywords={$keywords$}
+}
+
+\newcommand*{\HydroniaTitlePage}{%
+\begingroup
+\hbox{%
+  \hspace*{0.05\textwidth}%
+  \rule{1pt}{\textheight}%
+  \hspace*{0.05\textwidth}%
+  \parbox[b]{1\textwidth}{%
+    \noindent\Huge\sffamily\color{hydroniaPrimary} $title$ \\[0.5\baselineskip]
+    $if(subtitle)$\noindent\Large\sffamily\color{hydroniaPrimary} $subtitle$ \\[1\baselineskip]$endif$
+    \noindent\large\sffamily $date$ \\[1\baselineskip]
+    $if(coverLogo)$\includegraphics[height=0.8in]{$coverLogo$}\\[1\baselineskip]$endif$
+    \vspace{0.38\textheight}%
+    {\noindent\Large\sffamily\color{hydroniaPrimary} Hydronia LLC}\\[\baselineskip]%
+  }%
+}%
+\endgroup
+}
+
+\newcommand*{\HydroniaLegalPage}{%
+{\footnotesize
+\vspace*{12cm}
+\pagenumbering{roman}
+\ifdefstring{\HydroniaLang}{es}{%
+\noindent \of2d\textsuperscript{TM} y \rf2d\textsuperscript{TM}, modelos y documentacion producidos por Hydronia, LLC, Pembroke Pines, FL. USA.\par
+\noindent La informacion contenida en este documento puede cambiar sin previo aviso y no representa un compromiso por parte de Hydronia, LLC. El software descrito en este documento se proporciona bajo un acuerdo de licencia.\par
+\noindent \rf2d, \of2d, \rflo\ y \rfpgpu\ son marcas registradas por Hydronia, LLC. \HydroniaCopyrightYears.\par
+\noindent \of2d\textsuperscript{TM} y \rf2d\textsuperscript{TM} son marcas registradas de Hydronia, LLC.\par
+\noindent Todos los demas productos o nombres de servicios mencionados aqui son marcas registradas de sus respectivos propietarios.\par
+\noindent Todos los derechos reservados. Ninguna parte de esta publicacion puede ser reproducida, almacenada en un sistema de recuperacion o transmitida en cualquier forma o por cualquier medio electronico, mecanico, fotocopia, grabacion u otros, sin el permiso previo por escrito de Hydronia, LLC.\par
+\noindent Fecha de ultima modificacion del documento: $date$.\par
+\noindent Soporte tecnico: \url{support@hydronia.com}\par
+\noindent Sitio web: \url{www.hydronia.com}
+}{%
+\noindent \of2d\textsuperscript{TM}, \rf2d\textsuperscript{TM} models, and documentation produced by Hydronia, LLC, Pembroke Pines, FL. USA.\par
+\noindent Information in this document is subject to change without notice and does not represent a commitment on part of Hydronia, LLC. The software described in this document is furnished under a license agreement.\par
+\noindent \rf2d, \of2d, \rflo, and \rfpgpu\ are copyrighted by Hydronia, LLC. \HydroniaCopyrightYears.\par
+\noindent \of2d\textsuperscript{TM} and \rf2d\textsuperscript{TM} are registered trademarks of Hydronia, LLC.\par
+\noindent All other products or service names mentioned herein are trademarks of their respective owners.\par
+\noindent All rights reserved. No part of this publication may be reproduced, stored in a retrieval system or transmitted in any form or by any means electronic, mechanical, photocopying, recording or otherwise, without the prior written permission of Hydronia, LLC.\par
+\noindent Last document modification date: $date$.\par
+\noindent Technical Support: \url{support@hydronia.com}\par
+\noindent Web site: \url{www.hydronia.com}
+}
+}
+}
+
+\begin{document}
+\pagestyle{empty}
+
+\HydroniaTitlePage
+
+\newpage
+\thispagestyle{empty}
+\HydroniaLegalPage
+
+\newpage
+\tableofcontents
+
+\newpage
+\listoffigures
+
+\clearpage
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+$body$
+
+\end{document}

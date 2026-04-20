@@ -1,0 +1,72 @@
+manuals:
+  - id: qgis-reference-riverflow2d-en
+    product: riverflow2d
+    manual: qgis-reference
+    flavor: qgis
+    language: en
+    title: "RiverFlow2D QGIS Reference Manual"
+    subtitle: "Two-Dimensional Flood and River Dynamics Model"
+    author: "Hydronia LLC"
+    date: "April 2026"
+    # GOAL-0001 M3 content still lives flat under docs/<product>/*.md.
+    # When GOAL-0002 opens it migrates to docs/<product>/qgis-reference/*.md
+    # and this source_dir updates accordingly.
+    source_dir: docs/riverflow2d
+    chapters:
+      - index
+      - new-project
+      - export
+      - maps
+      - animation
+      - cross-sections
+      - tools
+      - context-menus
+      - appendix
+    output: site/pdf/qgis-reference-riverflow2d-en.pdf
+    useQuotchap: true
+
+  - id: qgis-reference-oilflow2d-en
+    product: oilflow2d
+    manual: qgis-reference
+    flavor: qgis
+    language: en
+    title: "OilFlow2D QGIS Reference Manual"
+    subtitle: "Oil Spill Modeling for Land and Water"
+    author: "Hydronia LLC"
+    date: "April 2026"
+    source_dir: docs/oilflow2d
+    chapters:
+      - index
+      - new-project
+      - export
+      - maps
+      - animation
+      - cross-sections
+      - tools
+      - context-menus
+      - appendix
+    output: site/pdf/qgis-reference-oilflow2d-en.pdf
+    useQuotchap: true
+
+  - id: qgis-reference-hydrobid-flood-en
+    product: hydrobid-flood
+    manual: qgis-reference
+    flavor: qgis
+    language: en
+    title: "HydroBID Flood QGIS Reference Manual"
+    subtitle: "IDB Flood Mitigation and Urban Drainage Edition"
+    author: "Hydronia LLC"
+    date: "April 2026"
+    source_dir: docs/hydrobid-flood
+    chapters:
+      - index
+      - new-project
+      - export
+      - maps
+      - animation
+      - cross-sections
+      - tools
+      - context-menus
+      - appendix
+    output: site/pdf/qgis-reference-hydrobid-flood-en.pdf
+    useQuotchap: false

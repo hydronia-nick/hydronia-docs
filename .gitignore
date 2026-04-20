@@ -18,3 +18,7 @@ desktop.ini
 
 # Local build artifacts
 *.log
+
+# Pandoc PDF pipeline intermediate artifacts
+build/
+tmp/
