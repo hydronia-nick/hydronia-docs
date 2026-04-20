@@ -73,9 +73,12 @@ jobs:
             texlive-latex-recommended \
             texlive-latex-extra \
             texlive-lang-spanish \
+            fonts-texgyre \
             lmodern
-          # texlive-fonts-extra ships the TeX Gyre family (Heros, Cursor,
-          # Pagella, etc.) that our Pandoc template pulls via fontspec.
+          # fonts-texgyre installs the OpenType TeX Gyre family (Heros,
+          # Cursor, Pagella, ...) that our Pandoc template pulls via
+          # fontspec. texlive-fonts-extra ships the Type 1 variants which
+          # pdfLaTeX can use, but XeLaTeX/fontspec needs the OTFs.
 
       - name: Build PDF manuals
         run: python scripts/build_pdfs.py --all
