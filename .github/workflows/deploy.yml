@@ -52,22 +52,27 @@ jobs:
           rm "pandoc-${PANDOC_VERSION}-1-amd64.deb"
           pandoc --version | head -1
 
-      - name: Install TeX Live packages (cached)
-        uses: awalsh128/cache-apt-pkgs-action@v1
-        with:
-          packages: >-
-            texlive-xetex
-            texlive-fonts-recommended
-            texlive-latex-recommended
-            texlive-latex-extra
-            texlive-lang-spanish
+      # TeX Live install, uncached.
+      #
+      # awalsh128/cache-apt-pkgs-action was evaluated and abandoned: on cache
+      # hits it restores the .deb file payloads but does NOT replay the
+      # TeX Live post-install hooks that register fmt entries in
+      # fmtutil.cnf and generate xelatex.fmt. The first post-cache-bump
+      # run always succeeded (cache miss = fresh install = hooks ran),
+      # subsequent runs always failed with
+      #   ! I can't find the format file `xelatex.fmt'!
+      # Vanilla apt-get install runs the postinsts on every job, which is
+      # ~5 minutes per build — acceptable given push cadence.
+      - name: Install TeX Live packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-lang-spanish \
             lmodern
-          # Version bump forces a fresh cache — increment when the package
-          # list changes.
-          version: 1.1
-          # TeX Live post-install hooks generate xelatex.fmt via fmtutil;
-          # without this, `I can't find the format file 'xelatex.fmt'`.
-          execute_install_scripts: true
 
       - name: Build PDF manuals
         run: python scripts/build_pdfs.py --all
