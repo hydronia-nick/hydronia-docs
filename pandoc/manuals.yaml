@@ -7,10 +7,7 @@ manuals:
     title: "RiverFlow2D QGIS Reference Manual"
     subtitle: "Two-Dimensional Flood and River Dynamics Model"
     author: "Hydronia LLC"
-    # GOAL-0001 M3 content still lives flat under docs/<product>/*.md.
-    # When GOAL-0002 opens it migrates to docs/<product>/qgis-reference/*.md
-    # and this source_dir updates accordingly.
-    source_dir: docs/riverflow2d
+    source_dir: docs/riverflow2d/qgis-reference
     chapters:
       - index
       - new-project
@@ -32,7 +29,7 @@ manuals:
     title: "OilFlow2D QGIS Reference Manual"
     subtitle: "Oil Spill Modeling for Land and Water"
     author: "Hydronia LLC"
-    source_dir: docs/oilflow2d
+    source_dir: docs/oilflow2d/qgis-reference
     chapters:
       - index
       - new-project
@@ -54,7 +51,7 @@ manuals:
     title: "HydroBID Flood QGIS Reference Manual"
     subtitle: "IDB Flood Mitigation and Urban Drainage Edition"
     author: "Hydronia LLC"
-    source_dir: docs/hydrobid-flood
+    source_dir: docs/hydrobid-flood/qgis-reference
     chapters:
       - index
       - new-project
@@ -66,4 +63,109 @@ manuals:
       - context-menus
       - appendix
     output: site/pdf/qgis-reference-hydrobid-flood-en.pdf
+    useQuotchap: false
+
+  - id: tutorials-riverflow2d-en
+    product: riverflow2d
+    manual: tutorials
+    flavor: qgis
+    language: en
+    title: "RiverFlow2D Tutorials"
+    subtitle: "Two-Dimensional Flood and River Dynamics Model"
+    author: "Hydronia LLC"
+    source_dir: docs/riverflow2d/tutorials
+    chapters:
+      - index
+      - introduction
+      - creating-your-first-riverflow2d-project
+      - multiple-scenario-project-tool
+      - simulating-levees-using-weirs
+      - simulating-bridges
+      - simulating-culverts
+      - simulating-dam-breaches
+      - establishing-initial-water-mud-or-tailings-elevations
+      - simulating-bed-load-sediment-transport-with-limited-erosion-bed-areas
+      - simulating-suspended-sediment-transport-with-inflows-of-suspended-sediment-concentrations
+      - hydrologic-simulations
+      - urban-drainage-using-riverflow2d-and-epa-swmm
+      - simulating-a-tailings-dam-failure-with-riverflow2d-mt
+      - simulating-pollutant-transport
+      - wind-driven-circulation
+      - using-mannings-n-esri-shape-files
+      - post-processing-calculations
+      - advanced-digitization-snapping
+      - creating-raster-elevations-from-x-y-z-data-sets
+      - setting-up-a-google-cloud-vm-for-gpu-accelerated-simulations
+      - creating-high-impact-graphics-and-animations-using-paraview
+    output: site/pdf/tutorials-riverflow2d-en.pdf
+    useQuotchap: true
+
+  - id: tutorials-oilflow2d-en
+    product: oilflow2d
+    manual: tutorials
+    flavor: qgis
+    language: en
+    title: "OilFlow2D Tutorials"
+    subtitle: "Oil Spill Model"
+    author: "Hydronia LLC"
+    source_dir: docs/oilflow2d/tutorials
+    chapters:
+      - index
+      - introduction
+      - creating-your-first-river-flow-application-with-oilflow2d
+      - multiple-scenario-project-tool
+      - simulating-levees-using-weirs
+      - simulating-bridges
+      - simulating-culverts
+      - simulating-dam-breaches
+      - establishing-initial-water-mud-or-tailings-elevations
+      - simulating-bed-load-sediment-transport-with-limited-erosion-bed-areas
+      - simulating-suspended-sediment-transport-with-inflows-of-suspended-sediment-concentrations
+      - hydrologic-simulations
+      - urban-drainage-using-riverflow2d-and-epa-swmm
+      - simulating-a-tailings-dam-failure-with-riverflow2d-mt
+      - simulating-pollutant-transport
+      - wind-driven-circulation
+      - using-mannings-n-esri-shape-files
+      - post-processing-calculations
+      - advanced-digitization-snapping
+      - creating-raster-elevations-from-x-y-z-data-sets
+      - setting-up-a-google-cloud-vm-for-gpu-accelerated-simulations
+      - creating-high-impact-graphics-and-animations-using-paraview
+    output: site/pdf/tutorials-oilflow2d-en.pdf
+    useQuotchap: true
+
+  - id: tutorials-hydrobid-flood-en
+    product: hydrobid-flood
+    manual: tutorials
+    flavor: qgis
+    language: en
+    title: "HydroBID Flood Tutorials"
+    subtitle: "Flood Modeling System"
+    author: "Hydronia LLC"
+    source_dir: docs/hydrobid-flood/tutorials
+    chapters:
+      - index
+      - introduction
+      - creating-your-first-riverflow2d-application
+      - multiple-scenario-project-tool
+      - simulating-levees-using-weirs
+      - simulating-bridges
+      - simulating-culverts
+      - simulating-dam-breaches
+      - establishing-initial-water-mud-or-tailings-elevations
+      - simulating-bed-load-sediment-transport-with-limited-erosion-bed-areas
+      - simulating-suspended-sediment-transport-with-inflows-of-suspended-sediment-concentrations
+      - hydrologic-simulations
+      - urban-drainage-using-riverflow2d-and-epa-swmm
+      - simulating-a-tailings-dam-failure-with-riverflow2d-mt
+      - simulating-pollutant-transport
+      - wind-driven-circulation
+      - using-mannings-n-esri-shape-files
+      - post-processing-calculations
+      - advanced-digitization-snapping
+      - creating-raster-elevations-from-x-y-z-data-sets
+      - setting-up-a-google-cloud-vm-for-gpu-accelerated-simulations
+      - creating-high-impact-graphics-and-animations-using-paraview
+    output: site/pdf/tutorials-hydrobid-flood-en.pdf
     useQuotchap: false

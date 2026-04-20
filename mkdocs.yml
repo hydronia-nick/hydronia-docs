@@ -122,31 +122,106 @@ nav:
       - Interface Overview: getting-started/interface-overview.md
   - RiverFlow2D:
       - riverflow2d/index.md
-      - New Project: riverflow2d/new-project.md
-      - Export: riverflow2d/export.md
-      - Results vs Time Maps: riverflow2d/maps.md
-      - Animation: riverflow2d/animation.md
-      - Cross Sections: riverflow2d/cross-sections.md
-      - Tools: riverflow2d/tools.md
-      - Context Menus: riverflow2d/context-menus.md
-      - Appendix — Layer Attributes: riverflow2d/appendix.md
+      - QGIS Reference:
+          - riverflow2d/qgis-reference/index.md
+          - New Project: riverflow2d/qgis-reference/new-project.md
+          - Export: riverflow2d/qgis-reference/export.md
+          - Results vs Time Maps: riverflow2d/qgis-reference/maps.md
+          - Animation: riverflow2d/qgis-reference/animation.md
+          - Cross Sections: riverflow2d/qgis-reference/cross-sections.md
+          - Tools: riverflow2d/qgis-reference/tools.md
+          - Context Menus: riverflow2d/qgis-reference/context-menus.md
+          - Appendix — Layer Attributes: riverflow2d/qgis-reference/appendix.md
+      - Tutorials:
+          - riverflow2d/tutorials/index.md
+          - Introduction: riverflow2d/tutorials/introduction.md
+          - Creating your first RiverFlow2D project: riverflow2d/tutorials/creating-your-first-riverflow2d-project.md
+          - Multiple Scenario Project Tool: riverflow2d/tutorials/multiple-scenario-project-tool.md
+          - Simulating levees using weirs: riverflow2d/tutorials/simulating-levees-using-weirs.md
+          - Simulating bridges: riverflow2d/tutorials/simulating-bridges.md
+          - Simulating culverts: riverflow2d/tutorials/simulating-culverts.md
+          - Simulating dam breaches: riverflow2d/tutorials/simulating-dam-breaches.md
+          - Establishing initial water, mud, or tailings elevations: riverflow2d/tutorials/establishing-initial-water-mud-or-tailings-elevations.md
+          - Simulating bed load sediment transport with limited erosion bed areas: riverflow2d/tutorials/simulating-bed-load-sediment-transport-with-limited-erosion-bed-areas.md
+          - Simulating suspended sediment transport with inflows of suspended sediment concentrations: riverflow2d/tutorials/simulating-suspended-sediment-transport-with-inflows-of-suspended-sediment-concentrations.md
+          - Hydrologic simulations: riverflow2d/tutorials/hydrologic-simulations.md
+          - Urban Drainage using RiverFlow2D and EPA-SWMM: riverflow2d/tutorials/urban-drainage-using-riverflow2d-and-epa-swmm.md
+          - Simulating a tailings dam failure with RiverFlow2D MT: riverflow2d/tutorials/simulating-a-tailings-dam-failure-with-riverflow2d-mt.md
+          - Simulating Pollutant Transport: riverflow2d/tutorials/simulating-pollutant-transport.md
+          - Wind driven circulation: riverflow2d/tutorials/wind-driven-circulation.md
+          - Using Manning's n ESRI shape files: riverflow2d/tutorials/using-mannings-n-esri-shape-files.md
+          - Post-processing calculations: riverflow2d/tutorials/post-processing-calculations.md
+          - Advanced digitization/snapping: riverflow2d/tutorials/advanced-digitization-snapping.md
+          - Creating raster elevations from X Y Z data sets: riverflow2d/tutorials/creating-raster-elevations-from-x-y-z-data-sets.md
+          - Setting up a Google Cloud VM for GPU-Accelerated Simulations: riverflow2d/tutorials/setting-up-a-google-cloud-vm-for-gpu-accelerated-simulations.md
+          - Creating high-impact graphics and animations using Paraview: riverflow2d/tutorials/creating-high-impact-graphics-and-animations-using-paraview.md
   - OilFlow2D:
       - oilflow2d/index.md
-      - New Project: oilflow2d/new-project.md
-      - Export: oilflow2d/export.md
-      - Results vs Time Maps: oilflow2d/maps.md
-      - Animation: oilflow2d/animation.md
-      - Cross Sections: oilflow2d/cross-sections.md
-      - Tools: oilflow2d/tools.md
-      - Context Menus: oilflow2d/context-menus.md
-      - Appendix — Layer Attributes: oilflow2d/appendix.md
+      - QGIS Reference:
+          - oilflow2d/qgis-reference/index.md
+          - New Project: oilflow2d/qgis-reference/new-project.md
+          - Export: oilflow2d/qgis-reference/export.md
+          - Results vs Time Maps: oilflow2d/qgis-reference/maps.md
+          - Animation: oilflow2d/qgis-reference/animation.md
+          - Cross Sections: oilflow2d/qgis-reference/cross-sections.md
+          - Tools: oilflow2d/qgis-reference/tools.md
+          - Context Menus: oilflow2d/qgis-reference/context-menus.md
+          - Appendix — Layer Attributes: oilflow2d/qgis-reference/appendix.md
+      - Tutorials:
+          - oilflow2d/tutorials/index.md
+          - Introduction: oilflow2d/tutorials/introduction.md
+          - Creating your first river flow application with OilFlow2D: oilflow2d/tutorials/creating-your-first-river-flow-application-with-oilflow2d.md
+          - Multiple Scenario Project Tool: oilflow2d/tutorials/multiple-scenario-project-tool.md
+          - Simulating levees using weirs: oilflow2d/tutorials/simulating-levees-using-weirs.md
+          - Simulating bridges: oilflow2d/tutorials/simulating-bridges.md
+          - Simulating culverts: oilflow2d/tutorials/simulating-culverts.md
+          - Simulating dam breaches: oilflow2d/tutorials/simulating-dam-breaches.md
+          - Establishing initial water, mud, or tailings elevations: oilflow2d/tutorials/establishing-initial-water-mud-or-tailings-elevations.md
+          - Simulating bed load sediment transport with limited erosion bed areas: oilflow2d/tutorials/simulating-bed-load-sediment-transport-with-limited-erosion-bed-areas.md
+          - Simulating suspended sediment transport with inflows of suspended sediment concentrations: oilflow2d/tutorials/simulating-suspended-sediment-transport-with-inflows-of-suspended-sediment-concentrations.md
+          - Hydrologic simulations: oilflow2d/tutorials/hydrologic-simulations.md
+          - Urban Drainage using RiverFlow2D and EPA-SWMM: oilflow2d/tutorials/urban-drainage-using-riverflow2d-and-epa-swmm.md
+          - Simulating a tailings dam failure with RiverFlow2D MT: oilflow2d/tutorials/simulating-a-tailings-dam-failure-with-riverflow2d-mt.md
+          - Simulating Pollutant Transport: oilflow2d/tutorials/simulating-pollutant-transport.md
+          - Wind driven circulation: oilflow2d/tutorials/wind-driven-circulation.md
+          - Using Manning's n ESRI shape files: oilflow2d/tutorials/using-mannings-n-esri-shape-files.md
+          - Post-processing calculations: oilflow2d/tutorials/post-processing-calculations.md
+          - Advanced digitization/snapping: oilflow2d/tutorials/advanced-digitization-snapping.md
+          - Creating raster elevations from X Y Z data sets: oilflow2d/tutorials/creating-raster-elevations-from-x-y-z-data-sets.md
+          - Setting up a Google Cloud VM for GPU-Accelerated Simulations: oilflow2d/tutorials/setting-up-a-google-cloud-vm-for-gpu-accelerated-simulations.md
+          - Creating high-impact graphics and animations using Paraview: oilflow2d/tutorials/creating-high-impact-graphics-and-animations-using-paraview.md
   - HydroBID Flood:
       - hydrobid-flood/index.md
-      - New Project: hydrobid-flood/new-project.md
-      - Export: hydrobid-flood/export.md
-      - Results vs Time Maps: hydrobid-flood/maps.md
-      - Animation: hydrobid-flood/animation.md
-      - Cross Sections: hydrobid-flood/cross-sections.md
-      - Tools: hydrobid-flood/tools.md
-      - Context Menus: hydrobid-flood/context-menus.md
-      - Appendix — Layer Attributes: hydrobid-flood/appendix.md
+      - QGIS Reference:
+          - hydrobid-flood/qgis-reference/index.md
+          - New Project: hydrobid-flood/qgis-reference/new-project.md
+          - Export: hydrobid-flood/qgis-reference/export.md
+          - Results vs Time Maps: hydrobid-flood/qgis-reference/maps.md
+          - Animation: hydrobid-flood/qgis-reference/animation.md
+          - Cross Sections: hydrobid-flood/qgis-reference/cross-sections.md
+          - Tools: hydrobid-flood/qgis-reference/tools.md
+          - Context Menus: hydrobid-flood/qgis-reference/context-menus.md
+          - Appendix — Layer Attributes: hydrobid-flood/qgis-reference/appendix.md
+      - Tutorials:
+          - hydrobid-flood/tutorials/index.md
+          - Introduction: hydrobid-flood/tutorials/introduction.md
+          - Creating your first RiverFlow2D application: hydrobid-flood/tutorials/creating-your-first-riverflow2d-application.md
+          - Multiple Scenario Project Tool: hydrobid-flood/tutorials/multiple-scenario-project-tool.md
+          - Simulating levees using weirs: hydrobid-flood/tutorials/simulating-levees-using-weirs.md
+          - Simulating bridges: hydrobid-flood/tutorials/simulating-bridges.md
+          - Simulating culverts: hydrobid-flood/tutorials/simulating-culverts.md
+          - Simulating dam breaches: hydrobid-flood/tutorials/simulating-dam-breaches.md
+          - Establishing initial water, mud, or tailings elevations: hydrobid-flood/tutorials/establishing-initial-water-mud-or-tailings-elevations.md
+          - Simulating bed load sediment transport with limited erosion bed areas: hydrobid-flood/tutorials/simulating-bed-load-sediment-transport-with-limited-erosion-bed-areas.md
+          - Simulating suspended sediment transport with inflows of suspended sediment concentrations: hydrobid-flood/tutorials/simulating-suspended-sediment-transport-with-inflows-of-suspended-sediment-concentrations.md
+          - Hydrologic simulations: hydrobid-flood/tutorials/hydrologic-simulations.md
+          - Urban Drainage using RiverFlow2D and EPA-SWMM: hydrobid-flood/tutorials/urban-drainage-using-riverflow2d-and-epa-swmm.md
+          - Simulating a tailings dam failure with RiverFlow2D MT: hydrobid-flood/tutorials/simulating-a-tailings-dam-failure-with-riverflow2d-mt.md
+          - Simulating Pollutant Transport: hydrobid-flood/tutorials/simulating-pollutant-transport.md
+          - Wind driven circulation: hydrobid-flood/tutorials/wind-driven-circulation.md
+          - Using Manning's n ESRI shape files: hydrobid-flood/tutorials/using-mannings-n-esri-shape-files.md
+          - Post-processing calculations: hydrobid-flood/tutorials/post-processing-calculations.md
+          - Advanced digitization/snapping: hydrobid-flood/tutorials/advanced-digitization-snapping.md
+          - Creating raster elevations from X Y Z data sets: hydrobid-flood/tutorials/creating-raster-elevations-from-x-y-z-data-sets.md
+          - Setting up a Google Cloud VM for GPU-Accelerated Simulations: hydrobid-flood/tutorials/setting-up-a-google-cloud-vm-for-gpu-accelerated-simulations.md
+          - Creating high-impact graphics and animations using Paraview: hydrobid-flood/tutorials/creating-high-impact-graphics-and-animations-using-paraview.md

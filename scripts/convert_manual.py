@@ -1,60 +1,66 @@
-"""Convert Pandoc-derived per-product manual markdown into MkDocs chapter pages.
-
-Reads:
-    E:/Hydronia Dropbox/.../markdown_output/{RF2D,OF2D,HBF}_Plugin_Manual_EN.md
-
-Writes, per product, one chapter per file under docs/<product>/:
-    new-project.md, export.md, maps.md, animation.md, cross-sections.md,
-    tools.md, context-menus.md, appendix.md
-and copies referenced images into docs/<product>/img/.
-
-Transforms performed:
-  * Pandoc <figure><span class="image placeholder"> ... blocks → standard
-    markdown images `![caption](img/file.png){ width=W }`.
-  * Inline [image]{.image .placeholder ...} spans → inline
-    `![](img/file.png){ width=W }`.
-  * Strip header attribute blocks `{#chap:xxx}`/`{#sec:xxx}`/etc.
-  * Strip Pandoc cross-ref trailers `{reference-type="ref" reference="..."}`.
-  * Rewrite anchor-only links `(#label)` to `(<chapter>.md#<slug>)` when the
-    label resolves to a known heading in another chapter.
-  * Fix image paths `images/FOO.png` → `img/FOO.png`.
-  * Strip the front-matter/title/legal-notice section (everything before the
-    first `# ... {#chap:...}` heading).
-
-Run:  python scripts/convert_manual.py
-"""
+"""Convert Hydronia manual source markdown into MkDocs chapter pages."""
 
 from __future__ import annotations
 
+import argparse
+import html
 import re
 import shutil
 import sys
 import unicodedata
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
+if __package__ in {None, ""}:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from scripts import pandoc_preprocess as preprocess
+
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DOCS_ROOT = REPO_ROOT / "docs"
 
-MANUAL_ROOT = Path(
-    r"E:/Hydronia Dropbox/Nick Calero/Manuals/"
-    r"QGIS_Plugin_Reference_Manual_Latex"
+REFERENCE_SOURCE_ROOT = Path(
+    r"E:/Hydronia Dropbox/Nick Calero/Manuals/QGIS_Plugin_Reference_Manual_Latex"
 )
-MD_DIR = MANUAL_ROOT / "markdown_output"
-IMAGES_DIR = MANUAL_ROOT / "images"
+REFERENCE_MD_DIR = REFERENCE_SOURCE_ROOT / "markdown_output"
+REFERENCE_IMAGES_DIR = REFERENCE_SOURCE_ROOT / "images"
 
-PRODUCTS = [
-    # (source markdown file, product docs slug, friendly name)
-    ("RF2D_Plugin_Manual_EN.md", "riverflow2d", "RiverFlow2D"),
-    ("OF2D_Plugin_Manual_EN.md", "oilflow2d", "OilFlow2D"),
-    ("HBF_Plugin_Manual_EN.md", "hydrobid-flood", "HydroBID Flood"),
-]
+TUTORIAL_SOURCE_ROOT = Path(r"E:/Hydronia Dropbox/Nick Calero/Manuals/Rf2D-QGIS_Tutorial_Files")
+TUTORIAL_MD_DIR = TUTORIAL_SOURCE_ROOT / "docs"
+TUTORIAL_IMAGES_DIR = TUTORIAL_SOURCE_ROOT / "images"
+TUTORIAL_IMAGES_PV_DIR = TUTORIAL_SOURCE_ROOT / "imagesParaview"
 
-# Map Pandoc chapter label -> MkDocs page slug (without .md).
-CHAPTER_SLUGS = {
+LABEL_TOKEN = r"[A-Za-z][\w:/+-]*"
+
+
+@dataclass(frozen=True)
+class ManualSpec:
+    source_path: Path
+    product_slug: str
+    product_name: str
+    subtitle: str
+    output_subdir: str
+    kind: str
+    image_roots: dict[str, Path]
+    chapter_slug_map: dict[str, str] | None = None
+    chapter_title_overrides: dict[str, str] | None = None
+    start_title: str | None = None
+    require_labeled_h1: bool = False
+    generate_index: bool = False
+
+
+@dataclass
+class ManualResult:
+    product_slug: str
+    output_subdir: str
+    chapters: list[dict[str, str]]
+    page_slugs: list[str]
+    image_count: int
+
+
+REFERENCE_CHAPTER_SLUGS = {
     "chap:new_project": "new-project",
     "cha:export_tool": "export",
     "chap:export_tool": "export",
@@ -66,321 +72,7 @@ CHAPTER_SLUGS = {
     "chap:appendix_i": "appendix",
 }
 
-# ---------------------------------------------------------------------------
-# Slug helpers (must match MkDocs/Python-Markdown default slugify)
-# ---------------------------------------------------------------------------
-
-_SLUG_STRIP = re.compile(r"[^\w\s-]", re.UNICODE)
-_SLUG_SPACE = re.compile(r"[\s_-]+")
-
-
-def slugify(text: str) -> str:
-    """Approximate the default MkDocs heading slug."""
-    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
-    text = text.lower().strip()
-    text = _SLUG_STRIP.sub("", text)
-    text = _SLUG_SPACE.sub("-", text).strip("-")
-    return text
-
-
-# ---------------------------------------------------------------------------
-# Pandoc pattern transforms
-# ---------------------------------------------------------------------------
-
-# <figure id="..."><span class="image placeholder" data-original-image-src="images/X.png" data-original-image-title="" width="W%"></span><figcaption>CAP</figcaption></figure>
-#
-# Note: the width attribute is extracted via a SEPARATE `re.search` on the
-# matched text rather than a named group here. An optional capture group of
-# the form `(?:\s+width="...")?` was previously being skipped by the regex
-# engine (the surrounding `[^>]*?` is lazy and happily eats the whole attr
-# block with the optional group matching zero times), so every figure came
-# through as widthless. Two-stage extraction is simpler and correct.
-FIGURE_RE = re.compile(
-    r"<figure[^>]*>\s*"
-    r'<span class="image placeholder"\s+'
-    r'data-original-image-src="images/(?P<src>[^"]+)"'
-    r'[^>]*></span>\s*'
-    r"<figcaption>(?P<cap>.*?)</figcaption>\s*"
-    r"</figure>",
-    re.DOTALL | re.IGNORECASE,
-)
-
-# Inline: [image]{.image .placeholder original-image-src="images/X.png" original-image-title="" width="W%"}
-INLINE_IMG_RE = re.compile(
-    r"\[image\]\{\.image \.placeholder\s+"
-    r'original-image-src="images/(?P<src>[^"]+)"'
-    r'[^}]*\}',
-    re.DOTALL,
-)
-
-# Used by both figure and inline transforms to pull the width/height out of
-# the matched attribute block. Some source icons use `height="0.9em"` or
-# `height="5%"` instead of `width="X%"` (small line-height icons) and we
-# must emit the dimension Pandoc can honor so the image doesn't render at
-# native pixel size.
-WIDTH_ATTR_RE = re.compile(r'width="([^"]+)"')
-HEIGHT_ATTR_RE = re.compile(r'height="([^"]+)"')
-
-# Header attribute block at end of heading line: `## Heading {#sec:xxx}`
-HEADER_ATTR_RE = re.compile(r"\s*\{#[a-zA-Z][\w:+-]*\}\s*$")
-
-# Cross-ref trailer after a link: `[text](#anchor){reference-type="ref" reference="xxx"}`
-XREF_TRAILER_RE = re.compile(r'\{reference-type="[^"]*"\s+reference="[^"]*"\}')
-
-# `images/FOO.png` inside generic markdown link/image tags we missed
-IMG_PATH_RE = re.compile(r"images/([^\s)\"]+)")
-
-
-# ---------------------------------------------------------------------------
-# Chapter split
-# ---------------------------------------------------------------------------
-
-CHAPTER_H1_RE = re.compile(r"^# (?P<title>.+?)\s*\{#(?P<label>[a-zA-Z][\w:+-]*)\}\s*$")
-
-
-def split_chapters(text: str) -> list[dict]:
-    """Return list of {label, title, body} dicts, in source order.
-
-    Everything before the first labeled H1 is discarded (front matter, legal
-    notice). H1 lines without an id attribute are also ignored.
-    """
-    lines = text.splitlines(keepends=True)
-    chapters: list[dict] = []
-    current: dict | None = None
-    for line in lines:
-        m = CHAPTER_H1_RE.match(line.rstrip("\n"))
-        if m:
-            if current is not None:
-                chapters.append(current)
-            current = {
-                "label": m.group("label"),
-                "title": m.group("title").strip(),
-                "body": [],
-            }
-            continue
-        if current is not None:
-            current["body"].append(line)
-    if current is not None:
-        chapters.append(current)
-    for c in chapters:
-        c["body"] = "".join(c["body"])
-    return chapters
-
-
-# ---------------------------------------------------------------------------
-# Label map (cross-reference resolution)
-# ---------------------------------------------------------------------------
-
-HEADING_LINE_RE = re.compile(
-    r"^(?P<hashes>#{1,6})\s+(?P<title>.+?)\s*\{#(?P<label>[a-zA-Z][\w:+-]*)\}\s*$",
-    re.MULTILINE,
-)
-
-
-def build_label_map(chapters: list[dict]) -> dict[str, tuple[str, str]]:
-    """label -> (page_slug, heading_slug)."""
-    mapping: dict[str, tuple[str, str]] = {}
-    for chap in chapters:
-        page = CHAPTER_SLUGS.get(chap["label"])
-        if page is None:
-            continue
-        # Chapter itself points to page root.
-        mapping[chap["label"]] = (page, "")
-        for m in HEADING_LINE_RE.finditer(chap["body"]):
-            label = m.group("label")
-            title = m.group("title")
-            mapping[label] = (page, slugify(title))
-    return mapping
-
-
-# ---------------------------------------------------------------------------
-# Transformation pipeline
-# ---------------------------------------------------------------------------
-
-
-def _extract_dimensions(match: re.Match) -> dict[str, str]:
-    """Pull `width=` and/or `height=` out of the whole matched block.
-
-    Returns a dict with any subset of {"width", "height"}. The source
-    markdown uses either attribute for inline icons; Pandoc honors either
-    via the `{ width=X height=Y }` attr block on a markdown image.
-    """
-    text = match.group(0)
-    dims: dict[str, str] = {}
-    w = WIDTH_ATTR_RE.search(text)
-    h = HEIGHT_ATTR_RE.search(text)
-    if w:
-        dims["width"] = w.group(1)
-    if h:
-        dims["height"] = h.group(1)
-    return dims
-
-
-def _format_dim_attrs(dims: dict[str, str]) -> str:
-    if not dims:
-        return ""
-    parts = [f"{k}={v}" for k, v in dims.items()]
-    return "{ " + " ".join(parts) + " }"
-
-
-def _figure_sub(match: re.Match) -> str:
-    src = match.group("src").lower()  # lowercase for case-sensitive deploy targets
-    cap = match.group("cap").strip()
-    # Caption may contain markdown/HTML; strip any stray whitespace/newlines.
-    cap = re.sub(r"\s+", " ", cap)
-    attrs = _format_dim_attrs(_extract_dimensions(match))
-    return f"\n![{cap}](img/{src}){attrs}\n"
-
-
-def _inline_img_sub(match: re.Match) -> str:
-    src = match.group("src").lower()
-    attrs = _format_dim_attrs(_extract_dimensions(match))
-    return f"![](img/{src}){attrs}"
-
-
-def _rewrite_xref_links(
-    body: str, label_map: dict[str, tuple[str, str]], this_page: str
-) -> str:
-    """Rewrite `[text](#label)` to cross-page links where applicable.
-
-    Pandoc-style `#fig:xxx` / `#tab:xxx` anchors do not exist in MkDocs, so
-    we strip those links entirely and keep only the link text.
-    Labels that resolve to a known heading are rewritten to point at that
-    heading's page+slug.
-    """
-    full_link_re = re.compile(
-        r"\[(?P<text>[^\]]*)\]\(#(?P<label>[a-zA-Z][\w:+-]*)\)"
-    )
-
-    def sub(m: re.Match) -> str:
-        label = m.group("label")
-        text = m.group("text")
-        # Figure/table Pandoc anchors have no MkDocs target — strip link.
-        if label.startswith(("fig:", "tab:")):
-            return text
-        target = label_map.get(label)
-        if target is None:
-            # Unknown label — drop the dead anchor, keep text.
-            return text
-        page, heading = target
-        if page == this_page:
-            anchor = f"#{heading}" if heading else ""
-            return f"[{text}]({anchor})" if anchor else text
-        suffix = f"#{heading}" if heading else ""
-        return f"[{text}]({page}.md{suffix})"
-
-    return full_link_re.sub(sub, body)
-
-
-def clean_body(
-    body: str, label_map: dict[str, tuple[str, str]], this_page: str
-) -> str:
-    # 1. Figure blocks → markdown images.
-    body = FIGURE_RE.sub(_figure_sub, body)
-    # 2. Inline [image]{...} spans.
-    body = INLINE_IMG_RE.sub(_inline_img_sub, body)
-    # 3. Remove Pandoc cross-ref trailers.
-    body = XREF_TRAILER_RE.sub("", body)
-    # 4. Rewrite cross-page link anchors.
-    body = _rewrite_xref_links(body, label_map, this_page)
-    # 5. Strip header-attr blocks from the ends of heading lines.
-    body = re.sub(
-        r"^(#{1,6} .*?)\s*\{#[a-zA-Z][\w:+-]*\}\s*$",
-        r"\1",
-        body,
-        flags=re.MULTILINE,
-    )
-    # 6. Any stray `images/X.png` references → `img/x.png` (lowercased).
-    body = IMG_PATH_RE.sub(lambda m: f"img/{m.group(1).lower()}", body)
-    # 7. Move large inline images (>15% width) at the end of list-item
-    #    paragraphs to their own block-level paragraph under the item.
-    #    Mirrors the original LaTeX manual's convention where the small
-    #    icon stays inline but the menu/dialog screenshot sits on its own
-    #    line inside the same \item.
-    body = _split_large_trailing_inline_images(body)
-    # 8. Collapse 3+ blank lines to 2.
-    body = re.sub(r"\n{3,}", "\n\n", body)
-    return body.strip() + "\n"
-
-
-# ---------------------------------------------------------------------------
-# Split large trailing inline images off into their own paragraph
-# ---------------------------------------------------------------------------
-
-# Inline markdown image with an explicit width percentage, captured.
-# Matches both `{ width=40% }` and `{width=40%}` style attribute blocks.
-_INLINE_IMG_WIDTH_RE = re.compile(
-    r"!\[[^\]]*\]\([^)]+\)\s*\{[^}]*\bwidth\s*=\s*(?P<w>\d+)%[^}]*\}"
-)
-
-# Numbered- or bulleted-list marker at the start of a line (captures indent
-# up to and including the marker so we can preserve list-item continuation).
-_LIST_ITEM_MARKER_RE = re.compile(r"^(?P<indent>\s*)(?:\d+\.\s+|[-*+]\s+)")
-
-_LARGE_IMAGE_WIDTH_THRESHOLD = 15  # percent
-
-
-def _split_large_trailing_inline_images(body: str) -> str:
-    """Break out large inline images at the end of list-item paragraphs.
-
-    After the inline-image regex pass, markdown lines like
-
-        2.  Activate the tool, click on the ![](img/icon.png){ width=5% }
-            icon and click on *Delete Scenario*. ![](img/menu.png){ width=40% }
-
-    have two inline images. The icon (5%) is fine inline; the menu (40%) is
-    too tall for the line-box in a list item and Pandoc emits it inline
-    anyway, causing LaTeX to reflow the step text around it. The original
-    LaTeX manual writes large images on their own line inside the
-    ``\\item``; we replicate that structure here so Pandoc renders the
-    big image as a block-level figure-equivalent inside the list item.
-    """
-
-    new_lines: list[str] = []
-    for line in body.split("\n"):
-        matches = list(_INLINE_IMG_WIDTH_RE.finditer(line))
-        if not matches:
-            new_lines.append(line)
-            continue
-        last = matches[-1]
-        width = int(last.group("w"))
-        trailing = line[last.end():].strip()
-        # Only rewrite when the image is the last thing on the line AND
-        # wider than the inline threshold.
-        if trailing or width <= _LARGE_IMAGE_WIDTH_THRESHOLD:
-            new_lines.append(line)
-            continue
-        marker = _LIST_ITEM_MARKER_RE.match(line)
-        # Inside a list item the continuation indent is the marker column
-        # width. Outside a list item no indent is added.
-        if marker:
-            indent = " " * (len(marker.group(0)))
-        else:
-            indent = ""
-        before_img = line[: last.start()].rstrip()
-        img_text = last.group(0)
-        new_lines.append(before_img)
-        new_lines.append("")
-        new_lines.append(f"{indent}{img_text}")
-    return "\n".join(new_lines)
-
-
-# ---------------------------------------------------------------------------
-# Image collection
-# ---------------------------------------------------------------------------
-
-MD_IMG_REF_RE = re.compile(r"]\(img/([^)\s]+)\)")
-
-
-def collect_image_refs(text: str) -> set[str]:
-    return set(MD_IMG_REF_RE.findall(text))
-
-
-# ---------------------------------------------------------------------------
-# Per-chapter intro text (top of page, above first section)
-# ---------------------------------------------------------------------------
-
-CHAPTER_H1_TITLES = {
+REFERENCE_CHAPTER_TITLES = {
     "new-project": "New Project / Scenario Tool",
     "export": "Export Tools",
     "maps": "Results vs Time Mapping Tools",
@@ -391,83 +83,665 @@ CHAPTER_H1_TITLES = {
     "appendix": "Appendix: QGIS Plugin Layer Attributes Reference",
 }
 
+REFERENCE_SPECS = [
+    ManualSpec(
+        source_path=REFERENCE_MD_DIR / "RF2D_Plugin_Manual_EN.md",
+        product_slug="riverflow2d",
+        product_name="RiverFlow2D",
+        subtitle="Two-Dimensional Flood and River Dynamics Model",
+        output_subdir="qgis-reference",
+        kind="qgis-reference",
+        image_roots={"images": REFERENCE_IMAGES_DIR},
+        chapter_slug_map=REFERENCE_CHAPTER_SLUGS,
+        chapter_title_overrides=REFERENCE_CHAPTER_TITLES,
+        require_labeled_h1=True,
+    ),
+    ManualSpec(
+        source_path=REFERENCE_MD_DIR / "OF2D_Plugin_Manual_EN.md",
+        product_slug="oilflow2d",
+        product_name="OilFlow2D",
+        subtitle="Oil Spill Modeling for Land and Water",
+        output_subdir="qgis-reference",
+        kind="qgis-reference",
+        image_roots={"images": REFERENCE_IMAGES_DIR},
+        chapter_slug_map=REFERENCE_CHAPTER_SLUGS,
+        chapter_title_overrides={
+            "new-project": "New Project / Scenario Tool",
+            "export": "Export Tools",
+            "maps": "Results vs Time Mapping Tools",
+            "animation": "Animation Tool",
+            "cross-sections": "Cross Sections Tool",
+            "tools": "Tools",
+            "context-menus": "Hydronia Tools Context Menus",
+            "appendix": "Appendix: QGIS Plugin Layer Attributes Reference",
+        },
+        require_labeled_h1=True,
+    ),
+    ManualSpec(
+        source_path=REFERENCE_MD_DIR / "HBF_Plugin_Manual_EN.md",
+        product_slug="hydrobid-flood",
+        product_name="HydroBID Flood",
+        subtitle="IDB Flood Mitigation and Urban Drainage Edition",
+        output_subdir="qgis-reference",
+        kind="qgis-reference",
+        image_roots={"images": REFERENCE_IMAGES_DIR},
+        chapter_slug_map=REFERENCE_CHAPTER_SLUGS,
+        chapter_title_overrides=REFERENCE_CHAPTER_TITLES,
+        require_labeled_h1=True,
+    ),
+]
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
+TUTORIAL_SPECS = [
+    ManualSpec(
+        source_path=TUTORIAL_MD_DIR / "RF2D_Tutorial_EN.md",
+        product_slug="riverflow2d",
+        product_name="RiverFlow2D",
+        subtitle="Two-Dimensional Flood and River Dynamics Model",
+        output_subdir="tutorials",
+        kind="tutorials",
+        image_roots={
+            "images": TUTORIAL_IMAGES_DIR,
+            "imagesparaview": TUTORIAL_IMAGES_PV_DIR,
+        },
+        start_title="Introduction",
+        generate_index=True,
+    ),
+    ManualSpec(
+        source_path=TUTORIAL_MD_DIR / "OF2D_Tutorial_EN.md",
+        product_slug="oilflow2d",
+        product_name="OilFlow2D",
+        subtitle="Oil Spill Model",
+        output_subdir="tutorials",
+        kind="tutorials",
+        image_roots={
+            "images": TUTORIAL_IMAGES_DIR,
+            "imagesparaview": TUTORIAL_IMAGES_PV_DIR,
+        },
+        start_title="Introduction",
+        generate_index=True,
+    ),
+    ManualSpec(
+        source_path=TUTORIAL_MD_DIR / "HBF_Tutorial_EN.md",
+        product_slug="hydrobid-flood",
+        product_name="HydroBID Flood",
+        subtitle="Flood Modeling System",
+        output_subdir="tutorials",
+        kind="tutorials",
+        image_roots={
+            "images": TUTORIAL_IMAGES_DIR,
+            "imagesparaview": TUTORIAL_IMAGES_PV_DIR,
+        },
+        start_title="Introduction",
+        generate_index=True,
+    ),
+]
+
+ALL_SPECS = [*REFERENCE_SPECS, *TUTORIAL_SPECS]
 
 
-def process_product(md_filename: str, product_slug: str, product_name: str) -> dict:
-    src = MD_DIR / md_filename
-    if not src.exists():
-        raise FileNotFoundError(src)
+H1_RE = re.compile(rf"^# (?P<title>.+?)(?:\s*\{{#(?P<label>{LABEL_TOKEN})\}})?\s*$")
+HEADING_RE = re.compile(
+    rf"^(?P<hashes>#{1,6})\s+(?P<title>.+?)(?:\s*\{{#(?P<label>{LABEL_TOKEN})\}})?\s*$",
+    re.MULTILINE,
+)
 
-    text = src.read_text(encoding="utf-8")
-    chapters = split_chapters(text)
-    label_map = build_label_map(chapters)
+FIGURE_RE = re.compile(
+    rf'<figure[^>]*>\s*'
+    rf'<span class="image placeholder"\s+'
+    rf'data-original-image-src="(?P<folder>images(?:Paraview)?)/(?P<src>[^"]+)"'
+    rf'[^>]*></span>\s*'
+    rf"<figcaption>(?P<cap>.*?)</figcaption>\s*"
+    rf"</figure>",
+    re.DOTALL | re.IGNORECASE,
+)
 
-    out_dir = DOCS_ROOT / product_slug
+INLINE_IMG_RE = re.compile(
+    r'\[image\]\{\.image \.placeholder\s+'
+    r'original-image-src="(?P<folder>images(?:Paraview)?)/(?P<src>[^"]+)"'
+    r'[^}]*\}',
+    re.DOTALL,
+)
+
+GENERIC_IMG_RE = re.compile(rf"(?P<folder>images(?:Paraview)?)/(?P<src>[^\s)\"]+)")
+HEADER_ATTR_RE = re.compile(r"^(#{1,6} .*?)\s*\{#[^}]+\}\s*$", re.MULTILINE)
+XREF_TRAILER_RE = re.compile(r'\{reference-type="[^"]*"\s+reference="[^"]*"\}')
+INLINE_LINK_RE = re.compile(rf"\[(?P<text>[^\]]*)\]\(#(?P<label>{LABEL_TOKEN})\)")
+WWW_LINK_RE = re.compile(r"\]\((www\.[^) \t\r\n]+)\)")
+BARE_WWW_LINK_RE = re.compile(r"\]\((www\.[^)]+)\)")
+
+WIDTH_ATTR_RE = re.compile(r'width="([^"]+)"')
+HEIGHT_ATTR_RE = re.compile(r'height="([^"]+)"')
+
+_INLINE_IMG_WIDTH_RE = re.compile(
+    r"!\[[^\]]*\]\([^)]+\)\s*\{[^}]*\bwidth\s*=\s*(?P<w>\d+)%[^}]*\}"
+)
+_LIST_ITEM_MARKER_RE = re.compile(r"^(?P<indent>\s*)(?:\d+\.\s+|[-*+]\s+)")
+_LARGE_IMAGE_WIDTH_THRESHOLD = 15
+
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[\"'(\[]?[A-Z0-9])")
+
+
+def slugify(text: str) -> str:
+    text = re.sub(r"[\\/]+", " ", text)
+    text = normalize_source_text(text)
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
+    text = text.lower().strip()
+    text = re.sub(r"[^\w\s-]", "", text)
+    text = re.sub(r"[\s_-]+", "-", text).strip("-")
+    return text
+
+
+def normalize_source_text(text: str) -> str:
+    return text.replace("\u00c2\u00a0", " ").replace("\xa0", " ")
+
+
+def split_chapters(
+    text: str,
+    *,
+    start_title: str | None = None,
+    require_labeled_h1: bool = False,
+) -> list[dict[str, str]]:
+    """Split a manual source into chapter blocks."""
+
+    lines = text.splitlines(keepends=True)
+    chapters: list[dict[str, str]] = []
+    current: dict[str, Any] | None = None
+    started = start_title is None and not require_labeled_h1
+
+    for line in lines:
+        match = H1_RE.match(line.rstrip("\r\n"))
+        if match:
+            title = re.sub(
+                r"\s+",
+                " ",
+                normalize_source_text(match.group("title").strip()),
+            ).strip()
+            label = match.group("label")
+            if not started:
+                if start_title is not None and title == start_title:
+                    started = True
+                elif require_labeled_h1 and label:
+                    started = True
+                else:
+                    continue
+            if current is not None:
+                chapters.append(current)
+            current = {"title": title, "label": label or "", "body": []}
+            continue
+        if started and current is not None:
+            current["body"].append(line)
+
+    if current is not None:
+        chapters.append(current)
+
+    for chapter in chapters:
+        chapter["body"] = "".join(chapter["body"])
+    return chapters
+
+
+def build_label_map(
+    chapters: list[dict[str, str]],
+    *,
+    page_slug_for_chapter,
+    map_unlabeled_h1_to_page_slug: bool = False,
+) -> dict[str, tuple[str, str]]:
+    mapping: dict[str, tuple[str, str]] = {}
+    for chapter in chapters:
+        page_slug = page_slug_for_chapter(chapter)
+        if page_slug is None:
+            continue
+        title_slug = slugify(chapter["title"])
+        label = chapter.get("label") or ""
+        if label:
+            mapping[label] = (page_slug, "")
+        elif map_unlabeled_h1_to_page_slug and title_slug:
+            mapping[title_slug] = (page_slug, "")
+
+        for heading in HEADING_RE.finditer(chapter["body"]):
+            heading_label = heading.group("label")
+            if not heading_label:
+                continue
+            heading_title = heading.group("title").strip()
+            mapping[heading_label] = (page_slug, slugify(heading_title))
+    return mapping
+
+
+def _extract_dimensions(match: re.Match[str]) -> dict[str, str]:
+    text = match.group(0)
+    dims: dict[str, str] = {}
+    width = WIDTH_ATTR_RE.search(text)
+    height = HEIGHT_ATTR_RE.search(text)
+    if width:
+        dims["width"] = width.group(1)
+    if height:
+        dims["height"] = height.group(1)
+    return dims
+
+
+def _format_dim_attrs(dims: dict[str, str]) -> str:
+    if not dims:
+        return ""
+    return "{ " + " ".join(f"{k}={v}" for k, v in dims.items()) + " }"
+
+
+def _clean_caption(text: str) -> str:
+    text = html.unescape(text)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = re.sub(r"\s+", " ", text)
+    return normalize_source_text(text).strip()
+
+
+def _resolve_image_source(
+    folder: str, src: str, image_roots: dict[str, Path]
+) -> Path:
+    root = image_roots.get(folder.lower())
+    if root is None:
+        raise FileNotFoundError(f"Unsupported image source folder: {folder}")
+    candidate = root / src
+    if candidate.is_file():
+        return candidate
+
+    requested = Path(src)
+    requested_name = requested.name.lower()
+    requested_stem = requested.stem.lower()
+
+    exact_matches: list[Path] = []
+    stem_matches: list[Path] = []
+    for item in root.iterdir():
+        if not item.is_file():
+            continue
+        name_lower = item.name.lower()
+        if name_lower == requested_name:
+            exact_matches.append(item)
+        elif item.stem.lower() == requested_stem:
+            stem_matches.append(item)
+
+    if len(exact_matches) == 1:
+        return exact_matches[0]
+    if len(exact_matches) > 1:
+        raise FileNotFoundError(
+            f"Ambiguous image reference {src!r} in {folder}: "
+            + ", ".join(str(path) for path in exact_matches)
+        )
+    if len(stem_matches) == 1:
+        return stem_matches[0]
+    if len(stem_matches) > 1:
+        raise FileNotFoundError(
+            f"Ambiguous image reference {src!r} in {folder}: "
+            + ", ".join(str(path) for path in stem_matches)
+        )
+
+    return candidate
+
+
+def _record_image(
+    image_sources: dict[str, Path],
+    image_roots: dict[str, Path],
+    folder: str,
+    src: str,
+) -> str:
+    dest_name = Path(src).name.lower()
+    source_path = _resolve_image_source(folder, src, image_roots)
+    existing = image_sources.get(dest_name)
+    if existing is not None and existing != source_path:
+        raise ValueError(
+            f"image destination collision for {dest_name!r}: {existing} vs {source_path}"
+        )
+    image_sources[dest_name] = source_path
+    return dest_name
+
+
+def _figure_sub(
+    match: re.Match[str], image_roots: dict[str, Path], image_sources: dict[str, Path]
+) -> str:
+    folder = match.group("folder")
+    src = match.group("src")
+    dest_name = _record_image(image_sources, image_roots, folder, src)
+    caption = _clean_caption(match.group("cap"))
+    attrs = _format_dim_attrs(_extract_dimensions(match))
+    return f"\n![{caption}](img/{dest_name}){attrs}\n"
+
+
+def _inline_img_sub(
+    match: re.Match[str], image_roots: dict[str, Path], image_sources: dict[str, Path]
+) -> str:
+    folder = match.group("folder")
+    src = match.group("src")
+    dest_name = _record_image(image_sources, image_roots, folder, src)
+    attrs = _format_dim_attrs(_extract_dimensions(match))
+    return f"![](img/{dest_name}){attrs}"
+
+
+def _generic_img_sub(
+    match: re.Match[str], image_roots: dict[str, Path], image_sources: dict[str, Path]
+) -> str:
+    folder = match.group("folder")
+    src = match.group("src")
+    dest_name = _record_image(image_sources, image_roots, folder, src)
+    return f"img/{dest_name}"
+
+
+def _rewrite_xref_links(
+    body: str, label_map: dict[str, tuple[str, str]], this_page: str
+) -> str:
+    """Rewrite anchor-style links to chapter page links when possible."""
+
+    def sub(match: re.Match[str]) -> str:
+        label = match.group("label")
+        text = match.group("text")
+        if label.startswith(("fig:", "tab:")):
+            return text
+        target = label_map.get(label)
+        if target is None:
+            return text
+        page_slug, heading_slug = target
+        if page_slug == this_page:
+            if heading_slug:
+                return f"[{text}](#{heading_slug})"
+            return text
+        suffix = f"#{heading_slug}" if heading_slug else ""
+        return f"[{text}]({page_slug}.md{suffix})"
+
+    return INLINE_LINK_RE.sub(sub, body)
+
+
+def _rewrite_bare_web_links(body: str) -> str:
+    return BARE_WWW_LINK_RE.sub(lambda match: f"](https://{match.group(1)})", body)
+
+
+def _split_large_trailing_inline_images(body: str) -> str:
+    new_lines: list[str] = []
+    for line in body.split("\n"):
+        matches = list(_INLINE_IMG_WIDTH_RE.finditer(line))
+        if not matches:
+            new_lines.append(line)
+            continue
+        last = matches[-1]
+        width = int(last.group("w"))
+        trailing = line[last.end():].strip()
+        if trailing or width <= _LARGE_IMAGE_WIDTH_THRESHOLD:
+            new_lines.append(line)
+            continue
+        marker = _LIST_ITEM_MARKER_RE.match(line)
+        indent = " " * len(marker.group(0)) if marker else ""
+        before_img = line[: last.start()].rstrip()
+        new_lines.append(before_img)
+        new_lines.append("")
+        new_lines.append(f"{indent}{last.group(0)}")
+    return "\n".join(new_lines)
+
+
+def clean_body(
+    body: str,
+    label_map: dict[str, tuple[str, str]],
+    this_page: str,
+    image_roots: dict[str, Path],
+    image_sources: dict[str, Path],
+) -> str:
+    body = normalize_source_text(body)
+    body = preprocess.strip_frontmatter(body)
+    body = preprocess.neutralize_raw_figure_blocks(body)
+    body = preprocess.strip_cross_doc_links(body)
+    body = preprocess.unescape_pandoc_quotes(body)
+    body = FIGURE_RE.sub(
+        lambda match: _figure_sub(match, image_roots, image_sources),
+        body,
+    )
+    body = INLINE_IMG_RE.sub(
+        lambda match: _inline_img_sub(match, image_roots, image_sources),
+        body,
+    )
+    body = XREF_TRAILER_RE.sub("", body)
+    body = _rewrite_xref_links(body, label_map, this_page)
+    body = _rewrite_bare_web_links(body)
+    body = HEADER_ATTR_RE.sub(r"\1", body)
+    body = GENERIC_IMG_RE.sub(
+        lambda match: _generic_img_sub(match, image_roots, image_sources),
+        body,
+    )
+    body = WWW_LINK_RE.sub(r"](https://\1)", body)
+    body = _split_large_trailing_inline_images(body)
+    body = re.sub(r"\n{3,}", "\n\n", body)
+    return body.strip() + "\n"
+
+
+def chapter_summary(body: str) -> str:
+    body = normalize_source_text(body)
+    body = preprocess.strip_frontmatter(body)
+    body = preprocess.neutralize_raw_figure_blocks(body)
+    body = preprocess.strip_cross_doc_links(body)
+    body = preprocess.unescape_pandoc_quotes(body)
+
+    current: list[str] = []
+    for line in body.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            if current:
+                sentence = first_sentence(" ".join(current))
+                if sentence:
+                    return sentence
+                current = []
+            continue
+        if re.match(r"^(#{1,6}\s+|!\[|<figure\b|:::|>\s*|\|\s*|-+\s*$|\d+[.)]\s+)", stripped):
+            if current:
+                sentence = first_sentence(" ".join(current))
+                if sentence:
+                    return sentence
+                current = []
+            continue
+        current.append(stripped)
+
+    if current:
+        sentence = first_sentence(" ".join(current))
+        if sentence:
+            return sentence
+    return ""
+
+
+def strip_inline_markdown(text: str) -> str:
+    text = normalize_source_text(text)
+    text = re.sub(r"!\[[^\]]*\]\([^)]+\)(?:\{[^}]*\})?", "", text)
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+    text = re.sub(r"`([^`]+)`", r"\1", text)
+    text = re.sub(r"\*{1,3}([^*]+)\*{1,3}", r"\1", text)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = html.unescape(text)
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
+
+
+def first_sentence(text: str) -> str:
+    text = strip_inline_markdown(text)
+    if not text:
+        return ""
+    parts = _SENTENCE_SPLIT_RE.split(text, 1)
+    return parts[0].strip()
+
+
+def page_slug_for_chapter(spec: ManualSpec, chapter: dict[str, str]) -> str | None:
+    if spec.chapter_slug_map is not None:
+        label = chapter.get("label") or ""
+        return spec.chapter_slug_map.get(label)
+    return slugify(chapter["title"])
+
+
+def page_title_for_chapter(spec: ManualSpec, chapter: dict[str, str], page_slug: str) -> str:
+    if spec.chapter_title_overrides is not None:
+        title = spec.chapter_title_overrides.get(page_slug)
+        if title:
+            return re.sub(r"\s+", " ", normalize_source_text(title)).strip()
+    return re.sub(r"\s+", " ", normalize_source_text(chapter["title"])).strip()
+
+
+def write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(text)
+
+
+def remove_stale_markdown_files(out_dir: Path, keep: set[str]) -> None:
+    for path in out_dir.glob("*.md"):
+        if path.stem not in keep:
+            path.unlink()
+    for path in out_dir.glob("*.markdown"):
+        if path.stem not in keep:
+            path.unlink()
+
+
+def copy_referenced_images(image_sources: dict[str, Path], img_dir: Path) -> int:
+    img_dir.mkdir(parents=True, exist_ok=True)
+    count = 0
+    missing: list[Path] = []
+    for dest_name, source_path in sorted(image_sources.items()):
+        if not source_path.is_file():
+            missing.append(source_path)
+            continue
+        shutil.copy2(source_path, img_dir / dest_name)
+        count += 1
+    if missing:
+        missing_text = "\n".join(f"  {path}" for path in missing)
+        raise FileNotFoundError(f"Missing source image(s):\n{missing_text}")
+    return count
+
+
+def render_tutorial_index(spec: ManualSpec, chapter_entries: list[dict[str, str]]) -> str:
+    lines = [
+        "---",
+        f"title: {spec.product_name} Tutorials",
+        "---",
+        "",
+        f"# {spec.product_name} Tutorials",
+        "",
+        f"**{spec.subtitle}**",
+        "",
+        "Hands-on tutorial chapters in source order.",
+        "",
+        "## Tutorial chapters",
+        "",
+        "Chapters follow the order of the source tutorial.",
+        "",
+    ]
+    for number, chapter in enumerate(chapter_entries, start=1):
+        summary = chapter.get("summary") or "Summary unavailable."
+        lines.append(
+            f"{number}. [{chapter['title']}]({chapter['slug']}.md) - {summary}"
+        )
+    lines.append("")
+    lines.append("---")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def process_manual(spec: ManualSpec) -> ManualResult:
+    if not spec.source_path.exists():
+        raise FileNotFoundError(spec.source_path)
+
+    text = spec.source_path.read_text(encoding="utf-8")
+    chapters = split_chapters(
+        text,
+        start_title=spec.start_title,
+        require_labeled_h1=spec.require_labeled_h1,
+    )
+    if not chapters:
+        raise ValueError(f"No chapters found in {spec.source_path}")
+
+    page_slug_for = lambda chapter: page_slug_for_chapter(spec, chapter)
+    label_map = build_label_map(
+        chapters,
+        page_slug_for_chapter=page_slug_for,
+        map_unlabeled_h1_to_page_slug=spec.kind == "tutorials",
+    )
+
+    out_dir = DOCS_ROOT / spec.product_slug / spec.output_subdir
     img_dir = out_dir / "img"
+    out_dir.mkdir(parents=True, exist_ok=True)
     img_dir.mkdir(parents=True, exist_ok=True)
 
-    written_pages: list[str] = []
-    missing_images: list[str] = []
-    all_img_refs: set[str] = set()
+    chapter_entries: list[dict[str, str]] = []
+    image_sources: dict[str, Path] = {}
 
-    for chap in chapters:
-        page_slug = CHAPTER_SLUGS.get(chap["label"])
+    for chapter in chapters:
+        page_slug = page_slug_for(chapter)
         if page_slug is None:
-            print(f"[{product_slug}] skip unknown chapter label: {chap['label']}")
             continue
-        title = CHAPTER_H1_TITLES.get(page_slug, chap["title"])
-        cleaned = clean_body(chap["body"], label_map, page_slug)
-        page_text = f"# {title}\n\n{cleaned}"
-        out_file = out_dir / f"{page_slug}.md"
-        out_file.write_text(page_text, encoding="utf-8")
-        written_pages.append(page_slug)
-        all_img_refs |= collect_image_refs(page_text)
-
-    # Copy referenced images. Destination name is always lowercase so
-    # markdown refs resolve on case-sensitive filesystems (GitHub Pages).
-    candidates = list(IMAGES_DIR.glob("*"))
-    by_lower = {c.name.lower(): c for c in candidates}
-    for img_name in sorted(all_img_refs):
-        key = img_name.lower()
-        src_img = by_lower.get(key)
-        if src_img is None:
-            missing_images.append(img_name)
-            continue
-        dst_img = img_dir / key
-        shutil.copyfile(src_img, dst_img)
-
-    return {
-        "product": product_slug,
-        "pages": written_pages,
-        "image_count": len(all_img_refs),
-        "missing_images": missing_images,
-    }
-
-
-def remove_stale_files(product_slug: str) -> None:
-    """Remove chapter pages that are no longer generated."""
-    out_dir = DOCS_ROOT / product_slug
-    keep = set(CHAPTER_SLUGS.values()) | {"index"}
-    for md in out_dir.glob("*.md"):
-        if md.stem not in keep:
-            print(f"[{product_slug}] remove stale: {md.name}")
-            md.unlink()
-
-
-def main() -> int:
-    for md_name, slug, pretty in PRODUCTS:
-        info = process_product(md_name, slug, pretty)
-        remove_stale_files(slug)
-        print(
-            f"[{info['product']}] pages={len(info['pages'])} "
-            f"images={info['image_count']} missing={len(info['missing_images'])}"
+        title = page_title_for_chapter(spec, chapter, page_slug)
+        body = clean_body(
+            chapter["body"],
+            label_map,
+            page_slug,
+            spec.image_roots,
+            image_sources,
         )
-        for miss in info["missing_images"]:
-            print(f"    MISSING: {miss}")
+        page_path = out_dir / f"{page_slug}.md"
+        write_text(page_path, f"# {title}\n\n{body}")
+        chapter_entries.append(
+            {
+                "slug": page_slug,
+                "title": title,
+                "summary": chapter_summary(chapter["body"]),
+            }
+        )
+
+    image_count = copy_referenced_images(image_sources, img_dir)
+
+    manual_pages = [entry["slug"] for entry in chapter_entries]
+    if spec.generate_index:
+        index_text = render_tutorial_index(spec, chapter_entries)
+        write_text(out_dir / "index.md", index_text)
+        manual_pages = ["index", *manual_pages]
+
+    remove_stale_markdown_files(out_dir, set(manual_pages) | {"index"})
+
+    return ManualResult(
+        product_slug=spec.product_slug,
+        output_subdir=spec.output_subdir,
+        chapters=chapter_entries,
+        page_slugs=manual_pages,
+        image_count=image_count,
+    )
+
+
+def print_result(spec: ManualSpec, result: ManualResult) -> None:
+    manual_label = f"{spec.product_slug}/{spec.output_subdir}"
+    print(
+        f"[{manual_label}] pages={len(result.page_slugs)} "
+        f"images={result.image_count}"
+    )
+    print(f"  chapters: {', '.join(result.page_slugs)}")
+    if spec.generate_index:
+        print(
+            f"  tutorial entries: {len(result.chapters)} "
+            f"(index + {len(result.chapters)} chapter files)"
+        )
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Convert Hydronia manual source markdown into MkDocs pages."
+    )
+    parser.add_argument(
+        "mode",
+        nargs="?",
+        choices=("all", "reference", "tutorials"),
+        default="all",
+        help="Which manual set to generate.",
+    )
+    return parser.parse_args(argv)
+
+
+def specs_for_mode(mode: str) -> list[ManualSpec]:
+    if mode == "reference":
+        return REFERENCE_SPECS
+    if mode == "tutorials":
+        return TUTORIAL_SPECS
+    return ALL_SPECS
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    for spec in specs_for_mode(args.mode):
+        result = process_manual(spec)
+        print_result(spec, result)
     return 0
 
 
