@@ -35,6 +35,11 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}%
 }
 \providecommand{\passthrough}[1]{#1}
+% Pandoc >= 3.1.10 emits \pandocbounded{\includegraphics{...}} around
+% figures/images to clamp them within the text box. Older Pandoc builds
+% the same behaviour inline. Provide a pass-through definition so the
+% template compiles on both.
+\providecommand{\pandocbounded}[1]{#1}
 
 \definecolor{hydroniaPrimary}{HTML}{014589}
 \definecolor{hydroniaDark}{HTML}{0E367C}
