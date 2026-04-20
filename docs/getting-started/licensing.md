@@ -13,7 +13,7 @@ Hydronia's licensing layer is [CopyMinder](https://www.copyminder.com). The lice
 
 Do this on the machine that will run the software.
 
-1. Open the **RiverFlow2DDIP** shortcut on your desktop.
+1. Open the **Hydronia DIP** shortcut on your desktop.
 2. In the left-hand **Control Data** section, go to **Options → License**.
 3. You'll be offered three options:
    - **Reactivate License**
