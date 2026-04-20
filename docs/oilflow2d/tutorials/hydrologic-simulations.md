@@ -60,7 +60,7 @@ The following table is an excerpt of the 'Rainfall1.dat' file that is included i
 
 `1.42 2.4 0.0`
 
-**Rain intensity time series.**
+![Rain intensity time series.](img/6-1){ width=60% }
 
 ## Create the infiltration parameters data file
 
@@ -88,7 +88,7 @@ To take into account infiltration, polygons will be created in which you specify
 
     
 
-**Rainfall and infiltration tutorial loaded in QGIS.**
+![Rainfall and infiltration tutorial loaded in QGIS.](img/6-2.png){ width=90% }
 
 ## Add the *RainEvap* component layer, and the rainfall/evaporation polygons
 
@@ -104,7 +104,7 @@ To add the *RainEvap* where the polygons are drawn with the rainfall and evapora
 
     
 
-**Add Layer Template dialog with RainEvap selected.**
+![Add Layer Template dialog with RainEvap selected.](img/6-3.png){ width=60% }
 
 3.  Edit the *RainEvap* layer: In the layers panel, select the *RainEvap* layer and click on the *Toggle Editing* button in the digitization bar
 
@@ -128,7 +128,7 @@ To add the *RainEvap* where the polygons are drawn with the rainfall and evapora
 
     
 
-**Polygon with the spatial distribution of Rainfall/evaporation data.**
+![Polygon with the spatial distribution of Rainfall/evaporation data.](img/6-4.png){ width=80% }
 
 5.  Right-click to close the polygon. A dialog box will appear to enter the RainEvap Feature Attributes.
 
@@ -150,7 +150,7 @@ To add the infiltration information, do as follows:
 
     
 
-**Add Layer Template dialog with Infiltration selected.**
+![Add Layer Template dialog with Infiltration selected.](img/6-5.png){ width=60% }
 
 3.  Edit the *Infiltration* layer: In the layers panel, select the *Infiltration* layer and click on the *Toggle Editing* button.
 
@@ -174,31 +174,31 @@ To add the infiltration information, do as follows:
 
     
 
-**Infiltration areas of the watershed.**
+![Infiltration areas of the watershed.](img/6-6.png){ width=72% }
 
 5.  Draw a polygon for the *infiltration2* area trying to maintain the shape as indicated in the previous figure and that protrudes from the polygon of the Domaine Outline as shown in the figure below:
 
     
 
-**Polygon of the infiltration2 area of the watershed.**
+![Polygon of the infiltration2 area of the watershed.](img/6-7.png){ width=72% }
 
 6.  Once completing the polygon, the dialog to input the parameters opens. Browse to the input file *Infiltration2.txt*, as shown below:
 
     
 
-**Window to input the parameters for the infiltration2 polygon.**
+![Window to input the parameters for the infiltration2 polygon.](img/6-8.png){ width=65% }
 
 7.  To draw the second polygon corresponding to *infiltration2* use the snapping option as shown in the section *Advanced Digitalization/Snapping Tutorial* and there should be a polygon like the one shown in the following figure:
 
     
 
-**Polygons of the infiltration areas of the watershed.**
+![Polygons of the infiltration areas of the watershed.](img/6-9.png){ width=72% }
 
 8.  Once finished drawing the polygon, enter the file name 'Infiltration1.txt' as shown:
 
     
 
-**Dialog to enter the parameters for the infiltration1 polygon.**
+![Dialog to enter the parameters for the infiltration1 polygon.](img/6-10.png){ width=55% }
 
 ## Generate the mesh
 
@@ -210,7 +210,7 @@ The mesh is generated using the *Generate TriMesh* icon
 
 Figure [11.11](#6-11) shows the resulting mesh of about 70,000 cells.
 
-**Final mesh.**
+![Final mesh.](img/6-11.png){ width=80% }
 
 ## Exporting files to RiverFlow2D
 
@@ -226,7 +226,7 @@ Now that once you have generated the mesh and the other layers are ready with th
 
     
 
-**Export dialog.**
+![Export dialog.](img/6-12.png){ width=60% }
 
 2.  Click on the \[OK\] button and the export process will begin. Once finished, the RiverFlow2D program will be loaded with the 'base.DAT' file.
 
@@ -234,7 +234,7 @@ Now that once you have generated the mesh and the other layers are ready with th
 
 After exporting the files, the Hydronia Data Input Program  is loaded with the project file from the 'base.DAT' example and shows the *Control Data* panel as illustrated in Figure [11.13](#6-13)
 
-**Control data panel.**
+![Control data panel.](img/6-13.png){ width=90% }
 
 As shown above, the Rainfall Components Evaporation/Infiltration are selected in the data panel.
 
@@ -252,11 +252,11 @@ As shown above, the Rainfall Components Evaporation/Infiltration are selected in
 
     
 
-**Rainfall/Evaporation component data panel.**
+![Rainfall/Evaporation component data panel.](img/6-14.png){ width=90% }
 
     
 
-**Infiltration component data panel.**
+![Infiltration component data panel.](img/6-15.png){ width=90% }
 
 4.  Leave all other parameters at their default values.
 
@@ -264,7 +264,7 @@ As shown above, the Rainfall Components Evaporation/Infiltration are selected in
 
     
 
-**RiverFlow2D output graphics.**
+![RiverFlow2D output graphics.](img/6-16.png){ width=80% }
 
 ## Utilizing the Cross Section Tool to review output files
 
@@ -280,7 +280,7 @@ As shown above, the Rainfall Components Evaporation/Infiltration are selected in
 
     
 
-**Output hydrograph of output.**
+![Output hydrograph of output.](img/6-17){ width=90% }
 
 This concludes the *Hydrologic simulations* tutorial.
 

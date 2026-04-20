@@ -3,13 +3,13 @@
 This chapter describes the export options available for the active model and how output files are configured.
 
 ## Export RiverFlow2D
-**Export Tool Icon**
+![Export Tool Icon](img/icon2.png){ width=10% }
 
 ### Dialog Window
 
 The following dialog is the main interface for configuring and initiating the export process for the RiverFlow2D model. It gathers information about input layers and specific components to be included in the export.
 
-**Export Files to RiverFlow2D Dialog.**
+![Export Files to RiverFlow2D Dialog.](img/export_main_dialog.png){ width=80% }
 
 ### Dialog Controls
 The following table describes the controls available in the Export dialog.
@@ -19,7 +19,7 @@ The following table describes the controls available in the Export dialog.
 | Project Directory | *Text Field* | Displays the full path to the current scenario's output directory within the project. (Read-only) |
 | Scenario Name | *Text Field* | Displays the name of the current scenario being exported. (Read-only) |
 | DEM (Single Raster) | *Dropdown* | Select the single raster layer representing the bed topography/elevation. Enabled only if neither 'Using TriMesh Elevation' nor 'Get elevations from Multiple DEM Boundaries' is active. Populated with available raster layers. |
-| Using TriMesh Elevation (not resampling elevations) | *Checkbox* | Enable to use elevation data directly from the 'TriMesh' layer vertices/nodes instead of resampling from a DEM raster. Disables DEM selection options. Automatically checked if mesh was generated using "Generate TriMesh with Elevation" tool. |
+| Using TriMesh Elevation (not resampling elevations) | *Checkbox* | Enable to use elevation data directly from the 'TriMesh' layer vertices/nodes instead of resampling from a DEM raster. Disables DEM selection options. Automatically checked if mesh was generated using \"Generate TriMesh with Elevation\" tool. |
 | Get elevations from Multiple DEM Boundaries | *Checkbox* | Enable to use elevation data based on boundaries defined in a 'MultipleDemBoundaries' layer. Disables the 'DEM (Single Raster)' dropdown. Requires the 'MultipleDemBoundaries' layer to be present. |
 | Using Manning N Raster Layer | *Checkbox* | Enable to use Manning's n values sampled from a selected raster layer instead of a vector layer. Enables the 'Manning N Raster Layer' dropdown. |
 | Manning N Raster Layer | *Dropdown* | Select the raster layer containing Manning's n values. Enabled only when 'Using Manning N Raster Layer' is checked. Populated with available raster layers. |
@@ -33,7 +33,7 @@ The following table describes the controls available in the Export dialog.
 ### Workflow
 The typical workflow for using the Export Files to RiverFlow2D tool is as follows:
 
-1.  Ensure all required input layers (e.g., 'TriMesh', 'Manning N'/'Nr'/'Nz', optional layers like 'Boundary Conditions', 'Weirs', 'Bridges', DEM rasters etc.) are loaded into the QGIS project and meet the requirements (See Section 2.1.4). Make sure the 'Domain Outline' layer, if present, is not in editing mode.
+1.  Ensure all required input layers (e.g., 'TriMesh', 'Manning N'/'Nr'/'Nz', optional layers like 'Boundary Conditions', 'Weirs', 'Bridges', DEM rasters etc.) are loaded into the QGIS project and meet the requirements (See Section [2.1.4](#requirements)). Make sure the 'Domain Outline' layer, if present, is not in editing mode.
 
 2.  Activate the tool from the RiverFlow2D plugin menu or toolbar. This will open the Export Files to RiverFlow2D dialog (Figure 2.2).
 
@@ -95,7 +95,10 @@ Failure to meet these requirements will likely result in error messages displaye
 This dialog allows the user to configure and export the necessary input file for running plastic or particle transport simulations within RiverFlow2D.
 
 ### Dialog Window
-**Export Plastic/Particle Transport File Dialog.**
+<figure id="fig:export_plastic_dialog">
+
+<figcaption>Export Plastic/Particle Transport File Dialog.</figcaption>
+</figure>
 
 ### Dialog Controls
 The following table describes the controls available in the Export Plastic/Particle Transport File dialog.
@@ -109,16 +112,16 @@ The following table describes the controls available in the Export Plastic/Parti
 | Time Step (sec) | *Text Field* | Enter the simulation time step in seconds. |
 | Velocity Field Path | *Text Field (Read-only)* | Displays the path to the directory containing the velocity field data (typically the current scenario directory). |
 | Wind Velocity File | *Text Field* | Enter the name of the file containing wind velocity data. Use the browse button to select. |
-| ... (Browse) | *Button* | Opens a file dialog to select the Wind Velocity File. |
+| \... (Browse) | *Button* | Opens a file dialog to select the Wind Velocity File. |
 | OK | *Button* | Confirms the settings and initiates the export process. |
 | Cancel | *Button* | Closes the dialog without exporting the file. |
 
 ### Workflow
 The typical workflow for using the Export Plastic/Particle Transport File tool is as follows:
 
-1.  Ensure the required 'ParticleTransport' point layer is loaded into the QGIS project and meets the requirements (See Section 2.2.4). The attributes of this layer define the spill locations and properties.
+1.  Ensure the required 'ParticleTransport' point layer is loaded into the QGIS project and meets the requirements (See Section [2.2.4](#requirements)). The attributes of this layer define the spill locations and properties.
 
-2.  Ensure the main RiverFlow2D simulation files (especially `.dat`) have already been exported for the current scenario using the main export tool (Section 2.1).
+2.  Ensure the main RiverFlow2D simulation files (especially `.dat`) have already been exported for the current scenario using the main export tool (Section [2.1](#export-riverflow2d)).
 
 3.  Activate the tool from the RiverFlow2D plugin menu or toolbar (usually under a submenu like 'Modules' or similar).
 
@@ -130,7 +133,7 @@ The typical workflow for using the Export Plastic/Particle Transport File tool i
 
 7.  Verify the 'Velocity Field Path' is correct (it should point to the current scenario directory).
 
-8.  Enter the filename for the 'Wind Velocity File' or use the browse button ('...') to select it. This file must exist in the scenario directory.
+8.  Enter the filename for the 'Wind Velocity File' or use the browse button ('\...') to select it. This file must exist in the scenario directory.
 
 9.  Click **OK**.
 
@@ -149,7 +152,7 @@ Before using the Export Plastic/Particle Transport File tool, ensure the followi
 
 -   A QGIS project must be loaded with a defined current scene (scenario).
 
--   The main RiverFlow2D export (Section 2.1) must have been run previously for the current scenario, creating the necessary base files like `.dat`.
+-   The main RiverFlow2D export (Section [2.1](#export-riverflow2d)) must have been run previously for the current scenario, creating the necessary base files like `.dat`.
 
 -   A point vector layer named 'ParticleTransport' must be present and active in the layer panel. This layer must contain features representing the spill locations and have the specific attributes required by the model (e.g., density, size, timing, dispersion, degradation file links).
 
@@ -168,4 +171,4 @@ Failure to meet these requirements will result in error messages and prevent the
 
 -   The `.PTM` file is generated by the model, which reads control data from the dialog and detailed spill information from the attributes of the 'ParticleTransport' layer features.
 
--   The automatically launches the Hydronia Data Input Program  using the generated `.PTM` and modified `.dat` files.
+-   The automatically launches the Hydronia Data Input Program  using the generated `.PTM` and modified `.dat` files.

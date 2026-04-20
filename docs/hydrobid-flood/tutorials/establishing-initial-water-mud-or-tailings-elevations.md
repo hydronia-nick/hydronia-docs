@@ -22,7 +22,7 @@ Start QGIS and in the *Project*, use the *Open...* command to load the existing 
 
 When you open the project you will have an image of the project loaded in QGIS as shown in the Figure 8.1.
 
-**Project screen loaded in QGIS.**
+![Project screen loaded in QGIS.](img/initialwsemesh.png){ width=80% }
 
 ## Importing the Initial WSE raster layer
 
@@ -36,7 +36,7 @@ The procedure to import the Initial WSE raster layer to the project includes the
 
     
 
-**Initial WSE raster layer.**
+![Initial WSE raster layer.](img/initialwseraster.png){ width=80% }
 
     The image shows the *InitialWSE_r* raster layer in grays gradient where there is a change in the WSE ranging from 135.0 to 135.4 ft.
 
@@ -50,7 +50,7 @@ The procedure to import the Initial WSE raster layer to the project includes the
 
     
 
-**Plugin window to export the files to RiverFlow2D.**
+![Plugin window to export the files to RiverFlow2D.](img/initialwseexport.png){ width=60% }
 
     As shown in the figure, click the *Options* arrow to display the group of options that appear hidden by default.
 

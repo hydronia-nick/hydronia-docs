@@ -3,13 +3,13 @@
 This chapter describes the export options available for the active model and how output files are configured.
 
 ## Export Hydrodynamic OilFlow2D
-**Export Tool Icon for OilFlow2D**
+![Export Tool Icon for OilFlow2D](img/icon12_of2d.png){ width=10% }
 
 ### Dialog Window
 
 The following dialog is the main interface for configuring and initiating the export process for the OilFlow2D model. It gathers information about input layers and specific components to be included in the export.
 
-**Export Dialog for OilFlow2D**
+![Export Dialog for OilFlow2D](img/export_main_dialog_of2d.png){ width=80% }
 
 ### Dialog Controls
 The following table describes the controls available in the Export dialog.
@@ -19,7 +19,7 @@ The following table describes the controls available in the Export dialog.
 | Project Directory | *Text Field* | Displays the full path to the current scenario's output directory within the project. (Read-only) |
 | Scenario Name | *Text Field* | Displays the name of the current scenario being exported. (Read-only) |
 | DEM (Single Raster) | *Dropdown* | Select the single raster layer representing the bed topography/elevation. Enabled only if neither 'Using TriMesh Elevation' nor 'Get elevations from Multiple DEM Boundaries' is active. Populated with available raster layers. |
-| Using TriMesh Elevation (not resampling elevations) | *Checkbox* | Enable to use elevation data directly from the 'TriMesh' layer vertices/nodes instead of resampling from a DEM raster. Disables DEM selection options. Automatically checked if mesh was generated using "Generate TriMesh with Elevation" tool. |
+| Using TriMesh Elevation (not resampling elevations) | *Checkbox* | Enable to use elevation data directly from the 'TriMesh' layer vertices/nodes instead of resampling from a DEM raster. Disables DEM selection options. Automatically checked if mesh was generated using \"Generate TriMesh with Elevation\" tool. |
 | Get elevations from Multiple DEM Boundaries | *Checkbox* | Enable to use elevation data based on boundaries defined in a 'MultipleDemBoundaries' layer. Disables the 'DEM (Single Raster)' dropdown. Requires the 'MultipleDemBoundaries' layer to be present. |
 | Using Manning N Raster Layer | *Checkbox* | Enable to use Manning's n values sampled from a selected raster layer instead of a vector layer. Enables the 'Manning N Raster Layer' dropdown. |
 | Manning N Raster Layer | *Dropdown* | Select the raster layer containing Manning's n values. Enabled only when 'Using Manning N Raster Layer' is checked. Populated with available raster layers. |
@@ -33,7 +33,7 @@ The following table describes the controls available in the Export dialog.
 ### Workflow
 The typical workflow for using the Export Files to RiverFlow2D tool is as follows:
 
-1.  Ensure all required input layers (e.g., 'TriMesh', 'Manning N'/'Nr'/'Nz', optional layers like 'Boundary Conditions', 'Weirs', 'Bridges', DEM rasters etc.) are loaded into the QGIS project and meet the requirements (See Section 2.1.4). Make sure the 'Domain Outline' layer, if present, is not in editing mode.
+1.  Ensure all required input layers (e.g., 'TriMesh', 'Manning N'/'Nr'/'Nz', optional layers like 'Boundary Conditions', 'Weirs', 'Bridges', DEM rasters etc.) are loaded into the QGIS project and meet the requirements (See Section [2.1.4](#requirements)). Make sure the 'Domain Outline' layer, if present, is not in editing mode.
 
 2.  Activate the tool from the OilFlow2D plugin menu or toolbar. This will open the Export Files to OilFlow2D dialog (Figure 2.2).
 
@@ -94,7 +94,7 @@ Failure to meet these requirements will likely result in error messages displaye
 ## Export OILW File
 This dialog allows the user to configure and export the necessary input file for running oil weathering and transport simulations within OilFlow2D.
 
-**Export OILW File Dialog.**
+![Export OILW File Dialog.](img/export_oilw_dialog_of2d.png){ width=80% }
 
 ### Dialog Controls
 The following table describes the controls available in the Export OILW File dialog.
@@ -113,9 +113,9 @@ The following table describes the controls available in the Export OILW File dia
 | Time Step (sec) | *Text Field* | Enter the simulation time step in seconds. |
 | Velocity Field Path | *Text Field (Read-only)* | Displays the path to the directory containing the velocity field data (typically the current scenario directory). |
 | Wind Velocity File | *Text Field* | Enter the name of the file containing wind velocity data. Use the browse button to select. |
-| ... (Browse Wind) | *Button* | Opens a file dialog to select the Wind Velocity File. |
+| \... (Browse Wind) | *Button* | Opens a file dialog to select the Wind Velocity File. |
 | Ambient Temperature File | *Text Field* | Enter the name of the file containing ambient temperature data. Use the browse button to select. |
-| ... (Browse Temp) | *Button* | Opens a file dialog to select the Ambient Temperature File. |
+| \... (Browse Temp) | *Button* | Opens a file dialog to select the Ambient Temperature File. |
 | OK | *Button* | Confirms the settings and initiates the export process. |
 | Cancel | *Button* | Closes the dialog without exporting the file. |
 
@@ -124,23 +124,23 @@ The following table describes the controls available in the Export OILW File dia
 ### Workflow
 The typical workflow for using the Export OILW File tool is as follows:
 
-1.  Ensure the required 'OilSpills' point layer and/or 'OilSpillsRelease' line layer are loaded into the QGIS project and meet the requirements (See Section 2.2.3). The attributes of these layers define the spill locations/sources and properties.
+1.  Ensure the required 'OilSpills' point layer and/or 'OilSpillsRelease' line layer are loaded into the QGIS project and meet the requirements (See Section [2.2.3](#requirements)). The attributes of these layers define the spill locations/sources and properties.
 
 2.  If simulating booms, ensure the required 'Booms' line layer is loaded.
 
-3.  Ensure the main OilFlow2D hydrodynamic simulation files (especially `.dat`) have already been exported for the current scenario using the main export tool (Section 2.1).
+3.  Ensure the main OilFlow2D hydrodynamic simulation files (especially `.dat`) have already been exported for the current scenario using the main export tool (Section [2.1](#export-hydrodynamic-oilflow2d)).
 
 4.  Activate the tool from the OilFlow2D plugin menu or toolbar (usually under a submenu like 'Modules' or similar).
 
 5.  The Export OILW File dialog opens (Figure 2.3).
 
-6.  Check or uncheck the various 'Compute...' options (Evaporation, Emulsification, Booms, Shoreline, Dispersion, Dissolution, Sedimentation) as required for the simulation.
+6.  Check or uncheck the various 'Compute\...' options (Evaporation, Emulsification, Booms, Shoreline, Dispersion, Dissolution, Sedimentation) as required for the simulation.
 
 7.  Enter the desired 'SimulationTime', 'Output Interval', and 'Time Step'. These values may be pre-populated from a parameter file ('Oilwparamxport.txt') if it exists in the scenario directory.
 
 8.  Verify the 'Velocity Field Path' is correct (it should point to the current scenario directory).
 
-9.  Enter the filenames for the 'Wind Velocity File' and 'Ambient Temperature File' or use the browse buttons ('...') to select them. These files must exist in the scenario directory.
+9.  Enter the filenames for the 'Wind Velocity File' and 'Ambient Temperature File' or use the browse buttons ('\...') to select them. These files must exist in the scenario directory.
 
 10. Click **OK**.
 
@@ -165,11 +165,11 @@ Before using the Export OILW File tool, ensure the following requirements are me
 
 -   A QGIS project must be loaded with a defined current scene (scenario).
 
--   The main OilFlow2D hydrodynamic export (Section 2.1) must have been run previously for the current scenario, creating the necessary base files like `.dat` and `.OUTFILES`.
+-   The main OilFlow2D hydrodynamic export (Section [2.1](#export-hydrodynamic-oilflow2d)) must have been run previously for the current scenario, creating the necessary base files like `.dat` and `.OUTFILES`.
 
 -   At least one oil source layer must be present and active: 'OilSpills' (point layer for instantaneous spills) or 'OilSpillsRelease' (line layer for continuous release paths). These layers must contain features with the specific attributes required by the `fileOilSpills()` function (e.g., density, viscosity, timing, dispersion, evaporation parameters, etc.).
 
--   If the 'Compute Booms' option ( textttcBox_booms) is checked, a line vector layer named 'Booms' must be present and active. It needs appropriate attributes for boom properties. 
+-   If the 'Compute Booms' option ( textttcBox_booms) is checked, a line vector layer named 'Booms' must be present and active. It needs appropriate attributes for boom properties. 
 
 -   The source layers ('OilSpills', 'OilSpillsRelease', 'Booms') must not be empty if they are present.
 

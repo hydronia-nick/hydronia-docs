@@ -28,7 +28,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
 This project contains the layers of the domain contour and the layer of the Digital Elevation Model (DEM) of Lake Champlain in the USA. When the project is opened, a project image will be loaded in QGIS as shown in Figure [15.1](#10-1).
 
-**Example of the tutorial loaded in QGIS.**
+![Example of the tutorial loaded in QGIS.](img/wind1.png){ width=100% }
 
 ## Wind velocity time-series data file
 
@@ -70,7 +70,7 @@ To add the template where the polygons are drawn with the wind speed time series
 
     
 
-**Plugin to add a New Template Layer.**
+![Plugin to add a New Template Layer.](img/10-2.png){ width=40% }
 
 3.  Edit the Wind layer: In the layers panel, we select the Wind layer and in the digitalization toolbar we click on the *Toggle Editing* tool ![](img/button7.png){ width=0.6cm }. A pencil icon will appear in the Wind layer, indicating that the layer is in edit mode:
 
@@ -92,13 +92,13 @@ To add the template where the polygons are drawn with the wind speed time series
 
     
 
-**Window to input the Wind polygon parameters.**
+![Window to input the Wind polygon parameters.](img/windparameters.png){ width=60% }
 
 5.  After input the values, click *OK* and accept the changes. There should be an image similar to the one shown in the following figure:
 
     
 
-**Wind layer polygon.**
+![Wind layer polygon.](img/10-4.png){ width=60% }
 
 ## Generate the mesh
 
@@ -108,7 +108,7 @@ Then the mesh is generated with the *Generate TriMesh* button
 
 The results obtained as shown in Figure [15.5](#10-5) (mesh of around 17,500 cells).
 
-**The resulting mesh.**
+![The resulting mesh.](img/windmesh.png){ width=70% }
 
 ## Exporting files
 
@@ -130,7 +130,7 @@ Now that the mesh is generated and the other layers are ready with the necessary
 
     
 
-**Plugin window to export the files.**
+![Plugin window to export the files.](img/windexport.png){ width=50% }
 
 6.  Click on the OK button.
 
@@ -142,7 +142,7 @@ After exporting the files, Hydronia Data Input Program  is loaded with the proje
 
     
 
-**Hydronia Data Input Program Control data panel.**
+![Hydronia Data Input Program Control data panel.](img/dipwind.png){ width=100% }
 
 2.  Verify that the *Wind* component is selected.
 
@@ -150,7 +150,7 @@ After exporting the files, Hydronia Data Input Program  is loaded with the proje
 
     
 
-**Hydronia Data Input Program Wind panel.**
+![Hydronia Data Input Program Wind panel.](img/dipwind2.png){ width=100% }
 
 4.  Verify that the simulation time is set to 24 hours and the output interval is set to 0.5 hours.
 
@@ -162,7 +162,7 @@ After exporting the files, Hydronia Data Input Program  is loaded with the proje
 
 The model window that appears during the run model shows several runtime parameters.
 
-**Model window.**
+![Model window.](img/windmodelwindow.png){ width=100% }
 
 ## Check the wind output files
 
@@ -182,6 +182,6 @@ In these files, columns 1, 2 and 3 report the velocity components in Vx, Vy and 
 
 The following figure shows the water velocity field map for time `0000:20:00:00`:
 
-**Map with the speed field for the time 20 hours.**
+![Map with the speed field for the time 20 hours.](img/windvelocityfield.png){ width=100% }
 
 This concludes the *Wind driven circulation* tutorial.

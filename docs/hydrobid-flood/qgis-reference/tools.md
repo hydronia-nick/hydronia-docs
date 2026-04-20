@@ -2,28 +2,28 @@
 
 This chapter provides a comprehensive reference for the tools available in the QGIS plugin. You can access the tools via the toolbar or the Main Menu under *Plugins*:
 
-**Tools Menu**
+![Tools Menu](img/icon14_hb.png){ width=10% }
 
 ## EPA-SWMM Tools
 The plugin includes tools for integrating with EPA's Storm Water Management Model (SWMM), enabling users to create SWMM input files directly from QGIS layers and import existing SWMM files.
 
-**EPA-SWMM Project Submenus**
+![EPA-SWMM Project Submenus](img/tools_swmm_createinfsubmenus.png){ width=60% }
 
 ### Dialog Window
 #### Import EPA-SWMM File
 This tool imports an existing EPA-SWMM INP or HYC file into QGIS as vector layers.
 
-**Import EPA-SWMM File Dialog**
+![Import EPA-SWMM File Dialog](img/tools_swmm_importdialog.png){ width=60% }
 
 #### Create StormDrainPolygon
 This tool creates polygon representations around storm drain nodes.
 
-**Create StormDrainPolygon Dialog**
+![Create StormDrainPolygon Dialog](img/tools_swmm_createsdpdialog.png){ width=60% }
 
 #### Create SWMM Project File
 This tool creates an EPA-SWMM compatible INP file from QGIS layers.
 
-**Create SWMM Project Dialog**
+![Create SWMM Project Dialog](img/tools_swmm_createinfdialog.png){ width=60% }
 
 ### Dialog Controls
 #### Import EPA-SWMM File
@@ -31,9 +31,9 @@ This tool creates an EPA-SWMM compatible INP file from QGIS layers.
 
 | EPA-SWMM .INP FILE OR .HYC FILE | *field* | Specify the path to the SWMM input file (INP or HYC). |
 | --- | --- | --- |
-| ... | *button* | Opens a file dialog to browse for the SWMM file. |
+| \... | *button* | Opens a file dialog to browse for the SWMM file. |
 | Create StormDrainPolygon Layer | *checkbox* | If checked, creates polygon representations around imported nodes. |
-| Rectangles Size | *field* | Defines the size of the rectangular polygons (default: 5 units). Enabled only if the "Create StormDrainPolygon Layer" checkbox is checked. |
+| Rectangles Size | *field* | Defines the size of the rectangular polygons (default: 5 units). Enabled only if the \"Create StormDrainPolygon Layer\" checkbox is checked. |
 | Ok | *button* | Executes the import process. |
 | Close | *button* | Closes the dialog. |
 
@@ -58,7 +58,7 @@ This tool creates an EPA-SWMM compatible INP file from QGIS layers.
 | One Max. Depth for All Nodes | *radioButton* | Uses a single value for maximum depth for all nodes. |
 | DEM Layer | *dropdown* | Selects the raster layer for elevation data. |
 | INP File | *field* | Specifies the output location for the SWMM INP file. |
-| ... | *button* | Opens a file dialog to choose the output file location. |
+| \... | *button* | Opens a file dialog to choose the output file location. |
 | Close | *button* | Closes the dialog. |
 | Ok | *button* | Executes the INP file creation. |
 
@@ -72,7 +72,7 @@ This tool creates an EPA-SWMM compatible INP file from QGIS layers.
 
 4.  Creates a StormDrain point layer in the project's shape directory.
 
-5.  If "Create StormDrainPolygon Layer" is checked, creates polygons around nodes.
+5.  If \"Create StormDrainPolygon Layer\" is checked, creates polygons around nodes.
 
 6.  Adds the layer(s) to the COMPONENTS group in QGIS.
 
@@ -142,7 +142,7 @@ The StormDrainPolygon layer is saved in the shape directory of the current proje
 
 The generated INP file includes: TITLE, OPTIONS, EVAPORATION, JUNCTIONS, INFLOWS, REPORT, MAP, and COORDINATES sections.
 
-*See the HydroBID Flood for QGIS  Reference Manual Output Files section for more details.*
+*See the HydroBID Flood for QGIS  Reference Manual Output Files section for more details.*
 
 ##### Processing Method
 
@@ -172,43 +172,43 @@ The generated INP file includes: TITLE, OPTIONS, EVAPORATION, JUNCTIONS, INFLOWS
 
 The EPA-SWMM tool is designed to work in conjunction with the UDSWMM module for comprehensive urban drainage modeling capabilities.
 
-*See the HydroBID Flood for QGIS  Reference Manual Output Files section for more details.*
+*See the HydroBID Flood for QGIS  Reference Manual Output Files section for more details.*
 
 ## Hydro-Economic Evaluation of Flood Tool
 The Hydro-Economic Evaluation of Flood (HEEF) tool provides functionality for assessing potential economic damage from flooding. This section details each component of the HEEF toolkit, organized by dialog windows and their controls.
 
-**HEEF Submenu Options**
+![HEEF Submenu Options](img/tools_heef_submenus.png){ width=60% }
 
 ### Dialog Window
 #### HEEF Function Database
 This is the main entry point for managing vulnerability functions used in flood damage assessment.
 
-**HEEF Function Database Main Dialog**
+![HEEF Function Database Main Dialog](img/tools_heef_vfddialog.png){ width=60% }
 
 #### Vulnerability Function Type
 
 This dialog manages the categories of vulnerability functions.
 
-**Vulnerability Function Type Manager**
+![Vulnerability Function Type Manager](img/tools_heef_vfdtypedialog.png){ width=60% }
 
 #### Vulnerability Function
 
 This dialog allows browsing and management of individual vulnerability functions.
 
-**Vulnerability Function Manager**
+![Vulnerability Function Manager](img/tools_heef_function.png){ width=60% }
 
 #### Setting Multiple Buildings
 The Structure Editor allows assigning vulnerability functions to multiple building polygons simultaneously:
 
-**HEEF Structure Editor Dialog**
+![HEEF Structure Editor Dialog](img/tools_heef_structureeditor.png){ width=58% }
 
-**Function value tab with table**
+![Function value tab with table](img/tools_heef_functionvalue.png){ width=58% }
 
 #### Function Selection Dialog (HEEF DB)
 
 This dialog allows selecting vulnerability functions to assign to buildings.
 
-**Vulnerability Function Selection Dialog**
+![Vulnerability Function Selection Dialog](img/tools_heef_dbselector.png){ width=60% }
 
 ### Dialog Controls
 #### HEEF Function Database
@@ -321,14 +321,15 @@ The vulnerability function database is organized into several text-based tables:
 The Import Multi Sources File tool provides functionality for importing point source data from external files into the current project as a QGIS vector layer. This section details the tool's interface, workflow, and technical implementation.
 
 ### Dialog Window
-**Import Multi Sources File Dialog**
+
+![Import Multi Sources File Dialog](img/tools_multisource_dialog.png){ width=70% }
 
 ### Dialog Controls
 []{#tab:multisource_dialog_controls label="tab:multisource_dialog_controls"}
 
 | Multi Sources File | *field* | Path to the multi-source data file to be imported. |
 | --- | --- | --- |
-| ... | *button* | Opens a file dialog to browse for the multi-source file. |
+| \... | *button* | Opens a file dialog to browse for the multi-source file. |
 | Creating new Source layer | *radioButton* | When selected, creates a new Sources layer, removing any existing one. |
 | Adding to current Source Layer | *radioButton* | When selected, adds points to the existing Sources layer (enabled only if a Sources layer exists). |
 | Close | *button* | Closes the dialog without making changes. |
@@ -340,9 +341,9 @@ The Import Multi Sources File tool provides functionality for importing point so
 
 3.  Based on the selected radio button option:
 
-    -   If "Creating new Source layer" is selected, any existing Sources layer is removed from the project and deleted from disk.
+    -   If \"Creating new Source layer\" is selected, any existing Sources layer is removed from the project and deleted from disk.
 
-    -   If "Adding to current Source Layer" is selected, the existing Sources layer is used (this option is only enabled if a Sources layer exists).
+    -   If \"Adding to current Source Layer\" is selected, the existing Sources layer is used (this option is only enabled if a Sources layer exists).
 
 4.  The tool reads the multi-source file and:
 
@@ -405,7 +406,8 @@ The layer includes a custom form interface that facilitates the assignment and e
 The Import RF2D Layers tool provides functionality for importing various RiverFlow2D components and data files into QGIS as vector and raster layers. This comprehensive tool supports multiple file formats specific to hydrodynamic modeling and allows users to integrate simulation components with GIS data.
 
 ### Dialog Window
-**Import RF2D Layers Dialog**
+
+![Import RF2D Layers Dialog](img/tools_importrf2d_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:importrf2d_dialog_controls label="tab:importrf2d_dialog_controls"}
@@ -420,9 +422,9 @@ The Import RF2D Layers tool provides functionality for importing various RiverFl
 
 2.  The user selects a component type from the dropdown list.
 
-3.  When "Import" is clicked, the tool performs one of the following workflows:
+3.  When \"Import\" is clicked, the tool performs one of the following workflows:
 
-    -   If "Import All Project" is selected, the tool attempts to import all available components from the project directory in sequence, checking for the existence of each file type.
+    -   If \"Import All Project\" is selected, the tool attempts to import all available components from the project directory in sequence, checking for the existence of each file type.
 
     -   For individual component selections, the tool opens a file dialog with the appropriate file extension filter, allowing the user to select the specific file to import.
 
@@ -482,19 +484,20 @@ The tool supports various RiverFlow2D file types, each representing a different 
 #### Best Practices
 -   Before importing a new version of an existing component, it's recommended to first delete the old layer from QGIS to avoid conflicts.
 
--   The "Import All Project" option provides the most streamlined workflow when setting up a new project or updating an entire model.
+-   The \"Import All Project\" option provides the most streamlined workflow when setting up a new project or updating an entire model.
 
 -   For incremental updates or when working with specific components, use the individual import options to target only the needed data.
 
 -   After import, verify that the geometry and attributes of the imported layers match the expected values from the source files.
 
--   For large projects, consider importing components individually rather than using "Import All Project" to better manage memory usage.
+-   For large projects, consider importing components individually rather than using \"Import All Project\" to better manage memory usage.
 
 ## Recover Layers Tool
 The Recover Layers tool provides functionality for recovering RiverFlow2D component layers that exist in the project directory but have been removed from the QGIS canvas. This tool allows users to quickly restore project layers without needing to re-import them from their source files.
 
 ### Dialog Window
-**Recover Layer Dialog**
+
+![Recover Layer Dialog](img/tools_recover_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:recover_dialog_controls label="tab:recover_dialog_controls"}
@@ -509,11 +512,11 @@ The Recover Layers tool provides functionality for recovering RiverFlow2D compon
 
 2.  The tool compares the layers currently loaded in QGIS against the shapefiles present in the project's `shape` directory.
 
-3.  Any layers that exist as files but are not currently loaded in QGIS are added to the "Recover Layer List" dropdown.
+3.  Any layers that exist as files but are not currently loaded in QGIS are added to the \"Recover Layer List\" dropdown.
 
 4.  The user selects a layer to recover from the dropdown list.
 
-5.  When the "Recover" button is clicked, the tool:
+5.  When the \"Recover\" button is clicked, the tool:
 
     -   Loads the shapefile from the project directory
 
@@ -523,7 +526,7 @@ The Recover Layers tool provides functionality for recovering RiverFlow2D compon
 
     -   Adds the layer to the appropriate group in the QGIS layer tree (MESH_SPATIAL_DATA, COMPONENTS, or OUTPUT_CONTROL)
 
-6.  If no layers are available for recovery, the "Recover" button is disabled.
+6.  If no layers are available for recovery, the \"Recover\" button is disabled.
 
 ### Requirements
 -   An active RiverFlow2D project is required.
@@ -563,7 +566,7 @@ Each layer type is recovered with its proper styling and configuration based on 
 
 -   After recovering layers, verify their styling and configuration to ensure they match your expectations.
 
--   If you need to recover multiple layers, recover them one by one, selecting each from the dropdown and clicking "Recover".
+-   If you need to recover multiple layers, recover them one by one, selecting each from the dropdown and clicking \"Recover\".
 
 -   The tool only recovers layers that still have their corresponding shapefile in the project directory; if files have been deleted, use the Import RF2D Layers tool instead.
 
@@ -571,7 +574,8 @@ Each layer type is recovered with its proper styling and configuration based on 
 The Compare Output Raster Maps tool provides functionality for comparing raster outputs from different simulation scenarios. This tool enables quantitative assessment of differences between model runs, allowing users to evaluate the impact of parameter changes, analyze alternative designs, or validate model results against different scenarios.
 
 ### Dialog Window
-**Compare Output Raster Maps Dialog**
+
+![Compare Output Raster Maps Dialog](img/tools_compare_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:compare_dialog_controls label="tab:compare_dialog_controls"}
@@ -580,7 +584,7 @@ The Compare Output Raster Maps tool provides functionality for comparing raster 
 | --- | --- | --- |
 | Alternate Scenario Dropdown | *combo box* | Selects the alternate scenario to compare against the base scenario. |
 | Alternate Scenario List | *list view* | Shows available raster layers from the selected alternate scenario. |
-| Type Operation | *radio buttons* | Specifies the comparison operation to perform: "Alternate - Base" (default) or "Base - Alternate". |
+| Type Operation | *radio buttons* | Specifies the comparison operation to perform: \"Alternate - Base\" (default) or \"Base - Alternate\". |
 | Output Layer Name | *text field* | Sets the name for the resulting difference layer. |
 | Compute | *button* | Executes the comparison operation and creates the difference layer. |
 | Save Report Balance Fill/Cut | *checkbox* | When checked, generates a quantitative report of the differences between the maps, including volumes of fill and cut. |
@@ -603,19 +607,19 @@ The Compare Output Raster Maps tool provides functionality for comparing raster 
 
 5.  Choose the type of operation:
 
-    -   *"Alternate - Base"* shows where the *alternate* scenario has higher values than the *base* (positive differences) and where it has lower values (negative differences).
+    -   *\"Alternate - Base\"* shows where the *alternate* scenario has higher values than the *base* (positive differences) and where it has lower values (negative differences).
 
-    -   *"Base - Alternate"* shows where the *base* scenario has higher values than the *alternate* (positive differences) and where it has lower values (negative differences). This effectively inverts the results of the first option.
+    -   *\"Base - Alternate\"* shows where the *base* scenario has higher values than the *alternate* (positive differences) and where it has lower values (negative differences). This effectively inverts the results of the first option.
 
 6.  Enter a name for the output difference layer.
 
 7.  If you want to generate a volumetric report of the differences:
 
-    -   Check the *"Save Report Balance Fill/Cut"* option.
+    -   Check the *\"Save Report Balance Fill/Cut\"* option.
 
     -   Specify a location to save the report using the text field or browse button.
 
-8.  Click "Compute" to execute the comparison operation.
+8.  Click \"Compute\" to execute the comparison operation.
 
 9.  The tool performs the following steps:
 
@@ -657,7 +661,7 @@ The resulting difference layer helps visualize and quantify changes between scen
 -   **Values Near Zero (typically shown in white or transparent):** Indicate areas with minimal differences between scenarios.
 
 #### Volumetric Balance Report
-When the "Save Report Balance Fill/Cut" option is selected, the tool generates a detailed report containing:
+When the \"Save Report Balance Fill/Cut\" option is selected, the tool generates a detailed report containing:
 
 -   **Header Information:** Date, time, project names, and layers compared.
 
@@ -680,7 +684,7 @@ This report is useful for quantitative assessment of design alternatives, impact
 
 -   Use descriptive output layer names that indicate which scenarios are being compared.
 
--   For elevation or bathymetry comparisons, consider the "Alternate - Base" operation to show areas of deposition as positive and erosion as negative.
+-   For elevation or bathymetry comparisons, consider the \"Alternate - Base\" operation to show areas of deposition as positive and erosion as negative.
 
 -   Review both the visual difference layer and the volumetric report for comprehensive analysis.
 
@@ -694,14 +698,15 @@ This report is useful for quantitative assessment of design alternatives, impact
 The Setting TriMesh Elevation tool provides functionality for assigning elevation values from a FED file to a TriMesh layer. This tool allows users to update the elevation attributes of mesh elements without reimporting the entire mesh, making it useful for updating terrain information in an existing model or applying elevation adjustments.
 
 ### Dialog Window
-**Setting TriMesh Elevation Dialog**
+
+![Setting TriMesh Elevation Dialog](img/tools_elevfed_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:elevfed_dialog_controls label="tab:elevfed_dialog_controls"}
 
 | FED File | *field* | Path to the FED file containing elevation data for the mesh elements. |
 | --- | --- | --- |
-| ... | *button* | Opens a file dialog to browse for and select a FED file. |
+| \... | *button* | Opens a file dialog to browse for and select a FED file. |
 | Progress Bar | *progress bar* | Shows the progress of the elevation data import process. |
 | Close | *button* | Closes the dialog. |
 
@@ -766,7 +771,7 @@ This tool also detects cells with null area. In these cases, the tool displays t
 ### Dialog Window
 This tool has a minimal interface as it automatically runs the checking process when launched and displays results in a separate dialog if problematic cells are found.
 
-**Check Internal Angle of TriMesh’s Cells negative result**
+![Check Internal Angle of TriMesh’s Cells negative result](img/tools_check_angles_negativeresult.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:check_angles_controls label="tab:check_angles_controls"}
@@ -795,7 +800,7 @@ This tool has a minimal interface as it automatically runs the checking process 
 
     -   A list dialog opens showing the IDs of all problematic cells.
 
-    -   The user can select a cell from the list and use the "Zoom to cell" button to inspect it in the map canvas.
+    -   The user can select a cell from the list and use the \"Zoom to cell\" button to inspect it in the map canvas.
 
     -   The selected cell is highlighted in the TriMesh layer.
 
@@ -806,7 +811,7 @@ This tool has a minimal interface as it automatically runs the checking process 
 ### Requirements
 -   An active RiverFlow2D project is required.
 
--   A TriMesh layer must be present in the QGIS project with the name "TriMesh".
+-   A TriMesh layer must be present in the QGIS project with the name \"TriMesh\".
 
 -   The TriMesh layer must contain valid triangular geometry.
 
@@ -816,7 +821,7 @@ This tool has a minimal interface as it automatically runs the checking process 
 #### List of Cells Dialog
 If the tool identifies cells with internal angles less than 5 degrees, it displays a secondary dialog listing these cells:
 
-**List of cells with small internal angles**
+![List of cells with small internal angles](img/tools_check_angles_list.png){ width=60% }
 
 []{#tab:list_cells_controls label="tab:list_cells_controls"}
 
@@ -872,7 +877,8 @@ The RiverFlow2D Settings Tool provides a centralized interface for configuring e
 :::
 
 ### Dialog Window
-**RiverFlow2D Settings Dialog**
+
+![RiverFlow2D Settings Dialog](img/tools_rf2dsettings_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:rf2d_settings_controls label="tab:rf2d_settings_controls"}
@@ -910,7 +916,7 @@ The RiverFlow2D Settings Tool provides a centralized interface for configuring e
 
     -   **Optimize mesh cell ordering**: Option to renumber mesh cells for improved computational performance.
 
-4.  After making the desired changes, clicking "OK" saves all settings:
+4.  After making the desired changes, clicking \"OK\" saves all settings:
 
     -   The RiverFlow2D executable path is saved in the QGIS application settings.
 
@@ -949,7 +955,7 @@ The resolution factor controls the element size in the mesh generation process:
 
 **Mesh Cell Optimization**
 
-The "Optimize mesh cell ordering" option improves computational efficiency by:
+The \"Optimize mesh cell ordering\" option improves computational efficiency by:
 
 -   Reordering mesh cells to minimize the bandwidth of the system matrix.
 
@@ -976,7 +982,8 @@ If instructed to do so or you are sure about the settings, you can change the se
 The Multi-hydrograph to Single-hydrograph Files Tool provides a specialized function for converting time-series hydrograph data from a combined multi-source file format into individual single-hydrograph files. This tool is particularly useful for preparing hydrologic inputs for simulations when working with multiple inflow sources that were initially stored in a unified data file.
 
 ### Dialog Window
-**Multi-hydrograph to Single-hydrograph Files Dialog**
+
+![Multi-hydrograph to Single-hydrograph Files Dialog](img/tools_multihydrograph_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:multihydrograph_controls label="tab:multihydrograph_controls"}
@@ -985,7 +992,7 @@ The Multi-hydrograph to Single-hydrograph Files Tool provides a specialized func
 | --- | --- | --- |
 | Browse | *button* | Opens a file dialog to select the input multiple hydrograph file. |
 | Format file | *dropdown* | Specifies the format of the input file (currently supports HEC-DSSVue format). |
-| Prefix for single hydrograph files | *text field* | Text prefix to be added to all generated output files (default: "Hydrog\_"). |
+| Prefix for single hydrograph files | *text field* | Text prefix to be added to all generated output files (default: \"Hydrog\_\"). |
 | Output folder | *text field* | Directory where the individual hydrograph files will be saved. |
 | Browse (output folder) | *button* | Opens a directory dialog to select the output folder. |
 | OK | *button* | Processes the input file and generates the individual hydrograph files. |
@@ -996,17 +1003,17 @@ The Multi-hydrograph to Single-hydrograph Files Tool provides a specialized func
 
 2.  The user selects a multiple hydrograph input file by either:
 
-    -   Typing the full path in the "Multiple hydrograph file" field, or
+    -   Typing the full path in the \"Multiple hydrograph file\" field, or
 
-    -   Clicking the "Browse" button to navigate to and select the file.
+    -   Clicking the \"Browse\" button to navigate to and select the file.
 
-3.  The tool automatically populates the "Output folder" field with the directory containing the selected input file, but the user can specify a different output location if desired.
+3.  The tool automatically populates the \"Output folder\" field with the directory containing the selected input file, but the user can specify a different output location if desired.
 
-4.  The user may customize the prefix for the generated files by modifying the "Prefix for single hydrograph files" field. The default prefix is "Hydrog\_".
+4.  The user may customize the prefix for the generated files by modifying the \"Prefix for single hydrograph files\" field. The default prefix is \"Hydrog\_\".
 
-5.  The user selects the appropriate format from the "Format file" dropdown. Currently, the tool supports HEC-DSSVue formatted files.
+5.  The user selects the appropriate format from the \"Format file\" dropdown. Currently, the tool supports HEC-DSSVue formatted files.
 
-6.  After configuring all settings, the user clicks "OK" to process the file. The tool:
+6.  After configuring all settings, the user clicks \"OK\" to process the file. The tool:
 
     -   Reads the multi-hydrograph input file
 
@@ -1029,7 +1036,7 @@ The Multi-hydrograph to Single-hydrograph Files Tool provides a specialized func
 
 -   For HEC-DSSVue format, the file must contain:
 
-    -   Time data in column 5 (in hours:minutes format, e.g., "08:30")
+    -   Time data in column 5 (in hours:minutes format, e.g., \"08:30\")
 
     -   Flow values for different hydrographs starting from column 6
 
@@ -1041,7 +1048,7 @@ The tool processes HEC-DSSVue formatted files using the following approach:
 
 2.  The tool identifies how many separate hydrographs are present by counting the number of data columns after the time column (starting from column 6).
 
-3.  For each identified hydrograph, a separate output file is created with the naming pattern: \[prefix\]\[number\].txt (e.g., "Hydrog_1.txt", "Hydrog_2.txt").
+3.  For each identified hydrograph, a separate output file is created with the naming pattern: \[prefix\]\[number\].txt (e.g., \"Hydrog_1.txt\", \"Hydrog_2.txt\").
 
 4.  Each output file is structured with:
 
@@ -1058,7 +1065,7 @@ The tool processes HEC-DSSVue formatted files using the following approach:
 
 -   Keep the original multi-hydrograph file as a backup in case you need to regenerate the individual files with different settings.
 
--   When managing multiple inflow sources, use descriptive prefixes to clearly identify the purpose of each hydrograph set (e.g., "Inflow\_", "Tributary\_").
+-   When managing multiple inflow sources, use descriptive prefixes to clearly identify the purpose of each hydrograph set (e.g., \"Inflow\_\", \"Tributary\_\").
 
 -   If creating multiple sets of hydrograph files, consider organizing them in separate directories to avoid confusion.
 
@@ -1071,7 +1078,8 @@ This tool facilitates the migration of standalone RiverFlow2D projects into the 
 :::
 
 ### Dialog Window
-**Import Single to Multi-scenario Project Dialog**
+
+![Import Single to Multi-scenario Project Dialog](img/tools_import_project_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:import_project_controls label="tab:import_project_controls"}
@@ -1087,9 +1095,9 @@ This tool facilitates the migration of standalone RiverFlow2D projects into the 
 
 2.  The user selects a RiverFlow2D project file (.dat) by clicking the browse button, which opens a file selection dialog. Only files with the .dat extension will be shown.
 
-3.  After selecting a valid project file, its path appears in the ".DAT File Name" field.
+3.  After selecting a valid project file, its path appears in the \".DAT File Name\" field.
 
-4.  When the user clicks "OK", the tool performs the following operations:
+4.  When the user clicks \"OK\", the tool performs the following operations:
 
     -   Verifies that the selected file is a valid RiverFlow2D project file.
 

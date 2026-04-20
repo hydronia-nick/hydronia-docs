@@ -2,11 +2,11 @@
 
 The plugin provides a comprehensive set of mapping tools for visualizing and analyzing simulation results. These tools allow users to create, display, and export various types of maps representing hydraulic parameters, sediment or tailings concentrations, time of arrival or to depth, hazard assessments, economic evaluations.
 
-**Results vs Time Maps Icon for HydroBID Flood**
+![Results vs Time Maps Icon for HydroBID Flood](img/icon5_hb.png){ width=10% }
 
 Users have the following options available in the mapping tool menu:
 
-**Results vs Time Maps Menu for HydroBID Flood**
+![Results vs Time Maps Menu for HydroBID Flood](img/mapping_menu_hf.png){ width=50% }
 
 The mapping tools in the plugin enable users to visualize simulation results in both cell-based and raster formats. The plugin provides specialized tools for different types of analyses, including:
 
@@ -26,7 +26,8 @@ The mapping tools in the plugin enable users to visualize simulation results in 
 The Results vs Time Maps tool allows users to create and visualize time-dependent maps of various hydraulic parameters from model simulations.
 
 ### Dialog Window
-**Results vs Time Maps Dialog for HydroBID Flood**
+
+![Results vs Time Maps Dialog for HydroBID Flood](img/results_vs_time_maps_dialog_hf.png){ width=100% }
 
 ### Dialog Controls
 []{#tab:results_vs_time_maps_controls label="tab:results_vs_time_maps_controls"}
@@ -39,7 +40,7 @@ The Results vs Time Maps tool allows users to create and visualize time-dependen
 | Output Maps | *list view* | Shows the maps that will be created when OK is clicked. |
 | Cell Maps | *checkbox* | Enables cell-based (vector polygon) map output. |
 | Raster Maps | *checkbox* | Enables raster map output. |
-| Resolution for raster map | *text field* | Sets the resolution for raster interpolation, in projected units. Only enabled when "Raster Maps" is checked. |
+| Resolution for raster map | *text field* | Sets the resolution for raster interpolation, in projected units. Only enabled when \"Raster Maps\" is checked. |
 | Vector Skip Frequency | *spinner* | Sets the number of vectors to skip between each vector in vector-type maps, controlling display density. |
 | OK | *button* | Creates the selected maps and adds them to the QGIS project. |
 | Cancel | *button* | Closes the dialog without making changes. |
@@ -69,13 +70,13 @@ To generate maps using the Results vs Time Maps tool, follow these steps:
 
 1.  Ensure you have completed a simulation and have output files available.
 
-2.  From the Results vs Time Maps menu, click on "*Results vs Time Maps*"
+2.  From the Results vs Time Maps menu, click on \"*Results vs Time Maps*\"
 
     ![](img/icon5_hb.png){ width=5% }.
 
     
 
-**Results vs Time Maps Menu for HydroBID Flood**
+![Results vs Time Maps Menu for HydroBID Flood](img/mapping_menu_resultsvstime_hf.png){ width=50% }
 
 3.  In the dialog that appears, the current scenario directory should be automatically selected. If not, browse to the appropriate directory containing your simulation results.
 
@@ -83,13 +84,12 @@ To generate maps using the Results vs Time Maps tool, follow these steps:
 
     
 
-**Results vs Time Map List**
+![Results vs Time Map List](img/mapping_resultsvstime_maps.png){ width=30% }
 
 5.  Select the output times you want to visualize. Hold down the Control key to select multiple times.
 
     
-
-**Results vs Time Map Times**
+![Results vs Time Map Times](img/mapping_resultsvstime_outputtime.png){ width=10% }
 
 6.  Transfer the selected maps and times to the *Output Maps* list by clicking the right arrow button ![](img/right_arrow_button.png){ width=5% }.
 
@@ -99,23 +99,23 @@ To generate maps using the Results vs Time Maps tool, follow these steps:
 
     
 
-**Results vs Time Map Output Format Options**
+![Results vs Time Map Output Format Options](img/mapping_resultsvstime_cellrasterboxes.png){ width=40% }
 
 9.  If *Raster Maps* is selected, specify the raster resolution in the projected units (ft or m).
 
     
 
-**Results vs Time Map Raster Resolution**
+![Results vs Time Map Raster Resolution](img/mapping_resultsvstime_rasterresolution.png){ width=40% }
 
 10. If a vector map such as *Velocity Field* is selected, you can specify the *Vector Skip Frequency* to control the density of the vectors.
 
     
 
-**Results vs Time Map Vector Skip Frequency**
+![Results vs Time Map Vector Skip Frequency](img/mapping_resultsvstime_vectorskip.png){ width=50% }
 
-11. Click "OK" to generate the maps.
+11. Click \"OK\" to generate the maps.
 
-12. The generated maps will be added to the QGIS layer panel under the "OUTPUT_RESULTS" group.
+12. The generated maps will be added to the QGIS layer panel under the \"OUTPUT_RESULTS\" group.
 
 13. You can now manipulate these layers like any other QGIS layer, adjusting styling, transparency, etc.
 
@@ -149,11 +149,12 @@ The following table provides technical details on how each map type is processed
 The Maximum Result Maps tool generates maps showing the maximum values reached during a simulation for various hydraulic parameters.
 
 ### Dialog Window
-**Maximum Result Maps Dialog for HydroBID Flood**
+
+![Maximum Result Maps Dialog for HydroBID Flood](img/mapping_maxresults_dialog_hf.png){ width=100% }
 
 You can reach this dialog by clicking on the *Maximum Result Maps* button in the *Results vs Time Maps* tool:
 
-**Maximum Result Maps Menu for HydroBID Flood**
+![Maximum Result Maps Menu for HydroBID Flood](img/mapping_maxresults_menu_hf.png){ width=50% }
 
 ### Dialog Controls
 []{#tab:max_value_cell_controls label="tab:max_value_cell_controls"}
@@ -163,7 +164,7 @@ You can reach this dialog by clicking on the *Maximum Result Maps* button in the
 | Map Type List | *checkbox list* | List of available maximum value map types that can be selected for visualization. |
 | Cell Maps | *checkbox* | Enables cell-based (vector polygon) map output. Checked by default. |
 | Raster Maps | *checkbox* | Enables raster map output. |
-| Resolution for raster map | *text field* | Sets the resolution for raster interpolation, in projected units. Only enabled when "Raster Maps" is checked. Default value is 10. |
+| Resolution for raster map | *text field* | Sets the resolution for raster interpolation, in projected units. Only enabled when \"Raster Maps\" is checked. Default value is 10. |
 | OK | *button* | Creates the selected maximum value maps and adds them to the QGIS project. |
 | Cancel | *button* | Closes the dialog without making changes. |
 
@@ -191,13 +192,13 @@ To generate maps using the Maximum Result Maps tool, follow these steps:
 
     
 
-**Enabling Maximum file output in the Hydronia Data Input Program**
+![Enabling Maximum file output in the Hydronia Data Input Program](img/mapping_maxresults_dip.png){ width=30% }
 
 2.  From the *Results vs Time Maps* menu, click on *Maximum Result Maps*. ![](img/icon5_hb.png){ width=5% }.
 
     
 
-**Maximum Result Maps Menu for HydroBID Flood**
+![Maximum Result Maps Menu for HydroBID Flood](img/mapping_maxresults_menu_hf.png){ width=50% }
 
 3.  In the dialog that appears, the current scenario directory should be automatically selected. If not, browse to the appropriate directory containing your simulation results.
 
@@ -205,7 +206,7 @@ To generate maps using the Maximum Result Maps tool, follow these steps:
 
     
 
-**Maximum Result Maps Checkboxes**
+![Maximum Result Maps Checkboxes](img/mapping_maxresults_checkboxes.png){ width=30% }
 
 5.  Choose the output format:
 
@@ -217,11 +218,11 @@ To generate maps using the Maximum Result Maps tool, follow these steps:
 
         
 
-**Maximum Result Maps Output Options**
+![Maximum Result Maps Output Options](img/mapping_maxresults_outputoptions.png){ width=60% }
 
-6.  Click "OK" to generate the map(s).
+6.  Click \"OK\" to generate the map(s).
 
-7.  The generated map(s) will be added to the QGIS layer panel under the "OUTPUT_RESULTS" group.
+7.  The generated map(s) will be added to the QGIS layer panel under the \"OUTPUT_RESULTS\" group.
 
 The map(s) will show maximum values reached during the entire simulation period, regardless of when those maximum values occurred.
 
@@ -252,7 +253,7 @@ The following table provides technical details on how each map type is processed
 The Time-to-Depth Maps tool creates maps that analyze the temporal aspects of flooding by correlating water depths with specific times during a simulation. This tool is particularly useful for understanding flood dynamics, such as inundation timing, duration of flooding, and wave propagation. Users can generate maps showing when specific water depths are reached, how long areas remain underwater, and when flood waves first arrive at different locations.
 
 ### Dialog Window
-**Time-Depth Dialog for HydroBID Flood**
+![Time-Depth Dialog for HydroBID Flood](img/mapping_time_depth_dialog_hf.png){ width=.8\textwidth }
 
 ### Dialog Controls
 []{#tab:time_depth_controls label="tab:time_depth_controls"}
@@ -286,7 +287,7 @@ To generate time-to-depth maps, follow these steps:
 
     
 
-**Time-to-Depth Maps Menu for HydroBID Flood**
+![Time-to-Depth Maps Menu for HydroBID Flood](img/mapping_t2d_menu_hf.png){ width=50% }
 
 3.  In the dialog that appears, the current scneario directory and project file information should be automatically populated.
 
@@ -306,19 +307,19 @@ To generate time-to-depth maps, follow these steps:
 
 5.  Choose the output format:
 
-    -   Check "Cells Maps" to create polygon-based maps (cell-centered).
+    -   Check \"Cells Maps\" to create polygon-based maps (cell-centered).
 
-    -   Check "Raster Maps" to create grid-based maps with interpolation.
+    -   Check \"Raster Maps\" to create grid-based maps with interpolation.
 
-    -   If "Raster Maps" is selected, specify the raster resolution in meters.
+    -   If \"Raster Maps\" is selected, specify the raster resolution in meters.
 
         
 
-**Time-to-Depth Maps Output Options**
+![Time-to-Depth Maps Output Options](img/mapping_maxresults_outputoptions.png){ width=60% }
 
-6.  Click "OK" to generate the selected time-to-depth maps.
+6.  Click \"OK\" to generate the selected time-to-depth maps.
 
-7.  The generated maps will be added to the QGIS layer panel under the "OUTPUT_RESULTS" group.
+7.  The generated maps will be added to the QGIS layer panel under the \"OUTPUT_RESULTS\" group.
 
 8.  The maps will display time values (in hours) based on the selected map types.
 
@@ -343,7 +344,8 @@ The Time-to-Depth Maps tool processes time-series data from model simulations an
 The Hazard Intensity Maps tool allows users to create maps that classify flood hazards based on various international standards for assessing flood risk to people, vehicles, and structures.
 
 ### Dialog Window
-**Hazard Intensity Dialog for HydroBID Flood**
+
+![Hazard Intensity Dialog for HydroBID Flood](img/mapping_hazard_dialog_hf.png){ width=80% }
 
 ### Dialog Controls
 []{#tab:hazard_intensity_controls label="tab:hazard_intensity_controls"}
@@ -386,7 +388,7 @@ To generate hazard intensity maps, follow these steps:
 
     
 
-**Enabling Hazard file output in the Hydronia Data Input Program**
+![Enabling Hazard file output in the Hydronia Data Input Program](img/mapping_hazard_dip.png){ width=30% }
 
 2.  From the *Results vs Time Maps* menu, click on *Hazard Intensity Maps*
 
@@ -394,7 +396,7 @@ To generate hazard intensity maps, follow these steps:
 
     
 
-**Hazard Intensity Maps Menu for HydroBID Flood**
+![Hazard Intensity Maps Menu for HydroBID Flood](img/mapping_hazard_menu_hf.png){ width=50% }
 
 3.  In the dialog that appears, the current scenario directory should be automatically selected. If not, browse to the appropriate directory containing your simulation results.
 
@@ -440,11 +442,11 @@ To generate hazard intensity maps, follow these steps:
 
         
 
-**Hazard Intensity Maps Output Options**
+![Hazard Intensity Maps Output Options](img/mapping_maxresults_outputoptions.png){ width=60% }
 
-6.  Click "OK" to generate the hazard intensity map.
+6.  Click \"OK\" to generate the hazard intensity map.
 
-7.  The generated map will be added to the QGIS layer panel under the "OUTPUT_RESULTS" group.
+7.  The generated map will be added to the QGIS layer panel under the \"OUTPUT_RESULTS\" group.
 
 8.  The map will display hazard categories based on the combination of maximum water depth and maximum velocity reached during the simulation period.
 
@@ -478,11 +480,12 @@ The tool processes data from `*_cells_hazard.textout` files, which contain preca
 The Concentrations and Properties vs Time Maps tool visualizes the transport and dispersion of tracers or pollutants in the simulation.
 
 ### Dialog Window
-**Concentrations and Properties vs Time Maps Dialog for HydroBID Flood**
+
+![Concentrations and Properties vs Time Maps Dialog for HydroBID Flood](img/mapping_concentration_dialog_hf.png){ width=100% }
 
 You can reach this dialog by clicking on the *Concentrations and Properties vs Time Maps* button in the *Results vs Time Maps* tool:
 
-**Concentrations and Properties vs Time Maps Menu for HydroBID Flood**
+![Concentrations and Properties vs Time Maps Menu for HydroBID Flood](img/mapping_concentration_menu_hf.png){ width=50% }
 
 ### Dialog Controls
 []{#tab:element_concentration_controls label="tab:element_concentration_controls"}
@@ -515,7 +518,7 @@ To generate maps using the Concentrations and Properties vs Time Maps tool, foll
 
 1.  Ensure you have completed a simulation with sediment/pollutant transport and have output files available.
 
-2.  From the Results vs Time Maps menu, click on "Concentrations and Properties vs Time Maps".
+2.  From the Results vs Time Maps menu, click on \"Concentrations and Properties vs Time Maps\".
 
 3.  In the dialog that appears, the current scenario directory should be automatically selected. If not, browse to the appropriate directory containing your simulation results.
 
@@ -567,11 +570,11 @@ To generate maps using the Concentrations and Properties vs Time Maps tool, foll
 
         
 
-**Output Options for Concentrations and Properties vs Time Maps**
+![Output Options for Concentrations and Properties vs Time Maps](img/mapping_maxresults_outputoptions.png){ width=60% }
 
-9.  Click "OK" to generate the concentration maps.
+9.  Click \"OK\" to generate the concentration maps.
 
-10. The generated maps will be added to the QGIS layer panel under the "OUTPUT_RESULTS" group.
+10. The generated maps will be added to the QGIS layer panel under the \"OUTPUT_RESULTS\" group.
 
 ### Requirements
 | Active Project | An active project must be loaded in QGIS. |
@@ -602,7 +605,10 @@ The technical implementation ensures that concentration and property maps accura
 The Hydro-Economic Evaluation of Flood Map tool integrates flood hazard information with exposure data to assess risk.
 
 ### Dialog Window
-**HEEF Maps Dialog**
+<figure id="fig:heef_maps_dialog">
+
+<figcaption>HEEF Maps Dialog</figcaption>
+</figure>
 
 ### Dialog Controls
 []{#tab:heef_maps_controls label="tab:heef_maps_controls"}
@@ -629,7 +635,7 @@ To generate maps using the Hydro-Economic Evaluation of Flood Map tool, follow t
 
 1.  Ensure you have completed a RiverFlow2D simulation and have output files available.
 
-2.  From the Results vs Time Maps menu, click on "Hydro-Economic Evaluation of Flood Map".
+2.  From the Results vs Time Maps menu, click on \"Hydro-Economic Evaluation of Flood Map\".
 
 3.  In the dialog that appears:
 
@@ -653,17 +659,17 @@ To generate maps using the Hydro-Economic Evaluation of Flood Map tool, follow t
 
     -   If *Raster Maps* is selected, specify the resolution in meters (ft or m).
 
-5.  Click "Calculate" to perform the damage assessment calculation.
+5.  Click \"Calculate\" to perform the damage assessment calculation.
 
 6.  A progress bar will display the calculation status.
 
-7.  Once complete, select which map types to generate from the "Select Maps" list.
+7.  Once complete, select which map types to generate from the \"Select Maps\" list.
 
-8.  Click "OK" to generate the selected maps.
+8.  Click \"OK\" to generate the selected maps.
 
-9.  The generated maps will be added to the QGIS layer panel under the "OUTPUT_RESULTS" group.
+9.  The generated maps will be added to the QGIS layer panel under the \"OUTPUT_RESULTS\" group.
 
-10. A summary report with damage statistics will also be generated and can be accessed through the "View Report" button.
+10. A summary report with damage statistics will also be generated and can be accessed through the \"View Report\" button.
 
 ### Requirements
 | Active Project | An active project must be loaded in QGIS. |
@@ -679,13 +685,13 @@ The following table provides technical details on how damage assessment is perfo
 
 | Data Integration Process | The tool integrates three key data types: |
 | --- | --- |
-| Building Exposure Layer | The tool requires a vector layer (typically called "HEEF_Builds") containing: |
+| Building Exposure Layer | The tool requires a vector layer (typically called \"HEEF_Builds\") containing: |
 | Vulnerability Functions | Vulnerability functions are stored in separate text files (with .txt extension) named after their function ID. Two types are supported: |
 | Sampling Flood Parameters | The tool samples flood parameters (depth and velocity) for each building using: |
 | 1D Vulnerability Function Interpolation | For depth-only vulnerability functions (Type 1): |
 | 2D Vulnerability Function Interpolation | For depth-velocity vulnerability functions (Type 2): |
 | Damage Calculation | Economic damage is calculated for each building using: |
-| Output Map Generation | The tool creates a polygon shapefile ("HEEF_Damage.shp") with the following attributes: |
+| Output Map Generation | The tool creates a polygon shapefile (\"HEEF_Damage.shp\") with the following attributes: |
 | Visualization | The damage map is styled using: |
 | Data Management | The tool automatically: |
 
@@ -703,7 +709,7 @@ All the mapping tools in the plugin share common features and functionality:
 For raster map creation, the Results vs Time Maps tool uses TIN (Triangulated Irregular Network) interpolation to convert cell-centered values to a continuous surface at user-specified resolution. The resulting raster is clipped to the domain outline and no-data values (-9999.0) are properly handled and excluded. The tool ensures efficient processing of large datasets while maintaining numerical accuracy. The implementation supports both cell-based (vector) and interpolated (raster) visualizations, providing flexibility for different analysis needs.
 
 ### Layer Management
--   All generated maps are added to an "OUTPUT_RESULTS" group in the QGIS layer panel.
+-   All generated maps are added to an \"OUTPUT_RESULTS\" group in the QGIS layer panel.
 
 -   Appropriate styling is automatically applied to each map type, including color ramps and classification methods.
 

@@ -22,7 +22,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
     
 
-**Project loaded in QGIS.**
+![Project loaded in QGIS.](img/8-1.png){ width=100% }
 
 ## Load the shape file with the Manning's n polygons
 
@@ -38,13 +38,13 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
     
 
-**Window to find and open the shape file.**
+![Window to find and open the shape file.](img/8-2.png){ width=70% }
 
     When loading the file, an image similar to the one shown in the following figure will be displayed on the screen:
 
     
 
-**SaltRiver_ManningsN Layer.**
+![SaltRiver_ManningsN Layer.](img/8-3.png){ width=90% }
 
 ## Import the Manning's n geometry and values to the Manning N layer
 
@@ -54,7 +54,7 @@ To transfer spatial and attributive information from the shape file to the *Mann
 
     
 
-**Attribute table of the SaltRiver_ManningsN layer.**
+![Attribute table of the SaltRiver_ManningsN layer.](img/8-4.png){ width=70% }
 
     You can see that the shape file loaded has two fields, *LUCode* and *N_Value*, the first one with the coding of the land cover type and the second corresponds to the value of the Manning's n, in the case of the Manning N layer, it has a single field called *ManningN*.
 
@@ -62,7 +62,7 @@ To transfer spatial and attributive information from the shape file to the *Mann
 
     
 
-**Properties the SaltRiver_ManningsN layer.**
+![Properties the SaltRiver_ManningsN layer.](img/8-5.png){ width=90% }
 
 3.  Click on the *Toggle Editing* button
 
@@ -74,7 +74,7 @@ To transfer spatial and attributive information from the shape file to the *Mann
 
     
 
-**Field properties of the edited SaltRiver_ManningsN layer.**
+![Field properties of the edited SaltRiver_ManningsN layer.](img/8-6.png){ width=90% }
 
 4.  Copy the polygons of the shape file: select the *SaltRiver_ManningsN* layer in the Layers Panel.
 
@@ -82,7 +82,7 @@ To transfer spatial and attributive information from the shape file to the *Mann
 
     
 
-**Selecting all the polygons in the SaltRiver_ManningsN layer.**
+![Selecting all the polygons in the SaltRiver_ManningsN layer.](img/manningntutotialselect.png){ width=90% }
 
 6.  Copy the spatial elements by clicking on the *Copy* button ![](img/button24.png){ width=1cm } of the digitization toolbar
 
@@ -102,7 +102,7 @@ To transfer spatial and attributive information from the shape file to the *Mann
 
 To verify the operation was successful, open the attribute table of the *Manning N* layer and you can see that the polygons have been copied with their Manning n values. As shown in the Figure below:
 
-**Attribute table of the Manning N layer.**
+![Attribute table of the Manning N layer.](img/8-7.png){ width=70% }
 
 You can now remove the *SaltRiver_ManningsN* layer from the Layer Panel.
 

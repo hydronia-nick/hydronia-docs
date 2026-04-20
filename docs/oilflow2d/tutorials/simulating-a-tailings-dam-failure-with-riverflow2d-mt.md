@@ -6,7 +6,7 @@ This tutorial will show how to set up a tailings dam failure simulation with the
 The files required to follow this tutorial can be extracted from the 'ExampleProjects' zip file under the 'BrumadinhoRF2D' folder. This zip file is downloaded separately from your installation materials.
 :::
 
-**Files with data required for the example.**
+![Files with data required for the example.](img/brumadinhotutorialfolder.png){ width=100% }
 
 ## Start a new project for a tailing dam break simulation
 
@@ -18,19 +18,19 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
     
 
-**Coordinate Reference System Selector dialog window.**
+![Coordinate Reference System Selector dialog window.](img/crs31983.png){ width=80% }
 
 4.  Click the ![](img/threedots.png){ width=0.7cm } button to provide a path to store the project files in the *Project Directory* text box. This will be the folder where the model will write all results and output files. Browse to the tutorial directory in the location where the files were extracted, in the 'BrumadinhoRF2D'  folder, then click Select folder. The dialog window should look like the following:
 
     
 
-**Create new project window.**
+![Create new project window.](img/brumadinhonewproject.png){ width=40% }
 
 5.  After clicking OK, the layer templates are created, and displayed on the *Layers Panel*
 
     
 
-**Layers created for the project.**
+![Layers created for the project.](img/brumadinholayerspanel.png){ width=40% }
 
     ::: shaded
     On the QGIS *Project* menu, click *Save*, to save the project in the same directory that you previously selected in the *Create New Project* dialog above.
@@ -46,7 +46,7 @@ In this tutorial we will use two *Digital Elevation Model* or *DEM* raster files
 
     
 
-**Dialog to create a layer from a raster file.**
+![Dialog to create a layer from a raster file.](img/loadrasterdialogbrumadinho.png){ width=90% }
 
 3.  Click *Add* and then *Close*.
 
@@ -56,13 +56,13 @@ In this tutorial we will use two *Digital Elevation Model* or *DEM* raster files
 
     
 
-**Digital elevation model in raster format.**
+![Digital elevation model in raster format.](img/brumadinho11-6.png){ width=70% }
 
     Right-clicking on the label of the new raster layer and selecting *Properties*, in the *Symbology* panel you can change the *Render type* for a more informative palette such as *Hillshade* for instance.
 
     
 
-**Digital elevation model with Hillshade render.**
+![Digital elevation model with Hillshade render.](img/brumadinho11-7.png){ width=70% }
 
 ::: shaded
 You may move the raster layer by dragging it to the end of the list of layers to avoid that it would hide or interfere visually with the other layers.
@@ -82,7 +82,7 @@ We define the limits of the modeling area drawing a polygon on the *Domain Outli
 
     
 
-**Domain Outline polygon.**
+![Domain Outline polygon.](img/brumadinho11-8.png){ width=90% }
 
 4.  Save the polygon by clicking the *Save Layer Edits* button ![](img/button5.png){ width=0.6cm }.
 
@@ -106,7 +106,7 @@ Once the *Domain Outline* is created, a *Mesh Density Line* will provide the nec
 
     
 
-**First mesh density line.**
+![First mesh density line.](img/brumadinho11-9.png){ width=90% }
 
     Another line will need to be drawn to finish adding detail down the main path on the river in the south.
 
@@ -114,7 +114,7 @@ Once the *Domain Outline* is created, a *Mesh Density Line* will provide the nec
 
     
 
-**Second mesh density line.**
+![Second mesh density line.](img/brumadinho11-10.png){ width=60% }
 
 5.  Right-click to finish the second line. A dialog requesting input for the *MeshDensityLine Feature Attributes* will appear. Input *25* as the *CellSize* for the *MeshDensityLine* layer.
 
@@ -126,7 +126,7 @@ Once the *Domain Outline* is created, a *Mesh Density Line* will provide the nec
 
     
 
-**Finished MeshDensityLine layer.**
+![Finished MeshDensityLine layer.](img/brumadinho11-11.png){ width=90% }
 
 ## Generating the triangular-cell mesh
 
@@ -134,7 +134,7 @@ Now that the *Domain Outline* and *Mesh Density Line* layer have been created, p
 
 The following figure shows the generated mesh. You will also see in the Layers panel the new layer: *Trimesh*
 
-**Triangular mesh generated for the tailings dam break tutorial.**
+![Triangular mesh generated for the tailings dam break tutorial.](img/brumadinho11-12.png){ width=90% }
 
 ## Setting up the boundary conditions
 
@@ -148,7 +148,7 @@ We first enter the inflow boundary condition imposing a hydrograph (discharge vs
 
     
 
-**Polygon that covers the nodes defining the Inflow boundary condition segment.**
+![Polygon that covers the nodes defining the Inflow boundary condition segment.](img/brumadinho11-13.png){ width=50% }
 
 3.  To finish the polygon, right-click on desired location. A window to enter the attributes of the newly created polygon is displayed.
 
@@ -164,11 +164,11 @@ We first enter the inflow boundary condition imposing a hydrograph (discharge vs
 
     
 
-**Inflow boundary condition parameters.**
+![Inflow boundary condition parameters.](img/brumadinho11-14.png){ width=60% }
 
     
 
-**Hydrograph loaded from the ‘inlet1.QVT‘ file.**
+![Hydrograph loaded from the ‘inlet1.QVT‘ file.](img/brumadinho11-15.png){ width=60% }
 
 7.  Click *OK* to close the dialog and then click *Save Layer Edits* ![](img/button5.png){ width=0.6cm }.
 
@@ -182,13 +182,13 @@ Now we will enter an free outflow condition where the fluid will be let to flow 
 
     
 
-**Polygon that defines the outflow boundary condition segment.**
+![Polygon that defines the outflow boundary condition segment.](img/brumadinho11-16.png){ width=50% }
 
 2.  Right click to close the polygon. A dialog window will appear to enter the parameters. Select the condition type *Uniform flow condition* and set So to 0.005. The dialog should look like the following:
 
     
 
-**Parameters for the free outflow open boundary condition.**
+![Parameters for the free outflow open boundary condition.](img/brumadinho11-17.png){ width=60% }
 
 3.  Save the changes made to the layer by clicking the *Save Layer Edits* button ![](img/button5.png){ width=0.6cm }.
 
@@ -198,7 +198,7 @@ Now we will enter an free outflow condition where the fluid will be let to flow 
 
     
 
-**Polygons that define the inflow and outflow boundary conditions.**
+![Polygons that define the inflow and outflow boundary conditions.](img/brumadinho11-18.png){ width=60% }
 
 ## Assigning Manning's n
 
@@ -210,13 +210,13 @@ Manning's n is the parameter determining the bed roughness. The model requires t
 
     
 
-**Manning N layer.**
+![Manning N layer.](img/brumadinho11-19.png){ width=90% }
 
 3.  Close the polygon by right-clicking on the end vertex and enter a Manning's n equal to 0.035:
 
     
 
-**Dialog to input ManningN.**
+![Dialog to input ManningN.](img/brumadinho11-20.png){ width=70% }
 
 4.  Click *Save Layer Edits* ![](img/button5.png){ width=0.6cm }, and then click the *Toggle Editing* button ![](img/button7.png){ width=0.6cm } to deactivate editing mode.
 
@@ -230,7 +230,7 @@ The RiverFlow2D  MT model allows defining initial volume concentrations that var
 
     
 
-**Initial Concentrations polygon.**
+![Initial Concentrations polygon.](img/brumadinho11-21.png){ width=50% }
 
 3.  An *InitialConcentrations - Feature Attributes* dialog will appear. On the *Initial Concentrations File* line click the ![](img/threedots.png){ width=0.7cm } Browse button to select the 'Deposit_Initial.txt' file from the project folder '\\ExampleProjects\\BrumadinhoRF2D\\base\\' folder and then click *OK*.
 
@@ -238,7 +238,7 @@ The RiverFlow2D  MT model allows defining initial volume concentrations that var
 
     
 
-**Initial Concentrations - Feature Attributes dialog.**
+![Initial Concentrations - Feature Attributes dialog.](img/brumadinho11-21-2.png){ width=50% }
 
 5.  Save the changes made to the layer by clicking the *Save Layer Edits* button ![](img/button5.png){ width=0.6cm }.
 
@@ -268,7 +268,7 @@ Once the layers with the input data to the model have been created, we need to e
 
     
 
-**Parameters for the Export to RiverFlow2D dialog.**
+![Parameters for the Export to RiverFlow2D dialog.](img/brumadinho11-22.png){ width=60% }
 
 7.  Click *OK*.
 
@@ -292,7 +292,7 @@ The following parameters will need to be changed as indicated:
 
     
 
-**Hydronia Data Input Program window with Control Data parameters for the tailings dam break tutorial.**
+![Hydronia Data Input Program window with Control Data parameters for the tailings dam break tutorial.](img/brumadinho11-23.png){ width=100% }
 
 3.  Click the *Save .DAT* button. Click Save again in the dialog box and click *Yes* to replace the existing file.
 
@@ -316,7 +316,7 @@ The *Mud/Tailings Flow* module needs to be configured with the tailings properti
 
     
 
-**Hydronia Data Input Program window with Mud/Tailings Flow parameters for the Brumadinho Tutorial.**
+![Hydronia Data Input Program window with Mud/Tailings Flow parameters for the Brumadinho Tutorial.](img/brumadinho11-24.png){ width=100% }
 
     ### Providing the Viscosity and Yield Stress data for Variable properties-Erosion-Deposition Model
 
@@ -338,13 +338,13 @@ The *Mud/Tailings Flow* module needs to be configured with the tailings properti
 
     
 
-**Section containing table with Boundary Conditions set for this run.**
+![Section containing table with Boundary Conditions set for this run.](img/brumadinho11-25.png){ width=80% }
 
     Upon clicking the cell, a dialog box should appear that will allow us to automatically update the existing data table in the 'inlet1.QVT' file with the additional rows needed, and setting each to 0:
 
     
 
-**Dialog for correcting the Boundary Conditions file automatically.**
+![Dialog for correcting the Boundary Conditions file automatically.](img/brumadinho11-26.png){ width=50% }
 
 7.  Click *Yes* to update the 'inlet1.QVT' file.
 
@@ -352,7 +352,7 @@ The *Mud/Tailings Flow* module needs to be configured with the tailings properti
 
     
 
-**Contents of the updated Inlet1.QVT file.**
+![Contents of the updated Inlet1.QVT file.](img/brumadinho11-26-1.png){ width=50% }
 
 ## Running the model
 
@@ -366,7 +366,7 @@ The simulation is now ready to run. Proceed as follows:
 
     
 
-**RiverFlow2D model execution window.**
+![RiverFlow2D model execution window.](img/brumadinho11-27.png){ width=80% }
 
 3.  Click Close and let the program finish writing the remaining output files.
 
@@ -378,7 +378,7 @@ Once the model has finished running we can create maps for various outputs. This
 
     
 
-**Concentrations and Properties vs Time button in RiverFlow2D Plugin toolbar.**
+![Concentrations and Properties vs Time button in RiverFlow2D Plugin toolbar.](img/brumadinho11-28.png){ width=50% }
 
     The *Concentrations and Properties vs Time Maps* window will provide maps for each *Sediment class*, labeled *Conc\_#* under the *Maps subsection*. Users can also create maps for each of the variables in the list.
 
@@ -388,13 +388,13 @@ Once the model has finished running we can create maps for various outputs. This
 
     
 
-**Concentrations and Properties vs Time Maps window.**
+![Concentrations and Properties vs Time Maps window.](img/brumadinho11-29.png){ width=80% }
 
 4.  Click the OK button to generate the maps.
 
     The *Layers* panel on the left side will have a group named *OUTPUT RESULTS* where the resultant map or maps will be placed.
 
-**Results map of Conc_1 at hour 2.**
+![Results map of Conc_1 at hour 2.](img/brumadinho11-30.png){ width=80% }
 
 Repeat these steps to create maps for each of the concentrations if desired.
 
@@ -416,7 +416,7 @@ On the QGIS *Project* menu, click *Save*, to save the project in the same direct
 
     
 
-**RF2D Animation dialog window.**
+![RF2D Animation dialog window.](img/brumadinho11-31.png){ width=30% }
 
 4.  Click on the drop-down menu to see the available outputs. They will be the same as the ones from *Concentrations and Properties vs Time Maps* plugin.
 
@@ -428,7 +428,7 @@ On the QGIS *Project* menu, click *Save*, to save the project in the same direct
 
     
 
-**RF2D Animation panel indicating the status bar and generated animation layer.**
+![RF2D Animation panel indicating the status bar and generated animation layer.](img/brumadinho11-32.png){ width=60% }
 
 7.  Click and hold to drag the newly created *ANIMATION* group in the *Layers* panel and move it above the Raster layers so that the animation will be visible.
 

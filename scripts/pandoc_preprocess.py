@@ -79,6 +79,17 @@ def neutralize_raw_figure_blocks(text: str) -> str:
         block = match.group(0)
         if re.search(r"<(?:img|picture|source)\b", block, re.I):
             return block
+        # Pandoc's markdown_output/*.md uses <span class="image placeholder"
+        # data-original-image-src="..."> as the image carrier inside
+        # <figure>. Treat that as an image reference too — otherwise the
+        # subsequent FIGURE_RE pass finds nothing and the screenshot is
+        # silently dropped, leaving a bold caption with no figure.
+        if re.search(
+            r'<span[^>]*class="[^"]*image placeholder[^"]*"',
+            block,
+            re.I,
+        ):
+            return block
         caption_match = re.search(r"<figcaption>(?P<cap>.*?)</figcaption>", block, re.S | re.I)
         if not caption_match:
             return block

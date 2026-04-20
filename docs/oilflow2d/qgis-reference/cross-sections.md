@@ -2,13 +2,14 @@
 
 The Cross Sections Tool is a specialized QGIS plugin designed to generate, visualize, and analyze cross-sectional profiles of terrain and water surfaces from RiverFlow2D model outputs. This tool allows users to create profiles along user-defined lines, visualize how cross-sections change over time, and export the data for further analysis.
 
-**Cross Sections Tool Icon for OilFlow2D**
+![Cross Sections Tool Icon for OilFlow2D](img/icon15_of2d.png){ width=10% }
 
 ## CrossSection Tab
 The CrossSection tab is the primary interface of the Cross Sections Tool for creating and visualizing cross-sectional profiles. It displays a graphical representation of the terrain and water surface profile along a user-defined line, with controls for time navigation, animation, and export.
 
 ### Tab Window
-**CrossSection Tab of the Cross Sections Tool**
+
+![CrossSection Tab of the Cross Sections Tool](img/sections_main_interface.png){ width=100% }
 
 ### Tab Controls
 | **Control** | **Type** | **Description** |
@@ -22,7 +23,7 @@ The CrossSection tab is the primary interface of the Cross Sections Tool for cre
 | Animation Speed | Spin Box | Controls the speed of the animation playback. |
 | Save As | Button | Exports the current cross-section to .PNG format. |
 | Reset View | Button | Resets the view to the default display settings. |
-| Selection | Combo Box | Chooses between "Temporary line" and "CrossSection or Profile" modes. |
+| Selection | Combo Box | Chooses between \"Temporary line\" and \"CrossSection or Profile\" modes. |
 | Plot Initial Bed Elevation | Check Box | When checked, displays the initial bed elevation alongside the current profile. |
 | Show Cursor | Check Box | Toggles cursor display on the profile graph. |
 | Link Mouse Position on Map | Check Box | Synchronizes the cursor position between the profile view and the map. |
@@ -38,7 +39,7 @@ To create and analyze a cross-section profile:
 
     -   **Temporary line (default):** Single-click to add vertices, double-click to complete the line.
 
-    -   **Existing feature:** Select "CrossSection or Profile" from the Selection dropdown and click on a line feature on the map.
+    -   **Existing feature:** Select \"CrossSection or Profile\" from the Selection dropdown and click on a line feature on the map.
 
 3.  Wait for the tool to generate the cross-section profile.
 
@@ -48,7 +49,7 @@ To create and analyze a cross-section profile:
 
 6.  Click the video button to record an animation of the cross-section changing over time.
 
-7.  Use the "Save As" button or right-click on the plot and select "Export..." to export the profile.
+7.  Use the \"Save As\" button or right-click on the plot and select \"Export\...\" to export the profile.
 
 ### Requirements
 -   Valid RiverFlow2D project file loaded in QGIS.
@@ -76,7 +77,8 @@ To create and analyze a cross-section profile:
 The Hydrograph tab displays time-series data at the selected cross-section location, showing how hydraulic parameters (e.g., water level, discharge) change over time. Available parameters vary based on the model's active module (basic hydraulics, sediment transport, solute transport, mud/tailings flow, or oil spill).
 
 ### Tab Window
-**Hydrograph Tab of the Cross Sections Tool**
+
+![Hydrograph Tab of the Cross Sections Tool](img/sections_hydrograph_tab.png){ width=100% }
 
 ### Tab Controls
 | **Control** | **Type** | **Description** |
@@ -146,7 +148,7 @@ To visualize and analyze hydrograph data:
 
 5.  Use PyQtGraph's zoom and pan capabilities to examine specific time periods.
 
-6.  Right-click on the plot and select "Export..." to export the hydrograph in various formats (PNG, SVG, CSV, etc.).
+6.  Right-click on the plot and select \"Export\...\" to export the hydrograph in various formats (PNG, SVG, CSV, etc.).
 
 ### Requirements
 -   A valid cross-section profile created using the CrossSection tab.
@@ -176,7 +178,8 @@ To visualize and analyze hydrograph data:
 The Table tab presents the cross-section data in tabular format, allowing for more precise examination of values. The table displays hydraulic parameters at each station along the cross-section, including bed elevation, water depth, water surface elevation, velocity, Froude number, and discharge.
 
 ### Tab Window
-**Table Tab of the Cross Sections Tool**
+
+![Table Tab of the Cross Sections Tool](img/sections_table_tab.png){ width=90% }
 
 ### Tab Controls
 | **Control** | **Type** | **Description** |
@@ -184,7 +187,7 @@ The Table tab presents the cross-section data in tabular format, allowing for mo
 | Scroll Area | Scroll Area | Contains a table view displaying all cross-section data points with their corresponding values. |
 | Data Table | Table | Displays hydraulic parameters at each station along the cross-section, including: |
 | Copy to clipboard | Button | Allows users to copy the entire table of values to the system clipboard. This enables easy transfer of data to external applications such as spreadsheet software (e.g., Microsoft Excel) or text editors for further analysis or reporting. Simply click the button and then paste the data into the desired application. |
-| Navigation Controls | Arrow keys | The keyboard arrow keys (ƒ+', ƒ+", ƒ+?, ƒ+') can also be used to navigate through the data when there are more values than can be displayed at once. |
+| Navigation Controls | Arrow keys | The keyboard arrow keys (ƒ+', ƒ+\", ƒ+?, ƒ+') can also be used to navigate through the data when there are more values than can be displayed at once. |
 
 ### Workflow
 To view and export tabular cross-section data:
@@ -197,7 +200,7 @@ To view and export tabular cross-section data:
 
 4.  Use keyboard arrow keys or the scroll bar to navigate through the data.
 
-5.  Click the "Copy to clipboard" button to copy all table values.
+5.  Click the \"Copy to clipboard\" button to copy all table values.
 
 6.  Paste the data into external applications like Excel for further analysis.
 
@@ -232,10 +235,10 @@ To view and export tabular cross-section data:
 
 -   **Vertex density**: When creating temporary lines, use enough vertices to capture changes in topography, but avoid too many points that may slow down performance.
 
--   **Data export**: Use the Table tab and "Copy to clipboard" function to export precise numerical data for further analysis in spreadsheets.
+-   **Data export**: Use the Table tab and \"Copy to clipboard\" function to export precise numerical data for further analysis in spreadsheets.
 
 -   **Video recording**: Set the appropriate animation speed before recording videos. Slower speeds are better for long simulations, while faster speeds are suitable for brief events.
 
--   **Cursor linking**: Enable "Link Mouse Position on Map" to synchronize cursor position between the profile view and the map, making it easier to identify specific locations.
+-   **Cursor linking**: Enable \"Link Mouse Position on Map\" to synchronize cursor position between the profile view and the map, making it easier to identify specific locations.
 
--   **Axis scaling**: Use "Same Axis Scale" when you need to maintain correct geometric proportions in the profile. Disable it to maximize use of the display space.
+-   **Axis scaling**: Use \"Same Axis Scale\" when you need to maintain correct geometric proportions in the profile. Disable it to maximize use of the display space.

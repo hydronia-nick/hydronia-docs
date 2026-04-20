@@ -14,21 +14,21 @@ This section provides a description of the new elements in the QGIS user interfa
 
 The figures below show the three new elements.
 
-**Drop-down list for displaying and selecting project scenarios**
+![Drop-down list for displaying and selecting project scenarios](img/multiscenarioproject_image1.png){ width=70% }
 
-**Tool to create a new scenario within the project**
+![Tool to create a new scenario within the project](img/multiscenarioproject_image2.png){ width=50% }
 
-**Tool to convert existing project to multi-scenario**
+![Tool to convert existing project to multi-scenario](img/multiscenarioproject_image3.png){ width=70% }
 
 ## Creating a new RiverFlow2D  multiple-scenario project using QGIS
 
 -   To create a new project into a multi-scenario project, access the first button on the toolbar and select the *New* *RiverFlow2D  Project* menu option as shown in the figure below:
 
-**Menu to create a new project**
+![Menu to create a new project](img/multiscenarioproject_image4.png){ width=50% }
 
 The dialog window a field is presented to indicate the name of the initial scenario (highlighted in a red box in the figure below), by default this field is labeled *base*. The drop-down list for displaying scenario names is limited in length, we recommend that you assign short names to scenarios for ease of viewing and to assign names without spaces.
 
-**Dialog window to create a new RF2D project**
+![Dialog window to create a new RF2D project](img/multiscenarioproject_image5.png){ width=70% }
 
 When creating a multi-scenario project, within the folder selected for the project a subfolder is created with the name given to the initial scenario, (in this example the folder name *base*)and within that sub-folder another subfolder is created with the name *shape* where QGIS creates the templates of the layers used by the model for that scenario. Each other scenario will have its own *shape* subfolder that contain the layers for that particular scenario.
 
@@ -40,13 +40,13 @@ Once we have a project created with the new Multi-scenario tool, we can start to
 
     
 
-**Menu for creating a new scenario in an RF2D project**
+![Menu for creating a new scenario in an RF2D project](img/multiscenarioproject_image2.png){ width=50% }
 
 -   A window will be presented, input the scenario name keeping in mind to use short names without spaces.
 
     
 
-**Window to create a new scenario.**
+![Window to create a new scenario.](img/multiscenarioproject_image6.png){ width=70% }
 
     The new scenario is based on the layers with the input data of the current scenario. The plugin will proceed to create a subfolder with the name of the new scenario within the project folder. In this folder the files corresponding to the layers of the RiverFlow2D project will be copied with the input geospatial information it requires. Please note that the model layers will not copy post-processing products such as maps or animations. The plugin then updates the paths of the sources of the layers to the files in the new folder and finally the drop-down list in the RF2D toolbar is updated with the name of the new scenario.
 
@@ -56,13 +56,13 @@ Once we have a project created with the new Multi-scenario tool, we can start to
 
     
 
-**Switching scenarios**
+![Switching scenarios](img/multiscenarioproject_image7.png){ width=50% }
 
 -   Then a Dialog window will ask for confirmation to switch scenarios, as shown in the figure:
 
     
 
-**Confirmation window for switching the scenario.**
+![Confirmation window for switching the scenario.](img/multiscenarioproject_image8.png){ width=50% }
 
     When you switch scenarios, the state of the layers in the current scenario is automatically saved.
 
@@ -72,7 +72,7 @@ To safely delete scenarios, the tool also contains a menu option to delete them 
 
 -   Use the button below the New RiverFlow2D  Project dropdown, and select Delete Scenario:
 
-**Menu button to delete a scenario.**
+![Menu button to delete a scenario.](img/multiscenarioproject_image10.png){ width=60% }
 
 *\*IMPORTANT\* Please note that deleting a scenario folder manually from the project directory will cause the entire project to be unusable. This tool must be used in order to avoid this.*
 
@@ -84,13 +84,13 @@ The RiverFlow2D  Multi Scenario tool has a feature that allows you to import an 
 
     
 
-**Menu to import a project to multi-scenario mode**
+![Menu to import a project to multi-scenario mode](img/multiscenarioproject_image3.png){ width=70% }
 
 -   When you start the import tool a window is displayed as illustrated in the figure below, you must specify the project file. DAT to import.
 
     
 
-**Import tool window**
+![Import tool window](img/multiscenarioproject_image9.png){ width=70% }
 
 -   Once you click \[OK\], a subfolder with the name of the file is created inside the folder where the original project is located.
 

@@ -2,7 +2,7 @@
 
 This tutorial illustrates how to incorporate a levee to an existing RiverFlow2D  project using the Weirs Component in the QGIS  interface. The problem consists in modeling a lateral weir along the right margin of a river, as can be seen in the following figure:
 
-**The weir polyline representing the levee is shown in red.**
+![The weir polyline representing the levee is shown in red.](img/5-1.png){ width=60% }
 
 The procedure to incorporate the weir in a RiverFlow2D  simulation involves the following steps:
 
@@ -34,7 +34,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
     
 
-**Example of the tutorial loaded in QGIS.**
+![Example of the tutorial loaded in QGIS.](img/5-2.png){ width=80% }
 
 ## Create a Weirs layer and the weir polyline
 
@@ -46,7 +46,7 @@ The weir location can be drawn on the *Weirs* layer or it can be imported from a
 
 -   The elevation of the weir crest separated by space as shown in Figure [4.3](#5-3):
 
-**Text file with weir alignment data.**
+![Text file with weir alignment data.](img/5-3.png){ width=50% }
 
 Adding the *Weirs* layer involves the following steps:
 
@@ -60,7 +60,7 @@ Adding the *Weirs* layer involves the following steps:
 
     
 
-**Plugin to add a new template layer.**
+![Plugin to add a new template layer.](img/5-4.png){ width=50% }
 
 3.  Edit the *Weirs* layer: In the layer panel, select the *Weirs* layer and in the digitalization toolbar click on the *Toggle Editing* button
 
@@ -100,13 +100,13 @@ Adding the *Weirs* layer involves the following steps:
 
     
 
-**Window to input Weir parameters.**
+![Window to input Weir parameters.](img/5-5.png){ width=60% }
 
     In the second tab 'Weir crest elevation for vertex' the data contained in the file *LeveeRB_Breakline.txt* is displayed, as shown in the following Figure:
 
     
 
-**Window for weir geometry data.**
+![Window for weir geometry data.](img/5-6.png){ width=60% }
 
 7.  Then click on the \[OK\] button.
 
@@ -126,7 +126,7 @@ Adding the *Weirs* layer involves the following steps:
 
     
 
-**Weir alignment loaded from the file.**
+![Weir alignment loaded from the file.](img/5-7.png){ width=60% }
 
 ## Generate the mesh
 
@@ -138,7 +138,7 @@ The mesh is generated with the *Generate TriMesh* plugin.
 
 result should look similar to the image on Figure [4.8](#5-8).
 
-**The mesh generated.**
+![The mesh generated.](img/5-8.png){ width=60% }
 
 ## Exporting files to RiverFlow2D
 
@@ -156,13 +156,13 @@ Now that you have generated the mesh and you have the other layers ready with th
 
     
 
-**Plugin window to export the files to RiverFlow2D.**
+![Plugin window to export the files to RiverFlow2D.](img/5-9.png){ width=60% }
 
 3.  After inputting the data, click on the OK button and the export process will begin. Once it is finished, Hydronia Data Input Program  will be loaded as shown in Figure [4.10](#5-10)
 
     
 
-**Control data panel.**
+![Control data panel.](img/5-10.png){ width=90% }
 
 ## Running the model
 
@@ -172,7 +172,7 @@ Make sure that the Weirs Component appears selected in the Control Data panel.
 
     
 
-**Weirs component data panel.**
+![Weirs component data panel.](img/5-11.png){ width=90% }
 
 2.  Leave all other parameters at their default values.
 
@@ -180,7 +180,7 @@ Make sure that the Weirs Component appears selected in the Control Data panel.
 
     
 
-**RiverFlow2D output graphics.**
+![RiverFlow2D output graphics.](img/5-12.png){ width=75% }
 
 ## Review the output files
 
@@ -200,6 +200,6 @@ RiverFlow2D  creates an output file with the name of the project and extension '
 
 The '.WEIRE' file contains the following:
 
-**Extract of the output file of the Weir1.**
+![Extract of the output file of the Weir1.](img/5-13.png){ width=90% }
 
 This concludes the *Simulating Levees using Weirs* Tutorial.

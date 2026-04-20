@@ -3,13 +3,13 @@
 This chapter describes the export options available for the active model and how output files are configured.
 
 ## Export Hydro-BID Flood
-**Export Tool Icon for HydroBID Flood**
+![Export Tool Icon for HydroBID Flood](img/icon2_hb.png){ width=10% }
 
 ### Dialog Window
 
 The following dialog is the main interface for configuring and initiating the export process for the HydroBID Flood model. It gathers information about input layers and specific components to be included in the export.
 
-**Export Tool Dialog for HydroBID Flood**
+![Export Tool Dialog for HydroBID Flood](img/export_main_dialog_hb.png){ width=80% }
 
 ### Dialog Controls
 The following table describes the controls available in the Export dialog.
@@ -19,7 +19,7 @@ The following table describes the controls available in the Export dialog.
 | Project Directory | *Text Field* | Displays the full path to the current scenario's output directory within the project. (Read-only) |
 | Scenario Name | *Text Field* | Displays the name of the current scenario being exported. (Read-only) |
 | DEM (Single Raster) | *Dropdown* | Select the single raster layer representing the bed topography/elevation. Enabled only if neither 'Using TriMesh Elevation' nor 'Get elevations from Multiple DEM Boundaries' is active. Populated with available raster layers. |
-| Using TriMesh Elevation (not resampling elevations) | *Checkbox* | Enable to use elevation data directly from the 'TriMesh' layer vertices/nodes instead of resampling from a DEM raster. Disables DEM selection options. Automatically checked if mesh was generated using "Generate TriMesh with Elevation" tool. |
+| Using TriMesh Elevation (not resampling elevations) | *Checkbox* | Enable to use elevation data directly from the 'TriMesh' layer vertices/nodes instead of resampling from a DEM raster. Disables DEM selection options. Automatically checked if mesh was generated using \"Generate TriMesh with Elevation\" tool. |
 | Get elevations from Multiple DEM Boundaries | *Checkbox* | Enable to use elevation data based on boundaries defined in a 'MultipleDemBoundaries' layer. Disables the 'DEM (Single Raster)' dropdown. Requires the 'MultipleDemBoundaries' layer to be present. |
 | Using Manning N Raster Layer | *Checkbox* | Enable to use Manning's n values sampled from a selected raster layer instead of a vector layer. Enables the 'Manning N Raster Layer' dropdown. |
 | Manning N Raster Layer | *Dropdown* | Select the raster layer containing Manning's n values. Enabled only when 'Using Manning N Raster Layer' is checked. Populated with available raster layers. |
@@ -33,7 +33,7 @@ The following table describes the controls available in the Export dialog.
 ### Workflow
 The typical workflow for using the Export Files to RiverFlow2D tool is as follows:
 
-1.  Ensure all required input layers (e.g., 'TriMesh', 'Manning N'/'Nr'/'Nz', optional layers like 'Boundary Conditions', 'Weirs', 'Bridges', DEM rasters etc.) are loaded into the QGIS project and meet the requirements (See Section 2.1.4). Make sure the 'Domain Outline' layer, if present, is not in editing mode.
+1.  Ensure all required input layers (e.g., 'TriMesh', 'Manning N'/'Nr'/'Nz', optional layers like 'Boundary Conditions', 'Weirs', 'Bridges', DEM rasters etc.) are loaded into the QGIS project and meet the requirements (See Section [2.1.4](#requirements)). Make sure the 'Domain Outline' layer, if present, is not in editing mode.
 
 2.  Activate the tool from the HydroBID Flood plugin menu or toolbar. This will open the Export Files to HydroBID Flood dialog (Figure 2.2).
 

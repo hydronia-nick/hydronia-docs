@@ -14,7 +14,7 @@ In this example we will use elevation data available in a tab delimited X Y Z fi
 
 The X Y Z file can be formatted as comma, space or tab delimited data, where the first two columns correspond to point X and Y coordinates and the third column is the point elevation Z as shown in the following figure.
 
-**File containing terrain elevation points.**
+![File containing terrain elevation points.](img/2-2_nick.png){ width=35% }
 
 First, the X Y Z file is loaded to create an event layer. This can be accomplished as follows:
 
@@ -40,29 +40,29 @@ First, the X Y Z file is loaded to create an event layer. This can be accomplish
 
     
 
-**Dialog to create a layer from delimited data text file.**
+![Dialog to create a layer from delimited data text file.](img/2-6_nick.png){ width=90% }
 
 7.  To go to the area where the points are located, you will have to right-click on the label of the created layer and select the option Zoom to the layer.
 
     
 
-**How to zoom a layer.**
+![How to zoom a layer.](img/2-7.png){ width=50% }
 
 8.  The points should appear in the project window:
 
     
 
-**Layer of points created from delimited data file.**
+![Layer of points created from delimited data file.](img/2-8ft.png){ width=100% }
 
 9.  The raster is created interpolating from the data in the point layer. For that we will use the *Processing Toolbox* to load the panel that will allow us to search for the *TIN interpolation* command.
 
     
 
-**Opening the Processing Toolbox.**
+![Opening the Processing Toolbox.](img/2-9.png){ width=60% }
 
     
 
-**Loading to the QGIS TIN interpolation tool.**
+![Loading to the QGIS TIN interpolation tool.](img/2-9-panel.png){ width=60% }
 
 10. In this window select the layer to be interpolated to create the raster, in this example we use the point layer that we just created named *HohDTM_points_METRIC*. Change it by selecting the dropdown for *Vector layer*.
 
@@ -80,23 +80,23 @@ First, the X Y Z file is loaded to create an event layer. This can be accomplish
 
     
 
-**Interpolation plugin window.**
+![Interpolation plugin window.](img/2-10_nick.png){ width=100% }
 
 16. Click OK to start the interpolation process.
 
 Once the process is completed, the raster resulting from the interpolation will be displayed on the screen, by default it is rendered in gray gradient as shown in Figure [19.8](#12).
 
-**Digital elevation model in raster format created by interpolation.**
+![Digital elevation model in raster format created by interpolation.](img/2-11a.png){ width=65% }
 
 ::: shaded
 Note: Right-clicking on the label of the created layer and selecting *Properties* allows you to change the rendering style for a more informative color palette.
 :::
 
-**Window to change the render style of a raster layer.**
+![Window to change the render style of a raster layer.](img/2-12.png){ width=65% }
 
 And now the raster layer is displayed with the new color palette selected:
 
-**Digital elevation model with color render.**
+![Digital elevation model with color render.](img/2-13.png){ width=80% }
 
 ::: shaded
 It is convenient to move the raster layer created to the end of the list of layers, thus it does not interfere with the display of other layers.

@@ -380,7 +380,19 @@ def _record_image(
     folder: str,
     src: str,
 ) -> str:
-    dest_name = Path(src).name.lower()
+    # Tutorial source has images nested in sub-folders (e.g.
+    # images/multiscenarioproject/image4.png and
+    # images/SimulatingPollutants/image4.png) where a bare filename
+    # collides. Flatten the nested path into the destination name so the
+    # per-product img/ dir keeps every screenshot unique.
+    src_path = Path(src)
+    parts = [p for p in src_path.parts if p not in (".", "..")]
+    if len(parts) > 1:
+        # Join the subdir + filename with underscores, preserve extension.
+        stem = "_".join(parts[:-1] + [src_path.stem])
+        dest_name = f"{stem}{src_path.suffix}".lower()
+    else:
+        dest_name = src_path.name.lower()
     source_path = _resolve_image_source(folder, src, image_roots)
     existing = image_sources.get(dest_name)
     if existing is not None and existing != source_path:
@@ -589,6 +601,22 @@ def remove_stale_markdown_files(out_dir: Path, keep: set[str]) -> None:
 
 
 def copy_referenced_images(image_sources: dict[str, Path], img_dir: Path) -> int:
+    """Copy source images into the destination ``img/`` directory.
+
+    PNG copies are routed through Pillow so we can strip DPI metadata.
+    Some tutorial screenshots were saved with DPI ≈ 0.99 (looks like a
+    pt-vs-px confusion in the original toolchain); XeLaTeX's graphics
+    package reads that DPI to compute the physical size of the image for
+    aspect-ratio math and throws ``Package graphics Error: Division by 0``
+    when it evaluates absurdly close to zero. Pillow lets us strip the
+    pHYs chunk entirely so the graphics driver falls back to a sane
+    default (72 DPI).
+    """
+    try:
+        from PIL import Image  # local import so non-PNG users don't need Pillow
+    except Exception:  # pragma: no cover - Pillow is a hard dep today
+        Image = None  # type: ignore[assignment]
+
     img_dir.mkdir(parents=True, exist_ok=True)
     count = 0
     missing: list[Path] = []
@@ -596,7 +624,59 @@ def copy_referenced_images(image_sources: dict[str, Path], img_dir: Path) -> int
         if not source_path.is_file():
             missing.append(source_path)
             continue
-        shutil.copy2(source_path, img_dir / dest_name)
+        dest_path = img_dir / dest_name
+        ext = source_path.suffix.lower()
+        if Image is not None and ext == ".png":
+            try:
+                with Image.open(source_path) as im:
+                    im.load()
+                    # Downsample oversized screenshots so the generated PDF
+                    # stays well under GitHub Pages' 100 MB per-file cap.
+                    # Tutorial sources ship 2200x1750+ PNGs; ~1600 px on
+                    # the long edge is plenty for a PDF rendered at 96 DPI.
+                    MAX_EDGE = 1600
+                    w, h = im.size
+                    longest = max(w, h)
+                    if longest > MAX_EDGE:
+                        ratio = MAX_EDGE / longest
+                        im = im.resize(
+                            (round(w * ratio), round(h * ratio)),
+                            Image.LANCZOS,
+                        )
+                    # UI screenshots (the bulk of tutorial content) are
+                    # flat-colour diagrams that compress ~4x smaller as
+                    # 256-colour palette PNG than as RGB PNG. Photographic
+                    # imagery keeps full colour depth. Heuristic: if the
+                    # image has <= 256 unique colours, palettise. For
+                    # RGBA/alpha images we stay 24-bit to preserve the
+                    # channel.
+                    has_alpha = im.mode in ("RGBA", "LA") or (
+                        im.mode == "P" and "transparency" in im.info
+                    )
+                    if not has_alpha:
+                        if im.mode != "RGB":
+                            im = im.convert("RGB")
+                        try:
+                            # getcolors returns None if unique colours >
+                            # maxcolors. 256 is the palette-PNG ceiling.
+                            if im.getcolors(maxcolors=256) is not None:
+                                im = im.convert("P", palette=Image.ADAPTIVE, colors=256)
+                            else:
+                                # Many colours (photo, gradient, rendered
+                                # visualisation) — quantise to 256 anyway;
+                                # screenshot-heavy docs tolerate the loss.
+                                im = im.quantize(colors=256, method=Image.FASTOCTREE)
+                        except Exception:
+                            pass  # keep original mode on failure
+                    # Re-save WITHOUT the info dict (drops pHYs DPI chunk)
+                    # and with PNG-level optimization enabled.
+                    im.save(dest_path, format="PNG", optimize=True)
+            except Exception:
+                # Pillow failed — fall back to byte-level copy so we never
+                # silently drop an image.
+                shutil.copy2(source_path, dest_path)
+        else:
+            shutil.copy2(source_path, dest_path)
         count += 1
     if missing:
         missing_text = "\n".join(f"  {path}" for path in missing)

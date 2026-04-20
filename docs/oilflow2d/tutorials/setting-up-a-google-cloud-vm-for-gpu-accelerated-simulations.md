@@ -80,7 +80,7 @@ This is the most critical step, where you define the computational resources for
 
     -   **Memory**: Drag the slider or type **32** into the GB box. Ensure the **Extend Memory** checkbox is active.
 
-**Configuring the machine with a custom N1 type, 4 vCPUs, 32 GB of memory, and one NVIDIA V100 GPU.**
+![Configuring the machine with a custom N1 type, 4 vCPUs, 32 GB of memory, and one NVIDIA V100 GPU.](img/gcp_gcp_machine_config.png){ width=90% }
 
 ## Configuring the Boot Disk and Firewall
 
@@ -100,7 +100,7 @@ This is the most critical step, where you define the computational resources for
 
     
 
-**Configuring the Windows Server 2019 boot disk.**
+![Configuring the Windows Server 2019 boot disk.](img/gcp_gcp_04_boot_disk.png){ width=70% }
 
 4.  In the **Firewall** section of the main creation page, check both **Allow HTTP traffic** and **Allow HTTPS traffic**. RDP access is enabled by default for Windows instances.
 
@@ -114,7 +114,7 @@ This is the most critical step, where you define the computational resources for
 
     
 
-**VM creation error due to GPU quota.**
+![VM creation error due to GPU quota.](img/gcp_gcp_quota_error.png){ width=70% }
 
 4.  Click the **Request Quota** button directly within the error dialog.
 
@@ -136,11 +136,11 @@ This is the most critical step, where you define the computational resources for
 
     
 
-**Requesting a quota increase.**
+![Requesting a quota increase.](img/gcp_gcp_quota_1.png){ width=60% }
 
     
 
-**Providing contact details for the quota request.**
+![Providing contact details for the quota request.](img/gcp_gcp_quota_2.png){ width=60% }
 
 6.  The quota request will be sent to Google for approval. This can take anywhere from a few minutes to a few business days. You will receive an email once the request has been approved. **You must wait for the quota approval before you can successfully create the VM.** Once approved, return to the **VM instances** page in the Google Cloud Console.
 
@@ -148,7 +148,7 @@ This is the most critical step, where you define the computational resources for
 
     
 
-**Using the Edit and retry option on a failed VM instance.**
+![Using the Edit and retry option on a failed VM instance.](img/gcp_gcp_edit_retry.png){ width=90% }
 
 8.  This will take you back to the instance creation page with all of your previous settings pre-filled. Scroll to the bottom and click **Create**. The VM should now be provisioned successfully.
 

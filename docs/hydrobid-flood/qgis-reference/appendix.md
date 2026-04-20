@@ -3,76 +3,90 @@
 ## Layer Attributes Reference
 The following tables detail the attribute fields for the default layers created by the New HydroBID Flood Project tool and the New Template Layer Tool.
 
-##### **MeshDensityLine**
+##### **MeshDensityLine** {#meshdensityline .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CellSize | Real | Target mesh element size along this line. |
 
-##### **MeshDensityPolygon**
+##### **MeshDensityPolygon** {#meshdensitypolygon .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CellSize | Real | Target mesh element size within this area. |
 
-##### **MeshBreakLine**
+##### **MeshBreakLine** {#meshbreakline .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CellSize | Real | Target mesh element size along this enforced breakline. |
 
-##### **MultipleDemBoundaries**
+##### **MultipleDemBoundaries** {#multipledemboundaries .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** dem_layer | String | Identifier or path for the DEM layer associated with this boundary. |
 
-##### **DomainOutline**
+##### **DomainOutline** {#domainoutline .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CellSize | Real | Specifies the default cell size for mesh generation within the domain. |
 
-##### **BoundaryConditions**
+##### **BoundaryConditions** {#boundaryconditions .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** BCID | String | User-defined identifier for the boundary segment. |
 | BCType | Integer | Type code defining the boundary condition (e.g., WSE, Discharge, Rating Curve). |  |  |
 | BCFileName | String | Path/Name of the associated data file (e.g., hydrograph, rating curve). |  |  |
 
-##### **Manning N**
+##### **Manning N** {#manning-n .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** ManningN | Real | Isotropic Manning's roughness coefficient for this area. |
 
-##### **Manning_Nz**
+##### **Manning_Nz** {#manning_nz .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** MANNNFILE | String | Path to the file defining anisotropic Manning's values (n, nx, ny, angle). |
 
-##### **Initial_WSE**
+##### **Initial_WSE** {#initial_wse .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** InitialWSE | Real | Initial water surface elevation value for this zone. |
 
-##### **MaximumErosionDepth**
+##### **MaximumErosionDepth** {#maximumerosiondepth .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** MAXERODEPT | Real | Maximum allowable erosion depth in this zone. |
 
-##### **Infiltration**
+##### **Infiltration** {#infiltration .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** INFILFILE | String | Path to the file defining infiltration parameters for this zone. |
 
-##### **RainEvap**
+##### **RainEvap** {#rainevap .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** RAINEVFILE | String | Path to the file defining rainfall/evaporation rates for this zone. |
 
-##### **Wind**
+##### **Wind** {#wind .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CD | Real | Wind drag coefficient. |
 | AIRDENSITY | Real | Air density. |  |  |
 | WINDFILE | String | Path to the file containing wind speed and direction time series. |  |  |
 
-##### **Bridges**
+##### **Bridges** {#bridges .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** BRIDGEID | String | Unique identifier for the bridge. |
@@ -81,7 +95,8 @@ The following tables detail the attribute fields for the default layers created 
 | ZUPPER | Real | Elevation of the bridge deck soffit (underside). |  |  |
 | DECK | Real | Thickness of the bridge deck. |  |  |
 
-##### **Gates**
+##### **Gates** {#gates .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** GATEID | String | Unique identifier for the gate. |
@@ -91,7 +106,8 @@ The following tables detail the attribute fields for the default layers created 
 | GHEIGHT | Real | Height of the gate opening when fully open. |  |  |
 | GATECD | Real | Discharge coefficient for the gate. |  |  |
 
-##### **Culverts**
+##### **Culverts** {#culverts .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CULVERTID | String | Unique identifier for the culvert. |
@@ -111,7 +127,8 @@ The following tables detail the attribute fields for the default layers created 
 | INVERT_Z1 | Real | Invert elevation at the upstream end. |  |  |
 | INVERT_Z2 | Real | Invert elevation at the downstream end. |  |  |
 
-##### **Weirs**
+##### **Weirs** {#weirs .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** WEIR_ID | String | Unique identifier for the weir. |
@@ -119,7 +136,8 @@ The following tables detail the attribute fields for the default layers created 
 | WCRESTELEV | String | Path to the file defining weir crest elevation profile or a constant value. |  |  |
 | LELEM | Real | Number of elements spanned by the weir representation. |  |  |
 
-##### **DamBreach**
+##### **DamBreach** {#dambreach .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** DAMID | String | Unique identifier for the dam/breach segment. |
@@ -143,24 +161,28 @@ The following tables detail the attribute fields for the default layers created 
 | uSlope | Real | Upstream slope of the dam. |  |  |
 | dSlope | Real | Downstream slope of the dam. |  |  |
 
-##### **Sources_Sinks**
+##### **Sources_Sinks** {#sources_sinks .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** SOURCEID | String | Unique identifier for the source/sink. |
 | SOURCETYPE | Integer | Type: 1=Discharge vs Time, 2=Rating Curve (Depth vs Q). |  |  |
 | FILENAME | String | Path to the associated data file (hydrograph or rating curve). |  |  |
 
-##### **InitialConcentrations**
+##### **InitialConcentrations** {#initialconcentrations .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CONCENTFIL | String | Path to file defining initial concentration values for this zone. |
 
-##### **InitialConcentrationPollutants**
+##### **InitialConcentrationPollutants** {#initialconcentrationpollutants .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** POLLUTFILE | String | Path to file defining initial pollutant concentration values for this zone. |
 
-##### **Internal_Rating_Table**
+##### **Internal_Rating_Table** {#internal_rating_table .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** IRT_ID | String | Unique identifier for the internal rating table location. |
@@ -168,7 +190,8 @@ The following tables detail the attribute fields for the default layers created 
 | IRTFileName | String | Path to the file containing the stage-discharge data. |  |  |
 | CellSize | Real | Cell size parameter related to the internal boundary representation. |  |  |
 
-##### **Piers**
+##### **Piers** {#piers .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** PIERID | String | Unique identifier for the pier. |
@@ -186,7 +209,8 @@ The following tables detail the attribute fields for the default layers created 
 | VC | Real | Critical velocity for initiation of motion. |  |  |
 | CD | Real | Drag coefficient for the pier. |  |  |
 
-##### **Abutments**
+##### **Abutments** {#abutments .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** ABUTID | String | Unique identifier for the abutment. |
@@ -195,47 +219,55 @@ The following tables detail the attribute fields for the default layers created 
 | D50 | Real | Median grain size of bed material. |  |  |
 | SW | Real | Specific weight of water. |  |  |
 
-##### **ParticleTransport**
+##### **ParticleTransport** {#particletransport .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** PARTICLEID | String | Unique identifier for the particle source/site. |
 | FILENAME | String | Path to file defining particle release properties (e.g., count, timing, characteristics). |  |  |
 
-##### **InitialBedFractions**
+##### **InitialBedFractions** {#initialbedfractions .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CONCENTFIL | String | Path to file defining initial bed sediment fraction values for this zone. |
 
-##### **Channels1D**
+##### **Channels1D** {#channels1d .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CHANID | String | Unique identifier for the 1D channel reach. |
 | FILENAME | String | Path to file defining 1D channel geometry (e.g., cross-sections) and properties. |  |  |
 
-##### **CrossSections**
+##### **CrossSections** {#crosssections .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** XSECID | String | Unique identifier for the cross-section line. |
 | ND_CS | Integer | Number of discretization points along the cross-section for output. |  |  |
 
-##### **Profiles**
+##### **Profiles** {#profiles .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** PROFILEID | String | Unique identifier for the profile line. |
 | ND_PR | Integer | Number of discretization points along the profile line for output. |  |  |
 
-##### **ObservationPoints**
+##### **ObservationPoints** {#observationpoints .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** ObsID | String | Unique identifier for the observation point. |
 
-##### **InitialConcentrationPollutants**
+##### **InitialConcentrationPollutants** {#initialconcentrationpollutants-1 .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** POLLUTID | String | Unique identifier for the pollutant concentration zone. |
 | POLLUTFILE | String | Path to file defining initial pollutant concentration values for this zone. |  |  |
 
-##### **ParticleTransport**
+##### **ParticleTransport** {#particletransport-1 .unnumbered}
+
 | **Field Name** | **Type** | **Description** |
 | --- | --- | --- |
 | PARTID | String | Unique identifier for the particle source/site. |
@@ -252,7 +284,8 @@ The following tables detail the attribute fields for the default layers created 
 | Density | Real | Density of the particles. |
 | Diameter | Real | Diameter of the particles. |
 
-##### **Channels1D**
+##### **Channels1D** {#channels1d-1 .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CHANID | String | Unique identifier for the 1D channel reach. |
@@ -261,7 +294,8 @@ The following tables detail the attribute fields for the default layers created 
 | NNodes | Integer | Number of nodes defining the channel centerline. |  |  |
 | Roughness | Real | Default Manning's roughness for the channel. |  |  |
 
-##### **Landslides**
+##### **Landslides** {#landslides .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** LANDSLID | String | Unique identifier for the landslide source point. |
@@ -273,5 +307,6 @@ The following tables detail the attribute fields for the default layers created 
 | SS | Real | Specific gravity of the landslide solids. |  |  |
 | D50 | Real | Median grain size of the landslide material. |  |  |
 
-##### **Hazard Event Editor File (HEEF)**
-The HEEF functionality is managed through a dedicated dialog within the plugin (accessed via the HEEF Database tools). It allows users to define and manage different types of hazard events (e.g., Rainfall, Levee Breach, Dam Break) by specifying parameters and linking to relevant data files. It does not create a distinct GIS layer named "HEEF" within the project structure with standard attributes. Instead, it facilitates the configuration and application of these events within the simulation setup. Consult the HEEF dialog interface for specific event parameters.
+##### **Hazard Event Editor File (HEEF)** {#hazard-event-editor-file-heef .unnumbered}
+
+The HEEF functionality is managed through a dedicated dialog within the plugin (accessed via the HEEF Database tools). It allows users to define and manage different types of hazard events (e.g., Rainfall, Levee Breach, Dam Break) by specifying parameters and linking to relevant data files. It does not create a distinct GIS layer named \"HEEF\" within the project structure with standard attributes. Instead, it facilitates the configuration and application of these events within the simulation setup. Consult the HEEF dialog interface for specific event parameters.

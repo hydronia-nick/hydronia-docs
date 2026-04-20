@@ -22,7 +22,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
 This project comes with preconfigured layers: a domain outline with cells of 100m size, a the digital elevation model DEM of the river bed in raster format, the layer with the boundary conditions where inflow is located in the upper right and outflow in the lower left. The boundary conditions are a hydrograph with a peak discharge of 220000 $ft^3/s$ and outflow condition is set to Uniform Flow Condition. When you open the project you will have a project image loaded in QGIS as shown in Figure 10.1.
 
-**Project screen loaded in QGIS.**
+![Project screen loaded in QGIS.](img/st-1.png){ width=90% }
 
 ## Exporting files to RiverFlow2D 
 
@@ -40,7 +40,7 @@ The project is already set up within QGIS, so we can export the files to RiverFl
 
     
 
-**Plugin window to export the files to RiverFlow2D.**
+![Plugin window to export the files to RiverFlow2D.](img/st-2.png){ width=60% }
 
 4.  After entering all the required information, click \[OK\] to begin the export process.
 
@@ -50,7 +50,7 @@ Once the export process completes, RiverFlow2D  will automatically load the proj
 
 After exporting the files, RiverFlow2D  loads the project file 'base.DAT' and displays the *Control Data* panel as shown in Figure 10.3
 
-**Control data panel.**
+![Control data panel.](img/st-3.png){ width=90% }
 
 Note that the sediment transport module is not selected by default. The Hydronia Data Input Program  should be configured as follows:
 
@@ -68,7 +68,7 @@ Note that the sediment transport module is not selected by default. The Hydronia
 
     
 
-**RiverFlow2D Sediment Transport Module.**
+![RiverFlow2D Sediment Transport Module.](img/st-4.png){ width=90% }
 
     Leave all other parameters at their default values.
 
@@ -80,7 +80,7 @@ Note that the sediment transport module is not selected by default. The Hydronia
 
     
 
-**Message indicating that you will need to add a column for each concentration that is configured in the Sediment Transport module.**
+![Message indicating that you will need to add a column for each concentration that is configured in the Sediment Transport module.](img/st-5.png){ width=60% }
 
 10. In the section displaying the contents of the 'Inflow_1.QVT' file, scroll to the right and add the concentrations 0.01 to each row in the *Conc.1* column.
 
@@ -92,7 +92,7 @@ Note that the sediment transport module is not selected by default. The Hydronia
 
 The window presented while running the model shows: simulation time, volume conservation error, total discharge of the liquid flow in and out and in this case also shows the sediment load at the inlet and outlet as well as other parameters as the execution progresses (Figure [10.6](#9-9)).
 
-**RiverFlow2D output graphics.**
+![RiverFlow2D output graphics.](img/st-6.png){ width=80% }
 
 ## Check the output files
 
@@ -118,6 +118,6 @@ The format for these files is as follows: The first line indicates the number of
 
 6.  Click *OK* to generate the map.
 
-**Map of suspended sediment concentration for the last time step.**
+![Map of suspended sediment concentration for the last time step.](img/st-7.png){ width=90% }
 
 This concludes the *Simulating suspended sediment transport with inflows of suspended sediment concentrations* exercise.

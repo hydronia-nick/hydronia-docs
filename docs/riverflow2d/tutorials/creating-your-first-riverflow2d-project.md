@@ -8,15 +8,15 @@ This section provides a step-by-step guide to help you get started with a RiverF
 The files required to follow this tutorial can be extracted from the 'ExampleProjects' zip file under the 'Hoh_QGIS_Metric_Units' folder. This zip file is downloaded separately from your installation materials.
 :::
 
-**Files with data required for the example.**
+![Files with data required for the example.](img/hohtutorialfolder.png){ width=100% }
 
 The first step is to start the QGIS  software clicking the QGIS desktop icon ![](img/qgis3icondesktop.png){ width=0.6cm }. If this icon is not available, you can run the 'qgis-bin.exe' executable on the QGIS 'bin' subdirectory. After loading, you will see a window similar to the one shown below:
 
-**QGIS interface indicating window areas.**
+![QGIS interface indicating window areas.](img/rf2dwindowareas.png){ width=100% }
 
 If you don't see the toolbar with the model icons as shown, you will need to activate the plugin using the *Manage and Install Plugins...* command under the *Plugins* menu.
 
-**Plugins window showing activated RiverFlow2D.**
+![Plugins window showing activated RiverFlow2D.](img/rf2dinstallplugin.png){ width=100% }
 
 ## Start a new project
 
@@ -28,7 +28,7 @@ If you don't see the toolbar with the model icons as shown, you will need to act
 
     
 
-**Coordinate Reference System Selector dialog window.**
+![Coordinate Reference System Selector dialog window.](img/crs2855.png){ width=80% }
 
 4.  Click OK.
 
@@ -36,7 +36,7 @@ If you don't see the toolbar with the model icons as shown, you will need to act
 
     
 
-**Create New RiverFlow2D Project.**
+![Create New RiverFlow2D Project.](img/exportdialog.png){ width=40% }
 
 6.  Click the ![](img/threedots.png){ width=0.6cm } button to provide a path to store the project files in the *Project Directory* textbox. This will be the folder where the model will write all results and output files.
 
@@ -48,7 +48,7 @@ If you don't see the toolbar with the model icons as shown, you will need to act
 
     
 
-**Layers created for the project.**
+![Layers created for the project.](img/layerspanel.png){ width=40% }
 
 8.  On the QGIS *Project* menu, click *Save*, to save the project in the same directory that you previously selected in the *Create New Project* dialog above.
 
@@ -62,7 +62,7 @@ In this tutorial we will use a raster file that contains the terrain and river b
 
     
 
-**Dialog to create a layer from a raster file.**
+![Dialog to create a layer from a raster file.](img/loadrasterdialog1.png){ width=60% }
 
 3.  While on the dialog, click *Add* and click *Close*.
 
@@ -72,7 +72,7 @@ In this tutorial we will use a raster file that contains the terrain and river b
 
     
 
-**Digital elevation model in raster format.**
+![Digital elevation model in raster format.](img/2-11.png){ width=65% }
 
     ::: shaded
     Right-clicking on the label of the new raster layer and selecting *Properties* allows you to change the rendering style for a more informative palette such as *Hillshade* for instance.
@@ -80,13 +80,13 @@ In this tutorial we will use a raster file that contains the terrain and river b
 
     
 
-**Window to change the raster layer render style.**
+![Window to change the raster layer render style.](img/hillshade.png){ width=80% }
 
     And now the raster layer is displayed with the new palette selected:
 
     
 
-**Digital elevation model with Hillshade render.**
+![Digital elevation model with Hillshade render.](img/hohhillshade.png){ width=100% }
 
 5.  You should move the raster layer dragging it to the end of the list of layers to avoid that it would hide or interfere visually with the other layers.
 
@@ -110,7 +110,7 @@ We define the limits of the modeling area drawing a polygon on the *Domain Outli
 
     
 
-**CellSize defined for the Domain Outline layer.**
+![CellSize defined for the Domain Outline layer.](img/cellsize20.png){ width=50% }
 
     If you want to make any correction in the outline of the created polygon, use the *Node* Tool ![](img/button4.png){ width=0.6cm }.
 
@@ -120,7 +120,7 @@ We define the limits of the modeling area drawing a polygon on the *Domain Outli
 
     The *Domain Outline* is now complete.
 
-**Domain Outline layer.**
+![Domain Outline layer.](img/hohdomain.png){ width=35% }
 
 ## Generating the triangular-cell mesh
 
@@ -128,11 +128,11 @@ Now that the *Domain Outline* layer has been created, proceed to create the mesh
 
 The following figure shows the generated mesh. You will also see in the Layers panel the new layer: *Trimesh*
 
-**Resulting mesh.**
+![Resulting mesh.](img/hohmesh.png){ width=35% }
 
 You can see the mesh generation statistics, and other messages produced by the mesh generation program while creating the mesh in the Log messages panel. This window is accessed from the *View* menu, then by clicking *Panels*.
 
-**Message panel of the registry with GMSH messages.**
+![Message panel of the registry with GMSH messages.](img/2-19ft.png){ width=90% }
 
 ## Setting up the boundary conditions
 
@@ -144,7 +144,7 @@ You can see the mesh generation statistics, and other messages produced by the m
 
     
 
-**Polygon that covers the nodes defining the Inflow boundary condition segment.**
+![Polygon that covers the nodes defining the Inflow boundary condition segment.](img/2-22.png){ width=30% }
 
 3.  To finish the polygon, right-click on desired location. A window to enter the attributes of the newly created polygon is displayed.
 
@@ -156,11 +156,11 @@ You can see the mesh generation statistics, and other messages produced by the m
 
     
 
-**Inflow boundary condition parameters.**
+![Inflow boundary condition parameters.](img/hohinflowd1.png){ width=60% }
 
     
 
-**Hydrograph loaded from the ‘QIN.DAT‘ file.**
+![Hydrograph loaded from the ‘QIN.DAT‘ file.](img/hohinflowd2.png){ width=60% }
 
 7.  Click *OK* to close the dialog and then click *Save* ![](img/button5.png){ width=0.6cm }.
 
@@ -170,13 +170,13 @@ You can see the mesh generation statistics, and other messages produced by the m
 
     
 
-**Polygon that defines the outflow boundary condition segment.**
+![Polygon that defines the outflow boundary condition segment.](img/2-24.png){ width=30% }
 
 2.  Right click to close the polygon. A dialog window will appear to enter the parameters. Select the condition type *Uniform flow conditions* and enter the channel slope. Slope is entered in *So* as shown:
 
     
 
-**Parameters for the uniform flow outflow open boundary condition.**
+![Parameters for the uniform flow outflow open boundary condition.](img/2-25ft.png){ width=45% }
 
 3.  Save the changes made to the layer by clicking the *Save* button ![](img/button5.png){ width=0.6cm }.
 
@@ -186,7 +186,7 @@ You can see the mesh generation statistics, and other messages produced by the m
 
     
 
-**Polygons that define the inflow and outflow boundary conditions.**
+![Polygons that define the inflow and outflow boundary conditions.](img/hohbcs.png){ width=70% }
 
 ## Assigning Manning's n
 
@@ -198,13 +198,13 @@ To assign Manning's n values, we enter polygons with given n's. There can be as 
 
     
 
-**Capa Manning N.**
+![Capa Manning N.](img/2-27.png){ width=65% }
 
 3.  Close the polygon by right-clicking on the end vertex and enter a Manning's n equal to 0.035:
 
     
 
-**Diálogo para ingresar ManningN.**
+![Diálogo para ingresar ManningN.](img/2-28.png){ width=50% }
 
 4.  Click *Save* ![](img/button5.png){ width=0.6cm }, and then click the *Toggle Editing* button ![](img/button7.png){ width=0.6cm } to deactivate editing mode.
 
@@ -228,7 +228,7 @@ Once the layers with the input data to the model have been created, we need to e
 
     
 
-**Export RiverFlow2D dialog.**
+![Export RiverFlow2D dialog.](img/2-33.png){ width=60% }
 
     A message at the top of the Map area shows the progress of the Export process.
 
@@ -238,7 +238,7 @@ Once the layers with the input data to the model have been created, we need to e
 
     
 
-**Hydronia Data Input Program window.**
+![Hydronia Data Input Program window.](img/diphoh.png){ width=90% }
 
 4.  Click the *Run RiverFlow2D* button to run the model.
 
@@ -248,7 +248,7 @@ Once the layers with the input data to the model have been created, we need to e
 
     
 
-**Window displayed while the model runs.**
+![Window displayed while the model runs.](img/hohmodelrun.png){ width=90% }
 
 Take some time to explore the information included in this window.
 

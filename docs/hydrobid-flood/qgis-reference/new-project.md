@@ -1,17 +1,17 @@
 # New Project / Scenario Tool
 
-**New Project Tool Icon for HydroBID Flood**
+![New Project Tool Icon for HydroBID Flood](img/icon1_hb.png){ width=10% }
 
 ## New HydroBID Flood Project
 This chapter describes the tools related to creating and managing new projects and scenarios. Within the *New Hydro-BID Flood Project* menu, the following tools are available:
 
-**New HydroBID Flood Project Menu**
+![New HydroBID Flood Project Menu](img/newproject_menu_hb.png){ width=50% }
 
 ### Dialog Window
 
 The *New HydroBID Flood Project* dialog allows the user to specify the project name, initial scenario name, project location, and select the components to be included in the initial setup.
 
-**New Project Dialog for HydroBID Flood**
+![New Project Dialog for HydroBID Flood](img/newproject_main_dialog_hb.png){ width=80% }
 
 ### Dialog Controls
 
@@ -24,7 +24,7 @@ The dialog contains the following controls:
 | Project Name | *Text input field* | Text input field to specify the name for the new project. This name will be used for the main project folder and the QGIS project file. |
 | Name Initial Scenario | *Text input field* | Text input field to specify the name for the first scenario within the project. A subfolder with this name will be created. |
 | Project Directory | *Text input field* | Text input field displaying the path to the directory where the project folder will be created. |
-| Browse Button (...) | *Button* | Button next to Project Directory that opens a directory selection dialog. |
+| Browse Button (\...) | *Button* | Button next to Project Directory that opens a directory selection dialog. |
 | Components Checkboxes | *Checkbox Group* | A series of checkboxes allowing the user to select which optional model components and data layers should be initialized for the project. Options include: Density Line, Density Polygon, Manning's Coefficient (Nz), Infiltration Parameters, Bridge/Culvert Scour (MaximumErosionDepth), Sediment Transport (ParticleTransport), Pollutant Transport (InitialConcentrationsPollutant), Mesh Refinement Areas (MeshBreakLine, MeshDensityLine, MeshDensityPolygon), Flow Obstructions (Piers, Abutments), Wind, Weirs, CrossSections, DamBreach, Source/Sink, Multiple DEM Boundaries, InitialConcentrations, Initial Bed Fractions, Internal Rating Table, Channels1D, Gates, Culverts, Initial WSE, Profiles, ObservationPoints. (All are checked by default). |
 | Ok | *Button* | Button to confirm the settings and create the new project. |
 | Cancel | *Button* | Button to close the dialog without creating a project. |
@@ -65,7 +65,7 @@ The tool creates several initial GeoPackage layers within the `shape` subdirecto
 | ObservationPoints | Point | Defines locations where time series output results will be generated. |
 
 ### Layer Attributes
-Please refer to the 8.1 section for detailed information on the attributes for the default layers created by the New Project tool.
+Please refer to the [8.1](appendix.md#layer-attributes-reference) section for detailed information on the attributes for the default layers created by the New Project tool.
 
 ### Workflow
 The typical workflow for using the New Project tool is as follows:
@@ -119,7 +119,7 @@ This tool allows users to create a new scenario within an existing *HydroBID Flo
 
 The *New Scenario* dialog prompts the user for the name of the new scenario and allows selection of an existing scenario to use as a template.
 
-**The New Scenario dialog window for HydroBID Flood.**
+![The New Scenario dialog window for HydroBID Flood.](img/newproject_newscenario_hb.png){ width=80% }
 
 ### Dialog Controls
 
@@ -178,7 +178,7 @@ This tool removes an existing scenario from the *HydroBID Flood* project. This a
 
 The *Delete Scenario* dialog allows the user to select which existing scenario to remove.
 
-**The Delete Scenario dialog window.**
+![The Delete Scenario dialog window.](img/newproject_delscenario_hb.png){ width=80% }
 
 ### Dialog Controls
 
@@ -235,7 +235,7 @@ The *Delete Scenario* dialog allows the user to select which existing scenario t
 
 If you need to recover a scenario that was deleted from the project but did not delete the old scenario directory, you can create a new scenario and manually copy the files back in.
 
--   Follow the steps in the 1.2 section to create a new scenario.
+-   Follow the steps in the [1.2](#create-new-scenario) section to create a new scenario.
 
 -   Save the project.
 

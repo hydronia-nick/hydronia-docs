@@ -2,7 +2,7 @@
 
 This tutorial illustrates how to incorporate dam breach simulation into an existing RiverFlow2D  project using the QGIS  interface. The exercise consists of modeling the a dam break flood. The dam is approximately 1575 feet long, the breach center is 550 feet from the right margin of the dam, the opening of the breach has the final dimensions shown in the following Figure, a top width of 160 feet, and at the bottom width of 100 feet, the final breach height is 30 feet.
 
-**Final dimensions of the dam breach.**
+![Final dimensions of the dam breach.](img/11-1.png){ width=90% }
 
 For this exercise, a file with the time evolution of the breaching dimensions is required, this file can be prepared before setting the model or it can be created when entering the input the parameters. The procedure to model the dam break involves the following steps:
 
@@ -28,7 +28,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
 This project contains the *Domain Outline* layer, the digital elevation model DEM of in raster format, outflow conditions are set to free outflow in the lower left, and an initial condition of water surface elevation behind the dam. Figure [7.2](#11-2) shows the project in QGIS.
 
-**Project loaded in QGIS.**
+![Project loaded in QGIS.](img/11-2.png){ width=90% }
 
 ## Create the DamBreach layer and draw the line that defines the dam
 
@@ -44,7 +44,7 @@ Creating the dam involves the following steps:
 
     
 
-**Dialog to add a new layers.**
+![Dialog to add a new layers.](img/11-3.png){ width=50% }
 
 3.  Edit the *DamBreach* layer: In the layers panel, select the *DamBreach* layer.
 
@@ -70,7 +70,7 @@ Creating the dam involves the following steps:
 
     
 
-**Dam axis.**
+![Dam axis.](img/11-4.png){ width=75% }
 
 7.  Once finished drawing the dam axis, the window to input the parameters of the *DamBreach* appears.
 
@@ -78,7 +78,7 @@ Creating the dam involves the following steps:
 
     
 
-**Dialog to input the dam breach parameters.**
+![Dialog to input the dam breach parameters.](img/11-5.png){ width=65% }
 
 9.  Click the *Temporal evolution* tab and click on the *Import Dam Breach File* button. Select the 'DAMBREACH_1.txt' file in the scenario folder. Click *OK* to close.
 
@@ -86,11 +86,11 @@ Creating the dam involves the following steps:
 
     
 
-**Evolution of the breach of the dam.**
+![Evolution of the breach of the dam.](img/11-6.png){ width=60% }
 
     
 
-**Dam axis.**
+![Dam axis.](img/11-7.png){ width=60% }
 
 ## Generate the mesh
 
@@ -102,7 +102,7 @@ The mesh is generated using the *Generate TriMesh* tool
 
 Figure [7.8](#11-8) shows the resulting mesh of almost 11,000 cells
 
-**The resulting dam breach mesh. Detail show mesh along the dam axis.**
+![The resulting dam breach mesh. Detail show mesh along the dam axis.](img/11-8.png){ width=90% }
 
 ## Exporting files to RiverFlow2D  
 
@@ -116,7 +116,7 @@ Figure [7.8](#11-8) shows the resulting mesh of almost 11,000 cells
 
     
 
-**Export dialog.**
+![Export dialog.](img/11-9.png){ width=60% }
 
 3.  Once finished, click on the OK button and the export process will begin. Once it is finished, RiverFlow2D  will be loaded with the 'base.DAT' file.
 
@@ -124,11 +124,11 @@ Figure [7.8](#11-8) shows the resulting mesh of almost 11,000 cells
 
 After exporting the files, Hydronia Data Input Program is loaded with the project file of the 'base.DAT' example and shows the *Control Data* panel as illustrated in Figure [7.10](#11-10).
 
-**Hydronia Data Input Program.**
+![Hydronia Data Input Program.](img/11-10.png){ width=90% }
 
 It can be seen that the *Dam Breach* component is selected as well as the initial condition that indicates that the initial elevation of the water surface of the '.FED' file will be read. Selecting from the list on the left panel the *Dam Breach* component will show the panel where you can see the parameters of the dam breach as shown in the figure below:
 
-**Dam Breach component.**
+![Dam Breach component.](img/11-11.png){ width=90% }
 
 1.  Before running the model, set the simulation time to 4 hours.
 
@@ -140,12 +140,12 @@ It can be seen that the *Dam Breach* component is selected as well as the initia
 
 A window will appear indicating that the model has started running. The window that RiverFlow2D  presents while running the model shows simulation time information, volume conservation error, the total input and output discharge as well as other parameters as execution progresses (Figure [7.12](#11-12)).
 
-**RiverFlow2D output graphics.**
+![RiverFlow2D output graphics.](img/11-12.png){ width=90% }
 
 ## Review the output files
 
 RiverFlow2D  output the dam breach hydrograph in a file with extension '.dambreachh'. Figure [7.13](#11-13) shows a section of that file for this exercise.
 
-**Extract of the ‘DamBreach.dambreachh‘ file**
+![Extract of the ‘DamBreach.dambreachh‘ file](img/11-13.png){ width=90% }
 
 This concludes the *Simulating dam breaches* tutorial.

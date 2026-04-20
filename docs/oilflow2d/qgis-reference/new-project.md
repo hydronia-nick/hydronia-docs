@@ -1,10 +1,10 @@
 # New Project / Scenario Tool
 
-**New Project Tool Icon for OilFlow2D**
+![New Project Tool Icon for OilFlow2D](img/oilbutton1.png){ width=10% }
 
 This chapter describes the tools related to creating and managing new projects and scenarios. Within the *New OilFlow2D Project* menu, the following tools are available:
 
-**New OilFlow2D Project Menu**
+![New OilFlow2D Project Menu](img/newproject_menu_of2d.png){ width=50% }
 
 ## New OilFlow2D Project
 This tool initializes a new *OilFlow2D* project. It sets up the necessary directory structure, creates a QGIS project, and generates the required initial GeoPackage layers based on the components selected by the user. This establishes the foundation for defining model geometry, components, and simulation parameters within a multi-scenario context.
@@ -13,7 +13,7 @@ This tool initializes a new *OilFlow2D* project. It sets up the necessary direct
 
 The *New OilFlow2D Project* dialog allows the user to specify the project name, initial scenario name, project location, and select the components to be included in the initial setup.
 
-**Create New Project Dialog for OilFlow2D**
+![Create New Project Dialog for OilFlow2D](img/newproject_main_dialog_of2d.png){ width=80% }
 
 ### Dialog Controls
 
@@ -26,7 +26,7 @@ The dialog contains the following controls:
 | Project Name | *Text input field* | Text input field to specify the name for the new project. This name will be used for the main project folder and the QGIS project file. |
 | Name Initial Scenario | *Text input field* | Text input field to specify the name for the first scenario within the project. A subfolder with this name will be created. |
 | Project Directory | *Text input field* | Text input field displaying the path to the directory where the project folder will be created. |
-| Browse Button (...) | *Button* | Button next to Project Directory that opens a directory selection dialog. |
+| Browse Button (\...) | *Button* | Button next to Project Directory that opens a directory selection dialog. |
 | Components Checkboxes | *Checkbox Group* | A series of checkboxes allowing the user to select which model components and data layers should be initialized. Options include common hydrodynamic features (MeshDensityLine, MeshBreakLine, Manning Nz, Initial WSE, Bridges, Gates, Culverts, Weirs, DamBreach, Sources/Sinks, etc.) and OilFlow2D-specific features like: SpillPaths, ShoreLine, OilSpills, SpillBooms, OilPipelines, OilPipeLineBoundCond, OilRetDepth, VegTrapp. (All are checked by default). |
 | Ok | *Button* | Button to confirm the settings and create the new project. |
 | Cancel | *Button* | Button to close the dialog without creating a project. |
@@ -67,7 +67,7 @@ The tool creates several initial GeoPackage layers within the `shape` subdirecto
 | Profiles | Line | Defines lines along which longitudinal profile results are extracted. |
 
 ### Layer Attributes
-Please refer to the 8.1 section for detailed information on the attributes for the default layers created by the New Project tool.
+Please refer to the [8.1](appendix.md#layer-attributes-reference) section for detailed information on the attributes for the default layers created by the New Project tool.
 
 ### Workflow
 The typical workflow for using the New Project tool is as follows:
@@ -121,7 +121,7 @@ This tool allows users to create a new scenario within an existing *OilFlow2D* p
 
 The *New Scenario* dialog prompts the user for the name of the new scenario and allows selection of an existing scenario to use as a template.
 
-**The New Scenario dialog window for OilFlow2D.**
+![The New Scenario dialog window for OilFlow2D.](img/newproject_newscenario_of2d.png){ width=80% }
 
 ### Dialog Controls
 
@@ -180,7 +180,7 @@ This tool removes an existing scenario from the *OilFlow2D* project. This action
 
 The *Delete Scenario* dialog allows the user to select which existing scenario to remove.
 
-**The Delete Scenario dialog window.**
+![The Delete Scenario dialog window.](img/newproject_delscenario_of2d.png){ width=80% }
 
 ### Dialog Controls
 
@@ -237,7 +237,7 @@ The *Delete Scenario* dialog allows the user to select which existing scenario t
 
 If you need to recover a scenario that was deleted from the project but did not delete the old scenario directory, you can create a new scenario and manually copy the files back in.
 
--   Follow the steps in the 1.2 section to create a new scenario.
+-   Follow the steps in the [1.2](#create-new-scenario) section to create a new scenario.
 
 -   Save the project.
 

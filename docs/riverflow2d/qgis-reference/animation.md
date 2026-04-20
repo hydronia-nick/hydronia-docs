@@ -2,13 +2,14 @@
 
 The Animation Tool is a specialized QGIS plugin component designed to create dynamic visualizations of RiverFlow2D model results over time. This tool allows users to generate animations showing how hydraulic parameters (such as water depth, velocity, and water surface elevation) change throughout a simulation, and export these animations as video files for presentations and analysis.
 
-**Animation Tool Icon**
+![Animation Tool Icon](img/icon12.png){ width=10% }
 
 ## Main Interface
 The Animation Tool provides a dockable widget interface that allows users to control the animation of model results and access various export options.
 
 ### Dialog Window
-**Animation Tool Interface**
+
+![Animation Tool Interface](img/animation_main_interface.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -21,7 +22,7 @@ The Animation Tool provides a dockable widget interface that allows users to con
 | Output Time | *Dropdown* | Selects which time step to display from the simulation results. |
 | Time Slider | *Horizontal Slider* | Allows scrolling through available time steps. |
 | Renderer Style | *Button* | Opens the Renderer Style dialog to customize the visualization settings for the current layer, including color ramp, classification method, and value ranges. |
-| Render Range | *Radio Buttons* | Options to set the render range from "All times" (uses min/max values across all time steps) or "Present time" (uses only the current time step's min/max values). |
+| Render Range | *Radio Buttons* | Options to set the render range from \"All times\" (uses min/max values across all time steps) or \"Present time\" (uses only the current time step's min/max values). |
 | Animation Controls | *Button Group* | Includes Rewind ($|<$), Back ($<<$), Play ($|>$), Step ($>>$), and Pause ($||$) buttons for controlling animation playback. |
 | Animation Speed | *Spin Box* | Controls the speed of the animation playback. |
 | Export Shape | *Button* | Opens a dialog to export the current animation frame as a shapefile. |
@@ -88,7 +89,8 @@ The tool generates frames by updating layer symbology for each time step and ren
 The Export Image Dialog allows users to create a static image of a specific time step from the animation. The Image tab allows configuration of image dimensions, the time step to export, and the output file location.
 
 ### Dialog Window
-**Export Image Dialog - Image Tab**
+
+![Export Image Dialog - Image Tab](img/animation_export_images.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -112,7 +114,7 @@ To export an image of a specific time step:
 
 4.  Select the time step you want to export from the *Output Time* dropdown.
 
-5.  Click the *Browse* button (...) next to *Output* to select the location and filename for the output file (JPG format).
+5.  Click the *Browse* button (\...) next to *Output* to select the location and filename for the output file (JPG format).
 
 6.  Optionally, switch to the *Layout* tab to configure additional elements such as title, time, and legend.
 
@@ -128,7 +130,7 @@ To export an image of a specific time step:
 ### Technical Details
 -   Image export uses the `picture()` function which renders a single frame based on the selected time step.
 
--   The attribute field corresponding to the time step is calculated as "F" + (time + 1), where time is the index selected in the *Output Time* dropdown.
+-   The attribute field corresponding to the time step is calculated as \"F\" + (time + 1), where time is the index selected in the *Output Time* dropdown.
 
 -   The layer renderer is cloned and updated to display the field corresponding to the selected time step.
 
@@ -140,7 +142,8 @@ To export an image of a specific time step:
 The Export Image Dialog - Layout Tab allows users to configure the layout of the exported image. You can use a default layout with configurable elements (title, time, legend) or a custom layout created in QGIS Print Layout.
 
 ### Dialog Window
-**Export Image Dialog - Layout Tab**
+
+![Export Image Dialog - Layout Tab](img/animation_export_images_layouttab.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -175,13 +178,13 @@ To configure the image layout:
 
     -   Select the *Custom Layout (.qpt)* radio button.
 
-    -   Click the *Browse* button (...) next to the *Template* field.
+    -   Click the *Browse* button (\...) next to the *Template* field.
 
     -   Navigate to the .qpt template file previously created in QGIS Print Layout.
 
     -   Select the file and click *Open*.
 
-    -   Ensure the template includes a label element with id="time" if you want to display the time.
+    -   Ensure the template includes a label element with id=\"time\" if you want to display the time.
 
 5.  Switch to the *Image* tab to configure dimensions and time step.
 
@@ -194,7 +197,7 @@ To configure the image layout:
 
 -   Custom templates must include a map item that will be used to render the image.
 
--   If the template includes a label item with id="time", it will be automatically updated with the time of the selected step.
+-   If the template includes a label item with id=\"time\", it will be automatically updated with the time of the selected step.
 
 -   The image aspect ratio will automatically adjust to match the template's page size when using a custom layout.
 
@@ -215,7 +218,8 @@ To configure the image layout:
 The Export Video Dialog - Layout Tab allows users to configure the layout of the animation. You can use a default layout or a custom layout created in the *QGIS Print Layout* program.
 
 ### Dialog Window
-**Export Video Dialog - Layout Tab**
+
+![Export Video Dialog - Layout Tab](img/animation_export_video_tab2.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -268,7 +272,7 @@ To configure the animation video layout:
 
 -   Custom templates must include a map item that will be used to render the animation frames.
 
--   If the template includes a label item with id="time", it will be automatically updated with the time for each frame.
+-   If the template includes a label item with id=\"time\", it will be automatically updated with the time for each frame.
 
 -   The video aspect ratio will automatically adjust to match the template's page size when using a custom layout.
 
@@ -289,7 +293,8 @@ To configure the animation video layout:
 The Export Video Dialog provides advanced options for creating animations with custom layouts and templates.
 
 ### Dialog Window
-**Export Video Dialog - Video Tab**
+
+![Export Video Dialog - Video Tab](img/animation_export_video_tab1.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -342,7 +347,10 @@ To export a video from the animation:
 The Export KMZ dialog allows users to create Google Earth compatible animations from the model results.
 
 ### Dialog Window
-**Export KMZ Dialog**
+<figure id="fig:animation_export_kmz">
+
+<figcaption>Export KMZ Dialog</figcaption>
+</figure>
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -365,7 +373,7 @@ To export a KMZ animation for Google Earth:
 
 4.  Adjust the raster image resolution in the *Resolution for raster image* field. Higher values produce more detailed images but larger files.
 
-5.  Optionally, edit the place name in the *Place* field (default is "ProjectName-LayerName").
+5.  Optionally, edit the place name in the *Place* field (default is \"ProjectName-LayerName\").
 
 6.  Click the *Browse* button next to *Output File* to select the location and name for the output KMZ file.
 
@@ -395,7 +403,7 @@ To export a KMZ animation for Google Earth:
 ### Technical Details
 -   The KMZ export process consists of three main stages:
 
-    1.  **Rasterization**: Each time field (F1, F2, ..., Fn) is rasterized using `gdal:rasterize` with the specified resolution. NoData values are set to -9999.
+    1.  **Rasterization**: Each time field (F1, F2, \..., Fn) is rasterized using `gdal:rasterize` with the specified resolution. NoData values are set to -9999.
 
     2.  **Rendering**: The original layer's color symbology is applied to each raster. The color ramp configured in the animated layer is used with equal interval classification and 8 classes.
 

@@ -28,7 +28,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
     
 
-**Project screen loaded in QGIS.**
+![Project screen loaded in QGIS.](img/12-1_of2d.png){ width=80% }
 
 ## Create a template of the layers *ObservationPoints*, *CrossSections* and *Profiles* and draw the output controls
 
@@ -44,7 +44,7 @@ To add the templates where the different output controls are drawn involves the 
 
     
 
-**Plugin to add the new templates layer.**
+![Plugin to add the new templates layer.](img/12-2_of2d.png){ width=50% }
 
 3.  Edit the layers and draw the output controls: Select in the layers panel, the *ObservationPoints*, *CrossSections* and *Profiles* layers one by one.
 
@@ -80,11 +80,11 @@ To add the templates where the different output controls are drawn involves the 
 
     
 
-**Attribute windows for the three cross sections.**
+![Attribute windows for the three cross sections.](img/12-3.png){ width=50% }
 
     
 
-**Transversal sections incorporated into the model.**
+![Transversal sections incorporated into the model.](img/12-4.png){ width=36% }
 
 8.  Save the polygon by clicking the Save button ![](img/button5.png){ width=0.6cm } and click on the *Toggle Editing* button ![](img/button7.png){ width=0.6cm } to deactivate Edit mode on the CrossSections layer.
 
@@ -92,11 +92,11 @@ To add the templates where the different output controls are drawn involves the 
 
     
 
-**Attribute window for the profile.**
+![Attribute window for the profile.](img/12-5.png){ width=60% }
 
     
 
-**Profile (green line) incorporated into the model.**
+![Profile (green line) incorporated into the model.](img/12-6.png){ width=50% }
 
 10. To finalize the profile drawing, save the polygon by clicking the Save button ![](img/button5.png){ width=0.6cm } and click on *Toggle Editing* button ![](img/button7.png){ width=0.6cm } to deactivate Edit mode on the Profile layer.
 
@@ -104,11 +104,11 @@ To add the templates where the different output controls are drawn involves the 
 
     
 
-**Attribute windows for the two observation points.**
+![Attribute windows for the two observation points.](img/12-7.png){ width=50% }
 
     
 
-**Observation points incorporated into the model.**
+![Observation points incorporated into the model.](img/12-8.png){ width=43% }
 
 12. To finish the drawing of the observation points, you click again on the *Toggle Editing* button to disable the editing mode of the *ObservationPoints* layer.
 
@@ -122,7 +122,7 @@ The mesh is generated with the *Generate TriMesh* button
 
 The result is a mesh of approximately 9,000 cells, as shown in Figure [17.9](#12-9).
 
-**The mesh generated.**
+![The mesh generated.](img/12-9.png){ width=60% }
 
 ### Exporting files to RiverFlow2D
 
@@ -142,7 +142,7 @@ Now that the mesh is generated and the other layers are ready with the necessary
 
     
 
-**Plugin to export the files to OilFlow2D for QGIS.**
+![Plugin to export the files to OilFlow2D for QGIS.](img/12-10_of2d.png){ width=80% }
 
 4.  Once finished inputting the information, click the \[OK\] button to export the files to the model.
 
@@ -152,7 +152,7 @@ Once it is finished, RiverFlow2D  will be loaded with the 'base.DAT' file.
 
 After exporting the files, RiverFlow2D  opens with the project file of the 'OutControl.DAT' sample and shows the *Control Data* panel to it as illustrated in Figure [17.11](#12-11).
 
-**Control data panel.**
+![Control data panel.](img/12-11.png){ width=90% }
 
 You can observe in the control panel in Output Options the outputs of results for *Cross Sections*, *Profiles* and *Observation Points* are selected.
 
@@ -160,7 +160,7 @@ Leave all other parameters at their default values.
 
 To run the model, click on the *Run RiverFlow2D* button. The window that RiverFlow2D  presents while running the model shows: simulation time information, volume conservation error, total discharge of inflow in and outflow, as well as other parameters as execution progresses (Figure [17.12](#12-12)).
 
-**RiverFlow2D output graphics.**
+![RiverFlow2D output graphics.](img/12-12.png){ width=80% }
 
 ## Review the output files
 
@@ -168,12 +168,12 @@ RiverFlow2D  generates the files with the extensions '.xseci' (metric units) and
 
 Figure [17.13](#12-13) shows an extract of the 'OutControl.xsece' file with results at the cross sections:
 
-**OutControl.xsece file.**
+![OutControl.xsece file.](img/12-13.png){ width=80% }
 
 Figure [17.14](#12-14) shows an extract of the 'OutControl.prfe' file with the report of the profile results:
 
-**OutControl.prfe file.**
+![OutControl.prfe file.](img/12-14.png){ width=80% }
 
 Figure [17.15](#12-15) shows an extract of the 'RESvsT_Point1.oute' file with the report of the results of the observation point Point1:
 
-**RESvsT_Point1.oute file.**
+![RESvsT_Point1.oute file.](img/12-15.png){ width=90% }

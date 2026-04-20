@@ -3,76 +3,90 @@
 ## Layer Attributes Reference
 The following tables detail the attribute fields for the default layers created by the New OilFlow2D Project tool and the New Template Layer Tool.
 
-##### **MeshDensityLine**
+##### **MeshDensityLine** {#meshdensityline .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CellSize | Real | Target mesh element size along this line. |
 
-##### **MeshDensityPolygon**
+##### **MeshDensityPolygon** {#meshdensitypolygon .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CellSize | Real | Target mesh element size within this area. |
 
-##### **MeshBreakLine**
+##### **MeshBreakLine** {#meshbreakline .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CellSize | Real | Target mesh element size along this enforced breakline. |
 
-##### **MultipleDemBoundaries**
+##### **MultipleDemBoundaries** {#multipledemboundaries .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** dem_layer | String | Identifier or path for the DEM layer associated with this boundary. |
 
-##### **Domain_Outline**
+##### **Domain_Outline** {#domain_outline .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CellSize | Real | Specifies the default cell size for mesh generation within the domain. |
 
-##### **BoundaryConditions**
+##### **BoundaryConditions** {#boundaryconditions .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** BCID | String | User-defined identifier for the boundary segment. |
 | BCType | Integer | Type: 1=WSE vs Time (Free), 6=Discharge vs Time, 9=Rating Curve, 12=Normal Depth (Outflow), etc. See plugin UI for full list. |  |  |
 | BCFileName | String | Path/Name of the associated data file (e.g., hydrograph, rating curve). |  |  |
 
-##### **Manning N**
+##### **Manning N** {#manning-n .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** ManningN | Real | Isotropic Manning's roughness coefficient for this area. |
 
-##### **Manning_Nz**
+##### **Manning_Nz** {#manning_nz .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** MANNNFILE | String | Path to the file defining anisotropic Manning's values (n, nx, ny, angle). |
 
-##### **Initial_WSE**
+##### **Initial_WSE** {#initial_wse .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** InitialWSE | Real | Initial water surface elevation value for this zone. |
 
-##### **MaximumErosionDepth**
+##### **MaximumErosionDepth** {#maximumerosiondepth .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** MAXERODEPT | Real | Maximum allowable erosion depth in this zone. |
 
-##### **Infiltration**
+##### **Infiltration** {#infiltration .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** INFILFILE | String | Path to the file defining infiltration parameters for this zone. |
 
-##### **RainEvap**
+##### **RainEvap** {#rainevap .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** RAINEVFILE | String | Path to the file defining rainfall/evaporation rates for this zone. |
 
-##### **Wind**
+##### **Wind** {#wind .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CD | Real | Wind drag coefficient. |
 | AIRDENSITY | Real | Air density. |  |  |
 | WINDFILE | String | Path to the file containing wind speed and direction time series. |  |  |
 
-##### **Bridges**
+##### **Bridges** {#bridges .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** BRIDGEID | String | Unique identifier for the bridge. |
@@ -81,7 +95,8 @@ The following tables detail the attribute fields for the default layers created 
 | ZUPPER | Real | Elevation of the bridge deck soffit (underside). |  |  |
 | DECK | Real | Thickness of the bridge deck. |  |  |
 
-##### **Gates**
+##### **Gates** {#gates .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** GATEID | String | Unique identifier for the gate. |
@@ -91,7 +106,8 @@ The following tables detail the attribute fields for the default layers created 
 | GHEIGHT | Real | Height of the gate opening when fully open. |  |  |
 | GATECD | Real | Discharge coefficient for the gate. |  |  |
 
-##### **Culverts**
+##### **Culverts** {#culverts .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CULVERTID | String | Unique identifier for the culvert. |
@@ -111,7 +127,8 @@ The following tables detail the attribute fields for the default layers created 
 | INVERT_Z1 | Real | Invert elevation at the upstream end. |  |  |
 | INVERT_Z2 | Real | Invert elevation at the downstream end. |  |  |
 
-##### **Weirs**
+##### **Weirs** {#weirs .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** WEIR_ID | String | Unique identifier for the weir. |
@@ -119,7 +136,8 @@ The following tables detail the attribute fields for the default layers created 
 | WCRESTELEV | String | Path to the file defining weir crest elevation profile or a constant value. |  |  |
 | LELEM | Real | Number of elements spanned by the weir representation. |  |  |
 
-##### **DamBreach**
+##### **DamBreach** {#dambreach .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** DAMID | String | Unique identifier for the dam/breach segment. |
@@ -143,19 +161,22 @@ The following tables detail the attribute fields for the default layers created 
 | uSlope | Real | Upstream slope of the dam. |  |  |
 | dSlope | Real | Downstream slope of the dam. |  |  |
 
-##### **Sources_Sinks**
+##### **Sources_Sinks** {#sources_sinks .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** SOURCEID | String | Unique identifier for the source/sink. |
 | SOURCETYPE | Integer | Type: 1=Discharge vs Time, 2=Rating Curve (Depth vs Q). |  |  |
 | FILENAME | String | Path to the associated data file (hydrograph or rating curve). |  |  |
 
-##### **InitialConcentrations**
+##### **InitialConcentrations** {#initialconcentrations .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CONCENTFIL | String | Path to file defining initial concentration values for this zone. |
 
-##### **Internal_Rating_Table**
+##### **Internal_Rating_Table** {#internal_rating_table .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** IRT_ID | String | Unique identifier for the internal rating table location. |
@@ -163,7 +184,8 @@ The following tables detail the attribute fields for the default layers created 
 | IRTFileName | String | Path to the file containing the stage-discharge data. |  |  |
 | CellSize | Real | Cell size parameter related to the internal boundary representation. |  |  |
 
-##### **Piers**
+##### **Piers** {#piers .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** PIERID | String | Unique identifier for the pier. |
@@ -181,7 +203,8 @@ The following tables detail the attribute fields for the default layers created 
 | VC | Real | Critical velocity for initiation of motion. |  |  |
 | CD | Real | Drag coefficient for the pier. |  |  |
 
-##### **Abutments**
+##### **Abutments** {#abutments .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** ABUTID | String | Unique identifier for the abutment. |
@@ -190,7 +213,8 @@ The following tables detail the attribute fields for the default layers created 
 | D50 | Real | Median grain size of bed material. |  |  |
 | SW | Real | Specific weight of water. |  |  |
 
-##### **OilSpills**
+##### **OilSpills** {#oilspills .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** IDSPILLSTE | String | Unique identifier for the spill source/site. |
@@ -211,17 +235,20 @@ The following tables detail the attribute fields for the default layers created 
 | s_dispapp | Boolean | Flag related to dispersant application effects. |  |  |
 | s_vegtrapp | Boolean | Flag to activate trapping by vegetation. |  |  |
 
-##### **Shorelines**
+##### **Shorelines** {#shorelines .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** IDTYPE | Integer | Type of shoreline (e.g., 1=Rocky cliffs, 2=Sand beaches, etc. See plugin UI for full list). |
 
-##### **InitialBedFractions**
+##### **InitialBedFractions** {#initialbedfractions .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** CONCENTFIL | String | Path to file defining initial bed sediment fraction values for this zone. |
 
-##### **SpillBooms**
+##### **SpillBooms** {#spillbooms .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** BOOMID | String | Unique identifier for the spill boom. |
@@ -231,7 +258,8 @@ The following tables detail the attribute fields for the default layers created 
 | VU | Real | Boom velocity component in U direction. |  |  |
 | VV | Real | Boom velocity component in V direction. |  |  |
 
-##### **SpillPaths**
+##### **SpillPaths** {#spillpaths .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** IDSPILLSTE | String | Unique identifier for the spill source/site associated with this path. |
@@ -245,42 +273,49 @@ The following tables detail the attribute fields for the default layers created 
 | DISP_V | Real | Vertical dispersion coefficient. |  |  |
 | HYDROGFILE | String | Path to the file defining the spill hydrograph (volume vs time). |  |  |
 
-##### **OilPipelines**
+##### **OilPipelines** {#oilpipelines .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** OPLID | String | Unique identifier for the pipeline segment. |
 | OPLFILE | String | Path to file containing detailed pipeline properties or data. |  |  |
 
-##### **OilPipeLineBoundCond**
+##### **OilPipeLineBoundCond** {#oilpipelineboundcond .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** OPLBCID | String | Unique identifier for the pipeline boundary condition point. |
 | OPLBCTYPE | Integer | Type of boundary condition (e.g., leak rate, pressure). |  |  |
 | OPLBCFILE | String | Path to file containing time series data for the boundary condition. |  |  |
 
-##### **OilRetDepth**
+##### **OilRetDepth** {#oilretdepth .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** RETDEPFIL | String | Path to file defining oil retention depth parameters for this zone. |
 
-##### **VegTrapp**
+##### **VegTrapp** {#vegtrapp .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** VEGTRAPFIL | String | Path to file defining vegetation trapping parameters for this zone. |
 
-##### **CrossSections**
+##### **CrossSections** {#crosssections .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** XSECID | String | Unique identifier for the cross-section line. |
 | ND_CS | Integer | Number of discretization points along the cross-section for output. |  |  |
 
-##### **Profiles**
+##### **Profiles** {#profiles .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** PROFILEID | String | Unique identifier for the profile line. |
 | ND_PR | Integer | Number of discretization points along the profile line for output. |  |  |
 
-##### **ObservationPoints**
+##### **ObservationPoints** {#observationpoints .unnumbered}
+
 | **Field Name** | **Type** | **Description** |  |  |
 | --- | --- | --- | --- | --- |
 | **Field Name** | **Type** | **Description** ObsID | String | Unique identifier for the observation point. |
