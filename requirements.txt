@@ -6,3 +6,5 @@ pymdown-extensions==10.12
 # Pin pygments below 2.19 — newer versions reject filename=None passed by
 # pymdown-extensions 10.12, breaking the build on CI.
 pygments<2.19
+# Used by scripts/build_pdfs.py verifier (page count + text extraction).
+pypdf>=4.0

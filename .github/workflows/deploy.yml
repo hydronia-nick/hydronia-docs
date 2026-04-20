@@ -21,6 +21,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # scripts/build_pdfs.py derives each manual's title-page date from
+          # the most recent commit that touched the manual's source dir or
+          # the Pandoc template; needs full history.
           fetch-depth: 0
 
       - name: Setup Python
@@ -29,11 +32,42 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
 
       - name: Build site
         run: mkdocs build --strict
+
+      # ------------------------------------------------------------------
+      # Pandoc PDF build: one PDF per manual registered in
+      # pandoc/manuals.yaml, landing at site/pdf/<id>.pdf so they ship
+      # alongside the HTML in the Pages artifact.
+      # ------------------------------------------------------------------
+
+      - name: Install Pandoc
+        run: |
+          PANDOC_VERSION=3.5
+          wget -q "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          sudo dpkg -i "pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          rm "pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          pandoc --version | head -1
+
+      - name: Install TeX Live packages (cached)
+        uses: awalsh128/cache-apt-pkgs-action@v1
+        with:
+          packages: >-
+            texlive-xetex
+            texlive-fonts-recommended
+            texlive-latex-recommended
+            texlive-latex-extra
+            texlive-lang-spanish
+            lmodern
+          # Version bump forces a fresh cache — increment when the package
+          # list changes.
+          version: 1.0
+
+      - name: Build PDF manuals
+        run: python scripts/build_pdfs.py --all
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
