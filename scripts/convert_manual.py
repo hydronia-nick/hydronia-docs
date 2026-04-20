@@ -88,12 +88,17 @@ def slugify(text: str) -> str:
 # ---------------------------------------------------------------------------
 
 # <figure id="..."><span class="image placeholder" data-original-image-src="images/X.png" data-original-image-title="" width="W%"></span><figcaption>CAP</figcaption></figure>
+#
+# Note: the width attribute is extracted via a SEPARATE `re.search` on the
+# matched text rather than a named group here. An optional capture group of
+# the form `(?:\s+width="...")?` was previously being skipped by the regex
+# engine (the surrounding `[^>]*?` is lazy and happily eats the whole attr
+# block with the optional group matching zero times), so every figure came
+# through as widthless. Two-stage extraction is simpler and correct.
 FIGURE_RE = re.compile(
     r"<figure[^>]*>\s*"
     r'<span class="image placeholder"\s+'
     r'data-original-image-src="images/(?P<src>[^"]+)"'
-    r'[^>]*?'
-    r'(?:\s+width="(?P<width>[^"]+)")?'
     r'[^>]*></span>\s*'
     r"<figcaption>(?P<cap>.*?)</figcaption>\s*"
     r"</figure>",
@@ -104,11 +109,17 @@ FIGURE_RE = re.compile(
 INLINE_IMG_RE = re.compile(
     r"\[image\]\{\.image \.placeholder\s+"
     r'original-image-src="images/(?P<src>[^"]+)"'
-    r'[^}]*?'
-    r'(?:\s+width="(?P<width>[^"]+)")?'
     r'[^}]*\}',
     re.DOTALL,
 )
+
+# Used by both figure and inline transforms to pull the width/height out of
+# the matched attribute block. Some source icons use `height="0.9em"` or
+# `height="5%"` instead of `width="X%"` (small line-height icons) and we
+# must emit the dimension Pandoc can honor so the image doesn't render at
+# native pixel size.
+WIDTH_ATTR_RE = re.compile(r'width="([^"]+)"')
+HEIGHT_ATTR_RE = re.compile(r'height="([^"]+)"')
 
 # Header attribute block at end of heading line: `## Heading {#sec:xxx}`
 HEADER_ATTR_RE = re.compile(r"\s*\{#[a-zA-Z][\w:+-]*\}\s*$")
@@ -187,20 +198,43 @@ def build_label_map(chapters: list[dict]) -> dict[str, tuple[str, str]]:
 # ---------------------------------------------------------------------------
 
 
+def _extract_dimensions(match: re.Match) -> dict[str, str]:
+    """Pull `width=` and/or `height=` out of the whole matched block.
+
+    Returns a dict with any subset of {"width", "height"}. The source
+    markdown uses either attribute for inline icons; Pandoc honors either
+    via the `{ width=X height=Y }` attr block on a markdown image.
+    """
+    text = match.group(0)
+    dims: dict[str, str] = {}
+    w = WIDTH_ATTR_RE.search(text)
+    h = HEIGHT_ATTR_RE.search(text)
+    if w:
+        dims["width"] = w.group(1)
+    if h:
+        dims["height"] = h.group(1)
+    return dims
+
+
+def _format_dim_attrs(dims: dict[str, str]) -> str:
+    if not dims:
+        return ""
+    parts = [f"{k}={v}" for k, v in dims.items()]
+    return "{ " + " ".join(parts) + " }"
+
+
 def _figure_sub(match: re.Match) -> str:
     src = match.group("src").lower()  # lowercase for case-sensitive deploy targets
     cap = match.group("cap").strip()
     # Caption may contain markdown/HTML; strip any stray whitespace/newlines.
     cap = re.sub(r"\s+", " ", cap)
-    width = match.group("width")
-    attrs = f"{{ width={width} }}" if width else ""
+    attrs = _format_dim_attrs(_extract_dimensions(match))
     return f"\n![{cap}](img/{src}){attrs}\n"
 
 
 def _inline_img_sub(match: re.Match) -> str:
     src = match.group("src").lower()
-    width = match.group("width")
-    attrs = f"{{ width={width} }}" if width else ""
+    attrs = _format_dim_attrs(_extract_dimensions(match))
     return f"![](img/{src}){attrs}"
 
 
@@ -258,9 +292,77 @@ def clean_body(
     )
     # 6. Any stray `images/X.png` references → `img/x.png` (lowercased).
     body = IMG_PATH_RE.sub(lambda m: f"img/{m.group(1).lower()}", body)
-    # 7. Collapse 3+ blank lines to 2.
+    # 7. Move large inline images (>15% width) at the end of list-item
+    #    paragraphs to their own block-level paragraph under the item.
+    #    Mirrors the original LaTeX manual's convention where the small
+    #    icon stays inline but the menu/dialog screenshot sits on its own
+    #    line inside the same \item.
+    body = _split_large_trailing_inline_images(body)
+    # 8. Collapse 3+ blank lines to 2.
     body = re.sub(r"\n{3,}", "\n\n", body)
     return body.strip() + "\n"
+
+
+# ---------------------------------------------------------------------------
+# Split large trailing inline images off into their own paragraph
+# ---------------------------------------------------------------------------
+
+# Inline markdown image with an explicit width percentage, captured.
+# Matches both `{ width=40% }` and `{width=40%}` style attribute blocks.
+_INLINE_IMG_WIDTH_RE = re.compile(
+    r"!\[[^\]]*\]\([^)]+\)\s*\{[^}]*\bwidth\s*=\s*(?P<w>\d+)%[^}]*\}"
+)
+
+# Numbered- or bulleted-list marker at the start of a line (captures indent
+# up to and including the marker so we can preserve list-item continuation).
+_LIST_ITEM_MARKER_RE = re.compile(r"^(?P<indent>\s*)(?:\d+\.\s+|[-*+]\s+)")
+
+_LARGE_IMAGE_WIDTH_THRESHOLD = 15  # percent
+
+
+def _split_large_trailing_inline_images(body: str) -> str:
+    """Break out large inline images at the end of list-item paragraphs.
+
+    After the inline-image regex pass, markdown lines like
+
+        2.  Activate the tool, click on the ![](img/icon.png){ width=5% }
+            icon and click on *Delete Scenario*. ![](img/menu.png){ width=40% }
+
+    have two inline images. The icon (5%) is fine inline; the menu (40%) is
+    too tall for the line-box in a list item and Pandoc emits it inline
+    anyway, causing LaTeX to reflow the step text around it. The original
+    LaTeX manual writes large images on their own line inside the
+    ``\\item``; we replicate that structure here so Pandoc renders the
+    big image as a block-level figure-equivalent inside the list item.
+    """
+
+    new_lines: list[str] = []
+    for line in body.split("\n"):
+        matches = list(_INLINE_IMG_WIDTH_RE.finditer(line))
+        if not matches:
+            new_lines.append(line)
+            continue
+        last = matches[-1]
+        width = int(last.group("w"))
+        trailing = line[last.end():].strip()
+        # Only rewrite when the image is the last thing on the line AND
+        # wider than the inline threshold.
+        if trailing or width <= _LARGE_IMAGE_WIDTH_THRESHOLD:
+            new_lines.append(line)
+            continue
+        marker = _LIST_ITEM_MARKER_RE.match(line)
+        # Inside a list item the continuation indent is the marker column
+        # width. Outside a list item no indent is added.
+        if marker:
+            indent = " " * (len(marker.group(0)))
+        else:
+            indent = ""
+        before_img = line[: last.start()].rstrip()
+        img_text = last.group(0)
+        new_lines.append(before_img)
+        new_lines.append("")
+        new_lines.append(f"{indent}{img_text}")
+    return "\n".join(new_lines)
 
 
 # ---------------------------------------------------------------------------

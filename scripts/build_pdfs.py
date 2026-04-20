@@ -37,6 +37,7 @@ DEFAULTS_PATH = PANDOC_DIR / "manuals.defaults.yaml"
 REGISTRY_PATH = PANDOC_DIR / "manuals.yaml"
 METADATA_PATH = PANDOC_DIR / "metadata.yaml"
 TEMPLATE_PATH = PANDOC_DIR / "hydronia.tex"
+FILTERS_DIR = PANDOC_DIR / "filters"
 BASELINES_PATH = PANDOC_DIR / "baselines.json"
 
 MARKDOWN_EXTENSIONS = (
@@ -93,6 +94,74 @@ def extract_year(text: str, fallback: int | None = None) -> int:
     return datetime.now().year
 
 
+# ---------------------------------------------------------------------------
+# Git-derived manual dates
+# ---------------------------------------------------------------------------
+#
+# When a manual's yaml row has no explicit `date:`, we derive the title-page
+# date from the most recent commit that touched either the manual's source
+# directory or the Pandoc template. This ties the PDF's displayed date to
+# actual changes rather than a hardcoded string that authors forget to bump.
+# An explicit `date:` in the yaml always wins (override).
+
+_git_date_cache: dict[tuple[str, ...], tuple[str | None, str]] = {}
+
+
+def _run_git(args: list[str]) -> str | None:
+    """Run a git command, returning stripped stdout or None on failure."""
+    try:
+        result = subprocess.run(
+            ["git", *args],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except FileNotFoundError:
+        return None
+    if result.returncode != 0:
+        return None
+    out = result.stdout.strip()
+    return out or None
+
+
+def compute_git_date(paths: tuple[str, ...]) -> tuple[str, str]:
+    """Return (date_string, source_label) for the given repo-relative paths.
+
+    source_label is one of: "git", "fallback". Uses a process-level cache
+    so running all three manuals in one invocation is a single git call per
+    unique (source_dir, template) pair rather than one per manual.
+    """
+    if paths in _git_date_cache:
+        cached, source = _git_date_cache[paths]
+        if cached is not None:
+            return cached, source
+        # Previous lookup failed; fall through to re-check current time.
+    out = _run_git(
+        ["log", "-1", "--format=%cd", "--date=format:%B %Y", "--", *paths]
+    )
+    if out:
+        _git_date_cache[paths] = (out, "git")
+        return out, "git"
+    fallback = datetime.now().strftime("%B %Y")
+    _git_date_cache[paths] = (None, "fallback")
+    return fallback, "fallback"
+
+
+def resolve_manual_date(merged: dict[str, Any]) -> tuple[str, str]:
+    """Return (date, source) for a merged manual row.
+
+    source: "override" when the yaml supplied a non-empty date, else "git"
+    or "fallback" from compute_git_date.
+    """
+    existing = str(merged.get("date") or "").strip()
+    if existing:
+        return existing, "override"
+    source_dir = str(merged["source_dir"]).replace("\\", "/")
+    template_rel = "pandoc/hydronia.tex"
+    return compute_git_date((source_dir, template_rel))
+
+
 def chapter_title_from_text(text: str) -> str | None:
     for line in text.splitlines():
         stripped = line.strip()
@@ -139,10 +208,11 @@ def merged_manual(defaults: dict[str, Any], manual: dict[str, Any]) -> dict[str,
     validate_manual_spec(manual)
     merged = merge_dicts(defaults, manual)
     title = str(merged["title"])
-    date = str(merged.get("date", defaults.get("date", "")))
+    date, date_source = resolve_manual_date(merged)
     start_year = int(merged.get("copyrightYearsStart", defaults.get("copyrightYearsStart", 2011)))
     end_year = extract_year(date, fallback=start_year)
     merged["date"] = date
+    merged["_date_source"] = date_source  # internal, stripped before yaml write
     merged["author"] = merged.get("author") or defaults.get("author") or "Hydronia LLC"
     merged["subject"] = merged.get("subject") or title
     merged["keywords"] = merged.get("keywords") or f"{title}, {merged.get('product', '')}, Hydronia LLC, QGIS"
@@ -235,6 +305,9 @@ def run_pandoc(manual: dict[str, Any], markdown_path: Path, meta_path: Path, bui
         "--output",
         str(build_pdf_path.resolve()),
     ]
+    # Pandoc Lua filters. Filters apply to every manual.
+    for lua in sorted(FILTERS_DIR.glob("*.lua")):
+        args.insert(-2, "--lua-filter=" + str(lua.resolve()))
     return subprocess.run(args, cwd=REPO_ROOT, text=True, capture_output=True)
 
 
@@ -316,6 +389,11 @@ def build_single_manual(manual: dict[str, Any], dry_run: bool, keep_build: bool)
         meta_path=meta_path,
         build_pdf_path=build_pdf_path,
         output_pdf_path=output_pdf_path,
+    )
+
+    print(
+        f"[{manual_id}] date={manual['date']} "
+        f"(source={manual.get('_date_source', 'unknown')})"
     )
 
     try:
@@ -446,6 +524,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--dry-run", action="store_true", help="Concatenate and preprocess only")
     parser.add_argument("--keep-build", action="store_true", help="Keep build/pandoc artifacts")
     parser.add_argument("--parallel", action="store_true", help="Build manuals in parallel")
+    parser.add_argument(
+        "--show-dates",
+        action="store_true",
+        help="Print the computed date per manual and exit without building",
+    )
     return parser.parse_args(argv)
 
 
@@ -453,6 +536,14 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     defaults, manuals = load_manuals()
     selected = select_manuals(defaults, manuals, args)
+
+    if args.show_dates:
+        for manual in selected:
+            print(
+                f"[{manual['id']}] date={manual['date']} "
+                f"(source={manual.get('_date_source', 'unknown')})"
+            )
+        return 0
 
     if args.verify_only:
         outcomes = [verify_only(selected[0])]

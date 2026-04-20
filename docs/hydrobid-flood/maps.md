@@ -2,11 +2,11 @@
 
 The plugin provides a comprehensive set of mapping tools for visualizing and analyzing simulation results. These tools allow users to create, display, and export various types of maps representing hydraulic parameters, sediment or tailings concentrations, time of arrival or to depth, hazard assessments, economic evaluations.
 
-![Results vs Time Maps Icon for HydroBID Flood](img/icon5_hb.png)
+![Results vs Time Maps Icon for HydroBID Flood](img/icon5_hb.png){ width=10% }
 
 Users have the following options available in the mapping tool menu:
 
-![Results vs Time Maps Menu for HydroBID Flood](img/mapping_menu_hf.png)
+![Results vs Time Maps Menu for HydroBID Flood](img/mapping_menu_hf.png){ width=50% }
 
 The mapping tools in the plugin enable users to visualize simulation results in both cell-based and raster formats. The plugin provides specialized tools for different types of analyses, including:
 
@@ -26,7 +26,8 @@ The mapping tools in the plugin enable users to visualize simulation results in 
 The Results vs Time Maps tool allows users to create and visualize time-dependent maps of various hydraulic parameters from model simulations.
 
 ### Dialog Window
-![Results vs Time Maps Dialog for HydroBID Flood](img/results_vs_time_maps_dialog_hf.png)
+
+![Results vs Time Maps Dialog for HydroBID Flood](img/results_vs_time_maps_dialog_hf.png){ width=100% }
 
 ### Dialog Controls
 []{#tab:results_vs_time_maps_controls label="tab:results_vs_time_maps_controls"}
@@ -71,41 +72,46 @@ To generate maps using the Results vs Time Maps tool, follow these steps:
 
 2.  From the Results vs Time Maps menu, click on \"*Results vs Time Maps*\"
 
-    ![](img/icon5_hb.png).
+    ![](img/icon5_hb.png){ width=5% }.
 
     
-![Results vs Time Maps Menu for HydroBID Flood](img/mapping_menu_resultsvstime_hf.png)
+
+![Results vs Time Maps Menu for HydroBID Flood](img/mapping_menu_resultsvstime_hf.png){ width=50% }
 
 3.  In the dialog that appears, the current scenario directory should be automatically selected. If not, browse to the appropriate directory containing your simulation results.
 
 4.  Select one or more map types from the list by checking the corresponding map names:
 
     
-![Results vs Time Map List](img/mapping_resultsvstime_maps.png)
+
+![Results vs Time Map List](img/mapping_resultsvstime_maps.png){ width=30% }
 
 5.  Select the output times you want to visualize. Hold down the Control key to select multiple times.
 
     
-![Results vs Time Map Times](img/mapping_resultsvstime_outputtime.png)
+![Results vs Time Map Times](img/mapping_resultsvstime_outputtime.png){ width=10% }
 
-6.  Transfer the selected maps and times to the *Output Maps* list by clicking the right arrow button ![](img/right_arrow_button.png).
+6.  Transfer the selected maps and times to the *Output Maps* list by clicking the right arrow button ![](img/right_arrow_button.png){ width=5% }.
 
-7.  If you wish to remove a map or time from the *Output Maps* list, select it and click the left arrow button ![](img/left_arrow_button.png).
+7.  If you wish to remove a map or time from the *Output Maps* list, select it and click the left arrow button ![](img/left_arrow_button.png){ width=5% }.
 
 8.  Choose the output format: Check *Cell Maps* to create polygon-based maps or check *Raster Maps* to create grid-based maps with interpolation (or both!).
 
     
-![Results vs Time Map Output Format Options](img/mapping_resultsvstime_cellrasterboxes.png)
+
+![Results vs Time Map Output Format Options](img/mapping_resultsvstime_cellrasterboxes.png){ width=40% }
 
 9.  If *Raster Maps* is selected, specify the raster resolution in the projected units (ft or m).
 
     
-![Results vs Time Map Raster Resolution](img/mapping_resultsvstime_rasterresolution.png)
+
+![Results vs Time Map Raster Resolution](img/mapping_resultsvstime_rasterresolution.png){ width=40% }
 
 10. If a vector map such as *Velocity Field* is selected, you can specify the *Vector Skip Frequency* to control the density of the vectors.
 
     
-![Results vs Time Map Vector Skip Frequency](img/mapping_resultsvstime_vectorskip.png)
+
+![Results vs Time Map Vector Skip Frequency](img/mapping_resultsvstime_vectorskip.png){ width=50% }
 
 11. Click \"OK\" to generate the maps.
 
@@ -143,11 +149,12 @@ The following table provides technical details on how each map type is processed
 The Maximum Result Maps tool generates maps showing the maximum values reached during a simulation for various hydraulic parameters.
 
 ### Dialog Window
-![Maximum Result Maps Dialog for HydroBID Flood](img/mapping_maxresults_dialog_hf.png)
+
+![Maximum Result Maps Dialog for HydroBID Flood](img/mapping_maxresults_dialog_hf.png){ width=100% }
 
 You can reach this dialog by clicking on the *Maximum Result Maps* button in the *Results vs Time Maps* tool:
 
-![Maximum Result Maps Menu for HydroBID Flood](img/mapping_maxresults_menu_hf.png)
+![Maximum Result Maps Menu for HydroBID Flood](img/mapping_maxresults_menu_hf.png){ width=50% }
 
 ### Dialog Controls
 []{#tab:max_value_cell_controls label="tab:max_value_cell_controls"}
@@ -184,19 +191,22 @@ To generate maps using the Maximum Result Maps tool, follow these steps:
 1.  Ensure you have completed a model simulation with the *Output maximum files* option enabled and have output files available, the *Output maximum files* option is available in the *Control Data* tab of the Hydronia Data Input Program.
 
     
-![Enabling Maximum file output in the Hydronia Data Input Program](img/mapping_maxresults_dip.png)
 
-2.  From the *Results vs Time Maps* menu, click on *Maximum Result Maps*. ![](img/icon5_hb.png).
+![Enabling Maximum file output in the Hydronia Data Input Program](img/mapping_maxresults_dip.png){ width=30% }
+
+2.  From the *Results vs Time Maps* menu, click on *Maximum Result Maps*. ![](img/icon5_hb.png){ width=5% }.
 
     
-![Maximum Result Maps Menu for HydroBID Flood](img/mapping_maxresults_menu_hf.png)
+
+![Maximum Result Maps Menu for HydroBID Flood](img/mapping_maxresults_menu_hf.png){ width=50% }
 
 3.  In the dialog that appears, the current scenario directory should be automatically selected. If not, browse to the appropriate directory containing your simulation results.
 
 4.  Select one or more map types from the list by checking the corresponding checkboxes:
 
     
-![Maximum Result Maps Checkboxes](img/mapping_maxresults_checkboxes.png)
+
+![Maximum Result Maps Checkboxes](img/mapping_maxresults_checkboxes.png){ width=30% }
 
 5.  Choose the output format:
 
@@ -207,7 +217,8 @@ To generate maps using the Maximum Result Maps tool, follow these steps:
     -   If *Raster Maps* is selected, specify the raster resolution in project units (ft or m).
 
         
-![Maximum Result Maps Output Options](img/mapping_maxresults_outputoptions.png)
+
+![Maximum Result Maps Output Options](img/mapping_maxresults_outputoptions.png){ width=60% }
 
 6.  Click \"OK\" to generate the map(s).
 
@@ -242,7 +253,7 @@ The following table provides technical details on how each map type is processed
 The Time-to-Depth Maps tool creates maps that analyze the temporal aspects of flooding by correlating water depths with specific times during a simulation. This tool is particularly useful for understanding flood dynamics, such as inundation timing, duration of flooding, and wave propagation. Users can generate maps showing when specific water depths are reached, how long areas remain underwater, and when flood waves first arrive at different locations.
 
 ### Dialog Window
-![Time-Depth Dialog for HydroBID Flood](img/mapping_time_depth_dialog_hf.png)
+![Time-Depth Dialog for HydroBID Flood](img/mapping_time_depth_dialog_hf.png){ width=.8\textwidth }
 
 ### Dialog Controls
 []{#tab:time_depth_controls label="tab:time_depth_controls"}
@@ -272,10 +283,11 @@ To generate time-to-depth maps, follow these steps:
 
 1.  Ensure you have completed a RiverFlow2D simulation and have output files available.
 
-2.  From the *Results vs Time Maps* menu, click on *Time-to-Depth Maps* ![](img/icon5_hb.png).
+2.  From the *Results vs Time Maps* menu, click on *Time-to-Depth Maps* ![](img/icon5_hb.png){ height=5% }.
 
     
-![Time-to-Depth Maps Menu for HydroBID Flood](img/mapping_t2d_menu_hf.png)
+
+![Time-to-Depth Maps Menu for HydroBID Flood](img/mapping_t2d_menu_hf.png){ width=50% }
 
 3.  In the dialog that appears, the current scneario directory and project file information should be automatically populated.
 
@@ -302,7 +314,8 @@ To generate time-to-depth maps, follow these steps:
     -   If \"Raster Maps\" is selected, specify the raster resolution in meters.
 
         
-![Time-to-Depth Maps Output Options](img/mapping_maxresults_outputoptions.png)
+
+![Time-to-Depth Maps Output Options](img/mapping_maxresults_outputoptions.png){ width=60% }
 
 6.  Click \"OK\" to generate the selected time-to-depth maps.
 
@@ -331,7 +344,8 @@ The Time-to-Depth Maps tool processes time-series data from model simulations an
 The Hazard Intensity Maps tool allows users to create maps that classify flood hazards based on various international standards for assessing flood risk to people, vehicles, and structures.
 
 ### Dialog Window
-![Hazard Intensity Dialog for HydroBID Flood](img/mapping_hazard_dialog_hf.png)
+
+![Hazard Intensity Dialog for HydroBID Flood](img/mapping_hazard_dialog_hf.png){ width=80% }
 
 ### Dialog Controls
 []{#tab:hazard_intensity_controls label="tab:hazard_intensity_controls"}
@@ -373,14 +387,16 @@ To generate hazard intensity maps, follow these steps:
 1.  Ensure you have completed a model simulation with the *Output hazard files* option enabled and have output files available, the *Output hazard files* option is available in the *Control Data* tab of the Hydronia Data Input Program.
 
     
-![Enabling Hazard file output in the Hydronia Data Input Program](img/mapping_hazard_dip.png)
+
+![Enabling Hazard file output in the Hydronia Data Input Program](img/mapping_hazard_dip.png){ width=30% }
 
 2.  From the *Results vs Time Maps* menu, click on *Hazard Intensity Maps*
 
-    ![](img/icon5_hb.png).
+    ![](img/icon5_hb.png){ width=5% }.
 
     
-![Hazard Intensity Maps Menu for HydroBID Flood](img/mapping_hazard_menu_hf.png)
+
+![Hazard Intensity Maps Menu for HydroBID Flood](img/mapping_hazard_menu_hf.png){ width=50% }
 
 3.  In the dialog that appears, the current scenario directory should be automatically selected. If not, browse to the appropriate directory containing your simulation results.
 
@@ -425,7 +441,8 @@ To generate hazard intensity maps, follow these steps:
     -   If *Raster Maps* is selected, specify the raster resolution in meters (ft or m).
 
         
-![Hazard Intensity Maps Output Options](img/mapping_maxresults_outputoptions.png)
+
+![Hazard Intensity Maps Output Options](img/mapping_maxresults_outputoptions.png){ width=60% }
 
 6.  Click \"OK\" to generate the hazard intensity map.
 
@@ -463,11 +480,12 @@ The tool processes data from `*_cells_hazard.textout` files, which contain preca
 The Concentrations and Properties vs Time Maps tool visualizes the transport and dispersion of tracers or pollutants in the simulation.
 
 ### Dialog Window
-![Concentrations and Properties vs Time Maps Dialog for HydroBID Flood](img/mapping_concentration_dialog_hf.png)
+
+![Concentrations and Properties vs Time Maps Dialog for HydroBID Flood](img/mapping_concentration_dialog_hf.png){ width=100% }
 
 You can reach this dialog by clicking on the *Concentrations and Properties vs Time Maps* button in the *Results vs Time Maps* tool:
 
-![Concentrations and Properties vs Time Maps Menu for HydroBID Flood](img/mapping_concentration_menu_hf.png)
+![Concentrations and Properties vs Time Maps Menu for HydroBID Flood](img/mapping_concentration_menu_hf.png){ width=50% }
 
 ### Dialog Controls
 []{#tab:element_concentration_controls label="tab:element_concentration_controls"}
@@ -538,9 +556,9 @@ To generate maps using the Concentrations and Properties vs Time Maps tool, foll
 
 5.  Select the output times you want to visualize. Hold down the Control key to select multiple times.
 
-6.  Transfer the selected maps and times to the *Output Maps* list by clicking the right arrow button ![](img/right_arrow_button.png).
+6.  Transfer the selected maps and times to the *Output Maps* list by clicking the right arrow button ![](img/right_arrow_button.png){ width=5% }.
 
-7.  If you wish to remove a map or time from the *Output Maps* list, select it and click the left arrow button ![](img/left_arrow_button.png).
+7.  If you wish to remove a map or time from the *Output Maps* list, select it and click the left arrow button ![](img/left_arrow_button.png){ width=5% }.
 
 8.  Choose the output format:
 
@@ -551,7 +569,8 @@ To generate maps using the Concentrations and Properties vs Time Maps tool, foll
     -   If *Raster Maps* is selected, specify the raster resolution in meters (ft or m).
 
         
-![Output Options for Concentrations and Properties vs Time Maps](img/mapping_maxresults_outputoptions.png)
+
+![Output Options for Concentrations and Properties vs Time Maps](img/mapping_maxresults_outputoptions.png){ width=60% }
 
 9.  Click \"OK\" to generate the concentration maps.
 

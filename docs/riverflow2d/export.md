@@ -3,13 +3,13 @@
 This chapter describes the export options available for the active model and how output files are configured.
 
 ## Export RiverFlow2D
-![Export Tool Icon](img/icon2.png)
+![Export Tool Icon](img/icon2.png){ width=10% }
 
 ### Dialog Window
 
 The following dialog is the main interface for configuring and initiating the export process for the RiverFlow2D model. It gathers information about input layers and specific components to be included in the export.
 
-![Export Files to RiverFlow2D Dialog.](img/export_main_dialog.png)
+![Export Files to RiverFlow2D Dialog.](img/export_main_dialog.png){ width=80% }
 
 ### Dialog Controls
 The following table describes the controls available in the Export dialog.

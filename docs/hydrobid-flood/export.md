@@ -3,13 +3,13 @@
 This chapter describes the export options available for the active model and how output files are configured.
 
 ## Export Hydro-BID Flood
-![Export Tool Icon for HydroBID Flood](img/icon2_hb.png)
+![Export Tool Icon for HydroBID Flood](img/icon2_hb.png){ width=10% }
 
 ### Dialog Window
 
 The following dialog is the main interface for configuring and initiating the export process for the HydroBID Flood model. It gathers information about input layers and specific components to be included in the export.
 
-![Export Tool Dialog for HydroBID Flood](img/export_main_dialog_hb.png)
+![Export Tool Dialog for HydroBID Flood](img/export_main_dialog_hb.png){ width=80% }
 
 ### Dialog Controls
 The following table describes the controls available in the Export dialog.

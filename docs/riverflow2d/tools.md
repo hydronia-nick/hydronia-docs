@@ -2,28 +2,28 @@
 
 This chapter provides a comprehensive reference for the tools available in the QGIS plugin. You can access the tools via the toolbar or the Main Menu under *Plugins*:
 
-![Tools Menu](img/icon14.png)
+![Tools Menu](img/icon14.png){ width=10% }
 
 ## EPA-SWMM Tools
 The plugin includes tools for integrating with EPA's Storm Water Management Model (SWMM), enabling users to create SWMM input files directly from QGIS layers and import existing SWMM files.
 
-![EPA-SWMM Project Submenus](img/tools_swmm_createinfsubmenus.png)
+![EPA-SWMM Project Submenus](img/tools_swmm_createinfsubmenus.png){ width=60% }
 
 ### Dialog Window
 #### Import EPA-SWMM File
 This tool imports an existing EPA-SWMM INP or HYC file into QGIS as vector layers.
 
-![Import EPA-SWMM File Dialog](img/tools_swmm_importdialog.png)
+![Import EPA-SWMM File Dialog](img/tools_swmm_importdialog.png){ width=60% }
 
 #### Create StormDrainPolygon
 This tool creates polygon representations around storm drain nodes.
 
-![Create StormDrainPolygon Dialog](img/tools_swmm_createsdpdialog.png)
+![Create StormDrainPolygon Dialog](img/tools_swmm_createsdpdialog.png){ width=60% }
 
 #### Create SWMM Project File
 This tool creates an EPA-SWMM compatible INP file from QGIS layers.
 
-![Create SWMM Project Dialog](img/tools_swmm_createinfdialog.png)
+![Create SWMM Project Dialog](img/tools_swmm_createinfdialog.png){ width=60% }
 
 ### Dialog Controls
 #### Import EPA-SWMM File
@@ -177,38 +177,38 @@ The EPA-SWMM tool is designed to work in conjunction with the UDSWMM module for 
 ## Hydro-Economic Evaluation of Flood Tool
 The Hydro-Economic Evaluation of Flood (HEEF) tool provides functionality for assessing potential economic damage from flooding. This section details each component of the HEEF toolkit, organized by dialog windows and their controls.
 
-![HEEF Submenu Options](img/tools_heef_submenus.png)
+![HEEF Submenu Options](img/tools_heef_submenus.png){ width=60% }
 
 ### Dialog Window
 #### HEEF Function Database
 This is the main entry point for managing vulnerability functions used in flood damage assessment.
 
-![HEEF Function Database Main Dialog](img/tools_heef_vfddialog.png)
+![HEEF Function Database Main Dialog](img/tools_heef_vfddialog.png){ width=60% }
 
 #### Vulnerability Function Type
 
 This dialog manages the categories of vulnerability functions.
 
-![Vulnerability Function Type Manager](img/tools_heef_vfdtypedialog.png)
+![Vulnerability Function Type Manager](img/tools_heef_vfdtypedialog.png){ width=60% }
 
 #### Vulnerability Function
 
 This dialog allows browsing and management of individual vulnerability functions.
 
-![Vulnerability Function Manager](img/tools_heef_function.png)
+![Vulnerability Function Manager](img/tools_heef_function.png){ width=60% }
 
 #### Setting Multiple Buildings
 The Structure Editor allows assigning vulnerability functions to multiple building polygons simultaneously:
 
-![HEEF Structure Editor Dialog](img/tools_heef_structureeditor.png)
+![HEEF Structure Editor Dialog](img/tools_heef_structureeditor.png){ width=58% }
 
-![Function value tab with table](img/tools_heef_functionvalue.png)
+![Function value tab with table](img/tools_heef_functionvalue.png){ width=58% }
 
 #### Function Selection Dialog (HEEF DB)
 
 This dialog allows selecting vulnerability functions to assign to buildings.
 
-![Vulnerability Function Selection Dialog](img/tools_heef_dbselector.png)
+![Vulnerability Function Selection Dialog](img/tools_heef_dbselector.png){ width=60% }
 
 ### Dialog Controls
 #### HEEF Function Database
@@ -321,7 +321,8 @@ The vulnerability function database is organized into several text-based tables:
 The Import Multi Sources File tool provides functionality for importing point source data from external files into the current project as a QGIS vector layer. This section details the tool's interface, workflow, and technical implementation.
 
 ### Dialog Window
-![Import Multi Sources File Dialog](img/tools_multisource_dialog.png)
+
+![Import Multi Sources File Dialog](img/tools_multisource_dialog.png){ width=70% }
 
 ### Dialog Controls
 []{#tab:multisource_dialog_controls label="tab:multisource_dialog_controls"}
@@ -405,7 +406,8 @@ The layer includes a custom form interface that facilitates the assignment and e
 The Import RF2D Layers tool provides functionality for importing various RiverFlow2D components and data files into QGIS as vector and raster layers. This comprehensive tool supports multiple file formats specific to hydrodynamic modeling and allows users to integrate simulation components with GIS data.
 
 ### Dialog Window
-![Import RF2D Layers Dialog](img/tools_importrf2d_dialog.png)
+
+![Import RF2D Layers Dialog](img/tools_importrf2d_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:importrf2d_dialog_controls label="tab:importrf2d_dialog_controls"}
@@ -494,7 +496,8 @@ The tool supports various RiverFlow2D file types, each representing a different 
 The Recover Layers tool provides functionality for recovering RiverFlow2D component layers that exist in the project directory but have been removed from the QGIS canvas. This tool allows users to quickly restore project layers without needing to re-import them from their source files.
 
 ### Dialog Window
-![Recover Layer Dialog](img/tools_recover_dialog.png)
+
+![Recover Layer Dialog](img/tools_recover_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:recover_dialog_controls label="tab:recover_dialog_controls"}
@@ -571,7 +574,8 @@ Each layer type is recovered with its proper styling and configuration based on 
 The Compare Output Raster Maps tool provides functionality for comparing raster outputs from different simulation scenarios. This tool enables quantitative assessment of differences between model runs, allowing users to evaluate the impact of parameter changes, analyze alternative designs, or validate model results against different scenarios.
 
 ### Dialog Window
-![Compare Output Raster Maps Dialog](img/tools_compare_dialog.png)
+
+![Compare Output Raster Maps Dialog](img/tools_compare_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:compare_dialog_controls label="tab:compare_dialog_controls"}
@@ -694,7 +698,8 @@ This report is useful for quantitative assessment of design alternatives, impact
 The Setting TriMesh Elevation tool provides functionality for assigning elevation values from a FED file to a TriMesh layer. This tool allows users to update the elevation attributes of mesh elements without reimporting the entire mesh, making it useful for updating terrain information in an existing model or applying elevation adjustments.
 
 ### Dialog Window
-![Setting TriMesh Elevation Dialog](img/tools_elevfed_dialog.png)
+
+![Setting TriMesh Elevation Dialog](img/tools_elevfed_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:elevfed_dialog_controls label="tab:elevfed_dialog_controls"}
@@ -766,7 +771,7 @@ This tool also detects cells with null area. In these cases, the tool displays t
 ### Dialog Window
 This tool has a minimal interface as it automatically runs the checking process when launched and displays results in a separate dialog if problematic cells are found.
 
-![Check Internal Angle of TriMesh’s Cells negative result](img/tools_check_angles_negativeresult.png)
+![Check Internal Angle of TriMesh’s Cells negative result](img/tools_check_angles_negativeresult.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:check_angles_controls label="tab:check_angles_controls"}
@@ -816,7 +821,7 @@ This tool has a minimal interface as it automatically runs the checking process 
 #### List of Cells Dialog
 If the tool identifies cells with internal angles less than 5 degrees, it displays a secondary dialog listing these cells:
 
-![List of cells with small internal angles](img/tools_check_angles_list.png)
+![List of cells with small internal angles](img/tools_check_angles_list.png){ width=60% }
 
 []{#tab:list_cells_controls label="tab:list_cells_controls"}
 
@@ -872,7 +877,8 @@ The RiverFlow2D Settings Tool provides a centralized interface for configuring e
 :::
 
 ### Dialog Window
-![RiverFlow2D Settings Dialog](img/tools_rf2dsettings_dialog.png)
+
+![RiverFlow2D Settings Dialog](img/tools_rf2dsettings_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:rf2d_settings_controls label="tab:rf2d_settings_controls"}
@@ -976,7 +982,8 @@ If instructed to do so or you are sure about the settings, you can change the se
 The Multi-hydrograph to Single-hydrograph Files Tool provides a specialized function for converting time-series hydrograph data from a combined multi-source file format into individual single-hydrograph files. This tool is particularly useful for preparing hydrologic inputs for simulations when working with multiple inflow sources that were initially stored in a unified data file.
 
 ### Dialog Window
-![Multi-hydrograph to Single-hydrograph Files Dialog](img/tools_multihydrograph_dialog.png)
+
+![Multi-hydrograph to Single-hydrograph Files Dialog](img/tools_multihydrograph_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:multihydrograph_controls label="tab:multihydrograph_controls"}
@@ -1071,7 +1078,8 @@ This tool facilitates the migration of standalone RiverFlow2D projects into the 
 :::
 
 ### Dialog Window
-![Import Single to Multi-scenario Project Dialog](img/tools_import_project_dialog.png)
+
+![Import Single to Multi-scenario Project Dialog](img/tools_import_project_dialog.png){ width=60% }
 
 ### Dialog Controls
 []{#tab:import_project_controls label="tab:import_project_controls"}

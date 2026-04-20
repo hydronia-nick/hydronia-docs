@@ -4,6 +4,10 @@
 \usepackage{fontspec}
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
+% Safety net for images with no explicit width in the markdown: cap at
+% line width so nothing overflows the page. Explicit widths from the
+% markdown (e.g. `{ width=80% }`) override this default.
+\setkeys{Gin}{width=\linewidth,keepaspectratio}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{tabularx}
@@ -19,6 +23,11 @@
 \usepackage{etoolbox}
 \usepackage{caption}
 \usepackage{float}
+% Force every figure to render exactly where it is in the source, matching
+% the existing LaTeX manual's convention (which wrote `[H]` on every figure
+% explicitly). Without this, LaTeX's `htbp` default floats captioned images
+% across page boundaries away from their captions and surrounding text.
+\floatplacement{figure}{H}
 \usepackage{hyperref}
 \usepackage{listings}
 

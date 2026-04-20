@@ -3,13 +3,13 @@
 This chapter describes the export options available for the active model and how output files are configured.
 
 ## Export Hydrodynamic OilFlow2D
-![Export Tool Icon for OilFlow2D](img/icon12_of2d.png)
+![Export Tool Icon for OilFlow2D](img/icon12_of2d.png){ width=10% }
 
 ### Dialog Window
 
 The following dialog is the main interface for configuring and initiating the export process for the OilFlow2D model. It gathers information about input layers and specific components to be included in the export.
 
-![Export Dialog for OilFlow2D](img/export_main_dialog_of2d.png)
+![Export Dialog for OilFlow2D](img/export_main_dialog_of2d.png){ width=80% }
 
 ### Dialog Controls
 The following table describes the controls available in the Export dialog.
@@ -94,7 +94,7 @@ Failure to meet these requirements will likely result in error messages displaye
 ## Export OILW File
 This dialog allows the user to configure and export the necessary input file for running oil weathering and transport simulations within OilFlow2D.
 
-![Export OILW File Dialog.](img/export_oilw_dialog_of2d.png)
+![Export OILW File Dialog.](img/export_oilw_dialog_of2d.png){ width=80% }
 
 ### Dialog Controls
 The following table describes the controls available in the Export OILW File dialog.

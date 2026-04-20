@@ -1,17 +1,17 @@
 # New Project / Scenario Tool
 
-![New Project Tool Icon for HydroBID Flood](img/icon1_hb.png)
+![New Project Tool Icon for HydroBID Flood](img/icon1_hb.png){ width=10% }
 
 ## New HydroBID Flood Project
 This chapter describes the tools related to creating and managing new projects and scenarios. Within the *New Hydro-BID Flood Project* menu, the following tools are available:
 
-![New HydroBID Flood Project Menu](img/newproject_menu_hb.png)
+![New HydroBID Flood Project Menu](img/newproject_menu_hb.png){ width=50% }
 
 ### Dialog Window
 
 The *New HydroBID Flood Project* dialog allows the user to specify the project name, initial scenario name, project location, and select the components to be included in the initial setup.
 
-![New Project Dialog for HydroBID Flood](img/newproject_main_dialog_hb.png)
+![New Project Dialog for HydroBID Flood](img/newproject_main_dialog_hb.png){ width=80% }
 
 ### Dialog Controls
 
@@ -70,7 +70,7 @@ Please refer to the [8.1](appendix.md#layer-attributes-reference) section for de
 ### Workflow
 The typical workflow for using the New Project tool is as follows:
 
-1.  Open QGIS and click on the ![](img/icon1_hb.png) icon to open the *New HydroBID Flood Project* dialog.
+1.  Open QGIS and click on the ![](img/icon1_hb.png){ width=5% } icon to open the *New HydroBID Flood Project* dialog.
 
 2.  The *Create New HydroBID Flood Project* dialog appears.
 
@@ -119,7 +119,7 @@ This tool allows users to create a new scenario within an existing *HydroBID Flo
 
 The *New Scenario* dialog prompts the user for the name of the new scenario and allows selection of an existing scenario to use as a template.
 
-![The New Scenario dialog window for HydroBID Flood.](img/newproject_newscenario_hb.png)
+![The New Scenario dialog window for HydroBID Flood.](img/newproject_newscenario_hb.png){ width=80% }
 
 ### Dialog Controls
 
@@ -133,7 +133,9 @@ The *New Scenario* dialog prompts the user for the name of the new scenario and 
 ### Workflow
 1.  Open QGIS and click on the
 
-    ![](img/icon1_hb.png) icon and click on the *New Scenario* menu item. ![](img/newproject_menunew_hb.png)
+    ![](img/icon1_hb.png){ width=5% } icon and click on the *New Scenario* menu item.
+
+![](img/newproject_menunew_hb.png){ width=40% }
 
 2.  The *Add New New Scenario to Project* dialog appears.
 
@@ -176,7 +178,7 @@ This tool removes an existing scenario from the *HydroBID Flood* project. This a
 
 The *Delete Scenario* dialog allows the user to select which existing scenario to remove.
 
-![The Delete Scenario dialog window.](img/newproject_delscenario_hb.png)
+![The Delete Scenario dialog window.](img/newproject_delscenario_hb.png){ width=80% }
 
 ### Dialog Controls
 
@@ -189,7 +191,9 @@ The *Delete Scenario* dialog allows the user to select which existing scenario t
 ### Workflow
 1.  Ensure a *HydroBID Flood* project is open and active.
 
-2.  Activate the tool, click on the ![](img/icon1_hb.png) icon and click on the *Delete Scenario* menu item. ![](img/newproject_menudel_hb.png)
+2.  Activate the tool, click on the ![](img/icon1_hb.png){ width=5% } icon and click on the *Delete Scenario* menu item.
+
+    ![](img/newproject_menudel_hb.png){ width=40% }
 
 3.  The *Delete Scenario from HydroBID Flood Project* dialog appears.
 
@@ -199,13 +203,17 @@ The *Delete Scenario* dialog allows the user to select which existing scenario t
 
 6.  Click **Ok**.
 
-7.  The user will receive a confirmation message asking them to confirm the removal. ![](img/newproject_delscenario_confirm.png)
+7.  The user will receive a confirmation message asking them to confirm the removal.
+
+    ![](img/newproject_delscenario_confirm.png){ width=50% }
 
 8.  Click **Ok** again to confirm the removal.
 
 9.  The tool identifies the directory path corresponding to the selected scenario, then removes the scenario from the project.
 
-10. The user will receive a message indicating that the scenario has been removed from the project. ![](img/newproject_delscenario_info.png)
+10. The user will receive a message indicating that the scenario has been removed from the project.
+
+    ![](img/newproject_delscenario_info.png){ width=70% }
 
 11. As the message indicates, this action is not permanently deleting files from the file system. If the user chooses, they can manually delete the entire directory in File Explorer. This will make it unrecoverable.
 

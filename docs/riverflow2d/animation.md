@@ -2,13 +2,14 @@
 
 The Animation Tool is a specialized QGIS plugin component designed to create dynamic visualizations of RiverFlow2D model results over time. This tool allows users to generate animations showing how hydraulic parameters (such as water depth, velocity, and water surface elevation) change throughout a simulation, and export these animations as video files for presentations and analysis.
 
-![Animation Tool Icon](img/icon12.png)
+![Animation Tool Icon](img/icon12.png){ width=10% }
 
 ## Main Interface
 The Animation Tool provides a dockable widget interface that allows users to control the animation of model results and access various export options.
 
 ### Dialog Window
-![Animation Tool Interface](img/animation_main_interface.png)
+
+![Animation Tool Interface](img/animation_main_interface.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -88,7 +89,8 @@ The tool generates frames by updating layer symbology for each time step and ren
 The Export Image Dialog allows users to create a static image of a specific time step from the animation. The Image tab allows configuration of image dimensions, the time step to export, and the output file location.
 
 ### Dialog Window
-![Export Image Dialog - Image Tab](img/animation_export_images.png)
+
+![Export Image Dialog - Image Tab](img/animation_export_images.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -140,7 +142,8 @@ To export an image of a specific time step:
 The Export Image Dialog - Layout Tab allows users to configure the layout of the exported image. You can use a default layout with configurable elements (title, time, legend) or a custom layout created in QGIS Print Layout.
 
 ### Dialog Window
-![Export Image Dialog - Layout Tab](img/animation_export_images_layouttab.png)
+
+![Export Image Dialog - Layout Tab](img/animation_export_images_layouttab.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -215,7 +218,8 @@ To configure the image layout:
 The Export Video Dialog - Layout Tab allows users to configure the layout of the animation. You can use a default layout or a custom layout created in the *QGIS Print Layout* program.
 
 ### Dialog Window
-![Export Video Dialog - Layout Tab](img/animation_export_video_tab2.png)
+
+![Export Video Dialog - Layout Tab](img/animation_export_video_tab2.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |
@@ -289,7 +293,8 @@ To configure the animation video layout:
 The Export Video Dialog provides advanced options for creating animations with custom layouts and templates.
 
 ### Dialog Window
-![Export Video Dialog - Video Tab](img/animation_export_video_tab1.png)
+
+![Export Video Dialog - Video Tab](img/animation_export_video_tab1.png){ width=60% }
 
 ### Dialog Controls
 | **Control** | **Type** | **Description** |

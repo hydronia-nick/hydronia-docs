@@ -1,10 +1,10 @@
 # New Project / Scenario Tool
 
-![New Project Tool Icon for OilFlow2D](img/oilbutton1.png)
+![New Project Tool Icon for OilFlow2D](img/oilbutton1.png){ width=10% }
 
 This chapter describes the tools related to creating and managing new projects and scenarios. Within the *New OilFlow2D Project* menu, the following tools are available:
 
-![New OilFlow2D Project Menu](img/newproject_menu_of2d.png)
+![New OilFlow2D Project Menu](img/newproject_menu_of2d.png){ width=50% }
 
 ## New OilFlow2D Project
 This tool initializes a new *OilFlow2D* project. It sets up the necessary directory structure, creates a QGIS project, and generates the required initial GeoPackage layers based on the components selected by the user. This establishes the foundation for defining model geometry, components, and simulation parameters within a multi-scenario context.
@@ -13,7 +13,7 @@ This tool initializes a new *OilFlow2D* project. It sets up the necessary direct
 
 The *New OilFlow2D Project* dialog allows the user to specify the project name, initial scenario name, project location, and select the components to be included in the initial setup.
 
-![Create New Project Dialog for OilFlow2D](img/newproject_main_dialog_of2d.png)
+![Create New Project Dialog for OilFlow2D](img/newproject_main_dialog_of2d.png){ width=80% }
 
 ### Dialog Controls
 
@@ -72,7 +72,7 @@ Please refer to the [8.1](appendix.md#layer-attributes-reference) section for de
 ### Workflow
 The typical workflow for using the New Project tool is as follows:
 
-1.  Open QGIS and click on the ![](img/icon1_of2d.png) icon to open the *New OilFlow2D Project* dialog.
+1.  Open QGIS and click on the ![](img/icon1_of2d.png){ width=5% } icon to open the *New OilFlow2D Project* dialog.
 
 2.  The *Create New OilFlow2D Project* dialog appears.
 
@@ -121,7 +121,7 @@ This tool allows users to create a new scenario within an existing *OilFlow2D* p
 
 The *New Scenario* dialog prompts the user for the name of the new scenario and allows selection of an existing scenario to use as a template.
 
-![The New Scenario dialog window for OilFlow2D.](img/newproject_newscenario_of2d.png)
+![The New Scenario dialog window for OilFlow2D.](img/newproject_newscenario_of2d.png){ width=80% }
 
 ### Dialog Controls
 
@@ -135,7 +135,9 @@ The *New Scenario* dialog prompts the user for the name of the new scenario and 
 ### Workflow
 1.  Open QGIS and click on the
 
-    ![](img/oilbutton1.png) icon and click on the *New Scenario* menu item. ![](img/newproject_menunew_of2d.png)
+    ![](img/oilbutton1.png){ width=5% } icon and click on the *New Scenario* menu item.
+
+![](img/newproject_menunew_of2d.png){ width=40% }
 
 2.  The *Add New New Scenario to Project* dialog appears.
 
@@ -178,7 +180,7 @@ This tool removes an existing scenario from the *OilFlow2D* project. This action
 
 The *Delete Scenario* dialog allows the user to select which existing scenario to remove.
 
-![The Delete Scenario dialog window.](img/newproject_delscenario_of2d.png)
+![The Delete Scenario dialog window.](img/newproject_delscenario_of2d.png){ width=80% }
 
 ### Dialog Controls
 
@@ -191,7 +193,9 @@ The *Delete Scenario* dialog allows the user to select which existing scenario t
 ### Workflow
 1.  Ensure a *OilFlow2D* project is open and active.
 
-2.  Activate the tool, click on the ![](img/icon1_of2d.png) icon and click on the *Delete Scenario* menu item. ![](img/newproject_menudel_of2d.png)
+2.  Activate the tool, click on the ![](img/icon1_of2d.png){ width=5% } icon and click on the *Delete Scenario* menu item.
+
+    ![](img/newproject_menudel_of2d.png){ width=40% }
 
 3.  The *Delete Scenario from OilFlow2D Project* dialog appears.
 
@@ -201,13 +205,17 @@ The *Delete Scenario* dialog allows the user to select which existing scenario t
 
 6.  Click **Ok**.
 
-7.  The user will receive a confirmation message asking them to confirm the removal. ![](img/newproject_delscenario_confirm.png)
+7.  The user will receive a confirmation message asking them to confirm the removal.
+
+    ![](img/newproject_delscenario_confirm.png){ width=50% }
 
 8.  Click **Ok** again to confirm the removal.
 
 9.  The tool identifies the directory path corresponding to the selected scenario, then removes the scenario from the project.
 
-10. The user will receive a message indicating that the scenario has been removed from the project. ![](img/newproject_delscenario_info.png)
+10. The user will receive a message indicating that the scenario has been removed from the project.
+
+    ![](img/newproject_delscenario_info.png){ width=70% }
 
 11. As the message indicates, this action is not permanently deleting files from the file system. If the user chooses, they can manually delete the entire directory in File Explorer. This will make it unrecoverable.
 

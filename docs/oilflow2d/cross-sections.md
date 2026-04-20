@@ -2,13 +2,14 @@
 
 The Cross Sections Tool is a specialized QGIS plugin designed to generate, visualize, and analyze cross-sectional profiles of terrain and water surfaces from RiverFlow2D model outputs. This tool allows users to create profiles along user-defined lines, visualize how cross-sections change over time, and export the data for further analysis.
 
-![Cross Sections Tool Icon for OilFlow2D](img/icon15_of2d.png)
+![Cross Sections Tool Icon for OilFlow2D](img/icon15_of2d.png){ width=10% }
 
 ## CrossSection Tab
 The CrossSection tab is the primary interface of the Cross Sections Tool for creating and visualizing cross-sectional profiles. It displays a graphical representation of the terrain and water surface profile along a user-defined line, with controls for time navigation, animation, and export.
 
 ### Tab Window
-![CrossSection Tab of the Cross Sections Tool](img/sections_main_interface.png)
+
+![CrossSection Tab of the Cross Sections Tool](img/sections_main_interface.png){ width=100% }
 
 ### Tab Controls
 | **Control** | **Type** | **Description** |
@@ -76,7 +77,8 @@ To create and analyze a cross-section profile:
 The Hydrograph tab displays time-series data at the selected cross-section location, showing how hydraulic parameters (e.g., water level, discharge) change over time. Available parameters vary based on the model's active module (basic hydraulics, sediment transport, solute transport, mud/tailings flow, or oil spill).
 
 ### Tab Window
-![Hydrograph Tab of the Cross Sections Tool](img/sections_hydrograph_tab.png)
+
+![Hydrograph Tab of the Cross Sections Tool](img/sections_hydrograph_tab.png){ width=100% }
 
 ### Tab Controls
 | **Control** | **Type** | **Description** |
@@ -176,7 +178,8 @@ To visualize and analyze hydrograph data:
 The Table tab presents the cross-section data in tabular format, allowing for more precise examination of values. The table displays hydraulic parameters at each station along the cross-section, including bed elevation, water depth, water surface elevation, velocity, Froude number, and discharge.
 
 ### Tab Window
-![Table Tab of the Cross Sections Tool](img/sections_table_tab.png)
+
+![Table Tab of the Cross Sections Tool](img/sections_table_tab.png){ width=90% }
 
 ### Tab Controls
 | **Control** | **Type** | **Description** |
