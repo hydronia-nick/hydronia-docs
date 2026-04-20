@@ -69,10 +69,13 @@ jobs:
           sudo apt-get install -y --no-install-recommends \
             texlive-xetex \
             texlive-fonts-recommended \
+            texlive-fonts-extra \
             texlive-latex-recommended \
             texlive-latex-extra \
             texlive-lang-spanish \
             lmodern
+          # texlive-fonts-extra ships the TeX Gyre family (Heros, Cursor,
+          # Pagella, etc.) that our Pandoc template pulls via fontspec.
 
       - name: Build PDF manuals
         run: python scripts/build_pdfs.py --all
