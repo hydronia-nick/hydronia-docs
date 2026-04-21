@@ -333,25 +333,19 @@ Start the QGIS  software. After loading we will have a window similar to the one
 
 4.  In the Filter textbox, type 7405 and select the *Coordinate Reference System* as shown:
 
-    
-
-![Coordinate Reference System Selector dialog window.](img/swmmproj.png){ width=50% }
+    ![Coordinate Reference System Selector dialog window.](img/swmmproj.png){ width=50% }
 
 5.  Click OK.
 
 6.  The Coordinate Reference System (CRS) EPSG code: 7405 should be selected, and the dialog window will look like this:
 
-    
-
-![Create New RiverFlow2D Project.](img/swmmlayers.png){ width=40% }
+    ![Create New RiverFlow2D Project.](img/swmmlayers.png){ width=40% }
 
 7.  Click the "..." button to provide a path to store the project files in the *Project Directory* textbox. For this example you may browse to the UrbanDrainageTutorial folder.
 
 8.  After clicking OK, the layer templates are created, and displayed on the *Layers Panel*:
 
-    
-
-![Layers created for the project.](img/layerspanel.png){ width=45% }
+    ![Layers created for the project.](img/layerspanel.png){ width=45% }
 
     ::: shaded
     RiverFlow2D  will use the unit system as that defined in the projection you selected. If the projection has coordinates in meters, units will be set to Metric. If the projection coordinates are in feet, units will be set to English.
@@ -375,23 +369,17 @@ Search for the 'TEST8BDEM.ASC' in the 'UrbanDrainageTutorial\\base' folder:
 
 1.  Click Add, assign the EPSG:7405 projection code to the file, and raster will be displayed on the screen, by default it is rendered in gray gradient as shown in Figure [19.7](#11).
 
-    
-
-![Digital elevation model in raster format.](img/swmmdemgray.png){ width=100% }
+    ![Digital elevation model in raster format.](img/swmmdemgray.png){ width=100% }
 
     ::: shaded
     Right-clicking on the label of the created layer and selecting *Properties* allows you to change the rendering style for a more informative color palette.
     :::
 
-    
-
-![Window to change the raster layer render style.](img/swmmproperties.png){ width=50% }
+    ![Window to change the raster layer render style.](img/swmmproperties.png){ width=50% }
 
     And now the raster layer is displayed with the new color palette selected:
 
-    
-
-![Digital elevation model with color render.](img/swmmdemcolor.png){ width=100% }
+    ![Digital elevation model with color render.](img/swmmdemcolor.png){ width=100% }
 
     ::: shaded
     It is convenient to move the raster layer created to the end of the list of layers, thus it does not interfere with the display of other layers.
@@ -401,21 +389,15 @@ Search for the 'TEST8BDEM.ASC' in the 'UrbanDrainageTutorial\\base' folder:
 
     To connect the surface water mesh with the storm drain components, we will import the exchange nodes from the '.INP' file created in the first part of this tutorial. For that we will use the *Import EPA-SWMM INP file* command from the RiverFlow2D  tools drop down icon:
 
-    
-
-![Import EPA-SWMM INP file command](img/swmmimportinp.png){ width=60% }
+    ![Import EPA-SWMM INP file command](img/swmmimportinp.png){ width=60% }
 
     Select the 'base.INP' file and a message will indicate the transfer was successful:
 
-    
-
-![.INP successfully loaded](img/swmmimportready.png){ width=40% }
+    ![.INP successfully loaded](img/swmmimportready.png){ width=40% }
 
     You will note that there is a new *StormDrain* layer created and the imported exchange nodes are displayed:
 
-    
-
-![Surface water-SWMM exchange nodes.](img/swmmexchangenodes.png){ width=40% }
+    ![Surface water-SWMM exchange nodes.](img/swmmexchangenodes.png){ width=40% }
 
 ### Create the limits of the modeling area
 
@@ -423,9 +405,7 @@ The limits of the modeling area are defined using a polygon on the *Domain Outli
 
 1.  Click the *Domain Outline* layer to activate it and then click *Toggle Editing* (pencil) in the toolbar:
 
-    
-
-![Menu buttons for digitalization toolbar.](img/2-14){ width=43% }
+    ![Menu buttons for digitalization toolbar.](img/2-14){ width=43% }
 
 2.  This activates the rest of the editing buttons. Now click the *Add Feature* tool which is the bean looking polygon.
 
@@ -435,9 +415,7 @@ The limits of the modeling area are defined using a polygon on the *Domain Outli
 
     Proceed to delineate the outline of the polygon by marking the vertices clicking with the left mouse button:
 
-    
-
-![Modeling area delimitation on the Domain Outline layer.](img/swmmdomainoutline.png){ width=100% }
+    ![Modeling area delimitation on the Domain Outline layer.](img/swmmdomainoutline.png){ width=100% }
 
     ::: shaded
     Make sure that the polygon is contained within the limits of the raster layer since RiverFlow2D  will not extrapolate elevations to areas that are outside of the available data on the raster layer. Also, the SWMM exchange nodes should be inside the *Domain Outline* polygon.
@@ -445,9 +423,7 @@ The limits of the modeling area are defined using a polygon on the *Domain Outli
 
 3.  To finalize and close the polygon, right-click anywhere on the map view area. A dialog window to input the cell size attribute of the newly created polygon. The value for the reference size of the mesh cell is indicated. Enter a value of 10 m.
 
-    
-
-![CellSize defined for the Domain Outline layer.](img/swmmcellsize.png){ width=60% }
+    ![CellSize defined for the Domain Outline layer.](img/swmmcellsize.png){ width=60% }
 
     Now click on *Toggle Editing* button to deactivate the layer Edit mode and save the changes.
 
@@ -473,15 +449,11 @@ To assign Manning's n roughness values, we will enter polygons with given n's. T
 
     You should have an image like the one shown below:
 
-    
-
-![Editing the Manning N layer.](img/swmmmanningpolygon.png){ width=100% }
+    ![Editing the Manning N layer.](img/swmmmanningpolygon.png){ width=100% }
 
 3.  Close the last vertices on the polygon by right-clicking on the desired position. The following dialog window is presented where you must input the Manning's n value associated to the polygon. For this case, enter 0.03:
 
-    
-
-![Dialog to input Manning N Feature Attributes.](img/swmmmanning.png){ width=50% }
+    ![Dialog to input Manning N Feature Attributes.](img/swmmmanning.png){ width=50% }
 
 4.  Click the *Save* button
 
@@ -517,9 +489,7 @@ By default all boundaries are closed unless we set open boundary conditions. Sin
 
     Enter the data as shown in Figure 12.21 below:
 
-    
-
-![Outflow Boundary Condition.](img/swmmoutflowbcwindow.png){ width=100% }
+    ![Outflow Boundary Condition.](img/swmmoutflowbcwindow.png){ width=100% }
 
 5.  Click the Save ![](img/button5.png){ width=.7cm } button:
 
@@ -559,9 +529,7 @@ Once the layers with the input information to the model have been created, the n
 
 4.  Click OK.
 
-    
-
-![Export RiverFlow2D dialog.](img/swmmexportdialog.png){ width=50% }
+    ![Export RiverFlow2D dialog.](img/swmmexportdialog.png){ width=50% }
 
     The plugin will begin to process the information. A message bar at the top will indicate the approximate progress of the process.
 
@@ -569,29 +537,21 @@ Once the layers with the input information to the model have been created, the n
 
     Then the window with the input parameters of RiverFlow2D  is presented, as shown in the image below:
 
-    
-
-![Hydronia Data Input Program window.](img/swmmdip.png){ width=90% }
+    ![Hydronia Data Input Program window.](img/swmmdip.png){ width=90% }
 
     Enter 5 hours for the Simulation time and click on the Storm Drain EPA-SWMM panel. Enter for the N1 node CD = 0 since we don't want exchange with that inflow node to the conduit.
 
-    
-
-![Storm Drain Dialog.](img/swmmdipstormdrain.png){ width=100% }
+    ![Storm Drain Dialog.](img/swmmdipstormdrain.png){ width=100% }
 
 5.  Click \[Save .LWSMM\] and overwrite the existing file, for this tutorial the filename will be the name of the project when it was exported with the '.lwsmm' extension.
 
 6.  Click the *Run RiverFlow2D* button to run the model. The model will show a window reporting on the model progress.
 
-    
-
-![Morel Report Window.](img/swmmmodelrun.png){ width=100% }
+    ![Morel Report Window.](img/swmmmodelrun.png){ width=100% }
 
     When the run finishes, close the window and you can import results back in QGIS to prepare maps and animations. An example of the maximum depths is shown below:
 
-    
-
-![Maximum depths.](img/swmmdepths.png){ width=100% }
+    ![Maximum depths.](img/swmmdepths.png){ width=100% }
 
 This concludes the *Urban Drainage using RiverFlow2D and EPA-SWMM* tutorial.
 

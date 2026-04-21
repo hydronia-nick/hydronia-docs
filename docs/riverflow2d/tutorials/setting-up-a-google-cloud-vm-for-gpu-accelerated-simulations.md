@@ -98,9 +98,7 @@ This is the most critical step, where you define the computational resources for
 
 3.  Click **Select** to confirm the boot disk configuration.
 
-    
-
-![Configuring the Windows Server 2019 boot disk.](img/gcp_gcp_04_boot_disk.png){ width=70% }
+    ![Configuring the Windows Server 2019 boot disk.](img/gcp_gcp_04_boot_disk.png){ width=70% }
 
 4.  In the **Firewall** section of the main creation page, check both **Allow HTTP traffic** and **Allow HTTPS traffic**. RDP access is enabled by default for Windows instances.
 
@@ -112,9 +110,7 @@ This is the most critical step, where you define the computational resources for
 
 3.  If this is your first time creating a GPU-enabled VM, the creation will likely fail with a "VM creation error" pop-up, as shown in Figure 20.3. This is expected and is the easiest way to request the needed quota.
 
-    
-
-![VM creation error due to GPU quota.](img/gcp_gcp_quota_error.png){ width=70% }
+    ![VM creation error due to GPU quota.](img/gcp_gcp_quota_error.png){ width=70% }
 
 4.  Click the **Request Quota** button directly within the error dialog.
 
@@ -134,21 +130,15 @@ This is the most critical step, where you define the computational resources for
 
         -   Click `Submit request`.
 
-    
+    ![Requesting a quota increase.](img/gcp_gcp_quota_1.png){ width=60% }
 
-![Requesting a quota increase.](img/gcp_gcp_quota_1.png){ width=60% }
-
-    
-
-![Providing contact details for the quota request.](img/gcp_gcp_quota_2.png){ width=60% }
+    ![Providing contact details for the quota request.](img/gcp_gcp_quota_2.png){ width=60% }
 
 6.  The quota request will be sent to Google for approval. This can take anywhere from a few minutes to a few business days. You will receive an email once the request has been approved. **You must wait for the quota approval before you can successfully create the VM.** Once approved, return to the **VM instances** page in the Google Cloud Console.
 
 7.  You will see your failed instance with a red error icon. On the far right of the instance row, click the wrench icon to **Edit and retry** (Figure 20.6).
 
-    
-
-![Using the Edit and retry option on a failed VM instance.](img/gcp_gcp_edit_retry.png){ width=90% }
+    ![Using the Edit and retry option on a failed VM instance.](img/gcp_gcp_edit_retry.png){ width=90% }
 
 8.  This will take you back to the instance creation page with all of your previous settings pre-filled. Scroll to the bottom and click **Create**. The VM should now be provisioned successfully.
 

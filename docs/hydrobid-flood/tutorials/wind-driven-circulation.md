@@ -72,13 +72,9 @@ To add the template where the polygons are drawn with the wind speed time series
 
 2.  In the plugin window, activate the *Wind* checkBox, as shown in the Figure below:
 
-    
+    ![Plugin to add a New Template Layer.](img/10-2_hb.png){ width=40% }
 
-![Plugin to add a New Template Layer.](img/10-2_hb.png){ width=40% }
-
-    
-
-![Plugin to add a New Template Layer.](img/10-2.png){ width=40% }
+    ![Plugin to add a New Template Layer.](img/10-2.png){ width=40% }
 
 3.  Edit the Wind layer: In the layers panel, we select the Wind layer and in the digitalization toolbar we click on the *Toggle Editing* tool ![](img/button7.png){ width=0.6cm }. A pencil icon will appear in the Wind layer, indicating that the layer is in edit mode:
 
@@ -98,15 +94,11 @@ To add the template where the polygons are drawn with the wind speed time series
 
     The parameter window should be as shown below:
 
-    
-
-![Window to input the Wind polygon parameters.](img/windparameters.png){ width=60% }
+    ![Window to input the Wind polygon parameters.](img/windparameters.png){ width=60% }
 
 5.  After input the values, click *OK* and accept the changes. There should be an image similar to the one shown in the following figure:
 
-    
-
-![Wind layer polygon.](img/10-4.png){ width=60% }
+    ![Wind layer polygon.](img/10-4.png){ width=60% }
 
 ## Generate the mesh
 
@@ -140,13 +132,9 @@ Now that the mesh is generated and the other layers are ready with the necessary
 
     Once the plugin is executed, a window will be shown (Figure 10.6) as it should be for our example.
 
-    
+    ![Plugin window to export the files to RiverFlow2D.](img/10-6_hb.png){ width=30% }
 
-![Plugin window to export the files to RiverFlow2D.](img/10-6_hb.png){ width=30% }
-
-    
-
-![Plugin window to export the files.](img/windexport.png){ width=50% }
+    ![Plugin window to export the files.](img/windexport.png){ width=50% }
 
 6.  Click on the OK button.
 
@@ -156,17 +144,13 @@ After exporting the files, Hydronia Data Input Program  is loaded with the proje
 
 1.  Enter the information as illustrated in Figure [15.9](#10-7)
 
-    
-
-![Hydronia Data Input Program Control data panel.](img/dipwind.png){ width=100% }
+    ![Hydronia Data Input Program Control data panel.](img/dipwind.png){ width=100% }
 
 2.  Verify that the *Wind* component is selected.
 
 3.  Select the *Wind* component from list in the left side of the panel. The window with the information of the wind parameters will appear as can be seen in the figure below:
 
-    
-
-![Hydronia Data Input Program Wind panel.](img/dipwind2.png){ width=100% }
+    ![Hydronia Data Input Program Wind panel.](img/dipwind2.png){ width=100% }
 
 4.  Verify that the simulation time is set to 24 hours and the output interval is set to 0.5 hours.
 

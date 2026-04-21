@@ -34,9 +34,7 @@ The procedure to import the Initial WSE raster layer to the project includes the
 
 3.  If necessary, move the new layer under the group *MESH_SPATIAL_DATA*. You should have an image on the screen like the one shown below:
 
-    
-
-![Initial WSE raster layer.](img/initialwseraster.png){ width=80% }
+    ![Initial WSE raster layer.](img/initialwseraster.png){ width=80% }
 
     The image shows the *InitialWSE_r* raster layer in grays gradient where there is a change in the WSE ranging from 135.0 to 135.4 ft.
 
@@ -48,9 +46,7 @@ The procedure to import the Initial WSE raster layer to the project includes the
 
 1.  Export the files in the format required by the RiverFlow2D  using the Export to RiverFlow2D  plugin. When executing the plugin a window like the one shown in the Figure 8.3 is shown.
 
-    
-
-![Plugin window to export the files to RiverFlow2D.](img/initialwseexport.png){ width=60% }
+    ![Plugin window to export the files to RiverFlow2D.](img/initialwseexport.png){ width=60% }
 
     As shown in the figure, click the *Options* arrow to display the group of options that appear hidden by default.
 

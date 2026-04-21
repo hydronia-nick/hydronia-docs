@@ -34,9 +34,7 @@ To use the Snapping tool, you must activate it beforehand:
 
 1.  Open the configuration options window: In Project menu $\rightarrow$ Snapping Options...
 
-    
-
-![Project Snapping Settings window.](img/13-18.png){ width=100% }
+    ![Project Snapping Settings window.](img/13-18.png){ width=100% }
 
 2.  In the *Project Snapping Settings* window, click on the *Enable Snapping* button.
 
@@ -80,59 +78,41 @@ To draw the polygons with the information of the Manning's n coefficients we pro
 
     proceed to draw the polygons. Start by drawing the polygon in the bottom of the watershed shown in gray which corresponds to n = 0.02. After completing the drawing you should have an image similar to the one shown in the following figure:
 
-    
-
-![The first polygon sketch.](img/13-6.png){ width=80% }
+    ![The first polygon sketch.](img/13-6.png){ width=80% }
 
 4.  Proceed to draw the second polygon. This will be the small yellow polygon to which corresponds to n = 0.30. To draw the polygon, follow the boundary with the green polygon as indicated by the raster, but in the boundary with the polygon already drawn (the gray) an overlap will be made so that the snapping tool takes the edge that already exists and completes the polygon. Try to make a path as shown in the figure below:
 
-    
-
-![Drawn of the second polygon.](img/13-7.png){ width=75% }
+    ![Drawn of the second polygon.](img/13-7.png){ width=75% }
 
 5.  Right-click to finish the drawing.
 
 6.  Enter the Manning coefficient, n = 0.30 and you will have an image like the one shown below where you can see how the final drawing of the second polygon took the vertices of the first adjacent polygon:
 
-    
-
-![Final draw of the second polygon.](img/13-8.png){ width=75% }
+    ![Final draw of the second polygon.](img/13-8.png){ width=75% }
 
 7.  The third polygon to be drawn will be the large yellow polygon. Just as in the previous case, the contour of the polygon according to the raster is faithfully followed, but in the adjacent polygons it is already drawn overlapped. The figure below shows the initial drawing, with an approach in the area where the overlap is made with the existing polygon:
 
-    
-
-![Preliminary draw of the third polygon.](img/13-9.png){ width=90% }
+    ![Preliminary draw of the third polygon.](img/13-9.png){ width=90% }
 
 8.  After finishing the drawing and assigning the *Manning N* umber to the polygon, the final drawing of the third polygon will be shown as shown below:
 
-    
-
-![Final draw of the third polygon.](img/13-10.png){ width=90% }
+    ![Final draw of the third polygon.](img/13-10.png){ width=90% }
 
 9.  The fourth polygon to draw will be the green polygon which corresponds to n = 0.45. To do it will follow the outer boundary of the same and the boundary with the brown polygon. Then a thick overlap will be made within the polygon already drawn, the yellows and the gray, as shown in the figure below:
 
-    
-
-![Preliminary draw of the fourth polygon.](img/13-11.png){ width=78% }
+    ![Preliminary draw of the fourth polygon.](img/13-11.png){ width=78% }
 
 10. After finishing the drawing and assigning the Manning's n value to the polygon, you will have the final layout of the third polygon as shown below:
 
-    
-
-![Final draw of the fourth polygon.](img/13-12.png){ width=78% }
+    ![Final draw of the fourth polygon.](img/13-12.png){ width=78% }
 
 11. To finish, draw the fifth polygon of brown color, which corresponds to n = 0.03. For this the outer limit is drawn following the contour of the raster and for the shared limits an overlap is made inside the neighboring polygons as shown in the figure below:
 
-    
-
-![Preliminary draw of the fifth polygon.](img/13-13.png){ width=60% }
+    ![Preliminary draw of the fifth polygon.](img/13-13.png){ width=60% }
 
 12. After finishing the drawing and inputting the Manning coefficient to the polygon, you will have the final drawing of the third polygon as shown below:
 
-    
-
-![Final draw of the fifth polygon.](img/13-14.png){ width=73% }
+    ![Final draw of the fifth polygon.](img/13-14.png){ width=73% }
 
 13. To finish, click on the *Toggle Editing* button
 
@@ -142,9 +122,7 @@ To draw the polygons with the information of the Manning's n coefficients we pro
 
     changes are accepted and saved. Then the layer of the raster Manning_Map_n is deactivated, and the *Manning N* vectorized layer can be observed as shown in the Figure below:
 
-    
-
-![Final draw of the Manning N layer.](img/13-15.png){ width=90% }
+    ![Final draw of the Manning N layer.](img/13-15.png){ width=90% }
 
 ## Delete a polygon
 
@@ -168,9 +146,7 @@ Suppose you want to delete the last polygon created because you are not satisfie
 
 3.  With the active select Feature tool, click on the polygon to be deleted and it will be highlighted in yellow to indicate that it is selected (Figure 18.15).
 
-    
-
-![Polygon to be deleted selected.](img/13-16.png){ width=65% }
+    ![Polygon to be deleted selected.](img/13-16.png){ width=65% }
 
 4.  Then the polygon is deleted either with the Delete key on the keyboard or with the *Delete selected* button
 
@@ -178,9 +154,7 @@ Suppose you want to delete the last polygon created because you are not satisfie
     <span class="image placeholder" data-original-image-src="img/button34.png" data-original-image-title="" width="1cm"></span>
     </figure>
 
-    
-
-![Manning N layer with the polygon removed.](img/13-17.png){ width=65% }
+    ![Manning N layer with the polygon removed.](img/13-17.png){ width=65% }
 
 5.  Finally, the changes are saved and the editing mode of the layer is deactivated by clicking on the *Toggle Editing* button.
 

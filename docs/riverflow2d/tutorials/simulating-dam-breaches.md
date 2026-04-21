@@ -42,9 +42,7 @@ Creating the dam involves the following steps:
 
 2.  In the dialog select *DamBreach*, as shown in the figure below:
 
-    
-
-![Dialog to add a new layers.](img/11-3.png){ width=50% }
+    ![Dialog to add a new layers.](img/11-3.png){ width=50% }
 
 3.  Edit the *DamBreach* layer: In the layers panel, select the *DamBreach* layer.
 
@@ -68,29 +66,21 @@ Creating the dam involves the following steps:
 
 6.  Draw the line that defines the dam axis. Keep in mind that the breach centroid is measured from the first vertex of the dam line. In this example it occurs 550 feet from the left margin of the dam (Figure [7.1](#11-1)). The dam axis is drawn from the top of the channel (point v0) to the bottom (point v1) along one side of the polygon that defines the initial water surface elevation, as illustrated in the image below.
 
-    
-
-![Dam axis.](img/11-4.png){ width=75% }
+    ![Dam axis.](img/11-4.png){ width=75% }
 
 7.  Once finished drawing the dam axis, the window to input the parameters of the *DamBreach* appears.
 
 8.  Input the information as seen below in the figure and click the *Check Fields* button:
 
-    
-
-![Dialog to input the dam breach parameters.](img/11-5.png){ width=65% }
+    ![Dialog to input the dam breach parameters.](img/11-5.png){ width=65% }
 
 9.  Click the *Temporal evolution* tab and click on the *Import Dam Breach File* button. Select the 'DAMBREACH_1.txt' file in the scenario folder. Click *OK* to close.
 
 10. The temporal evolution of the 'DAMBREACH_1.TXT' file is shown in the *Temporal evolution* tab below:
 
-    
+    ![Evolution of the breach of the dam.](img/11-6.png){ width=60% }
 
-![Evolution of the breach of the dam.](img/11-6.png){ width=60% }
-
-    
-
-![Dam axis.](img/11-7.png){ width=60% }
+    ![Dam axis.](img/11-7.png){ width=60% }
 
 ## Generate the mesh
 
@@ -114,9 +104,7 @@ Figure [7.8](#11-8) shows the resulting mesh of almost 11,000 cells
 
 2.  Select the raster layer that contains the Digital Elevation Model (DEM) and the name of the project.
 
-    
-
-![Export dialog.](img/11-9.png){ width=60% }
+    ![Export dialog.](img/11-9.png){ width=60% }
 
 3.  Once finished, click on the OK button and the export process will begin. Once it is finished, RiverFlow2D  will be loaded with the 'base.DAT' file.
 

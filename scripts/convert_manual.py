@@ -186,13 +186,18 @@ HEADING_RE = re.compile(
 )
 
 FIGURE_RE = re.compile(
+    # Leading indent (empty when the block is at col 0 / not inside a list).
+    # Capturing it here lets _figure_sub re-apply it to the emitted image so
+    # the image stays as a list-item continuation rather than escaping to
+    # top-level.
+    rf'(?P<indent>^[ \t]*)'
     rf'<figure[^>]*>\s*'
     rf'<span class="image placeholder"\s+'
     rf'data-original-image-src="(?P<folder>images(?:Paraview)?)/(?P<src>[^"]+)"'
     rf'[^>]*></span>\s*'
     rf"<figcaption>(?P<cap>.*?)</figcaption>\s*"
     rf"</figure>",
-    re.DOTALL | re.IGNORECASE,
+    re.DOTALL | re.IGNORECASE | re.MULTILINE,
 )
 
 INLINE_IMG_RE = re.compile(
@@ -411,7 +416,12 @@ def _figure_sub(
     dest_name = _record_image(image_sources, image_roots, folder, src)
     caption = _clean_caption(match.group("cap"))
     attrs = _format_dim_attrs(_extract_dimensions(match))
-    return f"\n![{caption}](img/{dest_name}){attrs}\n"
+    # Preserve the source line's leading indent — when the figure block is
+    # nested inside a numbered list item (`    <figure>...`), the generated
+    # markdown image must keep the same indent so Pandoc treats it as list
+    # continuation rather than a sibling paragraph.
+    indent = match.groupdict().get("indent") or ""
+    return f"\n{indent}![{caption}](img/{dest_name}){attrs}\n"
 
 
 def _inline_img_sub(
@@ -462,6 +472,14 @@ def _rewrite_bare_web_links(body: str) -> str:
 
 
 def _split_large_trailing_inline_images(body: str) -> str:
+    """Move large images from trailing list-item text to their own paragraph.
+
+    Only rewrites lines where the image is truly trailing inline — i.e.
+    the line has other text before the image. Lines that are already an
+    image on its own (possibly indented for list-continuation) are left
+    alone, because re-processing them would strip the indent and make the
+    image escape the list.
+    """
     new_lines: list[str] = []
     for line in body.split("\n"):
         matches = list(_INLINE_IMG_WIDTH_RE.finditer(line))
@@ -471,6 +489,12 @@ def _split_large_trailing_inline_images(body: str) -> str:
         last = matches[-1]
         width = int(last.group("w"))
         trailing = line[last.end():].strip()
+        preceding = line[: last.start()].strip()
+        # Preceding empty means the image is already on its own line —
+        # respect the line's existing indent and skip.
+        if not preceding:
+            new_lines.append(line)
+            continue
         if trailing or width <= _LARGE_IMAGE_WIDTH_THRESHOLD:
             new_lines.append(line)
             continue

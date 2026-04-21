@@ -36,9 +36,7 @@ Defining the limited erosion areas involves the following steps:
 
 2.  Activate the checkbox *MaximumErosionDepth*, as shown in the Figure below:
 
-    
-
-![Plugin to add a New Template Layer.](img/9-2_hb.png){ width=40% }
+    ![Plugin to add a New Template Layer.](img/9-2_hb.png){ width=40% }
 
 3.  Edit the *MaximumErosionDepth* layer: In the layers panel, select the *MaximumErosionDepth* layer and in the digitalization toolbar click on the *Toggle editing* button
 
@@ -60,15 +58,11 @@ Defining the limited erosion areas involves the following steps:
 
     Draw the polygon that defines the area of limited erosion. The polygon should cover all the cells that will have limiting erosion. In this tutorial we will assume that an area on the river has the maximum erosion depth limited to 0.1 feet, at the end you should have an image similar to the one shown in the following figure:
 
-    
-
-![Polygon of the area with limited erosion.](img/9-3.png){ width=47% }
+    ![Polygon of the area with limited erosion.](img/9-3.png){ width=47% }
 
     Once you finish drawing the polygon, the window to input the area parameters immediately appears. Input a maximum depth of erosion of 0.1 feet, as shown below:
 
-    
-
-![Window for input the polygon parameters of MaximumErosionDepth layer.](img/9-4.png){ width=50% }
+    ![Window for input the polygon parameters of MaximumErosionDepth layer.](img/9-4.png){ width=50% }
 
 5.  Click on the *OK* button to save the parameters.
 
@@ -104,9 +98,7 @@ Now that you have generated the mesh and you have the other layers with the nece
 
     Once the plugin is executed, a window will be shown (Figure [9.6](#9-6)), as it should be for our example.
 
-    
-
-![Plugin window to export the files to RiverFlow2D.](img/9-6_hb.png){ width=60% }
+    ![Plugin window to export the files to RiverFlow2D.](img/9-6_hb.png){ width=60% }
 
 4.  Once finished inputting the information, click on the OK button and the export process will begin.
 
@@ -126,9 +118,7 @@ Note that the sediment transport module appears selected and displays a message 
 
 3.  Add the sediment fractions to be considered: for this example add a single fraction with the default values presented by the Hydronia Data Input Program, we will have an image similar to the one shown in the following Figure:
 
-    
-
-![RiverFlow2D Sediment Transport Module.](img/9-8.png){ width=90% }
+    ![RiverFlow2D Sediment Transport Module.](img/9-8.png){ width=90% }
 
     Leave all other parameters at their default values.
 

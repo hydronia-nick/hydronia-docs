@@ -20,9 +20,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
     This project contains the layers of the domain contour, the Digital Elevation Model (DEM) of the river bed in raster format, an aerial photograph, and the boundary conditions layer where the inflow is located in the upper right and outflow in the lower left. The inflow boundary condition is a hydrograph with a peak discharge of 220,000 ft$^3$/s, and the outflow conditions is set to *Free outflow*. When you open the project you will have an image of the project loaded in QGIS as shown in [16.1](#8-1).
 
-    
-
-![Project loaded in QGIS.](img/8-1.png){ width=100% }
+    ![Project loaded in QGIS.](img/8-1.png){ width=100% }
 
 ## Load the shape file with the Manning's n polygons
 
@@ -36,15 +34,11 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
 2.  In tutorial folder under the *base* subfolder, select the 'SaltRiver_ManningsN.shp' file (Figure [16.2](#8-2)).
 
-    
-
-![Window to find and open the shape file.](img/8-2.png){ width=70% }
+    ![Window to find and open the shape file.](img/8-2.png){ width=70% }
 
     When loading the file, an image similar to the one shown in the following figure will be displayed on the screen:
 
-    
-
-![SaltRiver_ManningsN Layer.](img/8-3.png){ width=90% }
+    ![SaltRiver_ManningsN Layer.](img/8-3.png){ width=90% }
 
 ## Import the Manning's n geometry and values to the Manning N layer
 
@@ -52,17 +46,13 @@ To transfer spatial and attributive information from the shape file to the *Mann
 
 1.  Check the fields name of shape file: Right-click on the *SaltRiver_ManningsN* layer label and in the pop-up menu select the option *Open attribute table* (Figure [16.4](#8-4)).
 
-    
-
-![Attribute table of the SaltRiver_ManningsN layer.](img/8-4.png){ width=70% }
+    ![Attribute table of the SaltRiver_ManningsN layer.](img/8-4.png){ width=70% }
 
     You can see that the shape file loaded has two fields, *LUCode* and *N_Value*, the first one with the coding of the land cover type and the second corresponds to the value of the Manning's n, in the case of the Manning N layer, it has a single field called *ManningN*.
 
 2.  Proceed to change the name of the field *N_Value* to *ManningN*. Close the table of attributes and right-click on the layer label. In the pop-up menu, select Properties then in window that opens select the Fields tab as shown in Figure [16.5](#8-5):
 
-    
-
-![Properties the SaltRiver_ManningsN layer.](img/8-5.png){ width=90% }
+    ![Properties the SaltRiver_ManningsN layer.](img/8-5.png){ width=90% }
 
 3.  Click on the *Toggle Editing* button
 
@@ -72,17 +62,13 @@ To transfer spatial and attributive information from the shape file to the *Mann
 
     then change the *N_Value* field name by *ManningN* (Figure [16.6](#8-6)), and click on the *Toggle Editing* button again, and save.
 
-    
-
-![Field properties of the edited SaltRiver_ManningsN layer.](img/8-6.png){ width=90% }
+    ![Field properties of the edited SaltRiver_ManningsN layer.](img/8-6.png){ width=90% }
 
 4.  Copy the polygons of the shape file: select the *SaltRiver_ManningsN* layer in the Layers Panel.
 
 5.  With the select tool ![](img/button23.png){ width=1cm } we draw a rectangle that covers the entire layer:
 
-    
-
-![Selecting all the polygons in the SaltRiver_ManningsN layer.](img/manningntutotialselect.png){ width=90% }
+    ![Selecting all the polygons in the SaltRiver_ManningsN layer.](img/manningntutotialselect.png){ width=90% }
 
 6.  Copy the spatial elements by clicking on the *Copy* button ![](img/button24.png){ width=1cm } of the digitization toolbar
 

@@ -46,9 +46,7 @@ An alternative way to create the bridge geometry file is to use a spreadsheet. I
 
     This project contains the layers of the domain contour, the Digital Elevation Model DEM of the river bed in raster format, the polygons with the Manning's n for the different land coverages, an aerial image, and the boundary conditions. Inflow is located in the upper right segment, and outflow in the lower left. The boundary conditions are a hydrograph with a peak discharge of 220,000 $ft^3/s$ (cfs), and outflow condition is set to uniform flow. When you open the project you will have an image of the project loaded in QGIS  as shown in Figure [5.5](#3-5).
 
-    
-
-![Project screen loaded in QGIS.](img/3-5.png){ width=100% }
+    ![Project screen loaded in QGIS.](img/3-5.png){ width=100% }
 
 ## Enter the bridge polyline in the *Bridges* layer
 
@@ -62,9 +60,7 @@ This step ensures that the mesh will conform to the bridge alignment, so that th
 
     In the plugin window we activate the Bridges checkBox, as shown in the Figure below.
 
-    
-
-![RiverFlow2D dialog to add new layer.](img/3-6.png){ width=40% }
+    ![RiverFlow2D dialog to add new layer.](img/3-6.png){ width=40% }
 
 2.  Edit the *Bridges* layer: In the layers panel we select the *Bridges* layer then in the digitalization toolbar we left click on the *Toggle Editing* button ![](img/button7.png){ width=.6cm }.
 
@@ -80,9 +76,7 @@ This step ensures that the mesh will conform to the bridge alignment, so that th
 
     We will have an image similar to the one shown in the following figure:
 
-    
-
-![Bridge drawing.](img/3-7.png){ width=60% }
+    ![Bridge drawing.](img/3-7.png){ width=60% }
 
 5.  Enter the bridge data: After the bridge layout is finished, the window to input the attributes of the bridge is immediately displayed, these are:
 
@@ -98,9 +92,7 @@ This step ensures that the mesh will conform to the bridge alignment, so that th
 
     The figure below shows the attributes window of the *Bridges* layer:
 
-    
-
-![Attribute dialog window of the Bridges layer.](img/3-8.png){ width=60% }
+    ![Attribute dialog window of the Bridges layer.](img/3-8.png){ width=60% }
 
 6.  After entering the values, click on the \[Check Fields\] button, then click the \[OK\] button.
 
@@ -142,9 +134,7 @@ Now that you have generated the mesh, and you have the other layers with the nec
 
     The dialog should look as follows:
 
-    
-
-![Export RiverFlow2D tool.](img/3-10.png){ width=60% }
+    ![Export RiverFlow2D tool.](img/3-10.png){ width=60% }
 
 2.  Click on the \[OK\] button and the export process will begin.
 

@@ -38,15 +38,11 @@ Once we have a project created with the new Multi-scenario tool, we can start to
 
 -   To create a new scenario, access the first button on the toolbar and select the *New Scenario* menu option as shown in the figure below:
 
-    
-
-![Menu for creating a new scenario in an RF2D project](img/multiscenarioproject_image2.png){ width=50% }
+    ![Menu for creating a new scenario in an RF2D project](img/multiscenarioproject_image2.png){ width=50% }
 
 -   A window will be presented, input the scenario name keeping in mind to use short names without spaces.
 
-    
-
-![Window to create a new scenario.](img/multiscenarioproject_image6.png){ width=70% }
+    ![Window to create a new scenario.](img/multiscenarioproject_image6.png){ width=70% }
 
     The new scenario is based on the layers with the input data of the current scenario. The plugin will proceed to create a subfolder with the name of the new scenario within the project folder. In this folder the files corresponding to the layers of the RiverFlow2D project will be copied with the input geospatial information it requires. Please note that the model layers will not copy post-processing products such as maps or animations. The plugin then updates the paths of the sources of the layers to the files in the new folder and finally the drop-down list in the RF2D toolbar is updated with the name of the new scenario.
 
@@ -54,15 +50,11 @@ Once we have a project created with the new Multi-scenario tool, we can start to
 
 -   To switch between the different scenarios that you have in a project, simply display the scenario list located in the RF2D toolbar and select the desired scenario as shown in the following figure:
 
-    
-
-![Switching scenarios](img/multiscenarioproject_image7.png){ width=50% }
+    ![Switching scenarios](img/multiscenarioproject_image7.png){ width=50% }
 
 -   Then a Dialog window will ask for confirmation to switch scenarios, as shown in the figure:
 
-    
-
-![Confirmation window for switching the scenario.](img/multiscenarioproject_image8.png){ width=50% }
+    ![Confirmation window for switching the scenario.](img/multiscenarioproject_image8.png){ width=50% }
 
     When you switch scenarios, the state of the layers in the current scenario is automatically saved.
 
@@ -82,15 +74,11 @@ The RiverFlow2D  Multi Scenario tool has a feature that allows you to import an 
 
 -   Open this tool in the options menu of the RF2D Tools button as shown in the figure below:
 
-    
-
-![Menu to import a project to multi-scenario mode](img/multiscenarioproject_image3.png){ width=70% }
+    ![Menu to import a project to multi-scenario mode](img/multiscenarioproject_image3.png){ width=70% }
 
 -   When you start the import tool a window is displayed as illustrated in the figure below, you must specify the project file. DAT to import.
 
-    
-
-![Import tool window](img/multiscenarioproject_image9.png){ width=70% }
+    ![Import tool window](img/multiscenarioproject_image9.png){ width=70% }
 
 -   Once you click \[OK\], a subfolder with the name of the file is created inside the folder where the original project is located.
 

@@ -32,9 +32,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
     This project contains the following layers: Domain Outline, Digital Elevation Model (DEM) of the river bed in raster format, aerial photography, polygon with the Manning coefficient and the polygons with the boundary conditions where the flow entrance is in the upper left corner and exit in the lower left corner. The boundary conditions are a hydrograph with a peak discharge of 220,000 $ft^3/s$, and outflow condition is set to *uniform flow*. When you open the project you will have a project image loaded in QGIS as shown in Figure [4.2](#5-2):
 
-    
-
-![Example of the tutorial loaded in QGIS.](img/5-2.png){ width=80% }
+    ![Example of the tutorial loaded in QGIS.](img/5-2.png){ width=80% }
 
 ## Create a Weirs layer and the weir polyline
 
@@ -58,9 +56,7 @@ Adding the *Weirs* layer involves the following steps:
 
 2.  Activate the checkbox Weirs, as shown in the Figure below:
 
-    
-
-![Plugin to add a new template layer.](img/5-4.png){ width=50% }
+    ![Plugin to add a new template layer.](img/5-4.png){ width=50% }
 
 3.  Edit the *Weirs* layer: In the layer panel, select the *Weirs* layer and in the digitalization toolbar click on the *Toggle Editing* button
 
@@ -98,15 +94,11 @@ Adding the *Weirs* layer involves the following steps:
 
     The weir parameters window should look like the image shown below:
 
-    
-
-![Window to input Weir parameters.](img/5-5.png){ width=60% }
+    ![Window to input Weir parameters.](img/5-5.png){ width=60% }
 
     In the second tab 'Weir crest elevation for vertex' the data contained in the file *LeveeRB_Breakline.txt* is displayed, as shown in the following Figure:
 
-    
-
-![Window for weir geometry data.](img/5-6.png){ width=60% }
+    ![Window for weir geometry data.](img/5-6.png){ width=60% }
 
 7.  Then click on the \[OK\] button.
 
@@ -124,9 +116,7 @@ Adding the *Weirs* layer involves the following steps:
 
     and we will have on screen an image similar to the one shown below where you can see the layout of the weir:
 
-    
-
-![Weir alignment loaded from the file.](img/5-7.png){ width=60% }
+    ![Weir alignment loaded from the file.](img/5-7.png){ width=60% }
 
 ## Generate the mesh
 
@@ -154,15 +144,11 @@ Now that you have generated the mesh and you have the other layers ready with th
 
     Once the plugin is executed, a window will be shown (Figure [4.9](#5-9)), as it should be for our example.
 
-    
-
-![Plugin window to export the files to RiverFlow2D.](img/5-9.png){ width=60% }
+    ![Plugin window to export the files to RiverFlow2D.](img/5-9.png){ width=60% }
 
 3.  After inputting the data, click on the OK button and the export process will begin. Once it is finished, Hydronia Data Input Program  will be loaded as shown in Figure [4.10](#5-10)
 
-    
-
-![Control data panel.](img/5-10.png){ width=90% }
+    ![Control data panel.](img/5-10.png){ width=90% }
 
 ## Running the model
 
@@ -170,17 +156,13 @@ Make sure that the Weirs Component appears selected in the Control Data panel.
 
 1.  In the list of components, select 'Weirs' and the panel of the Weirs component will appear. In this window the contents of the '.WEIRS' file content as prepared by RiverFlow2D will be displayed (Figure [4.11](#5-11)).
 
-    
-
-![Weirs component data panel.](img/5-11.png){ width=90% }
+    ![Weirs component data panel.](img/5-11.png){ width=90% }
 
 2.  Leave all other parameters at their default values.
 
 3.  Click on the *Run RiverFlow2D* button in the lower section of Hydronia Data Input Program. A window will appear indicating that the model began to run. The window also informs the simulation time, the volume conservation error, the total input and output discharge and other parameters as the execution progresses (Figure [4.12](#5-12)).
 
-    
-
-![RiverFlow2D output graphics.](img/5-12.png){ width=75% }
+    ![RiverFlow2D output graphics.](img/5-12.png){ width=75% }
 
 ## Review the output files
 

@@ -38,31 +38,21 @@ First, the X Y Z file is loaded to create an event layer. This can be accomplish
 
     The dialog should look like the following figure:
 
-    
-
-![Dialog to create a layer from delimited data text file.](img/2-6_nick.png){ width=90% }
+    ![Dialog to create a layer from delimited data text file.](img/2-6_nick.png){ width=90% }
 
 7.  To go to the area where the points are located, you will have to right-click on the label of the created layer and select the option Zoom to the layer.
 
-    
-
-![How to zoom a layer.](img/2-7.png){ width=50% }
+    ![How to zoom a layer.](img/2-7.png){ width=50% }
 
 8.  The points should appear in the project window:
 
-    
-
-![Layer of points created from delimited data file.](img/2-8ft.png){ width=100% }
+    ![Layer of points created from delimited data file.](img/2-8ft.png){ width=100% }
 
 9.  The raster is created interpolating from the data in the point layer. For that we will use the *Processing Toolbox* to load the panel that will allow us to search for the *TIN interpolation* command.
 
-    
+    ![Opening the Processing Toolbox.](img/2-9.png){ width=60% }
 
-![Opening the Processing Toolbox.](img/2-9.png){ width=60% }
-
-    
-
-![Loading to the QGIS TIN interpolation tool.](img/2-9-panel.png){ width=60% }
+    ![Loading to the QGIS TIN interpolation tool.](img/2-9-panel.png){ width=60% }
 
 10. In this window select the layer to be interpolated to create the raster, in this example we use the point layer that we just created named *HohDTM_points_METRIC*. Change it by selecting the dropdown for *Vector layer*.
 
@@ -78,9 +68,7 @@ First, the X Y Z file is loaded to create an event layer. This can be accomplish
 
     The panel should look like the following figure:
 
-    
-
-![Interpolation plugin window.](img/2-10_nick.png){ width=100% }
+    ![Interpolation plugin window.](img/2-10_nick.png){ width=100% }
 
 16. Click OK to start the interpolation process.
 

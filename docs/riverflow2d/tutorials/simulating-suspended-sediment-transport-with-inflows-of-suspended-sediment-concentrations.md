@@ -38,9 +38,7 @@ The project is already set up within QGIS, so we can export the files to RiverFl
 
 3.  Before running the plugin activate the layer with the DEM (if it is deactivated).
 
-    
-
-![Plugin window to export the files to RiverFlow2D.](img/st-2.png){ width=60% }
+    ![Plugin window to export the files to RiverFlow2D.](img/st-2.png){ width=60% }
 
 4.  After entering all the required information, click \[OK\] to begin the export process.
 
@@ -66,9 +64,7 @@ Note that the sediment transport module is not selected by default. The Hydronia
 
 6.  Click on *Add Suspended Sediment Fraction* to add a single fraction with the default values presented by the Hydronia Data Input Program, we will have an image similar to the one shown in the following Figure:
 
-    
-
-![RiverFlow2D Sediment Transport Module.](img/st-4.png){ width=90% }
+    ![RiverFlow2D Sediment Transport Module.](img/st-4.png){ width=90% }
 
     Leave all other parameters at their default values.
 
@@ -78,9 +74,7 @@ Note that the sediment transport module is not selected by default. The Hydronia
 
 9.  In the Boundary Conditions panel, click on the entry for BC 1, Discharge vs. Time. A message should be displayed indicating that you will need to add a column for each concentration that is configured in the *Sediment Transport* module:
 
-    
-
-![Message indicating that you will need to add a column for each concentration that is configured in the Sediment Transport module.](img/st-5.png){ width=60% }
+    ![Message indicating that you will need to add a column for each concentration that is configured in the Sediment Transport module.](img/st-5.png){ width=60% }
 
 10. In the section displaying the contents of the 'Inflow_1.QVT' file, scroll to the right and add the concentrations 0.01 to each row in the *Conc.1* column.
 

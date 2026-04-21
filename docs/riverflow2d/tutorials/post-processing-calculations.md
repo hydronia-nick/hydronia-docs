@@ -26,9 +26,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
     This project contains the layers of the domain outline, the Digital Elevation Model DEM of the river bed in raster format, the layer with the boundary conditions where inflow is located in the upper left and outflow in the lower left. The boundary conditions are a hydrograph with a peak discharge of 6,500 $ft^3/s$ and outflow condition set to *Free outflow*. When you open the project you will have an image of the project loaded in QGIS as shown in Figure [17.1](#12-1).
 
-    
-
-![Project screen loaded in QGIS.](img/12-1_of2d.png){ width=80% }
+    ![Project screen loaded in QGIS.](img/12-1_of2d.png){ width=80% }
 
 ## Create a template of the layers *ObservationPoints*, *CrossSections* and *Profiles* and draw the output controls
 
@@ -42,9 +40,7 @@ To add the templates where the different output controls are drawn involves the 
 
 2.  In the plugin window activate the checkBox *ObservationPoints*, *CrossSections* and *Profiles*, as shown in the Figure below:
 
-    
-
-![Plugin to add the new templates layer.](img/12-2.png){ width=50% }
+    ![Plugin to add the new templates layer.](img/12-2.png){ width=50% }
 
 3.  Edit the layers and draw the output controls: Select in the layers panel, the *ObservationPoints*, *CrossSections* and *Profiles* layers one by one.
 
@@ -78,37 +74,25 @@ To add the templates where the different output controls are drawn involves the 
 
 7.  Proceed to draw three sections: One at the beginning of the channel, another in the middle and the third almost at the end of the channel, identify (XSECID) as: Section1, Section2 and Section3, with intervals (ND_CS) of 10, 15 and 20 respectively. The attribute tables of the sections will be as shown in Figure [17.3](#12-3) and at the end of the drawing a similar image should appear as shown in the following Figure [17.4](#12-4).
 
-    
+    ![Attribute windows for the three cross sections.](img/12-3.png){ width=50% }
 
-![Attribute windows for the three cross sections.](img/12-3.png){ width=50% }
-
-    
-
-![Transversal sections incorporated into the model.](img/12-4.png){ width=36% }
+    ![Transversal sections incorporated into the model.](img/12-4.png){ width=36% }
 
 8.  Save the polygon by clicking the Save button ![](img/button5.png){ width=0.6cm } and click on the *Toggle Editing* button ![](img/button7.png){ width=0.6cm } to deactivate Edit mode on the CrossSections layer.
 
 9.  Drawing the Profile: Select the Profile layer and activate the Add Feature button, we proceed to draw the profile along the channel central axis, identifier (PROFILEID) is Profile1 and the number of intervals (ND_PR) equal to 50. The attribute table will be as shown in Figure [17.5](#12-5). Once finished drawing, it should appear like the one shown in the following Figure [17.6](#12-6).
 
-    
+    ![Attribute window for the profile.](img/12-5.png){ width=60% }
 
-![Attribute window for the profile.](img/12-5.png){ width=60% }
-
-    
-
-![Profile (green line) incorporated into the model.](img/12-6.png){ width=50% }
+    ![Profile (green line) incorporated into the model.](img/12-6.png){ width=50% }
 
 10. To finalize the profile drawing, save the polygon by clicking the Save button ![](img/button5.png){ width=0.6cm } and click on *Toggle Editing* button ![](img/button7.png){ width=0.6cm } to deactivate Edit mode on the Profile layer.
 
 11. Drawing the observation points: Select the *ObservationPoints* layer, and activate the *Add Feature* button, proceed to draw two observation points, the first between sections 1 and 2 and the second between sections 2 and 3. As an identifier, (Obsid) is assigned Point1 and Point2 respectively. The attribute tables will be as shown in Figure [17.7](#12-7) and at the end of the drawing you should have an image similar to the one shown in the following Figure [17.8](#12-8).
 
-    
+    ![Attribute windows for the two observation points.](img/12-7.png){ width=50% }
 
-![Attribute windows for the two observation points.](img/12-7.png){ width=50% }
-
-    
-
-![Observation points incorporated into the model.](img/12-8.png){ width=43% }
+    ![Observation points incorporated into the model.](img/12-8.png){ width=43% }
 
 12. To finish the drawing of the observation points, you click again on the *Toggle Editing* button to disable the editing mode of the *ObservationPoints* layer.
 
@@ -140,9 +124,7 @@ Now that the mesh is generated and the other layers are ready with the necessary
 
     Once the plugin is executed, a window will be shown (Figure [17.10](#12-10-rf2d)), as it should be for our example.
 
-    
-
-![Plugin to export the files to RiverFlow2D.](img/12-10.png){ width=60% }
+    ![Plugin to export the files to RiverFlow2D.](img/12-10.png){ width=60% }
 
 4.  Once finished inputting the information, click the \[OK\] button to export the files to the model.
 

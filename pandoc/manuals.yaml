@@ -75,7 +75,8 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/riverflow2d/tutorials
     chapters:
-      - index
+      # `index` is a web-only landing page (chapter list + intro paragraph).
+      # Excluded from PDF — the PDF has its own TOC.
       - introduction
       - creating-your-first-riverflow2d-project
       - multiple-scenario-project-tool
@@ -110,7 +111,8 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/oilflow2d/tutorials
     chapters:
-      - index
+      # `index` is a web-only landing page (chapter list + intro paragraph).
+      # Excluded from PDF — the PDF has its own TOC.
       - introduction
       - creating-your-first-river-flow-application-with-oilflow2d
       - multiple-scenario-project-tool
@@ -145,7 +147,8 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/hydrobid-flood/tutorials
     chapters:
-      - index
+      # `index` is a web-only landing page (chapter list + intro paragraph).
+      # Excluded from PDF — the PDF has its own TOC.
       - introduction
       - creating-your-first-riverflow2d-application
       - multiple-scenario-project-tool

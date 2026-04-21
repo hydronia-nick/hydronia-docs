@@ -109,15 +109,11 @@ Generating a 3D visualization in ParaView requires an interpolation from *Cell D
 
 -   Select *Cell Data to Point Data* in the *Filters/Alphabetical* menu. Then, press the *Apply* button in the *Properties* tab.
 
-    
-
-![Cell Data to Point Data filter.](img/pvcelldatapoint.png){ width=50% }
+    ![Cell Data to Point Data filter.](img/pvcelldatapoint.png){ width=50% }
 
 -   Select again z in the *Variable selector*. Note that the color view is smoother due to the interpolation. The result should look as follows:
 
-    
-
-![Cell Data to Point Data interpolation.](img/pvcelldatapointinterpolation.png){ width=75% }
+    ![Cell Data to Point Data interpolation.](img/pvcelldatapointinterpolation.png){ width=75% }
 
     The 3D appearance is obtained by extruding one of the data variables z or (h+z).
 
@@ -133,27 +129,19 @@ Generating a 3D visualization in ParaView requires an interpolation from *Cell D
 
 -   Choose z in the *Variable selector*.
 
-    
-
-![Wrap By Scalar filter.](img/pvwrapbyscalarfilter.png){ width=50% }
+    ![Wrap By Scalar filter.](img/pvwrapbyscalarfilter.png){ width=50% }
 
 -   Switch from 2D to 3D visualization in the *Layout Render view* to manipulate the project in 3D.
 
-    
-
-![3D option.](img/pv3d.png){ width=70% }
+    ![3D option.](img/pv3d.png){ width=70% }
 
 -   Remove the color map of the bed elevation z by selecting *Solid Color* in the *Coloring* drop-down menu of the *Properties* tab:
 
-    
-
-![Coloring parameter.](img/pvcoloringsolidcolor.png){ width=25% }
+    ![Coloring parameter.](img/pvcoloringsolidcolor.png){ width=25% }
 
 -   The *Solid Color* can be customized clicking the Edit color map icon ![](img/paravieweditcolor.png){ width=1.5cm height=0.5cm } in the *Properties* tab. Once the desired color has been chosen at the *Pick Solid Color tab* (this example uses HTML=#ecb57d), the *Render view* should look as:
 
-    
-
-![3D bed elevation representation.](img/pv3dbedelevation.png){ width=75% }
+    ![3D bed elevation representation.](img/pv3dbedelevation.png){ width=75% }
 
 To view the terrain from different points, use the left mouse button to rotate, press down the mouse wheel to translate, and scroll the mouse wheel to zoom in or out the image.
 

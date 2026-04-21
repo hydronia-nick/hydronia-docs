@@ -28,6 +28,14 @@
 % explicitly). Without this, LaTeX's `htbp` default floats captioned images
 % across page boundaries away from their captions and surrounding text.
 \floatplacement{figure}{H}
+% Pandoc's fenced div `::: shaded` emits \begin{Shaded}...\end{Shaded}
+% and expects the template to define it. The default Pandoc preamble
+% provides it via the `framed` package; our custom preamble has to
+% replicate that, otherwise fenced divs render as literal `::: shaded`
+% text in the PDF.
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{240,240,240}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \usepackage{hyperref}
 \usepackage{listings}
 

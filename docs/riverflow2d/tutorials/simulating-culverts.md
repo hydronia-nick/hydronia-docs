@@ -59,9 +59,7 @@ This project contains the following layers: Domain Outline, Digital Elevation Mo
 
 2.  In the window select the Culverts checkBox, as shown:
 
-    
-
-![Plugin to add a New Template Layer.](img/4-3.png){ width=40% }
+    ![Plugin to add a New Template Layer.](img/4-3.png){ width=40% }
 
 3.  Edit the *Culverts* layer: In the layers panel select the *Culverts* layer and in the digitalization toolbar click on the *Toggle Editing* button
 
@@ -85,9 +83,7 @@ This project contains the following layers: Domain Outline, Digital Elevation Mo
 
 5.  Right-click to finish drawing. You should get an image similar to the one shown in the following Figure:
 
-    
-
-![Culvert alignment.](img/4-4.png){ width=60% }
+    ![Culvert alignment.](img/4-4.png){ width=60% }
 
 6.  Enter the culvert data: After the culvert drawing is finished, the window to input the culvert attributes immediately appears. The dialog window has 2 tabs, in the General tab you enter the basic data for circular and box culverts:
 
@@ -97,9 +93,7 @@ This project contains the following layers: Domain Outline, Digital Elevation Mo
 
     -   The rest of the parameters are coefficients that needed to compute the culvert discharge. To help with the introduction of these parameters, the window presents a list with default values for different types of culverts. If one of the values of the list parameters is not appropriate, you can choose the option where the value is defined by the user (user defined). The window of the culvert parameters should be similar to the one shown in the Figure below:
 
-    
-
-![Window to input Culvert parameters.](img/4-5.png){ width=65% }
+    ![Window to input Culvert parameters.](img/4-5.png){ width=65% }
 
 7.  After inputting the values, click on the *OK* button.
 
