@@ -30,9 +30,7 @@ Defining the limited erosion areas involves the following steps:
 
 1.  Create the template for the *MaximumErosionDepth* layer: In the RiverFlow2D  toolbar click on the *New Template Layer* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon6_hb.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon6_hb.png){ width=1cm }
 
 2.  Activate the checkbox *MaximumErosionDepth*, as shown in the Figure below:
 
@@ -40,21 +38,15 @@ Defining the limited erosion areas involves the following steps:
 
 3.  Edit the *MaximumErosionDepth* layer: In the layers panel, select the *MaximumErosionDepth* layer and in the digitalization toolbar click on the *Toggle editing* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     A pencil icon will appear in the *MaximumErosionDepth* layer, indicating that the layer is in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button27.png" data-original-image-title="" width="3.6cm"></span>
-    </figure>
+    ![](img/button27.png){ width=3.6cm }
 
 4.  Draw the polygon of the limited erosion area: Using the *Add Feature* tool:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button15.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button15.png){ width=1cm }
 
     Draw the polygon that defines the area of limited erosion. The polygon should cover all the cells that will have limiting erosion. In this tutorial we will assume that an area on the river has the maximum erosion depth limited to 0.1 feet, at the end you should have an image similar to the one shown in the following figure:
 
@@ -74,9 +66,7 @@ Defining the limited erosion areas involves the following steps:
 
 Generate the mesh using the *Generate TriMesh* button
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/icon3_hb.png" data-original-image-title="" width="1cm"></span>
-</figure>
+![](img/icon3_hb.png){ width=1cm }
 
 The results obtained as shown in Figure [9.5](#9-5) (mesh of close to 15,000 cells).
 
@@ -88,9 +78,7 @@ Now that you have generated the mesh and you have the other layers with the nece
 
 1.  Click on the *Export RiverFlow2D  * button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon2_hb.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon2_hb.png){ width=1cm }
 
 2.  When run the plugin a window is displayed, select the raster layer that contains the Digital Elevation Model (DEM) and the name of the project to be exported. Input the name without any extension. For this example it will be: 'MaxErosion'.
 
@@ -144,9 +132,7 @@ where DDDD indicates the date, HH, hour, MM minutes and SS seconds.
 
 Column 6 reports the changes in the elevation of the river bed with respect to the initial elevation. We can also visualize the changes in the elevation of the riverbed generating layers in vectorial format map from the aforementioned files using the *Maps of Results vs Time* plugin in QGIS,  specifically the *Delta Bed Elevations* map:
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/icon5_hb.png" data-original-image-title="" width="1cm"></span>
-</figure>
+![](img/icon5_hb.png){ width=1cm }
 
 In the following figure, the river elevation difference map for the end of the run. At the time 0000:02:00:00 it can be observed that the zone where the erosion was limited, does not present erosion, but deposition:
 

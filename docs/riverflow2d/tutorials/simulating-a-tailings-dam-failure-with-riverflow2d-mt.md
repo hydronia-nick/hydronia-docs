@@ -80,9 +80,7 @@ Once the *Domain Outline* is created, a *Mesh Density Line* will provide the nec
 
 1.  Select the *MeshDensityLine* layer making sure it is activated as shown
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/meshdensitylinelayer.png" data-original-image-title="" width="40%"></span>
-    </figure>
+    ![](img/meshdensitylinelayer.png){ width=40% }
 
     and click the *Toggle Editing* button ![](img/button7.png){ width=0.6cm }.
 

@@ -6,9 +6,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
 RiverFlow2D  uses elevation data in raster format. For instance, to load an ASCII grid file, from the *Layer* menu, click *Add Layer*, and then click *Add Raster Layer...* You may also click the *Add Raster Layer* button:
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/button2.png" data-original-image-title="" width="0.6cm"></span>
-</figure>
+![](img/button2.png){ width=0.6cm }
 
 In this example we will use elevation data available in a tab delimited X Y Z file, and create an interpolated raster layer.
 
@@ -20,9 +18,7 @@ First, the X Y Z file is loaded to create an event layer. This can be accomplish
 
 1.  From the *Layer* menu, click *Add Layer*, and then click *Add Delimited Text Layer...* Alternatively, you may also click the *Add Delimited Text Layer* button:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button3.png" data-original-image-title="" width="0.6cm"></span>
-    </figure>
+    ![](img/button3.png){ width=0.6cm }
 
 2.  Open the elevations file: Click the Browse \[...\] button and go to
 

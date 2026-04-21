@@ -34,9 +34,7 @@ To add the templates where the different output controls are drawn involves the 
 
 1.  Create the templates of the layers *ObservationPoints*, *CrossSections* and *Profiles*: for this in the RiverFlow2D  toolbar click on the *New Template Layer* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon14.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon14.png){ width=1cm }
 
 2.  In the plugin window activate the checkBox *ObservationPoints*, *CrossSections* and *Profiles*, as shown in the Figure below:
 
@@ -46,29 +44,21 @@ To add the templates where the different output controls are drawn involves the 
 
 4.  Click on the *Toggle Editing* button:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     A pencil will appear on the label of the layers, indicating that the layers are in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button30.png" data-original-image-title="" width="3.6cm"></span>
-    </figure>
+    ![](img/button30.png){ width=3.6cm }
 
 5.  Draw the lines or points that represent the output control: To draw the cross sections, profiles or observation points, the *Add Feature* tool will be used.
 
     for the *CrossSections* and *Profiles* layers, the icon for the *Add Feature* button is
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button8.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button8.png){ width=1cm }
 
     in the case of a point layer like *ObservationPoints*, the icon is
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button31.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button31.png){ width=1cm }
 
 6.  Drawing the cross sections: Select the *CrossSection* layer, and activate the *Add Feature* button.
 
@@ -100,9 +90,7 @@ To add the templates where the different output controls are drawn involves the 
 
 The mesh is generated with the *Generate TriMesh* button
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/button6.png" data-original-image-title="" width="1cm"></span>
-</figure>
+![](img/button6.png){ width=1cm }
 
 The result is a mesh of approximately 9,000 cells, as shown in Figure [17.9](#12-9).
 
@@ -114,9 +102,7 @@ Now that the mesh is generated and the other layers are ready with the necessary
 
 1.  Click on the *Export RiverFlow2D  * button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button9.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button9.png){ width=1cm }
 
 2.  When run the plugin a window is displayed, select the raster layer that contains the Digital Elevation Model (DEM) and the name of the project to be exported.
 

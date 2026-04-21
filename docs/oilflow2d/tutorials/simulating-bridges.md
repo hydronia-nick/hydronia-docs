@@ -54,9 +54,7 @@ This step ensures that the mesh will conform to the bridge alignment, so that th
 
 1.  Create a new *Bridges* layer: for this, go to the RiverFlow2D  toolbar and left click on the *New Template Layer* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon14.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon14.png){ width=1cm }
 
     In the plugin window we activate the Bridges checkBox, as shown in the Figure below.
 
@@ -66,9 +64,7 @@ This step ensures that the mesh will conform to the bridge alignment, so that th
 
     A pencil icon will appear in the *Bridges* layer that tells us that the layer is in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button10.png" data-original-image-title="" width="3.6cm"></span>
-    </figure>
+    ![](img/button10.png){ width=3.6cm }
 
 3.  Draw the line representing the bridge: (if necessary, turn off the DEM layer so that it does not interfere with the identification of the bridge site in the aerial photograph).
 
@@ -98,23 +94,17 @@ This step ensures that the mesh will conform to the bridge alignment, so that th
 
 7.  Save the changes in the layer using the *save* button of the digitalization toolbar:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button5.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button5.png){ width=1cm }
 
     and disable the editing mode of the layer with the *Toggle Editing*
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
 ## Generate the mesh
 
 The mesh is generated with using the RiverFlow2D  emphGenerate TriMesh icon:
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/button6.png" data-original-image-title="" width="1cm"></span>
-</figure>
+![](img/button6.png){ width=1cm }
 
 Check that the resulting mesh is perfectly aligned with the bridge as shown in Figure [5.9](#3-9).
 
@@ -126,9 +116,7 @@ Now that you have generated the mesh, and you have the other layers with the nec
 
 1.  Click on *Export RiverFlow2D* button:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button9.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button9.png){ width=1cm }
 
     In the export files dialog we need to make sure that the appropriate raster layer corresponding to the Digital Elevation Model (DEM) is selected. The *Project Name* will already be set.
 

@@ -38,9 +38,7 @@ To use the Snapping tool, you must activate it beforehand:
 
 2.  In the *Project Snapping Settings* window, click on the *Enable Snapping* button.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/snappingbutton.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/snappingbutton.png){ width=1cm }
 
 3.  Next to the *Enable Snapping* button the dropdown menu for *All Layers* is activated. Click on the dropdown and select *Advanced Configuration*.
 
@@ -60,21 +58,15 @@ To draw the polygons with the information of the Manning's n coefficients we pro
 
 2.  In the digitalization toolbar click on the *Toggle Editing* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     A pencil icon will appear in the *Manning N* layer indicating that the layer is in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button32.png" data-original-image-title="" width="3.6cm"></span>
-    </figure>
+    ![](img/button32.png){ width=3.6cm }
 
 3.  Draw the polygon that demarcates the Manning's n area: Using the *Add Toggle Editing* button in the digitalization toolbar
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button15.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button15.png){ width=1cm }
 
     proceed to draw the polygons. Start by drawing the polygon in the bottom of the watershed shown in gray which corresponds to n = 0.02. After completing the drawing you should have an image similar to the one shown in the following figure:
 
@@ -116,9 +108,7 @@ To draw the polygons with the information of the Manning's n coefficients we pro
 
 13. To finish, click on the *Toggle Editing* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     changes are accepted and saved. Then the layer of the raster Manning_Map_n is deactivated, and the *Manning N* vectorized layer can be observed as shown in the Figure below:
 
@@ -130,19 +120,13 @@ Suppose you want to delete the last polygon created because you are not satisfie
 
 1.  The *Manning N* layer is edited using the *Toggle Editing* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button32.png" data-original-image-title="" width="3.6cm"></span>
-    </figure>
+    ![](img/button32.png){ width=3.6cm }
 
 2.  Then the polygon to be eliminated is selected using the *Select Feature* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button33.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button33.png){ width=1cm }
 
 3.  With the active select Feature tool, click on the polygon to be deleted and it will be highlighted in yellow to indicate that it is selected (Figure 18.15).
 
@@ -150,16 +134,12 @@ Suppose you want to delete the last polygon created because you are not satisfie
 
 4.  Then the polygon is deleted either with the Delete key on the keyboard or with the *Delete selected* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button34.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button34.png){ width=1cm }
 
     ![Manning N layer with the polygon removed.](img/13-17.png){ width=65% }
 
 5.  Finally, the changes are saved and the editing mode of the layer is deactivated by clicking on the *Toggle Editing* button.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
 This concludes the Snapping tutorial.

@@ -94,9 +94,7 @@ To add the *RainEvap* where the polygons are drawn with the rainfall and evapora
 
 1.  To create *RainEvap* layer use the *New Template Layer* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon14.png" data-original-image-title="" width="0.6cm"></span>
-    </figure>
+    ![](img/icon14.png){ width=0.6cm }
 
 2.  In the window check *RainEvap*, as shown in the Figure below. Then click OK:
 
@@ -104,21 +102,15 @@ To add the *RainEvap* where the polygons are drawn with the rainfall and evapora
 
 3.  Edit the *RainEvap* layer: In the layers panel, select the *RainEvap* layer and click on the *Toggle Editing* button in the digitization bar
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="0.6cm"></span>
-    </figure>
+    ![](img/button7.png){ width=0.6cm }
 
     A pencil icon will appear in the *RainEvap* layer, indicating that the layer is in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button19.png" data-original-image-title="" width="5.2cm"></span>
-    </figure>
+    ![](img/button19.png){ width=5.2cm }
 
 4.  Draw the polygon that demarcates the spatial distribution of rainfall and evaporation: Using the *Add Feature* tool from the digitalization bar
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button15.png" data-original-image-title="" width="0.6cm"></span>
-    </figure>
+    ![](img/button15.png){ width=0.6cm }
 
     draw the rainfall/evaporation polygon, as only one file will be used. The polygon should covers the entire *Domain Outline* as shown in the figure below:
 
@@ -136,9 +128,7 @@ To add the infiltration information, do as follows:
 
 1.  To create the *Infiltration* layer y use the *New Template Layer* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon14.png" data-original-image-title="" width="0.6cm"></span>
-    </figure>
+    ![](img/icon14.png){ width=0.6cm }
 
 2.  In the dialog select Infiltration, as shown in the Figure below:
 
@@ -146,21 +136,15 @@ To add the infiltration information, do as follows:
 
 3.  Edit the *Infiltration* layer: In the layers panel, select the *Infiltration* layer and click on the *Toggle Editing* button.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="0.6cm"></span>
-    </figure>
+    ![](img/button7.png){ width=0.6cm }
 
     A pencil will appear in the *Infiltration* layer, indicating that the layer is in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button20.png" data-original-image-title="" width="5.2cm"></span>
-    </figure>
+    ![](img/button20.png){ width=5.2cm }
 
 4.  Draw the polygon that demarcates the spatial distribution of the infiltration: Using the tool Add Feature tool of the digitalization bar, draw the infiltration polygons
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button15.png" data-original-image-title="" width="0.6cm"></span>
-    </figure>
+    ![](img/button15.png){ width=0.6cm }
 
     Figure [11.6](#6-6) shows the polygons that define the two infiltration zones of the watershed that are based on the land use and vegetation cover.
 
@@ -186,9 +170,7 @@ To add the infiltration information, do as follows:
 
 The mesh is generated using the *Generate TriMesh* icon
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/button6.png" data-original-image-title="" width="0.6cm"></span>
-</figure>
+![](img/button6.png){ width=0.6cm }
 
 Figure [11.11](#6-11) shows the resulting mesh of about 70,000 cells.
 
@@ -200,9 +182,7 @@ Now that once you have generated the mesh and the other layers are ready with th
 
 1.  Click on the *Export RiverFlow2D* icon.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button9.png" data-original-image-title="" width="0.6cm"></span>
-    </figure>
+    ![](img/button9.png){ width=0.6cm }
 
     When running the export command, you need to select the raster layer that contains the Digital Elevation Model (DEM). The name of the current scenario will already be indicated in the dialog.
 
@@ -244,9 +224,7 @@ As shown above, the Rainfall Components Evaporation/Infiltration are selected in
 
 1.  In QGIS, click on the *Cross Section* icon.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/xsection_button.png" data-original-image-title="" width="0.8cm"></span>
-    </figure>
+    ![](img/xsection_button.png){ width=0.8cm }
 
 2.  The Cross Sections panel will appear on the bottom of the QGIS interface.
 

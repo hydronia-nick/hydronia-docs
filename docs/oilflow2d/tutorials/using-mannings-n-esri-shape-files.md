@@ -26,9 +26,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
 1.  In order to load the shape file with the polygons containing the Manning's n values, click on *Add Vector Layer* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button22.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button22.png){ width=1cm }
 
     of Manager layer toolbar or from the main menu *Layer* $\rightarrow$ *Add layer* $\rightarrow$ *Add Vector Layer...*
 
@@ -56,9 +54,7 @@ To transfer spatial and attributive information from the shape file to the *Mann
 
 3.  Click on the *Toggle Editing* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     then change the *N_Value* field name by *ManningN* (Figure [16.6](#8-6)), and click on the *Toggle Editing* button again, and save.
 
@@ -78,9 +74,7 @@ To transfer spatial and attributive information from the shape file to the *Mann
 
     and a message will appear that indicates that features were successfully pasted.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button26.png" data-original-image-title="" width="8.5cm"></span>
-    </figure>
+    ![](img/button26.png){ width=8.5cm }
 
 9.  Click on the *Toggle Editing* button again ![](img/button7.png){ width=1cm }.
 

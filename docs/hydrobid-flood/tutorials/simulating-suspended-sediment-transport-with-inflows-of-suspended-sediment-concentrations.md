@@ -30,9 +30,7 @@ The project is already set up within QGIS, so we can export the files to RiverFl
 
 1.  Click on the *Export RiverFlow2D  * button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon2_hb.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon2_hb.png){ width=1cm }
 
 2.  When run the plugin a window is displayed, select the raster layer that contains the Digital Elevation Model (DEM) and the name of the project to be exported.
 

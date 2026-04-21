@@ -36,9 +36,7 @@ Creating the dam involves the following steps:
 
 1.  Create the template for the *DamBreach* layer: in the RiverFlow2D  toolbar click on the *New Template Layer* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon6_hb.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon6_hb.png){ width=1cm }
 
 2.  In the dialog select *DamBreach*, as shown in the figure below:
 
@@ -48,21 +46,15 @@ Creating the dam involves the following steps:
 
 4.  In the digitalization toolbar we click on the *Toggle Editting* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     A pencil icon will appear in the *DamBreach* layer, indicating that the layer is in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button29.png" data-original-image-title="" width="3.6cm"></span>
-    </figure>
+    ![](img/button29.png){ width=3.6cm }
 
 5.  Draw the line that defines the axis of the dam: Using the *Add Feature* tool of the digitalization toolbar
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button8.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button8.png){ width=1cm }
 
 6.  Draw the line that defines the dam axis. Keep in mind that the breach centroid is measured from the first vertex of the dam line. In this example it occurs 550 feet from the left margin of the dam (Figure [7.1](#11-1)). The dam axis is drawn from the top of the channel (point v0) to the bottom (point v1) along one side of the polygon that defines the initial water surface elevation, as illustrated in the image below.
 
@@ -86,9 +78,7 @@ Creating the dam involves the following steps:
 
 The mesh is generated using the *Generate TriMesh* tool
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/icon3_hb.png" data-original-image-title="" width="1cm"></span>
-</figure>
+![](img/icon3_hb.png){ width=1cm }
 
 Figure [7.8](#11-8) shows the resulting mesh of almost 11,000 cells
 
@@ -98,9 +88,7 @@ Figure [7.8](#11-8) shows the resulting mesh of almost 11,000 cells
 
 1.  Click on the *Export RiverFlow2D  * button.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon2_hb.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon2_hb.png){ width=1cm }
 
 2.  Select the raster layer that contains the Digital Elevation Model (DEM) and the name of the project.
 

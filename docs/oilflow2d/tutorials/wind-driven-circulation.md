@@ -62,9 +62,7 @@ To add the template where the polygons are drawn with the wind speed time series
 
 1.  Create the template for the Winds layer: In the model toolbar click on the *New Template Layer* command
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/oilnewtemplatebutton.png" data-original-image-title="" width="3cm"></span>
-    </figure>
+    ![](img/oilnewtemplatebutton.png){ width=3cm }
 
 2.  In the plugin window, activate the *Wind* checkBox, as shown in the Figure below:
 
@@ -72,9 +70,7 @@ To add the template where the polygons are drawn with the wind speed time series
 
 3.  Edit the Wind layer: In the layers panel, we select the Wind layer and in the digitalization toolbar we click on the *Toggle Editing* tool ![](img/button7.png){ width=0.6cm }. A pencil icon will appear in the Wind layer, indicating that the layer is in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button28.png" data-original-image-title="" width="3.6cm"></span>
-    </figure>
+    ![](img/button28.png){ width=3.6cm }
 
 4.  Draw the polygon that demarcates the Wind area: Using the *Add Feature* tool from the digitalization toolbar ![](img/button15.png){ width=0.6cm }.
 
@@ -166,9 +162,7 @@ where DDDD indicates the day, HH, hour, MM minutes and SS seconds.
 
 In these files, columns 1, 2 and 3 report the velocity components in Vx, Vy and the module respectively. We can visualize the water velocity fields generating layers either in raster or vectorial format from the aforementioned files using the *Maps of Results vs Time* tool.
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/oilwriver_p1_velocityfield1.png" data-original-image-title="" width="1cm"></span>
-</figure>
+![](img/oilwriver_p1_velocityfield1.png){ width=1cm }
 
 The following figure shows the water velocity field map for time `0000:20:00:00`:
 

@@ -221,9 +221,7 @@ Follow the following steps to create a velocity field graphic:
 
     -   Set Coloring as (modU) for the color map representation and choose the preset color Rainbow desaturated then *Apply/Close*
 
-    <figure id="Glyph1">
-    <span class="image placeholder" data-original-image-src="img/paraviewglyph1.png" data-original-image-title="" width="40%"></span>
-    </figure>
+    ![](img/paraviewglyph1.png){ width=40% }
 
 -   Select Time $\neq$ 0 as the current time control tool bar. In this example chose for instance *Time=3*.
 

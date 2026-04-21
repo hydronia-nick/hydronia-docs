@@ -47,15 +47,11 @@ If you want to skip this step, you may want to use the SWMM 'base.INP' in the tu
 
 2.  The first step consists in setting the position of all the nodes that conforms the drainage network by means of the button *Add a junction node*:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/nodos" data-original-image-title="" width="38%"></span>
-    </figure>
+    ![](img/nodos){ width=38% }
 
     On the *Study area map* window, click as many times as nodes should be added to the network. In this project there will be 8 nodes. Note that the position of the nodes is schematic:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/nodes_in_the_map" data-original-image-title="" width="\textwidth"></span>
-    </figure>
+    ![](img/nodes_in_the_map){ width=\textwidth }
 
 3.  Configure the node data by double-clicking on each node. The node properties window should appear:
 
@@ -65,9 +61,7 @@ If you want to skip this step, you may want to use the SWMM 'base.INP' in the tu
 
     In this example, the most relevant parameters are: *Name*, *X-* and *Y-Coordinates*, *Inflows*, *Invert elevation* and *Max. depth*. The only inflow nodes are *N1* and *N2_manhole*. Node *N2_manhole* should have *Max. depth=2 m*. Node *N1* is the discharge input and should follow the time series given in Figure 12.2.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/inflow_n1" data-original-image-title="" width="38%"></span>
-    </figure>
+    ![](img/inflow_n1){ width=38% }
 
     The time series can be inserted point-by-point or read from file. On the other hand, node *N2_manhole* will be the connection with the surface domain and the baseline values should be 0.0:
 
@@ -77,27 +71,19 @@ If you want to skip this step, you may want to use the SWMM 'base.INP' in the tu
 
     The outfall node *Out1* should be configured as *free*:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/outfall" data-original-image-title="" width="38%"></span>
-    </figure>
+    ![](img/outfall){ width=38% }
 
 4.  Join the nodes by means of the *Add a conduit link* tool:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/links" data-original-image-title="" width="38%"></span>
-    </figure>
+    ![](img/links){ width=38% }
 
     The result should look like the following figure:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/links_in_the_map" data-original-image-title="" width="\textwidth"></span>
-    </figure>
+    ![](img/links_in_the_map){ width=\textwidth }
 
 5.  Configure the link properties by double-clicking on each one:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/l1" data-original-image-title="" width="38%"></span>
-    </figure>
+    ![](img/l1){ width=38% }
 
     The most relevant properties are: *Name*, *Inlet node*, *Outlet node*, *Shape*, *Max. depth*, *Length*, *Roughness* and *Initial flow*.
 
@@ -321,9 +307,7 @@ Start the QGIS  software. After loading we will have a window similar to the one
 
 1.  In the RiverFlow2D  toolbar, click on the *New RiverFlow2D  Project* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button1.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button1.png){ width=1cm }
 
     to start a new RiverFlow2D  project. A dialog window appears where you select the layers that will be created, the Coordinate Reference System (CRS), and the directory path where the layers will be saved. This example will use the basic layers: *Domain Outline*, *Manning N*, and *BoundaryConditions*
 
@@ -357,15 +341,11 @@ Start the QGIS  software. After loading we will have a window similar to the one
 
 RiverFlow2D  uses elevation data in raster format. To load an ASCII grid file, from the *Layer* menu, click *Add Layer*, and then click *Add Raster Layer...* You may also click the *Add Raster Layer* button:
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/button2.png" data-original-image-title="" width="1cm"></span>
-</figure>
+![](img/button2.png){ width=1cm }
 
 Search for the 'TEST8BDEM.ASC' in the 'UrbanDrainageTutorial\\base' folder:
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/swmmdem.png" data-original-image-title="" width="80%"></span>
-</figure>
+![](img/swmmdem.png){ width=80% }
 
 1.  Click Add, assign the EPSG:7405 projection code to the file, and raster will be displayed on the screen, by default it is rendered in gray gradient as shown in Figure [19.7](#11).
 
@@ -409,9 +389,7 @@ The limits of the modeling area are defined using a polygon on the *Domain Outli
 
 2.  This activates the rest of the editing buttons. Now click the *Add Feature* tool which is the bean looking polygon.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button15.png" data-original-image-title="" width="0.8cm"></span>
-    </figure>
+    ![](img/button15.png){ width=0.8cm }
 
     Proceed to delineate the outline of the polygon by marking the vertices clicking with the left mouse button:
 
@@ -427,9 +405,7 @@ The limits of the modeling area are defined using a polygon on the *Domain Outli
 
     Now click on *Toggle Editing* button to deactivate the layer Edit mode and save the changes.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     The *Domain Outline* is now complete.
 
@@ -441,9 +417,7 @@ To assign Manning's n roughness values, we will enter polygons with given n's. T
 
 1.  Select the *Manning N* layer and click the *Toggle Editing* button:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
 2.  Draw the polygon around the entire domain taking care that it covers all the cells.
 
@@ -457,15 +431,11 @@ To assign Manning's n roughness values, we will enter polygons with given n's. T
 
 4.  Click the *Save* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button5.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button5.png){ width=1cm }
 
     and then click the Editing Tool button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     to deactivate editing mode.
 
@@ -479,9 +449,7 @@ By default all boundaries are closed unless we set open boundary conditions. Sin
 
 2.  Click the Toggle Editing button to add the polygons that are going to indicate the nodes on which the inflow and outflow conditions are established.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
 3.  To finish the polygon, right-click on desired location. A window to enter the attributes of the newly created polygon is displayed.
 
@@ -501,9 +469,7 @@ Now that the *Domain Outline* has been set, the Manning's n entered, and the SWM
 
 To run the plugin, on the the *Plugins* menu, click *Generate TriMesh*, or click on the icon:
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/icon3.png" data-original-image-title="" width="0.6cm"></span>
-</figure>
+![](img/icon3.png){ width=0.6cm }
 
 The following figure shows the generated mesh. You will also see in the Layers panel two new layers: *Trimesh* and *Trimesh_point*:
 
@@ -519,9 +485,7 @@ Once the layers with the input information to the model have been created, the n
 
 1.  Run the *Export RiverFlow2D * plugin
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon2.png" data-original-image-title="" width="0.6cm"></span>
-    </figure>
+    ![](img/icon2.png){ width=0.6cm }
 
 2.  A dialog window is presented. We must indicate the raster layer of the Digital Elevation Model (DEM), as this layer is not created by the plugin and its name may be different.
 

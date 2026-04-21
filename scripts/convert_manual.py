@@ -195,7 +195,11 @@ FIGURE_RE = re.compile(
     rf'<span class="image placeholder"\s+'
     rf'data-original-image-src="(?P<folder>images(?:Paraview)?)/(?P<src>[^"]+)"'
     rf'[^>]*></span>\s*'
-    rf"<figcaption>(?P<cap>.*?)</figcaption>\s*"
+    # Figcaption is OPTIONAL. Captionless figures are common for toolbar-
+    # button screenshots inserted inline in lists; without this branch they
+    # slip through as raw HTML and Pandoc renders the image at natural
+    # resolution (a tiny icon blown up to fill the page).
+    rf"(?:<figcaption>(?P<cap>.*?)</figcaption>\s*)?"
     rf"</figure>",
     re.DOTALL | re.IGNORECASE | re.MULTILINE,
 )
@@ -329,7 +333,11 @@ def _format_dim_attrs(dims: dict[str, str]) -> str:
     return "{ " + " ".join(f"{k}={v}" for k, v in dims.items()) + " }"
 
 
-def _clean_caption(text: str) -> str:
+def _clean_caption(text: str | None) -> str:
+    # FIGURE_RE's figcaption group is optional; a captionless figure block
+    # returns None here.
+    if text is None:
+        return ""
     text = html.unescape(text)
     text = re.sub(r"<[^>]+>", "", text)
     text = re.sub(r"\s+", " ", text)

@@ -50,9 +50,7 @@ Adding the *Weirs* layer involves the following steps:
 
 1.  Create *Weirs* layer: for this click on the *New Template Layer* button in the RiverFlow2D  toolbar
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon6_hb.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon6_hb.png){ width=1cm }
 
 2.  Activate the checkbox Weirs, as shown in the Figure below:
 
@@ -60,21 +58,15 @@ Adding the *Weirs* layer involves the following steps:
 
 3.  Edit the *Weirs* layer: In the layer panel, select the *Weirs* layer and in the digitalization toolbar click on the *Toggle Editing* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     A pencil icon will appear in the *Weirs* layer indicating that the layer is in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button12.png" data-original-image-title="" width="3.6cm"></span>
-    </figure>
+    ![](img/button12.png){ width=3.6cm }
 
 4.  Draw the line representing the weir: Using the *Add Feature* tool from the digitalization bar
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button8.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button8.png){ width=1cm }
 
     Draw a line anywhere in the map area (just mark two vertices or nodes. This line will then be replaced by the coordinates of the file to be imported).
 
@@ -104,15 +96,11 @@ Adding the *Weirs* layer involves the following steps:
 
 8.  Save the changes in the layer using the *Save* button of the digitalization toolbar
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button5.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button5.png){ width=1cm }
 
 9.  Disable the editing mode of the layer with the *Toggle Editing* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     and we will have on screen an image similar to the one shown below where you can see the layout of the weir:
 
@@ -122,9 +110,7 @@ Adding the *Weirs* layer involves the following steps:
 
 The mesh is generated with the *Generate TriMesh* plugin.
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/icon3_hb.png" data-original-image-title="" width="1cm"></span>
-</figure>
+![](img/icon3_hb.png){ width=1cm }
 
 result should look similar to the image on Figure [4.8](#5-8).
 
@@ -136,9 +122,7 @@ Now that you have generated the mesh and you have the other layers ready with th
 
 1.  Click the *Export to RiverFlow2D * button.
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon2_hb.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon2_hb.png){ width=1cm }
 
 2.  When running the plugin a window is displayed, here we must select the raster layer that contains the Digital Elevation Model (DEM) and the name of the project to be exported.
 

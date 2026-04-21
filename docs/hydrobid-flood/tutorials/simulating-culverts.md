@@ -53,9 +53,7 @@ This project contains the following layers: Domain Outline, Digital Elevation Mo
 
 1.  To create the *Culverts* layer, in the RiverFlow2D  toolbar click on the *New Template Layer* icon
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon6_hb.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon6_hb.png){ width=1cm }
 
 2.  In the window select the Culverts checkBox, as shown:
 
@@ -63,21 +61,15 @@ This project contains the following layers: Domain Outline, Digital Elevation Mo
 
 3.  Edit the *Culverts* layer: In the layers panel select the *Culverts* layer and in the digitalization toolbar click on the *Toggle Editing* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
     A pencil icon will appear in the *Culverts* layer indicating that the layer is in edit mode:
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button11.png" data-original-image-title="" width="3.6cm"></span>
-    </figure>
+    ![](img/button11.png){ width=3.6cm }
 
 4.  Draw the line representing the culvert alignment: Using the tool *Add Feature* from the digitalization toolbar
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button8.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button8.png){ width=1cm }
 
     draw the line that represents the culvert. It is only necessary to indicate two vertices.
 
@@ -99,23 +91,17 @@ This project contains the following layers: Domain Outline, Digital Elevation Mo
 
 8.  Save the changes in the layer using the *Save* button of the digitalization toolbar
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button5.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button5.png){ width=1cm }
 
 9.  Disable the editing mode of the layer with the *Toggle Editing* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/button7.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/button7.png){ width=1cm }
 
 ## Generate the mesh
 
 The mesh is generated with the *Generate Trimesh* tool
 
-<figure>
-<span class="image placeholder" data-original-image-src="img/icon3_hb.png" data-original-image-title="" width="1cm"></span>
-</figure>
+![](img/icon3_hb.png){ width=1cm }
 
 the results obtained as shown in Figure [6.6](#4-7).
 
@@ -127,9 +113,7 @@ Now that you have generated the mesh and you have the other layers ready with th
 
 1.  Click the *Export RiverFlow2D* button
 
-    <figure>
-    <span class="image placeholder" data-original-image-src="img/icon2_hb.png" data-original-image-title="" width="1cm"></span>
-    </figure>
+    ![](img/icon2_hb.png){ width=1cm }
 
 2.  The raster layer that contains the Digital Elevation Model (DEM) and the name of the scenario should already be set.
 
