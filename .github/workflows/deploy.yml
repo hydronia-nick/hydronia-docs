@@ -83,6 +83,52 @@ jobs:
       - name: Build PDF manuals
         run: python scripts/build_pdfs.py --all
 
+      # ------------------------------------------------------------------
+      # PDF image-sizing regression gate.
+      #
+      # Catches two failure classes that Pandoc + XeLaTeX render without
+      # complaint but produce visually broken PDFs:
+      #   - Stretched icons: tiny toolbar buttons blown up to \linewidth
+      #     because Pandoc dropped their width attribute.
+      #   - Natural-DPI overflows: large screenshots without a valid width
+      #     rendered at 72 dpi, spilling off the page.
+      #
+      # Fails the whole deploy if anything trips either gate, so we never
+      # publish a broken PDF. See scripts/check_pdf_images.py for the
+      # exact thresholds and the per-class symptom table.
+      # ------------------------------------------------------------------
+      - name: Install Poppler utilities
+        run: sudo apt-get install -y --no-install-recommends poppler-utils
+
+      - name: Check PDF image sizing
+        run: |
+          set +e
+          fail=0
+          for id in \
+              qgis-reference-riverflow2d-en \
+              qgis-reference-oilflow2d-en \
+              qgis-reference-hydrobid-flood-en \
+              tutorials-riverflow2d-en \
+              tutorials-oilflow2d-en \
+              tutorials-hydrobid-flood-en; do
+            echo "::group::check: $id"
+            python scripts/check_pdf_images.py "site/pdf/${id}.pdf" --top 20
+            rc=$?
+            echo "::endgroup::"
+            if [ $rc -ne 0 ]; then
+              echo "::error file=site/pdf/${id}.pdf::PDF image sizing check failed for ${id} (exit $rc) — see the '$id' log group above for the offending pages and rendered dimensions"
+              fail=1
+            fi
+          done
+          if [ $fail -ne 0 ]; then
+            echo ""
+            echo "One or more PDFs have image-sizing regressions. Fix locally with:"
+            echo "  python scripts/build_pdfs.py --manual <id> --keep-build"
+            echo "  python scripts/check_pdf_images.py site/pdf/<id>.pdf --render"
+            echo "then inspect the rendered PNGs under site/pdf/<id>_flagged_pages/."
+          fi
+          exit $fail
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
