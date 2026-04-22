@@ -44,25 +44,25 @@ There are a few layers involved with handling the introduction of pollutants in 
 
 2.  In the RiverFlow2D  toolbar click on the New Project button and select *New Scenario*:
 
-    ![New Scenario button location.](img/simulatingpollutants_image4.png){ width=0.5\textwidth }
+    ![New Scenario button location.](img/simulatingpollutants_image4.png){ width=50% }
 
 3.  Type "SinglePollutant" without quotes as your new scenario name. A copy of the current project will be made and kept in a separate subfolder named "SinglePollutant"
 
-    ![New Scenario input dialog window.](img/simulatingpollutants_image5.png){ width=0.5\textwidth }
+    ![New Scenario input dialog window.](img/simulatingpollutants_image5.png){ width=50% }
 
 ## Create an Initial Concentrations layer.
 
 1.  In the RiverFlow2D  toolbar, click on the dropdown button for *RF2D* tools and click *New Template Layer*:
 
-    ![New Template Layer button location.](img/simulatingpollutants_image2.png){ width=0.7\textwidth }
+    ![New Template Layer button location.](img/simulatingpollutants_image2.png){ width=70% }
 
 2.  In the *Add Layer Template* dialog window, select the *InitialConcentrationsPollutant* checkbox and click \[OK\].
 
-    ![Add Layer Template window with InitialConcentrationsPollutant selected.](img/simulatingpollutants_image6.png){ width=0.5\textwidth }
+    ![Add Layer Template window with InitialConcentrationsPollutant selected.](img/simulatingpollutants_image6.png){ width=50% }
 
     A new layer should appear in the *Layers* panel on the left-hand side:
 
-    ![Layers panel with InitialConcentrationsPollutant selected.](img/simulatingpollutants_image7.png){ width=0.5\textwidth }
+    ![Layers panel with InitialConcentrationsPollutant selected.](img/simulatingpollutants_image7.png){ width=50% }
 
     We need to create a polygon in the *Initial Concentrations* layer that covers all of the river. We can utilize the *Domain Outline* layer and copy the same polygon into our newly created layer.
 
@@ -70,7 +70,7 @@ There are a few layers involved with handling the introduction of pollutants in 
 
 4.  Click on the *Select Feature by Area or Single Click* ![](img/button23.png){ width=1cm } button, then click inside of the *Domain Outline* polygon in the map area to highlight it:
 
-    ![Map area with Initial Concentrations selected.](img/simulatingpollutants_image8.png){ width=0.7\textwidth }
+    ![Map area with Initial Concentrations selected.](img/simulatingpollutants_image8.png){ width=70% }
 
 5.  Click the *Copy Features*![](img/button24.png){ width=0.8cm } button from the QGIS toolbar.
 
@@ -94,7 +94,7 @@ There are a few layers involved with handling the introduction of pollutants in 
 
 1.  Generate the mesh by clicking on the *Generate TriMesh with elevations* ![](img/trimesh_elevations_button.png){ width=0.8cm } button in the *Generate TriMesh* menu:
 
-    ![Generate Trimesh with Elevations menu location.](img/simulatingpollutants_image10.png){ width=0.5\textwidth }
+    ![Generate Trimesh with Elevations menu location.](img/simulatingpollutants_image10.png){ width=50% }
 
     Ensure that the "Magdalena" DEM is selected in the *Raster Layer List* dropdown.
 
@@ -102,7 +102,7 @@ There are a few layers involved with handling the introduction of pollutants in 
 
 3.  You will be presented with the *Export Files to RiverFlow2D* dialog. Leave all parameters as they are and click \[OK\].
 
-    ![Export Files to RiverFlow2D dialog window.](img/simulatingpollutants_image11.png){ width=0.7\textwidth }
+    ![Export Files to RiverFlow2D dialog window.](img/simulatingpollutants_image11.png){ width=70% }
 
     We want to start the model with a body of water present in the river channel. Since this area is below sea level, we will set a horizontal water surface elevation to provide water below that level in the DIP.
 
@@ -114,7 +114,7 @@ There are a few layers involved with handling the introduction of pollutants in 
 
     The *Pollutant Transport* panel allows the user to control Dispersion coefficients for all pollutants, as well as define the decay rate for each pollutant. We want to set the decay rate to 0 and leave the rest as default.
 
-    ![Pollutant Transport panel.](img/simulatingpollutants_image13.png){ width=0.8\textwidth }
+    ![Pollutant Transport panel.](img/simulatingpollutants_image13.png){ width=80% }
 
 6.  Click on the \[Save .SOLUTES\] button, it will use the name of the scenario 'A.SOLUTES'. Click \[OK\] to save the file.
 
@@ -130,7 +130,7 @@ You can view the boundary conditions file to see the additional column that is r
 
 1.  Click on the *Open Boundary Conditions* panel on the left-hand side.
 
-    ![Boundary Conditions panel.](img/simulatingpollutants_image14.png){ width=0.8\textwidth }
+    ![Boundary Conditions panel.](img/simulatingpollutants_image14.png){ width=80% }
 
 2.  Switch back to the *Control Data* panel and click \[Save .DAT\]. Replace the existing 'SinglePollutant.dat' file to save the changes made earlier.
 
@@ -146,7 +146,7 @@ The output maps for pollutants will show us the concentrations over the model do
 
 3.  Select *Conc_1* under *Maps*, then select the last output time, then click the \[$\rightarrow$\] button to make the selection. You may also hold the control key and select multiple output times. Click \[OK\] when ready.
 
-    ![Concentrations and Properties vs Time Maps dialog window.](img/simulatingpollutants_image15.png){ width=0.8\textwidth }
+    ![Concentrations and Properties vs Time Maps dialog window.](img/simulatingpollutants_image15.png){ width=80% }
 
     ![Output map for Pollutant 1.](img/simulatingpollutants_image16.png){ width=100% }
 
@@ -156,17 +156,17 @@ We will now create a new scenario to test having an additional separate pollutan
 
 1.  In the RiverFlow2D toolbar click on the New Project button and select *New Scenario*:
 
-    ![New Scenario button location.](img/simulatingpollutants_image4.png){ width=0.5\textwidth }
+    ![New Scenario button location.](img/simulatingpollutants_image4.png){ width=50% }
 
 2.  type "MultiplePollutant" without quotes as your new scenario name. A copy of the current project will be made and kept in a separate subfolder named "MultiplePollutant"
 
 3.  In the RiverFlow2D  toolbar, click on the dropdown button for *RF2D* tools and click *New Template Layer*:
 
-    ![New Template Layer button location.](img/simulatingpollutants_image2.png){ width=0.7\textwidth }
+    ![New Template Layer button location.](img/simulatingpollutants_image2.png){ width=70% }
 
 4.  In the *Add Layer Template* dialog window, select the *Source/Sink* checkbox and click \[OK\].
 
-    ![Add Layer Template window with Sources/Sink selected.](img/simulatingpollutants_image3.png){ width=0.5\textwidth }
+    ![Add Layer Template window with Sources/Sink selected.](img/simulatingpollutants_image3.png){ width=50% }
 
     A new *Sources* layer will appear on the lefthand *Layers* panel, under the *COMPONENTS* group.
 
@@ -178,7 +178,7 @@ We will now create a new scenario to test having an additional separate pollutan
 
 7.  Place the point by clicking on the desired location. A dialog window will appear to enter the source information:
 
-    ![Sources -Feature Attributes General tab.](img/simulatingpollutants_image17.png){ width=0.6\textwidth }
+    ![Sources -Feature Attributes General tab.](img/simulatingpollutants_image17.png){ width=60% }
 
 8.  Select *1.Discharge vs Time* under *Source/Sink type*. Click the *Data* tab.
 
@@ -208,7 +208,7 @@ We need to copy the 'InitialConcentration.txt' file from our project folder into
 
 4.  Add a 0 next to the current one, they can be separated by a space or tab. It should look like this:
 
-    ![InitialConcentrations.txt file with edits.](img/simulatingpollutants_image21.png){ width=0.5\textwidth }
+    ![InitialConcentrations.txt file with edits.](img/simulatingpollutants_image21.png){ width=50% }
 
 5.  Save the file and close it.
 
@@ -216,7 +216,7 @@ We need to copy the 'InitialConcentration.txt' file from our project folder into
 
 7.  Add a fourth column of data starting on the second row. We will set the inflow for this pollutant to 0 since we only want one pollutant entering the through the inflow boundary condition:
 
-    ![Boundary Condition inflow file with additional pollutant inflow set to 0.](img/simulatingpollutants_image22.png){ width=0.5\textwidth }
+    ![Boundary Condition inflow file with additional pollutant inflow set to 0.](img/simulatingpollutants_image22.png){ width=50% }
 
 ## Add the new pollutant parameters in the Hydronia Data Input Program  then Run the RiverFlow2D  model
 

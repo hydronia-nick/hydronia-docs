@@ -102,7 +102,20 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--url", help="Download PDF from URL instead of reading local file")
     ap.add_argument(
         "--threshold", type=int, default=40,
-        help="Flag images whose x-ppi falls below this (default: 40)",
+        help="Flag images whose x-ppi falls below this (default: 40). Catches "
+             "stretched icons rendered below natural DPI.",
+    )
+    ap.add_argument(
+        "--max-width-in", type=float, default=6.5,
+        help="Flag images whose rendered width exceeds this many inches "
+             "(default: 6.5). Catches large screenshots rendered at natural "
+             "DPI that overflow the text block. Text width on letter with "
+             "the Hydronia template is 6.0in; 6.5in leaves a tolerance.",
+    )
+    ap.add_argument(
+        "--max-height-in", type=float, default=9.0,
+        help="Flag images whose rendered height exceeds this many inches "
+             "(default: 9.0). Text height on letter is ~9.25in.",
     )
     ap.add_argument(
         "--render", action="store_true",
@@ -129,17 +142,45 @@ def main(argv: list[str] | None = None) -> int:
                 sys.exit(f"error: no such file: {pdf}")
 
         records = _parse_images(pdf)
-        flagged = [r for r in records if r["xppi"] < args.threshold]
-        flagged.sort(key=lambda r: (r["xppi"], r["page"]))
+        for r in records:
+            # Rendered size in inches. If xppi/yppi is 0 (rare pathological
+            # cases), treat as infinitely stretched.
+            r["rendered_w_in"] = (r["width"] / r["xppi"]) if r["xppi"] else float("inf")
+            r["rendered_h_in"] = (r["height"] / r["yppi"]) if r["yppi"] else float("inf")
 
-        print(f"total images: {len(records)}")
-        print(f"threshold   : x-ppi < {args.threshold}")
-        print(f"flagged     : {len(flagged)}")
+        low_ppi = [r for r in records if r["xppi"] < args.threshold]
+        too_wide = [
+            r for r in records
+            if r["rendered_w_in"] > args.max_width_in
+            or r["rendered_h_in"] > args.max_height_in
+        ]
+        # Union, preserving order: worst ppi first, then worst overflow
+        seen = set()
+        flagged: list[dict] = []
+        for r in sorted(low_ppi, key=lambda r: (r["xppi"], r["page"])):
+            key = (r["page"], r["num"])
+            if key not in seen:
+                seen.add(key)
+                r["reason"] = "low-ppi"
+                flagged.append(r)
+        for r in sorted(too_wide, key=lambda r: (-r["rendered_w_in"], r["page"])):
+            key = (r["page"], r["num"])
+            if key not in seen:
+                seen.add(key)
+                r["reason"] = "overflow"
+                flagged.append(r)
+
+        print(f"total images : {len(records)}")
+        print(f"ppi gate     : x-ppi < {args.threshold}                -> {len(low_ppi)} flagged")
+        print(f"size gate    : rendered > {args.max_width_in}in x {args.max_height_in}in -> {len(too_wide)} flagged")
+        print(f"total flagged: {len(flagged)}")
         if flagged:
             print()
-            print(f"{'page':>5}  {'w':>5}  {'h':>5}  {'xppi':>5}")
+            print(f"{'page':>5}  {'w':>5}  {'h':>5}  {'xppi':>5}  {'rend-in':>10}  reason")
             for r in flagged[: args.top]:
-                print(f"{r['page']:>5}  {r['width']:>5}  {r['height']:>5}  {r['xppi']:>5}")
+                rend = f"{r['rendered_w_in']:.1f}x{r['rendered_h_in']:.1f}"
+                print(f"{r['page']:>5}  {r['width']:>5}  {r['height']:>5}  "
+                      f"{r['xppi']:>5}  {rend:>10}  {r['reason']}")
             if len(flagged) > args.top:
                 print(f"... and {len(flagged) - args.top} more")
 

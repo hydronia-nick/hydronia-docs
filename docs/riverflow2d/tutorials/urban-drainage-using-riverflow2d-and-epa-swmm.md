@@ -20,9 +20,9 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
 The pipe is modeled in 1D and connected to the 2D mesh through a manhole. The modeled area is approximately 0.4 km by 0.96 km (see Figure 12.1). A storm drain of circular section of $1.4 m$ in diameter and 1340 m in length is assumed to run through the modeled area. The pipe Manning's roughness is set to n=0.017. An inflow boundary condition is applied at the upstream end of the pipe, illustrated in Figure 12.2. A free outfall is considered as downstream boundary condition. A base initial flow of 1.6 m$^3$/s is set as uniform initial condition. A surcharge is expected to occur at a vertical manhole of 1 m$^2$ cross-section located 467 m from the top end of the culvert at the coordinates (x=264,896 m,y=664,747 m). The profile geometry of the culvert is given in Table [\[pipe012\]](#pipe012) and shown in Figure 12.3.
 
-![DEM used, with the location of the manhole. The course of the storm drain is indicated, although irrelevant to the modeling. Purple lines: outline of roads and pavements. Black lines: building outlines. Triangles: output point locations.](img/uk_z){ width=\textwidth }
+![DEM used, with the location of the manhole. The course of the storm drain is indicated, although irrelevant to the modeling. Purple lines: outline of roads and pavements. Black lines: building outlines. Triangles: output point locations.](img/uk_z){ width=100% }
 
-![Inflow hydrograph applied at upstream end of storm drain.](img/uk_inflow){ width=\textwidth }
+![Inflow hydrograph applied at upstream end of storm drain.](img/uk_inflow){ width=100% }
 
 | c c c c c Node | Distance from upstream inlet (m) | Invert level (m) | Reach length (m) | X | Y |
 | --- | --- | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ The pipe is modeled in 1D and connected to the 2D mesh through a manhole. The mo
 | N7 | 1145͡ | 24.29 | 154 | 269533.941 | 662725.431 |
 | Out1 | 1340͡ | 23.49 | 195 | 271874.367 | 661752.786 |
 
-![Storm drain profile.](img/ci){ width=\textwidth }
+![Storm drain profile.](img/ci){ width=100% }
 
 ## Storm drain configuration in EPA-SWMM
 
@@ -51,7 +51,7 @@ If you want to skip this step, you may want to use the SWMM 'base.INP' in the tu
 
     On the *Study area map* window, click as many times as nodes should be added to the network. In this project there will be 8 nodes. Note that the position of the nodes is schematic:
 
-    ![](img/nodes_in_the_map){ width=\textwidth }
+    ![](img/nodes_in_the_map){ width=100% }
 
 3.  Configure the node data by double-clicking on each node. The node properties window should appear:
 
@@ -79,7 +79,7 @@ If you want to skip this step, you may want to use the SWMM 'base.INP' in the tu
 
     The result should look like the following figure:
 
-    ![](img/links_in_the_map){ width=\textwidth }
+    ![](img/links_in_the_map){ width=100% }
 
 5.  Configure the link properties by double-clicking on each one:
 

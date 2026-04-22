@@ -4,20 +4,28 @@
 \usepackage{fontspec}
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
-% Safety net for images with no explicit width in the markdown: CAP at
-% line width so nothing overflows, but DO NOT force-stretch tiny icons to
-% fill the whole line. `adjustbox`'s [export] option adds `max width` /
-% `max height` keys to \includegraphics; setting them as Gin defaults
-% means images render at natural DPI when small, and get clamped only
-% when they'd otherwise overflow. Explicit widths in the markdown
-% (e.g. `{ width=80% }`) still override both.
+% Safety net for images with no explicit width in the markdown. We want
+% two behaviours from the same default:
+%   - small toolbar icons (<< linewidth natural size) → render at natural DPI
+%   - large screenshots (>> linewidth natural size) → clamp to linewidth
+% The standard LaTeX idiom for this (and what Pandoc's own default preamble
+% ships) is to compute \maxwidth / \maxheight per-image at include time,
+% using \ifdim to pick the smaller of natural size and the page limit.
 %
-% This matters because Pandoc silently drops width values with a bare
-% leading dot (`width=.6cm` → no width attr emitted), and the previous
-% default `width=\linewidth` then blew those tiny toolbar icons up to
-% full text width.
-\usepackage[export]{adjustbox}
-\setkeys{Gin}{max width=\linewidth,keepaspectratio}
+% Gin's "max width" key does NOT exist in vanilla graphicx, and
+% \setkeys{Gin}{max width=\linewidth} is silently ignored — confirmed
+% empirically by pdfimages showing xppi=72 (no clamp fired) on 1600-px
+% screenshots. The \maxwidth approach works because "width" IS a real
+% Gin key and \ifdim evaluates per inclusion.
+%
+% This also matters because Pandoc silently drops attribute values that
+% don't match its numeric-unit grammar (e.g. width=.6cm, width=\textwidth,
+% width=0.8\textwidth). When that happens the Gin default is all we have.
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>0.9\textheight 0.9\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{tabularx}

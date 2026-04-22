@@ -47,7 +47,7 @@ The files required to follow this tutorial can be extracted from the 'ExamplePro
 
 This project contains the following layers: Domain Outline, Digital Elevation Model (DEM) in raster format, polygon with the Manning's n coefficient, and the boundary condition polygons. The inflow is located in the upper left, and the outflow in the lower left. The boundary conditions corresponds to a constant discharge of 1000 $ft^3/s$, and outflow conditions is set to free. Figure [6.2](#4-2) shows the opened project.
 
-![Example of the tutorial loaded in QGIS.](img/4-2.png){ width=0.8\textwidth }
+![Example of the tutorial loaded in QGIS.](img/4-2.png){ width=80% }
 
 ## Create Culverts layer and draw the culvert
 

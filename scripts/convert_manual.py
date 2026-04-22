@@ -316,14 +316,31 @@ def build_label_map(
 
 
 _LEADING_DOT_DIM_RE = re.compile(r"^(\.)(\d)")
+# `\textwidth`, `0.8\textwidth`, etc. — LaTeX-isms Pandoc's attribute parser
+# drops silently. Coerce to percentage form so Pandoc emits real widths.
+_TEXTWIDTH_SCALED_RE = re.compile(r"^(\d+(?:\.\d+)?)\\textwidth$")
+_TEXTWIDTH_PLAIN_RE = re.compile(r"^\\textwidth$")
 
 
 def _normalize_dim(value: str) -> str:
-    # Pandoc's markdown attribute parser silently drops widths whose value
-    # starts with a bare dot (e.g. `width=.6cm`). The fallback then lets
-    # the LaTeX Gin defaults take over and blow small icons up to the
-    # full line width. Coerce `.6cm` -> `0.6cm` so Pandoc preserves it.
-    return _LEADING_DOT_DIM_RE.sub(r"0.\2", value)
+    # Pandoc's markdown attribute parser silently drops width/height values
+    # that don't match its numeric-unit grammar. The LaTeX Gin fallback
+    # then takes over — which used to blow small icons up to line width
+    # and now (since we ship the \maxwidth idiom) lets large screenshots
+    # render at natural DPI and overflow the page. Either way, dropped
+    # widths are a bug we want to prevent at the source.
+    #
+    # Known Pandoc-hostile patterns found in Hydronia manuals:
+    #   `.6cm`          → `0.6cm`   (leading-dot)
+    #   `\textwidth`    → `100%`
+    #   `0.8\textwidth` → `80%`     (fractional-textwidth)
+    value = _LEADING_DOT_DIM_RE.sub(r"0.\2", value)
+    m = _TEXTWIDTH_SCALED_RE.match(value)
+    if m:
+        return f"{int(round(float(m.group(1)) * 100))}%"
+    if _TEXTWIDTH_PLAIN_RE.match(value):
+        return "100%"
+    return value
 
 
 def _extract_dimensions(match: re.Match[str]) -> dict[str, str]:
