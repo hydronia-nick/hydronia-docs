@@ -60,7 +60,7 @@ This step ensures that the mesh will conform to the bridge alignment, so that th
 
     ![RiverFlow2D dialog to add new layer.](img/3-6_hb.png){ width=55% }
 
-2.  Edit the *Bridges* layer: In the layers panel we select the *Bridges* layer then in the digitalization toolbar we left click on the *Toggle Editing* button ![](img/button7.png){ width=.6cm }.
+2.  Edit the *Bridges* layer: In the layers panel we select the *Bridges* layer then in the digitalization toolbar we left click on the *Toggle Editing* button ![](img/button7.png){ width=0.6cm }.
 
     A pencil icon will appear in the *Bridges* layer that tells us that the layer is in edit mode:
 
@@ -68,7 +68,7 @@ This step ensures that the mesh will conform to the bridge alignment, so that th
 
 3.  Draw the line representing the bridge: (if necessary, turn off the DEM layer so that it does not interfere with the identification of the bridge site in the aerial photograph).
 
-4.  Using the *Add Feature* button of the digitalization toolbar ![](img/button8.png){ width=.6cm }, draw the line indicating the location of the bridge. In the case shown, to demarcate the line that indicates the location of the bridge. It is only necessary to indicate two vertices (initial and final), then right-click to finish the drawing.
+4.  Using the *Add Feature* button of the digitalization toolbar ![](img/button8.png){ width=0.6cm }, draw the line indicating the location of the bridge. In the case shown, to demarcate the line that indicates the location of the bridge. It is only necessary to indicate two vertices (initial and final), then right-click to finish the drawing.
 
     We will have an image similar to the one shown in the following figure:
 

@@ -315,15 +315,26 @@ def build_label_map(
     return mapping
 
 
+_LEADING_DOT_DIM_RE = re.compile(r"^(\.)(\d)")
+
+
+def _normalize_dim(value: str) -> str:
+    # Pandoc's markdown attribute parser silently drops widths whose value
+    # starts with a bare dot (e.g. `width=.6cm`). The fallback then lets
+    # the LaTeX Gin defaults take over and blow small icons up to the
+    # full line width. Coerce `.6cm` -> `0.6cm` so Pandoc preserves it.
+    return _LEADING_DOT_DIM_RE.sub(r"0.\2", value)
+
+
 def _extract_dimensions(match: re.Match[str]) -> dict[str, str]:
     text = match.group(0)
     dims: dict[str, str] = {}
     width = WIDTH_ATTR_RE.search(text)
     height = HEIGHT_ATTR_RE.search(text)
     if width:
-        dims["width"] = width.group(1)
+        dims["width"] = _normalize_dim(width.group(1))
     if height:
-        dims["height"] = height.group(1)
+        dims["height"] = _normalize_dim(height.group(1))
     return dims
 
 

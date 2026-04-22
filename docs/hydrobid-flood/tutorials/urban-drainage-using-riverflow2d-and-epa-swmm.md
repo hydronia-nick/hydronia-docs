@@ -459,9 +459,9 @@ By default all boundaries are closed unless we set open boundary conditions. Sin
 
     ![Outflow Boundary Condition.](img/swmmoutflowbcwindow.png){ width=100% }
 
-5.  Click the Save ![](img/button5.png){ width=.7cm } button:
+5.  Click the Save ![](img/button5.png){ width=0.7cm } button:
 
-6.  Click the Toggle Editing ![](img/button7.png){ width=.7cm } button to exit editing mode.
+6.  Click the Toggle Editing ![](img/button7.png){ width=0.7cm } button to exit editing mode.
 
 ### Generating the triangular-cell mesh
 

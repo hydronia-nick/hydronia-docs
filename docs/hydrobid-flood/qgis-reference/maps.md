@@ -253,7 +253,7 @@ The following table provides technical details on how each map type is processed
 The Time-to-Depth Maps tool creates maps that analyze the temporal aspects of flooding by correlating water depths with specific times during a simulation. This tool is particularly useful for understanding flood dynamics, such as inundation timing, duration of flooding, and wave propagation. Users can generate maps showing when specific water depths are reached, how long areas remain underwater, and when flood waves first arrive at different locations.
 
 ### Dialog Window
-![Time-Depth Dialog for HydroBID Flood](img/mapping_time_depth_dialog_hf.png){ width=.8\textwidth }
+![Time-Depth Dialog for HydroBID Flood](img/mapping_time_depth_dialog_hf.png){ width=0.8\textwidth }
 
 ### Dialog Controls
 []{#tab:time_depth_controls label="tab:time_depth_controls"}

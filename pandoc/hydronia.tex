@@ -4,10 +4,20 @@
 \usepackage{fontspec}
 \usepackage[table]{xcolor}
 \usepackage{graphicx}
-% Safety net for images with no explicit width in the markdown: cap at
-% line width so nothing overflows the page. Explicit widths from the
-% markdown (e.g. `{ width=80% }`) override this default.
-\setkeys{Gin}{width=\linewidth,keepaspectratio}
+% Safety net for images with no explicit width in the markdown: CAP at
+% line width so nothing overflows, but DO NOT force-stretch tiny icons to
+% fill the whole line. `adjustbox`'s [export] option adds `max width` /
+% `max height` keys to \includegraphics; setting them as Gin defaults
+% means images render at natural DPI when small, and get clamped only
+% when they'd otherwise overflow. Explicit widths in the markdown
+% (e.g. `{ width=80% }`) still override both.
+%
+% This matters because Pandoc silently drops width values with a bare
+% leading dot (`width=.6cm` → no width attr emitted), and the previous
+% default `width=\linewidth` then blew those tiny toolbar icons up to
+% full text width.
+\usepackage[export]{adjustbox}
+\setkeys{Gin}{max width=\linewidth,keepaspectratio}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{tabularx}
