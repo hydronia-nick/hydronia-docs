@@ -298,6 +298,32 @@ def _strip_pseudo_longtables(text: str) -> str:
     return "\n".join(out)
 
 
+def _rewrite_long_autolinks(text: str) -> str:
+    """Rewrite Pandoc autolinks ``<http://…>`` containing ``&`` into a
+    plain ``[url](url)`` form.
+
+    Background: a Dropbox share URL in Ch 17's batch-execution section
+    contains ``?rlkey=…&dl=0``. Pandoc round-trips an autolink ``<url>``
+    as ``\\url{url}`` in LaTeX. On our CI image (TeX Live 2023 +
+    xdvipdfmx) the query-string ``&`` triggers a fatal
+    ``pdf_link_obj(): passed invalid object`` during PDF generation —
+    the link annotation object comes out malformed and the whole PDF
+    write aborts. The error does not reproduce on MiKTeX locally. The
+    same URL fed through ``\\href{url}{display}`` avoids the faulty
+    code path because hyperref emits a slightly different annotation
+    structure. Rewriting autolinks to the explicit markdown form
+    ``[text](url)`` gives us the ``\\href`` emit and sidesteps the bug
+    without losing the link.
+    """
+    def _sub(m: re.Match[str]) -> str:
+        url = m.group(1)
+        if "&" not in url:
+            return m.group(0)
+        return f"[{url}]({url})"
+
+    return re.sub(r"<(https?://[^>\s]+)>", _sub, text)
+
+
 def _normalize_bare_urls(text: str) -> str:
     """Normalize scheme-less URLs emitted by Pandoc as ``[X](X){.uri}``.
 
@@ -421,6 +447,7 @@ class MarkdownPostProcessor:
         text = _collapse_blank_lines_in_display_math(text)
         text = _align_to_aligned(text)
         text = _normalize_bare_urls(text)
+        text = _rewrite_long_autolinks(text)
         text = _strip_pseudo_longtables(text)
         text = _normalize_pandoc_multiline_tables(text)
         processed = self._process_lines(text.splitlines(keepends=True))
