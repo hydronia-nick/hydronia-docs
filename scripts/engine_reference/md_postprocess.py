@@ -299,33 +299,47 @@ def _strip_pseudo_longtables(text: str) -> str:
 
 
 def _rewrite_long_autolinks(text: str) -> str:
-    """Rewrite Pandoc autolinks ``<http://…>`` containing ``&`` into a
-    plain ``[url](url)`` form.
+    """Neutralise URLs that crash xdvipdfmx on TeX Live 2023.
 
-    Background: a Dropbox share URL in Ch 17's batch-execution section
-    contains ``?rlkey=…&dl=0``. Pandoc round-trips an autolink ``<url>``
-    as ``\\url{url}`` in LaTeX. On our CI image (TeX Live 2023 +
-    xdvipdfmx) the query-string ``&`` triggers a fatal
-    ``pdf_link_obj(): passed invalid object`` during PDF generation —
-    the link annotation object comes out malformed and the whole PDF
-    write aborts. The error does not reproduce on MiKTeX locally. The
-    same URL fed through ``\\href{url}{display}`` avoids the faulty
-    code path because hyperref emits a slightly different annotation
-    structure. Rewriting autolinks to the explicit markdown form
-    ``[text](url)`` gives us the ``\\href`` emit and sidesteps the bug
-    without losing the link.
+    DIAGNOSTIC/BISECT VERSION — strip the hyperlink entirely when the
+    URL contains ``&``, replacing it with a plain-text code span of the
+    filename tail (no ``\\url`` and no ``\\href`` in the LaTeX output).
+
+    Context: a single Dropbox share URL in Ch 17
+    (``?rlkey=…&dl=0``) is the only URL-with-``&`` across the three
+    engine-reference manuals. On CI (Ubuntu + TeX Live 2023
+    xdvipdfmx) xelatex completes cleanly, then xdvipdfmx dies with
+    ``pdf_link_obj(): passed invalid object`` when building the PDF
+    annotation dictionary for this link. Two prior fixes that kept the
+    hyperlink in different forms (``\\url{}`` then ``\\href{}{}``) both
+    failed identically. Before coding a third fix (URL-encode ``&`` to
+    ``%26``, or ``\\nolinkurl``, etc.) this pass removes the link
+    entirely so the next CI run gives a clean signal: if green, the
+    ``&``-URL is empirically the cause and we can refine; if still red,
+    the URL is innocent and we chase something else (``\\phantomsection
+    \\label{}{}``, list-item figure anchors, etc.).
     """
     def _sub(m: re.Match[str]) -> str:
         url = m.group(1)
         if "&" not in url:
             return m.group(0)
-        # Use the filename-ish tail as visible link text so Pandoc's
-        # LaTeX writer emits \href{}{} rather than collapsing
-        # label==target back to \url{}.
         tail = url.rsplit("/", 1)[-1].split("?", 1)[0] or url
-        return f"[{tail}]({url})"
+        return f"`{tail}`"
 
-    return re.sub(r"<(https?://[^>\s]+)>", _sub, text)
+    # Autolinks: <https://...>
+    text = re.sub(r"<(https?://[^>\s]+)>", _sub, text)
+
+    def _sub_md(m: re.Match[str]) -> str:
+        label, url = m.group(1), m.group(2)
+        if "&" not in url:
+            return m.group(0)
+        # Drop the URL; keep the label as inline code so it stays visible
+        # but produces no \href / \url in the LaTeX output.
+        return f"`{label}`"
+
+    # Markdown links: [text](url)
+    text = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", _sub_md, text)
+    return text
 
 
 def _normalize_bare_urls(text: str) -> str:
