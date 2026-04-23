@@ -132,6 +132,24 @@ nav:
           - Tools: riverflow2d/qgis-reference/tools.md
           - Context Menus: riverflow2d/qgis-reference/context-menus.md
           - Appendix — Layer Attributes: riverflow2d/qgis-reference/appendix.md
+      - Engine Reference:
+          - Introduction: riverflow2d/engine-reference/01-introduction.md
+          - Installing and Activating: riverflow2d/engine-reference/02-installing-activating.md
+          - Overview: riverflow2d/engine-reference/03-overview.md
+          - Mesh Generation: riverflow2d/engine-reference/04-mesh-generation.md
+          - Hydrodynamic Model: riverflow2d/engine-reference/05-hydrodynamic-model.md
+          - Sediment Transport: riverflow2d/engine-reference/06-sediment-transport.md
+          - Mud and Tailings: riverflow2d/engine-reference/07-mud-tailings.md
+          - Urban Drainage: riverflow2d/engine-reference/08-urban-drainage.md
+          - Pollutant Transport: riverflow2d/engine-reference/09-pollutant-transport.md
+          - Water Quality: riverflow2d/engine-reference/10-water-quality.md
+          - Bridge Scour: riverflow2d/engine-reference/11-bridge-scour.md
+          - Code Parallelization: riverflow2d/engine-reference/12-code-parallelization.md
+          - Hydraulic and Hydrologic Components: riverflow2d/engine-reference/13-hydraulic-hydrologic-components.md
+          - Data Input Program: riverflow2d/engine-reference/14-dip.md
+          - Input Data Files: riverflow2d/engine-reference/15-input-data-file.md
+          - Output Files: riverflow2d/engine-reference/16-output-file.md
+          - Tools: riverflow2d/engine-reference/17-tools.md
       - Tutorials:
           - riverflow2d/tutorials/index.md
           - Introduction: riverflow2d/tutorials/introduction.md
@@ -167,6 +185,24 @@ nav:
           - Tools: oilflow2d/qgis-reference/tools.md
           - Context Menus: oilflow2d/qgis-reference/context-menus.md
           - Appendix — Layer Attributes: oilflow2d/qgis-reference/appendix.md
+      - Engine Reference:
+          - Introduction: oilflow2d/engine-reference/01-introduction.md
+          - Installing and Activating: oilflow2d/engine-reference/02-installing-activating.md
+          - Overview: oilflow2d/engine-reference/03-overview.md
+          - Mesh Generation: oilflow2d/engine-reference/04-mesh-generation.md
+          - Hydrodynamic Model: oilflow2d/engine-reference/05-hydrodynamic-model.md
+          - Sediment Transport: oilflow2d/engine-reference/06-sediment-transport.md
+          - Mud and Tailings: oilflow2d/engine-reference/07-mud-tailings.md
+          - Urban Drainage: oilflow2d/engine-reference/08-urban-drainage.md
+          - Pollutant Transport: oilflow2d/engine-reference/09-pollutant-transport.md
+          - Water Quality: oilflow2d/engine-reference/10-water-quality.md
+          - Bridge Scour: oilflow2d/engine-reference/11-bridge-scour.md
+          - Code Parallelization: oilflow2d/engine-reference/12-code-parallelization.md
+          - Hydraulic and Hydrologic Components: oilflow2d/engine-reference/13-hydraulic-hydrologic-components.md
+          - Data Input Program: oilflow2d/engine-reference/14-dip.md
+          - Input Data Files: oilflow2d/engine-reference/15-input-data-file.md
+          - Output Files: oilflow2d/engine-reference/16-output-file.md
+          - Tools: oilflow2d/engine-reference/17-tools.md
       - Tutorials:
           - oilflow2d/tutorials/index.md
           - Introduction: oilflow2d/tutorials/introduction.md
@@ -202,6 +238,24 @@ nav:
           - Tools: hydrobid-flood/qgis-reference/tools.md
           - Context Menus: hydrobid-flood/qgis-reference/context-menus.md
           - Appendix — Layer Attributes: hydrobid-flood/qgis-reference/appendix.md
+      - Engine Reference:
+          - Introduction: hydrobid-flood/engine-reference/01-introduction.md
+          - Installing and Activating: hydrobid-flood/engine-reference/02-installing-activating.md
+          - Overview: hydrobid-flood/engine-reference/03-overview.md
+          - Mesh Generation: hydrobid-flood/engine-reference/04-mesh-generation.md
+          - Hydrodynamic Model: hydrobid-flood/engine-reference/05-hydrodynamic-model.md
+          - Sediment Transport: hydrobid-flood/engine-reference/06-sediment-transport.md
+          - Mud and Tailings: hydrobid-flood/engine-reference/07-mud-tailings.md
+          - Urban Drainage: hydrobid-flood/engine-reference/08-urban-drainage.md
+          - Pollutant Transport: hydrobid-flood/engine-reference/09-pollutant-transport.md
+          - Water Quality: hydrobid-flood/engine-reference/10-water-quality.md
+          - Bridge Scour: hydrobid-flood/engine-reference/11-bridge-scour.md
+          - Code Parallelization: hydrobid-flood/engine-reference/12-code-parallelization.md
+          - Hydraulic and Hydrologic Components: hydrobid-flood/engine-reference/13-hydraulic-hydrologic-components.md
+          - Data Input Program: hydrobid-flood/engine-reference/14-dip.md
+          - Input Data Files: hydrobid-flood/engine-reference/15-input-data-file.md
+          - Output Files: hydrobid-flood/engine-reference/16-output-file.md
+          - Tools: hydrobid-flood/engine-reference/17-tools.md
       - Tutorials:
           - hydrobid-flood/tutorials/index.md
           - Introduction: hydrobid-flood/tutorials/introduction.md

@@ -172,3 +172,106 @@ manuals:
       - creating-high-impact-graphics-and-animations-using-paraview
     output: site/pdf/tutorials-hydrobid-flood-en.pdf
     useQuotchap: false
+
+  - id: engine-reference-riverflow2d-en
+    product: riverflow2d
+    manual: engine-reference
+    flavor: engine
+    language: en
+    # `title` is the hyperref/pdftitle metadata. The cover renders three
+    # title-block lines (product name + two taglines) plus a separate
+    # `coverKind` below them, to match the original engine-reference
+    # source's four-slot cover.
+    title: "RiverFlow2D"
+    titleLine2: "Two-Dimensional Flood and"
+    titleLine3: "River Dynamics Model"
+    coverKind: "Reference Manual"
+    publisher: "Hydronia"
+    author: "Hydronia LLC"
+    source_dir: docs/riverflow2d/engine-reference
+    chapters:
+      - 01-introduction
+      - 02-installing-activating
+      - 03-overview
+      - 04-mesh-generation
+      - 05-hydrodynamic-model
+      - 06-sediment-transport
+      - 07-mud-tailings
+      - 08-urban-drainage
+      - 09-pollutant-transport
+      - 10-water-quality
+      - 11-bridge-scour
+      - 12-code-parallelization
+      - 13-hydraulic-hydrologic-components
+      - 14-dip
+      - 15-input-data-file
+      - 16-output-file
+      - 17-tools
+    output: site/pdf/engine-reference-riverflow2d-en.pdf
+    useQuotchap: true
+
+  - id: engine-reference-oilflow2d-en
+    product: oilflow2d
+    manual: engine-reference
+    flavor: engine
+    language: en
+    title: "OilFlow2D"
+    titleLine2: "Model for Oil Spills"
+    titleLine3: "on Water and Land"
+    coverKind: "Reference Manual"
+    publisher: "Hydronia"
+    author: "Hydronia LLC"
+    source_dir: docs/oilflow2d/engine-reference
+    chapters:
+      - 01-introduction
+      - 02-installing-activating
+      - 03-overview
+      - 04-mesh-generation
+      - 05-hydrodynamic-model
+      - 06-sediment-transport
+      - 07-mud-tailings
+      - 08-urban-drainage
+      - 09-pollutant-transport
+      - 10-water-quality
+      - 11-bridge-scour
+      - 12-code-parallelization
+      - 13-hydraulic-hydrologic-components
+      - 14-dip
+      - 15-input-data-file
+      - 16-output-file
+      - 17-tools
+    output: site/pdf/engine-reference-oilflow2d-en.pdf
+    useQuotchap: true
+
+  - id: engine-reference-hydrobid-flood-en
+    product: hydrobid-flood
+    manual: engine-reference
+    flavor: engine
+    language: en
+    title: "HydroBID Flood"
+    titleLine2: "Two-Dimensional Flood and"
+    titleLine3: "River Dynamics Model"
+    coverKind: "Reference Manual"
+    publisher: "Hydronia"
+    author: "Hydronia LLC"
+    source_dir: docs/hydrobid-flood/engine-reference
+    chapters:
+      - 01-introduction
+      - 02-installing-activating
+      - 03-overview
+      - 04-mesh-generation
+      - 05-hydrodynamic-model
+      - 06-sediment-transport
+      - 07-mud-tailings
+      - 08-urban-drainage
+      - 09-pollutant-transport
+      - 10-water-quality
+      - 11-bridge-scour
+      - 12-code-parallelization
+      - 13-hydraulic-hydrologic-components
+      - 14-dip
+      - 15-input-data-file
+      - 16-output-file
+      - 17-tools
+    output: site/pdf/engine-reference-hydrobid-flood-en.pdf
+    useQuotchap: false

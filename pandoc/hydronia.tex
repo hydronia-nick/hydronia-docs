@@ -26,6 +26,9 @@
 \def\maxheight{\ifdim\Gin@nat@height>0.9\textheight 0.9\textheight\else\Gin@nat@height\fi}
 \makeatother
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}  % \boldsymbol — used in the Engine Reference math blocks
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{tabularx}
@@ -131,7 +134,12 @@
 \fancyhead[RE]{\sffamily \thepage}
 \fancyhead[RO]{\sffamily \leftmark}
 \fancyhead[LO]{\sffamily \thepage}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+% Chapter name (no number) on odd-right headers; section number + name on
+% even-left headers. Matches the engine-reference source's effective
+% rendering (even though its `\chaptermark` code would seem to include
+% the chapter number, the shipped PDF omits it — we replicate the shipped
+% behavior explicitly).
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
 \fancypagestyle{plain}{%
   \fancyhf{}
@@ -142,6 +150,44 @@
 
 $if(useQuotchap)$
 \usepackage[avantgarde]{quotchap}
+% quotchap's `avantgarde` option selects the old T1-encoded `pag` font
+% family (URW Gothic / AvantGarde Gothic) via `\usefont{T1}{pag}{b}{n}`.
+% With xelatex + fontspec that font command doesn't resolve, so the big
+% grey chapter number falls back to the document default (TeX Gyre Heros)
+% and loses its distinctive bold-rounded character. Override
+% `\chapnumfont` to load TeX Gyre Adventor (the open AvantGarde Gothic)
+% through fontspec, which is the modern AvantGarde-style font that
+% ships with every TeX distribution.
+\newfontfamily\HydroniaChapNumFont{texgyreadventor}[
+  Extension   = .otf,
+  UprightFont = *-regular,
+  BoldFont    = *-bold,
+  ItalicFont  = *-italic,
+  BoldItalicFont = *-bolditalic,
+  Scale = 1.0
+]
+% Quotchap defines \chapnumfont via \AtEndOfPackage; override it via the
+% same hook so the font switch survives any subsequent package loads.
+% Also patch quotchap's \@makechapterhead directly to be robust against
+% \chapnumfont edits that get lost behind xelatex's font-selection quirks.
+\AtBeginDocument{%
+  \renewcommand*{\chapnumfont}{%
+    \HydroniaChapNumFont\bfseries\fontsize{100}{130}\selectfont
+    \color{chaptergrey}%
+  }%
+}
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{%
+  \vspace*{2.3\baselineskip}%
+  {\huge\sffamily\raggedleft
+    {\HydroniaChapNumFont\bfseries\fontsize{100}{130}\selectfont\color{chaptergrey}%
+      \ifnum\c@secnumdepth>\m@ne\if@mainmatter\thechapter\fi\fi
+      \par\nobreak}%
+    {\raggedleft\color{hydroniaPrimary}\advance\leftmargin10em\interlinepenalty\@M #1\par}%
+  }%
+  \nobreak\vspace{1.7\baselineskip}%
+}
+\makeatother
 \renewcommand\sectfont{\sffamily\color{hydroniaPrimary}}
 $else$
 \newcommand{\HydroniaChapterRule}{\hspace{20pt}}
@@ -167,19 +213,33 @@ $endif$
   pdfkeywords={$keywords$}
 }
 
+% Cover page. Layout mirrors the engine-reference source: a three-line
+% Huge blue title block (product name, then two optional continuation
+% lines from manuals.yaml), a 5-baseline gap, then a LARGE black
+% "coverKind" line (e.g. Reference Manual / Tutorials), the date, and a
+% big vertical skip down to the Large blue publisher line at the bottom.
+% When coverKind is absent the template falls back to the existing
+% subtitle-in-blue layout used by qgis-reference and tutorials.
 \newcommand*{\HydroniaTitlePage}{%
 \begingroup
+\thispagestyle{empty}%
 \hbox{%
   \hspace*{0.05\textwidth}%
   \rule{1pt}{\textheight}%
   \hspace*{0.05\textwidth}%
-  \parbox[b]{1\textwidth}{%
-    \noindent\Huge\sffamily\color{hydroniaPrimary} $title$ \\[0.5\baselineskip]
-    $if(subtitle)$\noindent\Large\sffamily\color{hydroniaPrimary} $subtitle$ \\[1\baselineskip]$endif$
-    \noindent\large\sffamily $date$ \\[1\baselineskip]
-    $if(coverLogo)$\includegraphics[height=0.8in]{$coverLogo$}\\[1\baselineskip]$endif$
-    \vspace{0.38\textheight}%
-    {\noindent\Large\sffamily\color{hydroniaPrimary} Hydronia LLC}\\[\baselineskip]%
+  \parbox[b]{0.85\textwidth}{%
+    \noindent{\Huge\sffamily\color{hydroniaPrimary} $title$%
+    $if(titleLine2)$\\[0.5\baselineskip]$titleLine2$$endif$%
+    $if(titleLine3)$\\[0.5\baselineskip]$titleLine3$$endif$\hfill}\\[5\baselineskip]
+    $if(coverKind)$%
+      {\noindent\LARGE\sffamily\color{black}$coverKind$}\\[1\baselineskip]
+    $else$$if(subtitle)$%
+      {\noindent\Large\sffamily\color{hydroniaPrimary}$subtitle$}\\[1\baselineskip]
+    $endif$$endif$
+    {\noindent\large\sffamily\color{black}$date$}
+    $if(coverLogo)$\\[1\baselineskip]\includegraphics[height=0.8in]{$coverLogo$}$endif$
+    \vspace{0.4\textheight}%
+    {\noindent\Large\sffamily\color{hydroniaPrimary}$if(publisher)$$publisher$$else$Hydronia LLC$endif$}\\[\baselineskip]%
   }%
 }%
 \endgroup

@@ -262,6 +262,10 @@ def build_manual_markdown(manual: dict[str, Any], keep_build: bool) -> tuple[Pat
     meta = {
         "title": manual["title"],
         "subtitle": manual.get("subtitle", ""),
+        "titleLine2": manual.get("titleLine2", ""),
+        "titleLine3": manual.get("titleLine3", ""),
+        "coverKind": manual.get("coverKind", ""),
+        "publisher": manual.get("publisher", ""),
         "author": manual["author"],
         "date": manual["date"],
         "lang": manual["language"],
