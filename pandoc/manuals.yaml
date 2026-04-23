@@ -190,6 +190,9 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/riverflow2d/engine-reference
     chapters:
+      # BISECT: chapters 10-17 temporarily removed to localize xdvipdfmx crash.
+      # If this build succeeds, the crash-triggering content is in one of
+      # the removed chapters; next step is to bisect that half.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
@@ -199,14 +202,6 @@ manuals:
       - 07-mud-tailings
       - 08-urban-drainage
       - 09-pollutant-transport
-      - 10-water-quality
-      - 11-bridge-scour
-      - 12-code-parallelization
-      - 13-hydraulic-hydrologic-components
-      - 14-dip
-      - 15-input-data-file
-      - 16-output-file
-      - 17-tools
     output: site/pdf/engine-reference-riverflow2d-en.pdf
     useQuotchap: true
 
@@ -223,6 +218,9 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/oilflow2d/engine-reference
     chapters:
+      # BISECT: chapters 10-17 temporarily removed to localize xdvipdfmx crash.
+      # If this build succeeds, the crash-triggering content is in one of
+      # the removed chapters; next step is to bisect that half.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
@@ -232,14 +230,6 @@ manuals:
       - 07-mud-tailings
       - 08-urban-drainage
       - 09-pollutant-transport
-      - 10-water-quality
-      - 11-bridge-scour
-      - 12-code-parallelization
-      - 13-hydraulic-hydrologic-components
-      - 14-dip
-      - 15-input-data-file
-      - 16-output-file
-      - 17-tools
     output: site/pdf/engine-reference-oilflow2d-en.pdf
     useQuotchap: true
 
@@ -256,6 +246,9 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/hydrobid-flood/engine-reference
     chapters:
+      # BISECT: chapters 10-17 temporarily removed to localize xdvipdfmx crash.
+      # If this build succeeds, the crash-triggering content is in one of
+      # the removed chapters; next step is to bisect that half.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
@@ -265,13 +258,5 @@ manuals:
       - 07-mud-tailings
       - 08-urban-drainage
       - 09-pollutant-transport
-      - 10-water-quality
-      - 11-bridge-scour
-      - 12-code-parallelization
-      - 13-hydraulic-hydrologic-components
-      - 14-dip
-      - 15-input-data-file
-      - 16-output-file
-      - 17-tools
     output: site/pdf/engine-reference-hydrobid-flood-en.pdf
     useQuotchap: false
