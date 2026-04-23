@@ -290,12 +290,17 @@ def run_pandoc(manual: dict[str, Any], markdown_path: Path, meta_path: Path, bui
             str((REPO_ROOT / manual["source_dir"]).resolve()),
         ]
     )
+    # --verbose makes pandoc dump the xelatex .log contents into stderr when
+    # the build fails. Without it, capture_output only sees the last ~50
+    # lines and the actual root-cause error (often hundreds of lines up in
+    # the .log) is invisible — on CI this leaves no other trace.
     args = [
         "pandoc",
         str(markdown_path.resolve()),
         "--from=" + MARKDOWN_EXTENSIONS,
         "--to=pdf",
         "--pdf-engine=xelatex",
+        "--verbose",
         "--template=" + str(template_path),
         "--metadata-file=" + str(metadata_path),
         "--metadata-file=" + str(meta_path.resolve()),

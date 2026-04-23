@@ -83,6 +83,21 @@ jobs:
       - name: Build PDF manuals
         run: python scripts/build_pdfs.py --all
 
+      # On failure, capture pandoc's intermediate working directory (the
+      # .log / .aux / .tex files xelatex produced before crashing) so we
+      # can diagnose from the actual LaTeX log instead of the stderr
+      # tail. Pandoc writes these under /tmp/tex2pdf.*/ when
+      # --pdf-engine=xelatex is used.
+      - name: Upload pandoc intermediates on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pandoc-intermediate
+          path: |
+            /tmp/tex2pdf.*
+            build/pandoc/
+            build/pdf/
+
       # ------------------------------------------------------------------
       # PDF image-sizing regression gate.
       #
