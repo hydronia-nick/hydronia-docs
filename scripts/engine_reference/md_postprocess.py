@@ -319,7 +319,11 @@ def _rewrite_long_autolinks(text: str) -> str:
         url = m.group(1)
         if "&" not in url:
             return m.group(0)
-        return f"[{url}]({url})"
+        # Use the filename-ish tail as visible link text so Pandoc's
+        # LaTeX writer emits \href{}{} rather than collapsing
+        # label==target back to \url{}.
+        tail = url.rsplit("/", 1)[-1].split("?", 1)[0] or url
+        return f"[{tail}]({url})"
 
     return re.sub(r"<(https?://[^>\s]+)>", _sub, text)
 
