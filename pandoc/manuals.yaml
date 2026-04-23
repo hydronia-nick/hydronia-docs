@@ -190,12 +190,23 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/riverflow2d/engine-reference
     chapters:
-      # BISECT #5: 01-06 failed; bug in 05 or 06. Drop 06. If builds: 06.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
+      - 06-sediment-transport
+      - 07-mud-tailings
+      - 08-urban-drainage
+      - 09-pollutant-transport
+      - 10-water-quality
+      - 11-bridge-scour
+      - 12-code-parallelization
+      - 13-hydraulic-hydrologic-components
+      - 14-dip
+      - 15-input-data-file
+      - 16-output-file
+      - 17-tools
     output: site/pdf/engine-reference-riverflow2d-en.pdf
     useQuotchap: true
 
@@ -212,12 +223,23 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/oilflow2d/engine-reference
     chapters:
-      # BISECT #5: 01-06 failed; bug in 05 or 06. Drop 06. If builds: 06.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
+      - 06-sediment-transport
+      - 07-mud-tailings
+      - 08-urban-drainage
+      - 09-pollutant-transport
+      - 10-water-quality
+      - 11-bridge-scour
+      - 12-code-parallelization
+      - 13-hydraulic-hydrologic-components
+      - 14-dip
+      - 15-input-data-file
+      - 16-output-file
+      - 17-tools
     output: site/pdf/engine-reference-oilflow2d-en.pdf
     useQuotchap: true
 
@@ -234,11 +256,22 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/hydrobid-flood/engine-reference
     chapters:
-      # BISECT #5: 01-06 failed; bug in 05 or 06. Drop 06. If builds: 06.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
+      - 06-sediment-transport
+      - 07-mud-tailings
+      - 08-urban-drainage
+      - 09-pollutant-transport
+      - 10-water-quality
+      - 11-bridge-scour
+      - 12-code-parallelization
+      - 13-hydraulic-hydrologic-components
+      - 14-dip
+      - 15-input-data-file
+      - 16-output-file
+      - 17-tools
     output: site/pdf/engine-reference-hydrobid-flood-en.pdf
     useQuotchap: false
