@@ -52,7 +52,7 @@ where $\mathbf{E}=(\mathbf{F},\mathbf{G})$ and $\mathbf{n}=(n_x,n_y)$ is the out
 
 $$\frac {\partial} {\partial t} \int_{\Omega_i} \mathbf{U}d\Omega  + \sum_{k=1} ^{NE} (\mathbf{En}- \mathbf{\bar {S }})_{ k}    l_k = 0$$
 
-> *Figure (omitted pending EPS conversion): Piecewise uniform representation of the flow variables.*
+![Piecewise uniform representation of the flow variables.](img/constant.png)
 
 ![Cell parameters.](img/cellparameters.png)
 
@@ -247,7 +247,7 @@ This is one of the boundary conditions that poses most difficulties because a co
 
 When the inlet cross section is of rectangular shape (Figure ), that is, of flat bottom and limited by vertical walls, the inlet wet cross section is just rectangular.
 
-> *Figure (omitted pending EPS conversion): Rectangular inlet cross section.*
+![Rectangular inlet cross section.](img/10_1.png)
 
 The total inlet discharge at time $t$, $Q_I(t)$, can be distributed along the inlet cross section using a constant discharge per unit width, $q_I (m^2s^{-1})$, that can be calculated as
 
@@ -259,7 +259,7 @@ In this simple case, $q_I$ is uniform along the inlet boundary and so is the res
 
 In real problems of general geometry the inlet cross section may change shape as water level changes (drying/wetting boundary), and so does the number of boundary cells involved (Figure ).
 
-> *Figure (omitted pending EPS conversion): Irregular inlet cross section.*
+![Irregular inlet cross section.](img/10_2.png)
 
 When dealing with inlet sections like that in Figure , a uniform value of $q_I$ as in leads to a completely unrealistic state of faster water at the section borders and slower water at the middle of the cross section. Since the resulting velocities depend on the value of water depth $h$, higher values will appear in those cells where water depth is smaller.
 
@@ -269,7 +269,7 @@ $$q_{j}=Q_I\frac{S_j}{S_T l_j}$$
 
 On the other hand, the updating of the water depth values at the inlet cells provided by the numerical scheme leads in the general case to a set of new water depths $h_j^{n+1}$ (Figure ) associated, in general, to different water surface levels $d_j$ $d_j=h_j+z_j$.
 
-> *Figure (omitted pending EPS conversion): Evaluation of $d_{min}$.*
+![Evaluation of $d_{min}$.](img/10_3.png)
 
 For our purposes a horizontal water surface level is required in that region, in order to help in the translation between the 2D and the 1D points of view at the open boundary. The value of that uniform cross sectional water level is fixed taking into account mass conservation, that is, conservative redistribution of water volume. The minimum value of the water levels among all the wet cells in the inlet boundary, $d_{min}$, is found and the water volume $V_S$ stored in the inlet section above $d_{min}$ is evaluated as
 
@@ -299,7 +299,7 @@ If $S_T^*$ is greater than $S_T$, it provides a new water surface level for the 
 
 Occasionally, both conditions, $Q_I(t)$ and $d(t)$ are known at supercritical inlets. For those cases, imposing both data at the inlet boundary is enough. However, due to the discrete time integration method used, this procedure does not follow the mass conservation criterion. To guarantee that the mass balance is preserved, one of the conditions is imposed, the other must be modified, so that the fluxes calculated in the following step lead to mass conservation. The best solution is to impose directly the global surface water level at the inlet boundary section,$d(t)$, and to adapt the discrete inlet discharge to ensure that the final volume is conserved. The imposed value of $d$ sets an input volume that can be transformed into discharge by means of dividing it by the time step. This value is added to the discharge leading to a correct mass balance.
 
-> *Figure (omitted pending EPS conversion): New water level for the inlet section.*
+![New water level for the inlet section.](img/10_4.png)
 
 When the boundary cell belongs to an open boundary where the inlet flow discharge is the condition imposed and the flow is subcritical, the discharge is computed using  and imposed in the boundary cell. Moreover, the water level is computed as a results of the contributions from that other cell edges in  when updating the conserved values in the boundary cell at time level $n+1$ and is carefully redistributed as explained before.
 
@@ -313,7 +313,7 @@ Closed boundaries are rigid or solid walls that completely block the flow such a
 
 This kind of boundary condition does not require any special treatment. As no flow must cross the boundary, the physical condition $\mathbf{u}\cdot\mathbf{n}=0$ is imposed on the cell velocity $\mathbf{u}$ after adding all the wave contributions from the rest of the cell edges, where $\mathbf{n}$ is the solid wall normal (Figure ). In other words, if the boundary is closed, the associated boundary edge $k_{\Gamma}$ is a solid wall, with a zero normal velocity component. As there are no contributions from that edge, $\delta\mathbf{M}_{i,k_{\Gamma}}^{-}=0$ is set in when updating the conserved values in the boundary cell at time level $n+1$.
 
-> *Figure (omitted pending EPS conversion): Solid wall condition.*
+![Solid wall condition.](img/10_5.png)
 
 ## Dry/Wet Cell Modeling
 

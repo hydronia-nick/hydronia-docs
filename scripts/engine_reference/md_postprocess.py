@@ -298,48 +298,16 @@ def _strip_pseudo_longtables(text: str) -> str:
     return "\n".join(out)
 
 
-def _rewrite_long_autolinks(text: str) -> str:
-    """Neutralise URLs that crash xdvipdfmx on TeX Live 2023.
-
-    DIAGNOSTIC/BISECT VERSION — strip the hyperlink entirely when the
-    URL contains ``&``, replacing it with a plain-text code span of the
-    filename tail (no ``\\url`` and no ``\\href`` in the LaTeX output).
-
-    Context: a single Dropbox share URL in Ch 17
-    (``?rlkey=…&dl=0``) is the only URL-with-``&`` across the three
-    engine-reference manuals. On CI (Ubuntu + TeX Live 2023
-    xdvipdfmx) xelatex completes cleanly, then xdvipdfmx dies with
-    ``pdf_link_obj(): passed invalid object`` when building the PDF
-    annotation dictionary for this link. Two prior fixes that kept the
-    hyperlink in different forms (``\\url{}`` then ``\\href{}{}``) both
-    failed identically. Before coding a third fix (URL-encode ``&`` to
-    ``%26``, or ``\\nolinkurl``, etc.) this pass removes the link
-    entirely so the next CI run gives a clean signal: if green, the
-    ``&``-URL is empirically the cause and we can refine; if still red,
-    the URL is innocent and we chase something else (``\\phantomsection
-    \\label{}{}``, list-item figure anchors, etc.).
-    """
-    def _sub(m: re.Match[str]) -> str:
-        url = m.group(1)
-        if "&" not in url:
-            return m.group(0)
-        tail = url.rsplit("/", 1)[-1].split("?", 1)[0] or url
-        return f"`{tail}`"
-
-    # Autolinks: <https://...>
-    text = re.sub(r"<(https?://[^>\s]+)>", _sub, text)
-
-    def _sub_md(m: re.Match[str]) -> str:
-        label, url = m.group(1), m.group(2)
-        if "&" not in url:
-            return m.group(0)
-        # Drop the URL; keep the label as inline code so it stays visible
-        # but produces no \href / \url in the LaTeX output.
-        return f"`{label}`"
-
-    # Markdown links: [text](url)
-    text = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", _sub_md, text)
-    return text
+# Historical note: a _rewrite_long_autolinks() helper previously lived
+# here to strip ``&`` from the Ch 17 Dropbox URL, on the theory that the
+# query-string ampersand was what tripped xdvipdfmx's ``pdf_link_obj():
+# passed invalid object`` crash on CI (TeX Live 2023). A chapter-bisect
+# in 2026-04 disproved that theory: the real trigger was the six ``.eps``
+# image references in chapter 05 (the only EPS use in any of the nine
+# manuals this repo builds). Those were converted to PNG and the
+# autolink rewrite was removed — it was throwing away a working Dropbox
+# link in service of a wrong hypothesis. Left as a warning to future
+# selves: don't code the fix before the bisect confirms the cause.
 
 
 def _normalize_bare_urls(text: str) -> str:
@@ -465,7 +433,6 @@ class MarkdownPostProcessor:
         text = _collapse_blank_lines_in_display_math(text)
         text = _align_to_aligned(text)
         text = _normalize_bare_urls(text)
-        text = _rewrite_long_autolinks(text)
         text = _strip_pseudo_longtables(text)
         text = _normalize_pandoc_multiline_tables(text)
         processed = self._process_lines(text.splitlines(keepends=True))
