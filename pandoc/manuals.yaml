@@ -190,15 +190,13 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/riverflow2d/engine-reference
     chapters:
-      # BISECT #3: 01-04 built cleanly; bug is in 05-09. This slice keeps
-      # 01-04 plus 05-07. If it builds, bug is in 08 or 09.
+      # BISECT #4: 05-07 failed; bug in 05/06/07. Drop 07. If builds: 07.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
       - 06-sediment-transport
-      - 07-mud-tailings
     output: site/pdf/engine-reference-riverflow2d-en.pdf
     useQuotchap: true
 
@@ -215,15 +213,13 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/oilflow2d/engine-reference
     chapters:
-      # BISECT #3: 01-04 built cleanly; bug is in 05-09. This slice keeps
-      # 01-04 plus 05-07. If it builds, bug is in 08 or 09.
+      # BISECT #4: 05-07 failed; bug in 05/06/07. Drop 07. If builds: 07.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
       - 06-sediment-transport
-      - 07-mud-tailings
     output: site/pdf/engine-reference-oilflow2d-en.pdf
     useQuotchap: true
 
@@ -240,14 +236,12 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/hydrobid-flood/engine-reference
     chapters:
-      # BISECT #3: 01-04 built cleanly; bug is in 05-09. This slice keeps
-      # 01-04 plus 05-07. If it builds, bug is in 08 or 09.
+      # BISECT #4: 05-07 failed; bug in 05/06/07. Drop 07. If builds: 07.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
       - 06-sediment-transport
-      - 07-mud-tailings
     output: site/pdf/engine-reference-hydrobid-flood-en.pdf
     useQuotchap: false
