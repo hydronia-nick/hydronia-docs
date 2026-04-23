@@ -190,13 +190,12 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/riverflow2d/engine-reference
     chapters:
-      # BISECT #4: 05-07 failed; bug in 05/06/07. Drop 07. If builds: 07.
+      # BISECT #5: 01-06 failed; bug in 05 or 06. Drop 06. If builds: 06.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
-      - 06-sediment-transport
     output: site/pdf/engine-reference-riverflow2d-en.pdf
     useQuotchap: true
 
@@ -213,13 +212,12 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/oilflow2d/engine-reference
     chapters:
-      # BISECT #4: 05-07 failed; bug in 05/06/07. Drop 07. If builds: 07.
+      # BISECT #5: 01-06 failed; bug in 05 or 06. Drop 06. If builds: 06.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
-      - 06-sediment-transport
     output: site/pdf/engine-reference-oilflow2d-en.pdf
     useQuotchap: true
 
@@ -236,12 +234,11 @@ manuals:
     author: "Hydronia LLC"
     source_dir: docs/hydrobid-flood/engine-reference
     chapters:
-      # BISECT #4: 05-07 failed; bug in 05/06/07. Drop 07. If builds: 07.
+      # BISECT #5: 01-06 failed; bug in 05 or 06. Drop 06. If builds: 06.
       - 01-introduction
       - 02-installing-activating
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
-      - 06-sediment-transport
     output: site/pdf/engine-reference-hydrobid-flood-en.pdf
     useQuotchap: false
