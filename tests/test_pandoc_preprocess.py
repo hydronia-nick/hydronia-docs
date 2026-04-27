@@ -13,7 +13,13 @@ from scripts.pandoc_preprocess import (
 )
 
 
-ANIMATION_PATH = Path(__file__).resolve().parents[1] / "docs" / "riverflow2d" / "animation.md"
+ANIMATION_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "docs"
+    / "riverflow2d"
+    / "qgis-reference"
+    / "animation.md"
+)
 
 
 def animation_lines() -> list[str]:

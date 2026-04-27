@@ -16,6 +16,10 @@ env/
 Thumbs.db
 desktop.ini
 
+# Local agent guidance
+CLAUDE.md
+AGENTS.md
+
 # Local build artifacts
 *.log
 
