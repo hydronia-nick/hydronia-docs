@@ -73,7 +73,6 @@ $$\begin{array}{cc}
             hu\,\phi^{\chi} \\
             0
         \end{array}\right)
-        &
         \mathbf{G(U)} = \left( \begin{array}{c}
             rhv \\ 
             rhuv \\
@@ -172,8 +171,8 @@ $$\begin{aligned}
     \\
     & A_{b,j} = \left\lbrace
     \begin{array}{lll}
-        \dfrac{f_{b,p}/d_{s,p}}{\sum\limits_{p=1}^N f_{b,p}/d_{s,p}} & \rm{if} & N_{b,p} < 0\ \rm{(Entrainment)} \\
-        1 & \rm{if} & N_{b,p} > 0\ \rm{(Deposition)} \\
+        - **\dfrac{f_{b,p}/d_{s,p}}{\sum\limits_{p=1}^N f_{b,p}/d_{s,p}}:** \rm{if}; N_{b,p} < 0\ \rm{(Entrainment)}
+        - **1:** \rm{if}; N_{b,p} > 0\ \rm{(Deposition)}
     \end{array} \right.
 \end{aligned}$$
 
@@ -199,10 +198,10 @@ The numerical flux at the cell edges is upwind computed using a x-split fully-co
 
 $$\widetilde{ \mathbf{J} }_k = 
     \left( \begin{array}{cccc}
-        0 & 1 & 0 & 0 \\
-        \frac{1}{2}g_{ \psi} \widetilde{h} (1+\widetilde{r})-\widetilde{u}^2 & 2\widetilde{u} & 0 & -\frac{1}{2}g_{ \psi} \widetilde{h} \widetilde{r} \\
-        -\widetilde{u}\, \widetilde{v}  &  \widetilde{v}  &  \widetilde{u}  & 0   \\ 
-        -\widetilde{u}\, \widetilde{\phi}^{\chi} \big/ \widetilde{r}  &  \widetilde{\phi}^{\chi} \big/ \widetilde{r}  &  0  & \widetilde{u}  \\                         
+        - **0:** 1; 0; 0
+        - **\frac{1}{2}g_{ \psi} \widetilde{h} (1+\widetilde{r})-\widetilde{u}^2:** 2\widetilde{u}; 0; -\frac{1}{2}g_{ \psi} \widetilde{h} \widetilde{r}
+        - **-\widetilde{u}\, \widetilde{v}:** \widetilde{v}; \widetilde{u}; 0
+        - **-\widetilde{u}\, \widetilde{\phi}^{\chi} \big/ \widetilde{r}:** \widetilde{\phi}^{\chi} \big/ \widetilde{r}; 0; \widetilde{u}
     \end{array} \right)$$
 
 with four approximate real eigenvalues:
@@ -300,8 +299,8 @@ being $\gamma_{pp}$ is a coefficient accounting for the hydrostatic+dynamic pres
 
 $$\gamma_{pp}= 
     \left\lbrace \begin{array}{l l l}
-        \dfrac{\rho_{ref}}{\rho} \gamma_{ref} & {\rm if} & \rho < \rho_{ref} \\
-        \gamma_{ref} & {\rm if} & \rho \geq \rho_{ref} \\
+        - **\dfrac{\rho_{ref}}{\rho} \gamma_{ref}:** {\rm if}; \rho < \rho_{ref}
+        - **\gamma_{ref}:** {\rm if}; \rho \geq \rho_{ref}
     \end{array} \right.$$
 
 where $\gamma_{ref} \geq 1$ is a user-defined pore pressure factor and $\rho_{ref} \geq \rho_w$ is the user-defined reference density. It is worth noting that $\gamma_{pp}$ increases as the depth-averaged $\rho$ decreases, i.e. the lower the solid concentration in the flow, the higher the basal pore pressure and hence the lower the frictional yield strength $\tau_f$. The flow is considered fully liquefied ($\tau_f=0$) for values $\gamma_{pp} \geq \rho/\rho_w$.
@@ -328,7 +327,7 @@ It is worth mentioning that represents a generalized depth-integrated formulatio
 
     $$\tau_b = \tau_f + \left( \frac{25}{16} \mu_P\, \dot{\gamma} \right) \dot{\gamma}$$
 
-*Frictional turbulent flows:* Based on , where the basal resistance increases proportionally to $|\mathbf{u}|^2$, the Turbulent & Coulomb relationship uses the Manning approach to include the turbulent stresses into the basal resistance estimation as
+- ***Frictional turbulent flows:* Based on , where the basal resistance increases proportionally to $|\mathbf{u}|^2$, the Turbulent:** Coulomb relationship uses the Manning approach to include the turbulent stresses into the basal resistance estimation as
 
 $$\tau_b = \tau_f + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$$
 
@@ -346,51 +345,26 @@ Table summarizes the different models used by RiverFlow2D MT for the estimation 
 
 p0.5cm p3cm c p3cm
 
-\
 
-& & &
+- **1:** Turbulent Manning; $\tau_b = \tau_f + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$; Turbulent Newtonian.
+- **2:** Full Bingham; $2 \tau_b^3 - 3 \left( \tau_y + 2 \mu_B \frac{|\mathbf{u}|}{h} \right) \tau_b^2 + \tau_y^3 = 0$; Cohesive viscoplastic.
+- **3:** Simplified Bingham; $\tau_b= \frac{3}{2} \tau_y + 3 \mu_B \frac{|\mathbf{u}|}{h}$; Cohesive viscoplastic.
+- **4:** Turbulent Coulomb; $\tau_b = \tau_f + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$; $\tau_f = \big( \rho g_{\psi} h - \mathcal{P}_b \big) \tan{\delta_f}$; Frictional turbulent.
+- **5:** Turbulent Yield; $\tau_b = \tau_y + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$; Cohesive turbulent.
+- **6:** Turbulent Coulomb/Yield; $\tau_b = \min(\tau_y,\tau_f) + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$; $\tau_f = \big( \rho g_{\psi} h - \mathcal{P}_b \big) \tan{\delta_f}$& Frictional/cohesive and turbulent.
+- **7:** Quadratic; $\tau_b = \tau_y + \frac{k_0}{8} \mu_B \frac{|\mathbf{u}|}{h} + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$; $k_0=24$; Cohesive/viscous and turbulent.
+- **8:** Granular; $\tau_b = \rho g_{\psi}\, h \tan{\delta_f}$; Dry pure-frictional.
+- **9:** Viscoplastic Coulomb; $\tau_b = \tau_f + \left( \frac{2m+1}{m} \right)^{m} \mu_P \left( \frac{|\mathbf{u}|}{h} \right)^{m}$; $\tau_f = \big( \rho g_{\psi} h - \mathcal{P}_b \big) \tan{\delta_f}$; Frictional shear-thinning $m<1$ or shear-thickening $m>1$.
+- **10:** Voellmy; $\tau_b = \mathcal{A}\, \rho g_{\psi} h + \rho g_{\psi} \frac{|\mathbf{u}|^2}{\mathcal{B}}$; $\mathcal{A} \approx \tan{\delta_f}$ and $\mathcal{B} \approx h^{1/3}/n^2$; Frictional with negligible pore-pressure.
 
-Table  -- continued from previous page\
+!!! note
 
-& & &
+    NOTES:
 
-\
-
-\
-1 & Turbulent Manning & $\tau_b = \tau_f + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$ & Turbulent Newtonian.\
-\
-\
-2 & Full Bingham & $2 \tau_b^3 - 3 \left( \tau_y + 2 \mu_B \frac{|\mathbf{u}|}{h} \right) \tau_b^2 + \tau_y^3 = 0$ & Cohesive viscoplastic.\
-\
-\
-3 & Simplified Bingham & $\tau_b= \frac{3}{2} \tau_y + 3 \mu_B \frac{|\mathbf{u}|}{h}$ & Cohesive viscoplastic.\
-\
-\
-4 & Turbulent Coulomb & $\tau_b = \tau_f + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$; $\tau_f = \big( \rho g_{\psi} h - \mathcal{P}_b \big) \tan{\delta_f}$ & Frictional turbulent.\
-\
-\
-5 & Turbulent Yield & $\tau_b = \tau_y + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$ & Cohesive turbulent.\
-\
-\
-6 & Turbulent Coulomb/Yield & $\tau_b = \min(\tau_y,\tau_f) + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$; $\tau_f = \big( \rho g_{\psi} h - \mathcal{P}_b \big) \tan{\delta_f}$& Frictional/cohesive and turbulent.\
-\
-7 & Quadratic & $\tau_b = \tau_y + \frac{k_0}{8} \mu_B \frac{|\mathbf{u}|}{h} + \rho g_{\psi} \frac{n^2 |\mathbf{u}|^2 }{h^{1/3}}$; $k_0=24$ & Cohesive/viscous and turbulent.\
-\
-8 & Granular & $\tau_b = \rho g_{\psi}\, h \tan{\delta_f}$ & Dry pure-frictional.\
-\
-\
-9 & Viscoplastic Coulomb & $\tau_b = \tau_f + \left( \frac{2m+1}{m} \right)^{m} \mu_P \left( \frac{|\mathbf{u}|}{h} \right)^{m}$; $\tau_f = \big( \rho g_{\psi} h - \mathcal{P}_b \big) \tan{\delta_f}$ & Frictional shear-thinning $m<1$ or shear-thickening $m>1$.\
-\
-10 & Voellmy & $\tau_b = \mathcal{A}\, \rho g_{\psi} h + \rho g_{\psi} \frac{|\mathbf{u}|^2}{\mathcal{B}}$; $\mathcal{A} \approx \tan{\delta_f}$ and $\mathcal{B} \approx h^{1/3}/n^2$ & Frictional with negligible pore-pressure.\
-
-::: shader
-NOTES:
-
-- To simulate mud flows of coarse materials, it is recommended to use the Turbulent-Coulomb or Turbulent-Coulomb-Yield.
-- To simulate mud flows of fine plastic materials are often better represented by the Bingham formulation.
-- The Granular formulation is intended to simulate dry granular materials, not mudflows.
-- In the Granular formulation, the friction angle is the stability basal angle of the material which is equivalent to the free surface angle once the material stops flowing. This stability basal angle varies for different materials, but to obtain runouts similar to those of mudflows they should be in the range of 1$^\circ$ to 8$^\circ$, and never greater than 15$^\circ$ for materials with a low tendency to flow. Using friction angles around 30$^\circ$ makes mobilization almost impossible with the granular formulation.
-:::
+    - To simulate mud flows of coarse materials, it is recommended to use the Turbulent-Coulomb or Turbulent-Coulomb-Yield.
+    - To simulate mud flows of fine plastic materials are often better represented by the Bingham formulation.
+    - The Granular formulation is intended to simulate dry granular materials, not mudflows.
+    - In the Granular formulation, the friction angle is the stability basal angle of the material which is equivalent to the free surface angle once the material stops flowing. This stability basal angle varies for different materials, but to obtain runouts similar to those of mudflows they should be in the range of 1$^\circ$ to 8$^\circ$, and never greater than 15$^\circ$ for materials with a low tendency to flow. Using friction angles around 30$^\circ$ makes mobilization almost impossible with the granular formulation.
 
 ### Variable viscosity and yield stress in the VD-MB model
 
@@ -411,7 +385,6 @@ where $\alpha_1$, $\beta_1$, $\alpha_2$, and $\beta_2$, are user-defined empiric
 When using this option, the user must impose volume concentration for each sediment fraction at all inflow boundaries. This data should be included in the same file that sets the discharge time series at each inlet. For instance, if you select two sediment fractions and BCType = 6 where the inflow is set as discharge, a typical file should be like this:
 
 
-
 3
 
 0 1000. 0.2 0.3
@@ -419,7 +392,6 @@ When using this option, the user must impose volume concentration for each sedim
 2 67000. 0.2 0.3
 
 100 67000. 0.2 0.3
-
 
 
 where the first line indicates that there are 3 times. The first column corresponds to the time in hours: 0, 2, and 100 hours in this example. The second column is the water discharge in m$^{3}$/s or ft$^{3}$/s. The third and fourth columns indicate the sediment volume concentrations for each of the two given fractions respectively.

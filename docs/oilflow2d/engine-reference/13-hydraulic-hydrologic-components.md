@@ -31,9 +31,9 @@ This component requires defining the bridge alignment in plan and the bridge geo
 
 The bridge plan data is entered in RiverFlow2D *Bridges* layer. To create a bridge, please consult the *Simulating bridges* tutorial in the Tutorials document.
 
-::: shader
-There is no limit to the number of bridges that can be used.
-:::
+!!! note
+
+    There is no limit to the number of bridges that can be used.
 
 ### Bridge Geometry Data File
 
@@ -61,20 +61,13 @@ The following table is an example one of the geometry file that schematically re
 
 ![Front view of a bridge cross section.](img/bridgecrosssection.png)
 
-p0.5inp0.3inp0.5inp0.5inm3.0in
 
-\
-& & & &
-
-Table  -- continued from previous page\
-& & & &\
-
-BEDELEV & R & - & m or ft & Bed elevation. Must be the lowest elevation for all polylines at a given point.\
-DECKELEV & R & - & m or ft & Elevation of the bridge deck. Must be the highest elevation for all polylines at a given point.\
-LOWCHORD & R & - & m or ft & Elevation of the lower bridge deck. LOWCHORD must be larger or equal to ZLOWER and smaller or equal to DECKELEV for a particular point. The space between LOWCHORD and DECELEV is an area blocked to the flow.\
-NP & I & - & $>1$ & Number of points defining cross section polylines.\
-STATION & R & - & m or ft & Distance from leftmost point defining cross section polyline. All polylines points must have a common station.\
-ZLOWER & R & - & m or ft & Elevation of lower polyline. ZLOWER must be larger or equal to BEDELEV and smaller or equal to LOWCHORD for a given point. The space between BEDELEV and ZLOWER is an area blocked to the flow. The space between ZLOWER and LOWCHORD is open to the flow. If the bridge has no holes, ZLOWER must be identical to BEDELEV.\
+- **BEDELEV:** R; -; m or ft; Bed elevation. Must be the lowest elevation for all polylines at a given point.
+- **DECKELEV:** R; -; m or ft; Elevation of the bridge deck. Must be the highest elevation for all polylines at a given point.
+- **LOWCHORD:** R; -; m or ft; Elevation of the lower bridge deck. LOWCHORD must be larger or equal to ZLOWER and smaller or equal to DECKELEV for a particular point. The space between LOWCHORD and DECELEV is an area blocked to the flow.
+- **NP:** I; -; $>1$; Number of points defining cross section polylines.
+- **STATION:** R; -; m or ft; Distance from leftmost point defining cross section polyline. All polylines points must have a common station.
+- **ZLOWER:** R; -; m or ft; Elevation of lower polyline. ZLOWER must be larger or equal to BEDELEV and smaller or equal to LOWCHORD for a given point. The space between BEDELEV and ZLOWER is an area blocked to the flow. The space between ZLOWER and LOWCHORD is open to the flow. If the bridge has no holes, ZLOWER must be identical to BEDELEV.
 
 ### Bridge Calculations
 
@@ -135,10 +128,14 @@ $$(\mathbf{S_n}_b )_{k} = \left( \begin{array}{c}
 
 with
 
-$$\delta H=\Delta H  \frac{   \mathbf{\widetilde{u}n}    }{  \vert \mathbf{\widetilde{u}\cdot n}  \vert  }$$ where $\Delta H$ is the singular loss term used to represent bridges.
-Computation of $\Delta H$ in a real mesh is done as follows. The bridge is defined on cell edges (bold line in Figure ), and the cells on both sides of these edges are considered to form two cross sections $\Gamma_L$ and $\Gamma_R$ (hatched cells in Figure ). Note that it is possible to define bridges in arbitrary orientations and in structured/unstructured meshes.
+$$\delta H=\Delta H  \frac{   \mathbf{\widetilde{u}n}    }{  \vert \mathbf{\widetilde{u}\cdot n}  \vert  }$$
+
+where $\Delta H$ is the singular loss term used to represent bridges. Computation of $\Delta H$ in a real mesh is done as follows. The bridge is defined on cell edges (bold line in Figure ), and the cells on both sides of these edges are considered to form two cross sections $\Gamma_L$ and $\Gamma_R$ (hatched cells in Figure ). Note that it is possible to define bridges in arbitrary orientations and in structured/unstructured meshes.
+
 ![Application of the scheme in triangular structured meshes. Normal bridge (left) and oblique bridge (right).](img/schememet.png)
+
 In each time step, the necessary variables for the calculation of the global bridge head loss are averaged from the cells in both upstream and downstream sections as illustrated in Figure. The discharge is computed as
+
 $$Q_{\Gamma_L}= \sum_{k \in  \Gamma_L } (\mathbf{q n})_{k} l_k  \qquad Q_{\Gamma_R}=\sum_{k \in \Gamma_R}  (\mathbf{q n})_{  k} l_k$$
 
 and the cross sectional average water level surface is estimated as
@@ -165,9 +162,9 @@ To run a simulation with the *Bridge Piers* Component, you need to select the op
 
 ![DIP *Control Panel* dialog with the Bridge Piers component selected.](img/globalparametersdialogbridgepiers.png){ width=100% }
 
-::: shader
-There is no limit to the number of Bridge Piers that can be used.
-:::
+!!! note
+
+    There is no limit to the number of Bridge Piers that can be used.
 
 ### Bridge Pier Calculation
 
@@ -201,9 +198,9 @@ To run a simulation with the Culverts Component, you need to select the option i
 
 There are two options to compute culvert discharge in RiverFlow2D. When the user selects Rating Table calculation and provides a rating table on the associated file, the model determines the discharge by interpolation as a function of the depth upstream. If the user enters Culvert calculation using culvert characteristics, the model will calculate the discharge based on the culvert geometric characteristics given in the file. Both procedures are described in more detail below.\
 
-::: shader
-There is no limit to the number of culverts that can be used.
-:::
+!!! note
+
+    There is no limit to the number of culverts that can be used.
 
 ### Culvert Calculation using a Rating Table (CulvertType = 0)
 
@@ -232,130 +229,104 @@ $$C_c=\left(1+K_e+\frac{2 g n_c^2 L_c}{R_c^{4/3}}\right)^{-0.5}$$
 
 where $R_c$ is the culvert hydraulic radius, $K_e$ is the entrance loss coefficient that can be obtained from Table , $n_c$ is the Manning's $n$ obtained from Table , $L_c$ is the culvert length, and $Y$, $K'$, $M$, $c'$ are inlet control coefficients (see Table ).
 
-p3cmp5cmp3cm
 
-\
-& &
+- **Concrete:** Good joints, smooth walls; 0.012
+- **Projecting from fill, square-cut end:** 0.015
+- **Poor joints, rough walls:** 0.017
+- **Corrugated metal:** 2-2/3 inch $\times$ 1/2 inch corrugations; 0.025
+- **6 inch $\times$ 1 inch corrugations:** 0.024
+- **5 inch $\times$ 1 inch corrugations:** 0.026
+- **3 inch $\times$ 1 inch corrugations:** 0.028
+- **6 inch $\times$ 2 inch corrugations:** 0.034
+- **9 inch $\times$ 2-1/2 inch corrugations:** 0.035
 
-Table  -- continued from previous page\
-& &\
 
-Concrete & Good joints, smooth walls & 0.012\
-& Projecting from fill, square-cut end & 0.015\
-& Poor joints, rough walls & 0.017\
-Corrugated metal & 2-2/3 inch $\times$ 1/2 inch corrugations & 0.025\
-& 6 inch $\times$ 1 inch corrugations & 0.024\
-& 5 inch $\times$ 1 inch corrugations & 0.026\
-& 3 inch $\times$ 1 inch corrugations & 0.028\
-& 6 inch $\times$ 2 inch corrugations & 0.034\
-& 9 inch $\times$ 2-1/2 inch corrugations & 0.035\
+- **Concrete pipe:** Projecting from fill, grooved end; 0.2
+- **Projecting from fill, square-cut end:** 0.5
+- Headwall or headwall with wingwalls (concrete or cement sandbags)
+- **Grooved pipe end:** 0.2
+- **Square-cut pipe end:** 0.5
+- **Rounded pipe end:** 0.1
+- **Mitered end that conforms to embankment slope:** 0.7
+- Manufactured end section of metal or concrete that conforms to embankment slope
+- **Without grate:** 0.5
+- **With grate:** 0.7
+- **Corrugated metal pipe or pipe-arch:** Projecting from embankment (no headwall); 0.9
+- **Headwall with or without wingwalls (concrete or cement sandbags):** 0.5
+- **Mitered end that conforms to embankment slope:** 0.7
+- Manufactured end section of metal or concrete that conforms to embankment slope
+- **Without grate:** 0.5
+- **With grate:** 0.7
+- **Reinforced concrete box:** Headwall parallel to embankment (no wingwalls) &
+- **Square-edged on three sides:** 0.5
+- **Rounded on three sides to radius of 1/12 of barrel dimension:** 0.2
+- Wingwalls at 30$^\circ$ to 75$^\circ$ to barrel
+- **Square-edged at crown:** 0.4
+- **Crown edge rounded to radius of 1/12 of barrel dimension:** 0.2
+- Wingwalls at 10$^\circ$ to 30$^\circ$ to barrel
+- **Square-edged at crown:** 0.5
+- Wingwalls parallel to embankment
+- **Square-edged at crown:** 0.7
 
-p3cmp5.5cmp2.5cm
 
-\
-& &
-
-Table  -- continued from previous page\
-& &\
-
-Concrete pipe & Projecting from fill, grooved end & 0.2\
-& Projecting from fill, square-cut end & 0.5\
-& Headwall or headwall with wingwalls (concrete or cement sandbags) &\
-& Grooved pipe end & 0.2\
-& Square-cut pipe end & 0.5\
-& Rounded pipe end & 0.1\
-& Mitered end that conforms to embankment slope & 0.7\
-& Manufactured end section of metal or concrete that conforms to embankment slope &\
-& Without grate & 0.5\
-& With grate & 0.7\
-Corrugated metal pipe or pipe-arch & Projecting from embankment (no headwall) & 0.9\
-& Headwall with or without wingwalls (concrete or cement sandbags) & 0.5\
-& Mitered end that conforms to embankment slope & 0.7\
-& Manufactured end section of metal or concrete that conforms to embankment slope &\
-& Without grate & 0.5\
-& With grate & 0.7\
-Reinforced concrete box & Headwall parallel to embankment (no wingwalls) &\
-& Square-edged on three sides & 0.5\
-& Rounded on three sides to radius of 1/12 of barrel dimension & 0.2\
-& Wingwalls at 30$^\circ$ to 75$^\circ$ to barrel &\
-& Square-edged at crown & 0.4\
-& Crown edge rounded to radius of 1/12 of barrel dimension & 0.2\
-& Wingwalls at 10$^\circ$ to 30$^\circ$ to barrel &\
-& Square-edged at crown & 0.5\
-& Wingwalls parallel to embankment &\
-& Square-edged at crown & 0.7\
-
-p1.5cmp1.5cmp3.0cmp0.8cmp0.8cmp0.8cmp0.8cm
-
-\
-& & & & & &
-
-Table  -- continued from previous page\
-& & & & & &\
-
-Concrete & Circular & Headwall; square edge & 0.3153 & 2.0000 & 1.2804 & 0.6700\
-Concrete & Circular & Headwall; grooved edge & 0.2509 & 2.0000 & 0.9394 & 0.7400\
-Concrete & Circular & Projecting; grooved edge & 0.1448 & 2.0000 & 1.0198 & 0.6900\
-Cor. metal & Circular & Headwall & 0.2509 & 2.0000 & 1.2192 & 0.6900\
-Cor. metal & Circular & Mitered to slope & 0.2112 & 1.3300 & 1.4895 & 0.7500\
-Cor. metal & Circular & Projecting & 0.4593 & 1.5000 & 1.7790 & 0.5400\
-Concrete & Circular & Beveled ring; 45$^{\circ}$bevels & 0.1379 & 2.5000 & 0.9651 & 0.7400\
-Concrete & Circular & Beveled ring; 33.7$^{\circ}$bevels & 0.1379 & 2.5000 & 0.7817 & 0.8300\
-Concrete & Rectangular & Wingwalls; 30$^{\circ}$to 75$^{\circ}$flares; square edge & 0.1475 & 1.0000 & 1.2385 & 0.8100\
-Concrete & Rectangular & Wingwalls; 90$^{\circ}$and 15$^{\circ}$flares; square edge & 0.2242 & 0.7500 & 1.2868 & 0.8000\
-Concrete & Rectangular & Wingwalls; 0$^{\circ}$flares; square edge & 0.2242 & 0.7500 & 1.3608 & 0.8200\
-Concrete & Rectangular & Wingwalls; 45$^{\circ}$flare; beveled edge & 1.6230 & 0.6670 & 0.9941 & 0.8000\
-Concrete & Rectangular & Wingwalls; 18$^{\circ}$to 33.7$^{\circ}$flare; beveled edge & 1.5466 & 0.6670 & 0.8010 & 0.8300\
-Concrete & Rectangular & Headwall; 3/4 inch chamfers & 1.6389 & 0.6670 & 1.2064 & 0.7900\
-Concrete & Rectangular & Headwall; 45$^{\circ}$bevels & 1.5752 & 0.6670 & 1.0101 & 0.8200\
-Concrete & Rectangular & Headwall; 33.7$^{\circ}$bevels & 1.5466 & 0.6670 & 0.8107 & 0.8650\
-Concrete & Rectangular & Headwall; 45$^{\circ}$skew; 3/4 in chamfers & 1.6611 & 0.6670 & 1.2932 & 0.7300\
-Concrete & Rectangular & Headwall; 30$^{\circ}$skew; 3/4 in chamfers & 1.6961 & 0.6670 & 1.3672 & 0.7050\
-Concrete & Rectangular & Headwall; 15$^{\circ}$skew; 3/4 in chamfers & .7343 & 0.6670 & 1.4493 & 0.6800\
-Concrete & Rectangular & Headwall; 10-45$^{\circ}$ skew; 45$^{\circ}$bevels & 1.5848 & 0.6670 & 1.0520 & 0.7500\
-Concrete & Rectangular & Wingwalls; non-offset 45$^{\circ}$/flares; & 1.5816 & 0.6670 & 1.0906 & 0.8030\
-Concrete & Rectangular & Wingwalls; non-offset 18.4$^{\circ}$/flares; 3/4 in chamfers & 1.5689 & 0.6670 & 1.1613 & 0.8060\
-Concrete & Rectangular & Wingwalls; non-offset 18.4$^{\circ}$/flares; 30$^{\circ}$/skewed barrel & 1.5752 & 0.6670 & 1.2418 & 0.7100\
-Concrete & Rectangular & Wingwalls; offset 45$^{\circ}$/flares; beveled top edge & 1.5816 & 0.6670 & 0.9715 & 0.8350\
-Concrete & Rectangular & Wingwalls; offset 33.7$^{\circ}$/flares; beveled top edge & 1.5752 & 0.6670 & 0.8107 & 0.8810\
-Concrete & Rectangular & Wingwalls; offset 18.4$^{\circ}$/flares; top edge bevel & 1.5689 & 0.6670 & 0.7303 & 0.8870\
-Cor. metal & Rectangular & Headwall & 0.2670 & 2.0000 & 1.2192 & 0.6900\
-Cor. metal & Rectangular & Projecting; thick wall & 0.3023 & 1.7500 & 1.3479 & 0.6400\
-Cor. metal & Rectangular & Projecting; thin wall & 0.4593 & 1.5000 & 1.5956 & 0.5700\
-Concrete & Circular & Tapered throat & 1.3991 & 0.5550 & 0.6305 & 0.8900\
-Cor. metal & Circular & Tapered throat & 1.5760 & 0.6400 & 0.9297 & 0.9000\
-Concrete & Rectangular & Tapered throat & 1.5116 & 0.6670 & 0.5758 & 0.9700\
-Concrete & Circular & Headwall; square edge & 0.3153 & 2.0000 & 1.2804 & 0.6700\
-Concrete & Circular & Headwall; grooved edge & 0.2509 & 2.0000 & 0.9394 & 0.7400\
-Concrete & Circular & Projecting; grooved edge & 0.1448 & 2.0000 & 1.0198 & 0.6900\
-Cor. metal & Circular & Headwall & 0.2509 & 2.0000 & 1.2192 & 0.6900\
-Cor. metal & Circular & Mitered to slope & 0.2112 & 1.3300 & 1.4895 & 0.7500\
-Cor. metal & Circular & Projecting & 0.4593 & 1.5000 & 1.7790 & 0.5400\
-Concrete & Circular & Beveled ring; 45$^{\circ}$bevels & 0.1379 & 2.5000 & 0.9651 & 0.7400\
-Concrete & Circular & Beveled ring; 33.7$^{\circ}$bevels & 0.1379 & 2.5000 & 0.7817 & 0.8300\
-Concrete & Rectangular & Wingwalls; 30$^{\circ}$to75$^{\circ}$flares; square edge & 0.1475 & 1.0000 & 1.2385 & 0.8100\
-Concrete & Rectangular & Wingwalls; 90$^{\circ}$and 15$^{\circ}$flares; square edge & 0.2242 & 0.7500 & 1.2868 & 0.8000\
-Concrete & Rectangular & Wingwalls; 0$^{\circ}$flares; square edge & 0.2242 & 0.7500 & 1.3608 & 0.8200\
-Concrete & Rectangular & Wingwalls; 45$^{\circ}$flare; beveled edge & 1.6230 & 0.6670 & 0.9941 & 0.8000\
-Concrete & Rectangular & Wingwalls; 18$^{\circ}$to 33.7$^{\circ}$flare; beveled edge 1.5466 & 0.6670 & 0.8010 & 0.8300\
-Concrete & Rectangular & Headwall; 3/4 inch chamfers & 1.6389 & 0.6670 & 1.2064 & 0.7900\
-Concrete & Rectangular & Headwall; 45$^{\circ}$bevels & 1.5752 & 0.6670 & 1.0101 & 0.8200\
+- **Concrete:** Circular; Headwall; square edge; 0.3153; 2.0000; 1.2804; 0.6700
+- **Concrete:** Circular; Headwall; grooved edge; 0.2509; 2.0000; 0.9394; 0.7400
+- **Concrete:** Circular; Projecting; grooved edge; 0.1448; 2.0000; 1.0198; 0.6900
+- **Cor. metal:** Circular; Headwall; 0.2509; 2.0000; 1.2192; 0.6900
+- **Cor. metal:** Circular; Mitered to slope; 0.2112; 1.3300; 1.4895; 0.7500
+- **Cor. metal:** Circular; Projecting; 0.4593; 1.5000; 1.7790; 0.5400
+- **Concrete:** Circular; Beveled ring; 45$^{\circ}$bevels; 0.1379; 2.5000; 0.9651; 0.7400
+- **Concrete:** Circular; Beveled ring; 33.7$^{\circ}$bevels; 0.1379; 2.5000; 0.7817; 0.8300
+- **Concrete:** Rectangular; Wingwalls; 30$^{\circ}$to 75$^{\circ}$flares; square edge; 0.1475; 1.0000; 1.2385; 0.8100
+- **Concrete:** Rectangular; Wingwalls; 90$^{\circ}$and 15$^{\circ}$flares; square edge; 0.2242; 0.7500; 1.2868; 0.8000
+- **Concrete:** Rectangular; Wingwalls; 0$^{\circ}$flares; square edge; 0.2242; 0.7500; 1.3608; 0.8200
+- **Concrete:** Rectangular; Wingwalls; 45$^{\circ}$flare; beveled edge; 1.6230; 0.6670; 0.9941; 0.8000
+- **Concrete:** Rectangular; Wingwalls; 18$^{\circ}$to 33.7$^{\circ}$flare; beveled edge; 1.5466; 0.6670; 0.8010; 0.8300
+- **Concrete:** Rectangular; Headwall; 3/4 inch chamfers; 1.6389; 0.6670; 1.2064; 0.7900
+- **Concrete:** Rectangular; Headwall; 45$^{\circ}$bevels; 1.5752; 0.6670; 1.0101; 0.8200
+- **Concrete:** Rectangular; Headwall; 33.7$^{\circ}$bevels; 1.5466; 0.6670; 0.8107; 0.8650
+- **Concrete:** Rectangular; Headwall; 45$^{\circ}$skew; 3/4 in chamfers; 1.6611; 0.6670; 1.2932; 0.7300
+- **Concrete:** Rectangular; Headwall; 30$^{\circ}$skew; 3/4 in chamfers; 1.6961; 0.6670; 1.3672; 0.7050
+- **Concrete:** Rectangular; Headwall; 15$^{\circ}$skew; 3/4 in chamfers; .7343; 0.6670; 1.4493; 0.6800
+- **Concrete:** Rectangular; Headwall; 10-45$^{\circ}$ skew; 45$^{\circ}$bevels; 1.5848; 0.6670; 1.0520; 0.7500
+- **Concrete:** Rectangular; Wingwalls; non-offset 45$^{\circ}$/flares;; 1.5816; 0.6670; 1.0906; 0.8030
+- **Concrete:** Rectangular; Wingwalls; non-offset 18.4$^{\circ}$/flares; 3/4 in chamfers; 1.5689; 0.6670; 1.1613; 0.8060
+- **Concrete:** Rectangular; Wingwalls; non-offset 18.4$^{\circ}$/flares; 30$^{\circ}$/skewed barrel; 1.5752; 0.6670; 1.2418; 0.7100
+- **Concrete:** Rectangular; Wingwalls; offset 45$^{\circ}$/flares; beveled top edge; 1.5816; 0.6670; 0.9715; 0.8350
+- **Concrete:** Rectangular; Wingwalls; offset 33.7$^{\circ}$/flares; beveled top edge; 1.5752; 0.6670; 0.8107; 0.8810
+- **Concrete:** Rectangular; Wingwalls; offset 18.4$^{\circ}$/flares; top edge bevel; 1.5689; 0.6670; 0.7303; 0.8870
+- **Cor. metal:** Rectangular; Headwall; 0.2670; 2.0000; 1.2192; 0.6900
+- **Cor. metal:** Rectangular; Projecting; thick wall; 0.3023; 1.7500; 1.3479; 0.6400
+- **Cor. metal:** Rectangular; Projecting; thin wall; 0.4593; 1.5000; 1.5956; 0.5700
+- **Concrete:** Circular; Tapered throat; 1.3991; 0.5550; 0.6305; 0.8900
+- **Cor. metal:** Circular; Tapered throat; 1.5760; 0.6400; 0.9297; 0.9000
+- **Concrete:** Rectangular; Tapered throat; 1.5116; 0.6670; 0.5758; 0.9700
+- **Concrete:** Circular; Headwall; square edge; 0.3153; 2.0000; 1.2804; 0.6700
+- **Concrete:** Circular; Headwall; grooved edge; 0.2509; 2.0000; 0.9394; 0.7400
+- **Concrete:** Circular; Projecting; grooved edge; 0.1448; 2.0000; 1.0198; 0.6900
+- **Cor. metal:** Circular; Headwall; 0.2509; 2.0000; 1.2192; 0.6900
+- **Cor. metal:** Circular; Mitered to slope; 0.2112; 1.3300; 1.4895; 0.7500
+- **Cor. metal:** Circular; Projecting; 0.4593; 1.5000; 1.7790; 0.5400
+- **Concrete:** Circular; Beveled ring; 45$^{\circ}$bevels; 0.1379; 2.5000; 0.9651; 0.7400
+- **Concrete:** Circular; Beveled ring; 33.7$^{\circ}$bevels; 0.1379; 2.5000; 0.7817; 0.8300
+- **Concrete:** Rectangular; Wingwalls; 30$^{\circ}$to75$^{\circ}$flares; square edge; 0.1475; 1.0000; 1.2385; 0.8100
+- **Concrete:** Rectangular; Wingwalls; 90$^{\circ}$and 15$^{\circ}$flares; square edge; 0.2242; 0.7500; 1.2868; 0.8000
+- **Concrete:** Rectangular; Wingwalls; 0$^{\circ}$flares; square edge; 0.2242; 0.7500; 1.3608; 0.8200
+- **Concrete:** Rectangular; Wingwalls; 45$^{\circ}$flare; beveled edge; 1.6230; 0.6670; 0.9941; 0.8000
+- **Concrete:** Rectangular; Wingwalls; 18$^{\circ}$to 33.7$^{\circ}$flare; beveled edge 1.5466; 0.6670; 0.8010; 0.8300
+- **Concrete:** Rectangular; Headwall; 3/4 inch chamfers; 1.6389; 0.6670; 1.2064; 0.7900
+- **Concrete:** Rectangular; Headwall; 45$^{\circ}$bevels; 1.5752; 0.6670; 1.0101; 0.8200
 
 cp7cm
 
-\
-&
 
-Table  -- continued from previous page\
-&\
-
-![](img/tableculvert01.jpg) & End of the culvert barrel projects out of the embankment.\
-![](img/tableculvert02.jpg) & Grooved pipe for concrete culverts decreases energy losses through the culvert entrance.\
-![](img/tableculvert03.jpg) & This option is for concrete pipe culverts.\
-![](img/tableculvert04.jpg) & Square edge with headwall is an entrance condition where the culvert entrance is flush with the headwall.\
-![](img/tableculvert05.jpg) & 'Beveled edges' is a tapered inlet edge that decreases head loss as flow enters the culvert barrel.\
-![](img/tableculvert06.jpg) & Mitered entrance is when the culvert barrel is cut so it is flush with the embankment slope.\
-![](img/tableculvert07.jpg) & Wingwalls are used when the culvert is shorter than the embankment and prevents embankment material from falling into the culvert\
+- **![](img/tableculvert01.jpg):** End of the culvert barrel projects out of the embankment.
+- **![](img/tableculvert02.jpg):** Grooved pipe for concrete culverts decreases energy losses through the culvert entrance.
+- **![](img/tableculvert03.jpg):** This option is for concrete pipe culverts.
+- **![](img/tableculvert04.jpg):** Square edge with headwall is an entrance condition where the culvert entrance is flush with the headwall.
+- **![](img/tableculvert05.jpg):** 'Beveled edges' is a tapered inlet edge that decreases head loss as flow enters the culvert barrel.
+- **![](img/tableculvert06.jpg):** Mitered entrance is when the culvert barrel is cut so it is flush with the embankment slope.
+- **![](img/tableculvert07.jpg):** Wingwalls are used when the culvert is shorter than the embankment and prevents embankment material from falling into the culvert
 
 The culvert computation algorithm works as follows:
 
@@ -366,9 +337,9 @@ The culvert computation algorithm works as follows:
 5. If depth at the culvert inlet is lower than minimum value in the rating table, then the discharge is assumed to be zero.
 6. The computed discharge is subtracted from the inlet cell and added to the outlet cell assuming instantaneous water volume transmission.
 
-::: shader
-When using CulvertType 1 or 2, both ends of the culvert must be inside the mesh.
-:::
+!!! note
+
+    When using CulvertType 1 or 2, both ends of the culvert must be inside the mesh.
 
 ### Assumptions of Culvert Calculations
 
@@ -388,7 +359,7 @@ This section describes the tool used to generate and edit polygons for culvert t
 
 #### Overview
 
-For culverts with BCType = 11, 12, �14, and �15, the modeling framework requires defining inlet and outlet polygons to specify the grid cells involved in the volume-exchange process. To facilitate this, the software includes a dedicated tool that generates a layer called CulvertsPolygon, containing predefined trapezoidal polygons located at each culvert�s entrance and exit.
+For culverts with BCType = 11, 12, 14, and 15, the modeling framework requires defining inlet and outlet polygons to specify the grid cells involved in the volume-exchange process. To facilitate this, the software includes a dedicated tool that generates a layer called CulvertsPolygon, containing predefined trapezoidal polygons located at each culvert's entrance and exit.
 
 Before using this tool, ensure that the Culverts layer has been added to the project and that all culvert alignments have been properly drawn.
 
@@ -402,7 +373,7 @@ Follow the steps below to create the CulvertsPolygon layer:
 
     ![](img/culvertpolygonstoolmenu.png)
 
-After completion, a new layer named CulvertsPolygon will be added to the project. This layer automatically contains a pair of trapezoidal polygons�one at the inlet and one at the outlet of each culvert. These polygons represent the areas used for identifying neighboring cells.
+After completion, a new layer named CulvertsPolygon will be added to the project. This layer automatically contains a pair of trapezoidal polygons - one at the inlet and one at the outlet of each culvert. These polygons represent the areas used for identifying neighboring cells.
 
 ![Inlet and outlet culvert polygons.](img/culvertpolygons.png){ width=7.8cm }
 
@@ -437,7 +408,7 @@ Adjusting polygon size ensures proper coverage of the neighboring cells used for
 #### Notes and Recommendations
 
 - Always verify that polygons align correctly with the culvert and fully cover the intended computational cells.
-- After editing, remember to save the layer�s edits before proceeding with the setup.
+- After editing, remember to save the layer's edits before proceeding with the setup.
 - Avoid excessive stretching or distortion of polygons, as this may affect model behavior.
 
 ## Gates Component
@@ -460,9 +431,9 @@ The gate plan data is entered in the QGIS Gates layer.
 
 Since the gate polyline must pass through nodes, it is essential that the mesh generation engine creates nodes along the polyline. This is easily done recreating the mesh.\
 
-::: shader
-There is no limit to the number of gates that can be used.
-:::
+!!! note
+
+    There is no limit to the number of gates that can be used.
 
 ### Gate Calculations
 
@@ -483,11 +454,11 @@ with $C_d$ being the non-dimensional discharge coefficient that takes values aro
 
 ## Infiltration
 
-Infiltration represents another component of the hydrological budget and it can be defined as the process by which surface water enters the soil. In RiverFlow2D, infiltration is treated as a loss. This process is mainly governed by two forces: gravity and capillarity action. The model provides three methods to compute the infiltration losses: Horton, Green & Ampt and SCS-Curve Number (SCS-CN).
+- **Infiltration represents another component of the hydrological budget and it can be defined as the process by which surface water enters the soil. In RiverFlow2D, infiltration is treated as a loss. This process is mainly governed by two forces: gravity and capillarity action. The model provides three methods to compute the infiltration losses: Horton, Green:** Ampt and SCS-Curve Number (SCS-CN).
 
-::: shader
-When using the infiltration component without rainfall, only the Horton or the Green and Amp methods can be used since they take into account the existing surface water to determine the infiltration rates regardless if there is no precipitation. The SCS-CN method calculates infiltration as a function of the given rainfall and does not consider the ponded water.
-:::
+!!! note
+
+    When using the infiltration component without rainfall, only the Horton or the Green and Amp methods can be used since they take into account the existing surface water to determine the infiltration rates regardless if there is no precipitation. The SCS-CN method calculates infiltration as a function of the given rainfall and does not consider the ponded water.
 
 ### Horton Infiltration Model
 
@@ -501,37 +472,27 @@ The parameters $f_0$ and *k* have no physical basis, so they must be determinate
 
 lc
 
-\
-&
 
-Table  -- continued from previous page\
-&\
-
-Dry sandy soils with few to no vegetation & 127\
-Dry loam soils with few to no vegetation & 76.2\
-Dry clay soils with few to no vegetation & 25.4\
-Dry sandy soils with dense vegetation & 254\
-Dry loam soils with dense vegetation & 152.4\
-Dry clay soils with dense vegetation & 50.8\
-Moist sandy soils with few to no vegetation & 43.18\
-Moist loam soils with few to no vegetation & 25.4\
-Moist clay soils with few to no vegetation & 7.62\
-Moist sandy soils with dense vegetation & 83.82\
-Moist loam soils with dense vegetation & 50.8\
-Moist clay soils with dense vegetation & 17.78\
+- **Dry sandy soils with few to no vegetation:** 127
+- **Dry loam soils with few to no vegetation:** 76.2
+- **Dry clay soils with few to no vegetation:** 25.4
+- **Dry sandy soils with dense vegetation:** 254
+- **Dry loam soils with dense vegetation:** 152.4
+- **Dry clay soils with dense vegetation:** 50.8
+- **Moist sandy soils with few to no vegetation:** 43.18
+- **Moist loam soils with few to no vegetation:** 25.4
+- **Moist clay soils with few to no vegetation:** 7.62
+- **Moist sandy soils with dense vegetation:** 83.82
+- **Moist loam soils with dense vegetation:** 50.8
+- **Moist clay soils with dense vegetation:** 17.78
 
 lc
 
-\
-&
 
-Table  -- continued from previous page\
-&\
-
-Clay loam, silty clay loams & 1.27\
-Sandy clay loam & 1.3 - 3.8\
-Silt loam, loam & 3.8 - 7.6\
-Sand, loamy sand, sandy loams & 7.6 - 11.4\
+- **Clay loam, silty clay loams:** 1.27
+- **Sandy clay loam:** 1.3 - 3.8
+- **Silt loam, loam:** 3.8 - 7.6
+- **Sand, loamy sand, sandy loams:** 7.6 - 11.4
 
 The equation has to be applied after the surface ponding. In other words, we are assuming conditions of unlimited water supply at the surface. Under this consideration, the cumulative infiltration up to time *t* can be calculated by integrating the infiltration capacity:
 
@@ -567,22 +528,17 @@ The infiltration Green-Ampt model is a simple model with a theoretical base on D
 
 lccc
 
-\
-& & &
 
-Table  -- continued from previous page\
-& & &\
-
-Sand & 0.437(0.374-0.500) & 4.95(0.97-25.36) & the78\
-Loamy sand & 0.437(0.363-0.506) & 6.13(1.35-27.94) & 2.99\
-Sandy loam & 0.453(0.351-0.565) & 11.01(2.67-45.47) & 1.09\
-Loam & 0.463(0.375-0.551) & 8.89(1.33-59.38) & 0.66\
-Silt loam & 0.501(0.420-0.582) & 16.68(2.92-95.39) & 0.34\
-Sandy clay loam & 0.398(0.332-0.464) & 21.85(4.42-108.0) & 0.15\
-Clay loam & 0.464(0.409-0.519) & 20.88(4.79-91.10) & 0.10\
-Silty clay loam & 0.471(0.418-0.524) & 27.30(5.67-131.50) & 0.10\
-Sandy clay & 0.430(0.370-0.490) & 23.90(4.08-140.2) & 0.06\
-Silty clay & 0.479(0.425-0.533) & 29.22(6.13-139.4) & 0.05\
+- **Sand:** 0.437(0.374-0.500); 4.95(0.97-25.36); the78
+- **Loamy sand:** 0.437(0.363-0.506); 6.13(1.35-27.94); 2.99
+- **Sandy loam:** 0.453(0.351-0.565); 11.01(2.67-45.47); 1.09
+- **Loam:** 0.463(0.375-0.551); 8.89(1.33-59.38); 0.66
+- **Silt loam:** 0.501(0.420-0.582); 16.68(2.92-95.39); 0.34
+- **Sandy clay loam:** 0.398(0.332-0.464); 21.85(4.42-108.0); 0.15
+- **Clay loam:** 0.464(0.409-0.519); 20.88(4.79-91.10); 0.10
+- **Silty clay loam:** 0.471(0.418-0.524); 27.30(5.67-131.50); 0.10
+- **Sandy clay:** 0.430(0.370-0.490); 23.90(4.08-140.2); 0.06
+- **Silty clay:** 0.479(0.425-0.533); 29.22(6.13-139.4); 0.05
 
 The original Green-Ampt model starts from the assumption that a ponding depth $h$ is maintained over the surface. The Green-Ampt method approximates the soil infiltration capacity as follows:
 
@@ -662,17 +618,10 @@ $$R=\frac{dRV}{dt}$$
 
 In the SCS-CN method you can consider the Antecedent Moisture Content (AMC), that represents the preceding relative moisture of the soil prior to the storm event and its influence in the water runoff. This parameter allows accounting for the CN variation for different storm events, and the initial soil moisture for a given event. Three possible assumptions can be considered: dry conditions (AMC I), average conditions (AMC II) or wet conditions (AMC III) as summarized in Table.
 
-p2.0cmp2.5cmp2.5cm
 
-\
-& &
-
-Table  -- continued from previous page\
-& &\
-
-I & Less than 13 mm & Less than 36 mm\
-II & 13 mm to 28 mm & 36 mm to 53 mm\
-III & More than 28 mm & More than 53 mm\
+- **I:** Less than 13 mm; Less than 36 mm
+- **II:** 13 mm to 28 mm; 36 mm to 53 mm
+- **III:** More than 28 mm; More than 53 mm
 
 Traditionally , the Curve Number for dry or wet conditions has been recalculated in terms of the standard conditions according to Eqs. and :
 
@@ -695,7 +644,7 @@ The model considers $C_d$ constant but typically it increases with the wind velo
 $$C_d= \left( 0.75 + 0.067 U \right) 10^{-3}$$\
 where $U$ is given in m/s.
 For wind velocities varying from 1 to 25 m/s $C_d$ would be between 0.0008 and 0.0024 approximately. Powell, 2008, suggested that the $C_d$ range in shallow water is 0.00095 to 0.00157, with values that could reach 0.0045 for severe storm events.
-Note that typically the wind velocity is obtained in angle/magnitude ($\phi, U$) format, and the meteorological convention is to provide the wind direction from which wind is blowing from in clockwise sense. In this convention a north wild would have an angle of 0� while an east wind is 90� and so forth.
+Note that typically the wind velocity is obtained in angle/magnitude ($\phi, U$) format, and the meteorological convention is to provide the wind direction from which wind is blowing from in clockwise sense. In this convention a north wind would have an angle of 0 degrees while an east wind is 90 degrees and so forth.
 To compute the $(u, v)$ wind velocity vector components based on ($\phi, U$) you can apply these formulas:
 $$u = -U sin(\phi)
      \\
@@ -706,15 +655,15 @@ $$u = -U sin(\phi)
     U = \sqrt(u^2+v^2)$$\
 ## Internal Rating Tables
 Internal Rating Tables is an internal condition along a polyline where the model imposes the interpolated water elevation from the calculated discharge from a user provided rating table.
-::: shader
-If the rating table is not fully compatible with the computed 2D flow, results can be erroneous. It is suggested to use this condition with care to avoid inconsistencies.
-:::
+!!! note
+
+    If the rating table is not fully compatible with the computed 2D flow, results can be erroneous. It is suggested to use this condition with care to avoid inconsistencies.
 To run a simulation with Internal Rating Tables, you need to select the option in the *Control Data* panel of DIP shown in Figure.
 ![DIP *Control Data* panel with the IRT component selected.](img/globalparametersirtcomponentselecteddip.png){ width=100% }
 Internal Rating Table (IRT) plan data is entered in the QGIS Internal Rating Table Layer.
-::: shader
-There is no limit to the number of Internal Rating Tables that can be used.
-:::
+!!! note
+
+    There is no limit to the number of Internal Rating Tables that can be used.
 ### Internal Rating Table Calculations
 An internal rating table is implemented as a set of values of total discharge in terms of the water surface level $Q=Q(h+z)$. This table is defined along a polyline in the mesh. First, a common average water surface level is computed considering all the upstream cells along the polyline. Then, the discharge is imposed at the cells sharing the edges on both sides in the polyline according to the common upstream water surface level and following the internal rating table.
 The IRT calculation algorithm works as follows:
@@ -722,9 +671,9 @@ The IRT calculation algorithm works as follows:
 2. Compute the discharge passing through the IRT polyline from the average water levels in 1 using the rating table.
 3. Define an average velocity from the discharge and the cross sectional wetted area.
 4. Assign a common unit discharge to every pair of cells sharing a polyline segment.
-::: shader
-Some inappropriate IRT polyline configurations or very long polylines can over-constrain the model and should be avoided.
-:::
+!!! note
+
+    Some inappropriate IRT polyline configurations or very long polylines can over-constrain the model and should be avoided.
 ### Assumptions of Internal Rating Table Calculations
 The rating table does not account for outlet control.
 ## Sources and Sinks
@@ -732,18 +681,18 @@ Sources and Sinks component allows accounting point inflows (source) or outflows
 To run a simulation with Sources or Sinks, you need to select the option in the *Control Data* panel of DIP as shown in Figure.
 ![DIP *Control Data* panel with the Sources and Sinks component selected.](img/sourcesinksselecteddip.png){ width=100% }
 Sources and Sinks data is entered in RiverFlow2D *Sources* layer.
-::: shader
-There is no limit to the number of sources and sinks that can be used.
-:::
+!!! note
+
+    There is no limit to the number of sources and sinks that can be used.
 ## Weirs
 RiverFlow2D *Weirs* component may be convenient when trying to simulate levee or road overtopping. The tool allows defining a polyline representing the structure alignment and assigning crest elevations that can vary along the polyline.
 To run a simulation with weirs, you need to select the option in the *Control Data* panel of DIP as shown in Figure.
 ![DIP Control Data panel with the Weirs component selected.](img/weirscomponentselecteddip.png){ width=100% }
 Weir plan data is entered in the QGIS *Weirs* layer.
 Since RiverFlow2D requires that the weir passes through nodes, it is essential that mesh generation engine creates nodes along the weir polyline. To achieve this always remember to re-mesh after changing any weir aliment in the *Weirs* layer.\
-::: shader
-There is no limit to the number of weirs that can be used.
-:::
+!!! note
+
+    There is no limit to the number of weirs that can be used.
 ### Weir Calculations
 The weir calculation algorithm works as follows:
 1. For each calculation time interval, the model checks for each segment defined by two pair of opposing cells (L, R) along the weir that at least one of the opposite cells is wet and that its water surface elevation is above the crest elevation.

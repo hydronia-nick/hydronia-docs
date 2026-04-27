@@ -47,8 +47,8 @@ where
 
 $$\phi^\downarrow_{k}=\left\{
 \begin{array} {ccc}
-\phi_{i} & if & q_k^\downarrow > 0\\
-\phi_{j} & if & q_k^\downarrow < 0
+- **\phi_{i}:** if; q_k^\downarrow > 0
+- **\phi_{j}:** if; q_k^\downarrow < 0
 \end{array}
 \right.$$
 

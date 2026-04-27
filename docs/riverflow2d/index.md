@@ -8,12 +8,6 @@ title: RiverFlow2D
 
 RiverFlow2D is Hydronia's flagship 2D hydraulic and hydrologic solver, integrated with QGIS through the RiverFlow2D plugin. Use it for flood modeling, river hydraulics, stormwater systems, sediment and pollutant transport, and dam-break analysis.
 
-## Downloads
-
-<a href="../pdf/qgis-reference-riverflow2d-en.pdf" class="md-button md-button--primary">Download the RiverFlow2D QGIS Reference (PDF)</a>
-
-<a href="../pdf/tutorials-riverflow2d-en.pdf" class="md-button md-button--primary">Download the RiverFlow2D Tutorials (PDF)</a>
-
 ## Plugin reference
 
 Chapters follow the order of the QGIS plugin toolbar.

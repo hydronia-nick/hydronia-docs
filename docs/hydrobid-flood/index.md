@@ -8,12 +8,6 @@ title: HydroBID Flood
 
 HydroBID Flood is the IDB-partnership edition of Hydronia's 2D hydraulic/hydrologic model, tailored for Latin American and Caribbean flood-risk and urban-drainage studies. The underlying solver and QGIS plugin are the same proven RiverFlow2D engine, with branding and workflows adapted for HydroBID programs.
 
-## Downloads
-
-<a href="../pdf/qgis-reference-hydrobid-flood-en.pdf" class="md-button md-button--primary">Download the HydroBID Flood QGIS Reference (PDF)</a>
-
-<a href="../pdf/tutorials-hydrobid-flood-en.pdf" class="md-button md-button--primary">Download the HydroBID Flood Tutorials (PDF)</a>
-
 ## Plugin reference
 
 Chapters follow the order of the QGIS plugin toolbar.

@@ -11,7 +11,7 @@ $$\frac{\partial \mathbf{U}}{\partial t}+\frac{\partial \mathbf{F(U)}}{\partial 
 where
 
 $$\mathbf{U}=\left( \begin{array}{ccccccc}
-      h, &       q_x, &       q_y, &       h\phi_1,  &              \ldots,  &       h\phi_{N_p}, & \sum\limits_{p=1} ^{N_p} z_p      \end{array}\right)^{T}$$
+      - **h,:** q_x,; q_y,; h\phi_1,; \ldots,; h\phi_{N_p},; \sum\limits_{p=1} ^{N_p} z_p      \end{array}\right)^{T}$$
 
 are the conserved variables with $h$ representing the mixture flow depth, $q_x = hu$ and $q_y = hv$ the mixture unit discharges, with $(u,v)$ the depth averaged components of the velocity vector $\mathbf{u}$ along the $x$ and $y$ coordinates respectively and $\phi_p$, with $p=1,...,{N_p}$ representing the scalar depth-averaged volumetric concentration of the $N_p$ different sediments size-classes transported in suspension. The term $z_p$ is the contribution of $p$-th sediment class to the bed layer. Hence, the total bed elevation $z$ can be computed as $z=\sum_{p=1} ^{N_p} z_p$. The formulation allows the possibility of considering a heterogeneous soil, where different sediment fractions of material may coexist.
 
@@ -103,26 +103,17 @@ $$|\tau_b| = \rho_w\, h \frac{n^2\, (u^2+v^2)}{h^{4/3}}$$
 
 p3cmcc
 
-\
 
-& &
-
-Table  -- continued from previous page\
-
-& &
-
-\
-
-Meyer-Peter & Mueller (1948) & $8\left(\theta-\theta_c\right)^{3/2}$ & $d_{50}$,$\theta_c$,$\rho_s$\
-Ashida Michiue (1972) & $17\left(\theta-\theta_c\right)\left(\sqrt\theta-\sqrt\theta_c\right)$ & $d_{50}$,$\theta_c$,$\rho_s$\
-Engelund and Fredsøe (1976) & $18.74\left(\theta-\theta_c\right)\left(\sqrt\theta-0.7\sqrt\theta_c\right)$ & $d_{50}$,$\theta_c$,$\rho_s$\
-Fernandez-Luque and van Beek (1976) & $5.7\left(\theta-\theta_c\right)^{3/2}$ & $d_{50}$,$\theta_c$,$\rho_s$\
-Parker fit to Einstein (1979) & $11.2\left(1-\theta/\theta_c\right)^{9/2}$ & $d_{50}$,$\theta_c$,$\rho_s$\
-Smart (1984) & $4\left(d_{90}/d_{30}\right)^{0.2}S_0^{0.6}C\theta^{1/2}\left(\theta-\theta_c^5\right)$ & $d_{30}$,$d_{50}$,$d_{90}$,$\theta_c$,$\theta_c^S$,$\rho_s$\
-Nielsen (1992) & $12\theta^{1/2}\left(\theta-\theta_c\right)$ & $d_{50}$,$\theta_c$,$\rho_s$\
-Wong & $4.93\left(\theta-\theta_c\right)^{1.6}$ & $d_{50}$,$\theta_c$,$\rho_s$\
-Wong & $3.97\left(\theta-\theta_c\right)^{3/2}$ & $d_{50}$,$\theta_c$,$\rho_s$\
-Camenen-Larson & $12\theta^{3/2}exp\left(-4.5\theta_c/\theta\right)$ & $d_{50}$,$\theta_c$,$\rho_s$\
+- **Meyer-Peter:** Mueller (1948); $8\left(\theta-\theta_c\right)^{3/2}$; $d_{50}$,$\theta_c$,$\rho_s$
+- **Ashida Michiue (1972):** $17\left(\theta-\theta_c\right)\left(\sqrt\theta-\sqrt\theta_c\right)$; $d_{50}$,$\theta_c$,$\rho_s$
+- **Engelund and Fredsøe (1976):** $18.74\left(\theta-\theta_c\right)\left(\sqrt\theta-0.7\sqrt\theta_c\right)$; $d_{50}$,$\theta_c$,$\rho_s$
+- **Fernandez-Luque and van Beek (1976):** $5.7\left(\theta-\theta_c\right)^{3/2}$; $d_{50}$,$\theta_c$,$\rho_s$
+- **Parker fit to Einstein (1979):** $11.2\left(1-\theta/\theta_c\right)^{9/2}$; $d_{50}$,$\theta_c$,$\rho_s$
+- **Smart (1984):** $4\left(d_{90}/d_{30}\right)^{0.2}S_0^{0.6}C\theta^{1/2}\left(\theta-\theta_c^5\right)$; $d_{30}$,$d_{50}$,$d_{90}$,$\theta_c$,$\theta_c^S$,$\rho_s$
+- **Nielsen (1992):** $12\theta^{1/2}\left(\theta-\theta_c\right)$; $d_{50}$,$\theta_c$,$\rho_s$
+- **Wong:** $4.93\left(\theta-\theta_c\right)^{1.6}$; $d_{50}$,$\theta_c$,$\rho_s$
+- **Wong:** $3.97\left(\theta-\theta_c\right)^{3/2}$; $d_{50}$,$\theta_c$,$\rho_s$
+- **Camenen-Larson:** $12\theta^{3/2}exp\left(-4.5\theta_c/\theta\right)$; $d_{50}$,$\theta_c$,$\rho_s$
 
 The sum $\sum_{p=1}^{N_p} z_p$ in can consider heterogeneous soil, where different fractions of material may coexist. In order to take into account this heterogeneity, every sediment transport discharge ($q_{bp,x}$,$q_{bp,y}$) associated to the $p$-th sediment size-class is multiplied by its corresponding soil fraction $f_{bp}$. Therefore, it is necessary to defined the fraction of each sediment size-class in the bed layer.
 
@@ -149,8 +140,8 @@ It is worth noticing that sediment exchange laws have been derived for one singl
 
 $$\omega_{mp}= \left\lbrace
 \begin{array}{ll}
-    \alpha_{\omega p} \left(1-\frac{\phi_0}{2\sqrt{d_{50p}}}\right)^3 \omega_{sp} & \text{if: } \phi_0>2\sqrt{d_{50p}} \\
-    \alpha_{\omega p} \left(1-\phi_0\right)^4 \omega_{sp} & \text{oherwise}
+    - **\alpha_{\omega p} \left(1-\frac{\phi_0}{2\sqrt{d_{50p}}}\right)^3 \omega_{sp}:** \text{if: } \phi_0>2\sqrt{d_{50p}}
+    - **\alpha_{\omega p} \left(1-\phi_0\right)^4 \omega_{sp}:** \text{oherwise}
 \end{array}
 \right.$$
 
@@ -158,25 +149,16 @@ where $\alpha_{\omega p}$ is a tuning parameter defined by the modeler, $phi_0=\
 
 p1.5cmcp3.0cm
 
-\
 
-& &
-
-Table  -- continued from previous page\
-
-& &
-
-\
-
-Rubey (1933) & $\omega_s = F\sqrt{\left(\frac{\rho_s}{\rho_w}-1\right)gd_{50}}$ & If $d_{50}$ $>$ 1 mm, $F$ = 0.79, otherwise $F=\left(\frac{2}{3}+\frac{36\nu^2}{gd_{50}^3\left(\rho_s/\rho_w -1\right)}\right)^{0.5}-\left(\frac{36\nu^2}{gd_{50}^3\left(\rho_s/\rho_w -1\right)}\right)^{0.5}$\
-Zhang (1961) & $\omega_s = \sqrt{\left(13.95\frac{\nu}{d_{50}}\right)^2+1.09\left(\frac{\rho_s}{\rho_w}-1\right)gd_{50}}-13.95\frac{\nu}{d_{50}}$ & Valid for a wide range of $d_{50}$\
-Zanke (1977) & $\omega_s = 10\frac{\nu}{d_{50}}\left(\left(1+0.01\left(\frac{\rho_s}{\rho_w}-1\right)\frac{gd_{50}^3}{\nu^2}\right)^{0.5}-1\right)$ &\
-Van Rijn (1984) & $\omega_s = \left(\frac{1}{18} \frac{\rho_s - \rho_w}{\rho_w} g\frac{d^{2}_{s}}{\nu}\right)$ & $d_{50}$ $<$ 0.1 mm\
-Raudkivi (1990) & $\omega_s =\left(\frac{\left(2/3\right)\left(\rho_s/\rho_w -1\right)gd_{50}^2}{\nu}-32\right)\frac{\nu}{1.2d_{50}}$ & $d_{50}$ $>$ 1 mm\
-Julien (1995) & $\omega_s =\left(\frac{\left(2/3\right)\left(\rho_s/\rho_w -1\right)gd_{50}^2}{\nu}-24\right)\frac{\nu}{1.5d_{50}}$ &\
-Cheng(1997) & $\omega_s =\frac{\nu}{d_{50}}\left(\sqrt{25+1.2D_*^2}-5\right)^{1.5}$ & $D_*$ = $d_{50}\left(\left(\rho_s/\rho_w -1\right)g/\nu^2\right)^{1/3}$\
-Jiménez-Madsen (2003) & $\omega_s = (C_1+C_2S_*)\sqrt{(s-1)gd_{50}}$ & $C_1$, $C_2$ and $S_*$ as in Jiménez-Madsen\
-Wu-Wang(2006) & $\omega_s$ = $\frac{M\nu}{Nd_s}\left(\sqrt{\frac{1}{4}\left(\frac{4N}{3M^2}D_*^3\right)^{1/n}}-0.5\right)^n$ & $M$, $N$ and $n$ as in Wu and $D_*$ = $d_{50}\left(\left(\rho_s/\rho_w -1\right)g/\nu^2\right)^{1/3}$\
+- **Rubey (1933):** $\omega_s = F\sqrt{\left(\frac{\rho_s}{\rho_w}-1\right)gd_{50}}$; If $d_{50}$ $>$ 1 mm, $F$ = 0.79, otherwise $F=\left(\frac{2}{3}+\frac{36\nu^2}{gd_{50}^3\left(\rho_s/\rho_w -1\right)}\right)^{0.5}-\left(\frac{36\nu^2}{gd_{50}^3\left(\rho_s/\rho_w -1\right)}\right)^{0.5}$
+- **Zhang (1961):** $\omega_s = \sqrt{\left(13.95\frac{\nu}{d_{50}}\right)^2+1.09\left(\frac{\rho_s}{\rho_w}-1\right)gd_{50}}-13.95\frac{\nu}{d_{50}}$; Valid for a wide range of $d_{50}$
+- **Zanke (1977):** $\omega_s = 10\frac{\nu}{d_{50}}\left(\left(1+0.01\left(\frac{\rho_s}{\rho_w}-1\right)\frac{gd_{50}^3}{\nu^2}\right)^{0.5}-1\right)$ &
+- **Van Rijn (1984):** $\omega_s = \left(\frac{1}{18} \frac{\rho_s - \rho_w}{\rho_w} g\frac{d^{2}_{s}}{\nu}\right)$; $d_{50}$ $<$ 0.1 mm
+- **Raudkivi (1990):** $\omega_s =\left(\frac{\left(2/3\right)\left(\rho_s/\rho_w -1\right)gd_{50}^2}{\nu}-32\right)\frac{\nu}{1.2d_{50}}$; $d_{50}$ $>$ 1 mm
+- **Julien (1995):** $\omega_s =\left(\frac{\left(2/3\right)\left(\rho_s/\rho_w -1\right)gd_{50}^2}{\nu}-24\right)\frac{\nu}{1.5d_{50}}$ &
+- **Cheng(1997):** $\omega_s =\frac{\nu}{d_{50}}\left(\sqrt{25+1.2D_*^2}-5\right)^{1.5}$; $D_*$ = $d_{50}\left(\left(\rho_s/\rho_w -1\right)g/\nu^2\right)^{1/3}$
+- **Jiménez-Madsen (2003):** $\omega_s = (C_1+C_2S_*)\sqrt{(s-1)gd_{50}}$; $C_1$, $C_2$ and $S_*$ as in Jiménez-Madsen
+- **Wu-Wang(2006):** $\omega_s$ = $\frac{M\nu}{Nd_s}\left(\sqrt{\frac{1}{4}\left(\frac{4N}{3M^2}D_*^3\right)^{1/n}}-0.5\right)^n$; $M$, $N$ and $n$ as in Wu and $D_*$ = $d_{50}\left(\left(\rho_s/\rho_w -1\right)g/\nu^2\right)^{1/3}$
 
 ### Capacity suspended load formulas
 
@@ -221,8 +203,8 @@ The exposure each sediment class in the top layer of the erodible bed, known as 
     & \text{Exchange exposure:} \quad 
     A_{bp}= \left\lbrace
     \begin{array}{ll}
-        F_{sp} & \text{if: } E_p-D_p > 0 \\
-        1 & \text{oherwise}
+        - **F_{sp}:** \text{if: } E_p-D_p > 0
+        - **1:** \text{oherwise}
     \end{array}
     \right.
     \end{aligned}$$
@@ -236,8 +218,8 @@ The exposure each sediment class in the top layer of the erodible bed, known as 
     $$f_{ep} = 
     \left\lbrace
     \begin{array}{l l}
-    F_{sp} & \text{if: } \partial z_e / \partial t < 0 \\
-    \beta_a f_{ap} + (1-\beta_a) \phi_p/\phi_0 & \text{otherwise} 
+    - **F_{sp}:** \text{if: } \partial z_e / \partial t < 0
+    - **\beta_a f_{ap} + (1-\beta_a) \phi_p/\phi_0:** \text{otherwise}
     \end{array}
     \right.$$
 
@@ -252,8 +234,8 @@ The exposure each sediment class in the top layer of the erodible bed, known as 
     & \text{Exchange exposure:} \quad 
     A_{bp}= \left\lbrace
     \begin{array}{ll}
-        \frac{f_{ap}/d_{50p}}{\sum_{p=1}^{N_p} f_{ap}/d_{50p}} & \text{if: } E_p-D_p > 0 \\
-        1 & \text{oherwise}
+        - **\frac{f_{ap}/d_{50p}}{\sum_{p=1}^{N_p} f_{ap}/d_{50p}}:** \text{if: } E_p-D_p > 0
+        - **1:** \text{oherwise}
     \end{array}
     \right.
     \end{aligned}$$
@@ -363,6 +345,6 @@ The main assumptions involved in the present version of RiverFlow2D model are:
 - The model does not consider local scour such as pier scour, where three-dimensional flow determines the sediment transport and bed change rates.
 - When assigning maximum erosion bed elevation, the model blocks further erosion when the bed elevation reaches the given limit.
 
-::: shader
-Since the formulations for the bed load discharge, the suspended load discharge and the settling velocity are based on deterministic laws supported by experimentation, tuning parameter factors have been considered for each one. Hence, the model makes possible the calibration of the computed sediment transport for each particular situation.
-:::
+!!! note
+
+    Since the formulations for the bed load discharge, the suspended load discharge and the settling velocity are based on deterministic laws supported by experimentation, tuning parameter factors have been considered for each one. Hence, the model makes possible the calibration of the computed sediment transport for each particular situation.

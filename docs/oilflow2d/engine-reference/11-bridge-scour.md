@@ -54,7 +54,7 @@ $\sigma$ = Sediment gradation coefficient = $D84/D50$.
 
 ## Pier scour in Cohesive Materials
 
-$$y_s = 2.2 K_1 K_2 a^{0.65} (2.6 V_1 � V_c)/ \sqrt{g}^{0.7}$$
+$$y_s = 2.2 K_1 K_2 a^{0.65} \left(\frac{2.6 V_1 - V_c}{\sqrt{g}}\right)^{0.7}$$
 
 where $y_s, K_1, K_2, a, and V_1$ are defined before and:
 
@@ -86,7 +86,7 @@ $$Y_{max}LB = \alpha_a YcLB$$
 
 $$Y_{max}CW = \alpha_b YcCW$$
 
-$$YsA = Max(Y_{max}LB, Y_{max}CW) � Y_1$$
+$$YsA = Max(Y_{max}LB, Y_{max}CW) - Y_1$$
 
 $$YcLB = Y_1 (q2c/q_1)^{6/7}$$
 
@@ -126,11 +126,11 @@ $y = \alpha_a = Y_{max}/Yc$
 
 For $x \in [1., 1.23]$
 
-$y(x)  = -20172x^6 + 139961x^5 � 404430 x^4 + 622994x^3  - 539598x^2 + 249172x � 47926$
+$y(x)  = -20172x^6 + 139961x^5 - 404430 x^4 + 622994x^3  - 539598x^2 + 249172x - 47926$
 
 For $x \in (1.23, 1.60]$
 
-$y(x)  = -1968.9x^6 + 16589x^5 - 58072x^4 + 108127x^3  - 112948x^2 + 62766x � 14497$
+$y(x)  = -1968.9x^6 + 16589x^5 - 58072x^4 + 108127x^3  - 112948x^2 + 62766x - 14497$
 
 For $x \in (1.60, 3]$
 
@@ -188,7 +188,7 @@ $y = \alpha_b = Y_{max}/Yc$
 
 For $x \in [1., 1.18]$
 
-$y = -331011x^6 + 2 10^6 x^5 - 6 10^6 x^4 + 9 10^6 x^3 - 8 10^6 x^2 + 1000000x � 632819$
+$y = -331011x^6 + 2 10^6 x^5 - 6 10^6 x^4 + 9 10^6 x^3 - 8 10^6 x^2 + 1000000x - 632819$
 
 For $x \in (1.18, 5]$
 

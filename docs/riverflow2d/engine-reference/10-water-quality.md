@@ -4,23 +4,21 @@ In this chapter, a 2D shallow water flow solver integrated with a water quality 
 
 The configurations of this module follow the structure given in the table :
 
-::: tabular
 p4cm p1.8cm p2cm p1.5cm p1.5cm p1.5cm p1.5cm
 
-&**Option**:\
-& & & 1 & 2 & 3 & 4\
-**State variable** & **SI Units** & **English Units**\
-Ammonium nitrogen ($\rm{NH_4^+-N}$) & $\rm{gN/m^3}$ & $\rm{lbN/ft^3}$ & & & &\
-Nitrate Nitrogen ($\rm{NO_3^--N}$) & $\rm{gN/m^3}$ & $\rm{lbN/ft^3}$ & & & &\
-Inorganic phosphorus ($\rm{IP}$) & $\rm{gP/m^3}$ & $\rm{lbP/ft^3}$ & & & &\
-Phytoplankton carbon ($\rm{PHYT}$) & $\rm{gC/m^3}$ & $\rm{lbC/ft^3}$ & & & &\
-ultimate carbonaceous biological oxygen demanad ($\rm{CBOD}$) & $\rm{gO_2/m^3}$ & $\rm{lbO_2/ft^3}$ & & & &\
-Dissolved oxygen ($\rm{DO}$) & $\rm{gO_2/m^3}$ & $\rm{lbO_2/ft^3}$ & & & &\
-Organic nitrogen ($\rm{ON}$) & $\rm{gN/m^3}$ & $\rm{lbN/ft^3}$ & & & &\
-Organic phosphorus ($\rm{OP}$) & $\rm{gP/m^3}$ & $\rm{lbP/ft^3}$ & & & &\
-Temperature ($\rm{T}$) & $^\circ$C & $^\circ$F & & & &\
-Total coliform bacteria ($\rm{TC}$) & TC/100 mL & TC/100 mL & & & &\
-:::
+&**Option**:
+- **1:** 2; 3; 4
+- ****State variable**:** **SI Units**; **English Units**
+- **Ammonium nitrogen ($\rm{NH_4^+-N}$):** $\rm{gN/m^3}$; $\rm{lbN/ft^3}$; &; &
+- **Nitrate Nitrogen ($\rm{NO_3^--N}$):** $\rm{gN/m^3}$; $\rm{lbN/ft^3}$; &; &
+- **Inorganic phosphorus ($\rm{IP}$):** $\rm{gP/m^3}$; $\rm{lbP/ft^3}$; &; &
+- **Phytoplankton carbon ($\rm{PHYT}$):** $\rm{gC/m^3}$; $\rm{lbC/ft^3}$; &; &
+- **ultimate carbonaceous biological oxygen demanad ($\rm{CBOD}$):** $\rm{gO_2/m^3}$; $\rm{lbO_2/ft^3}$; &; &
+- **Dissolved oxygen ($\rm{DO}$):** $\rm{gO_2/m^3}$; $\rm{lbO_2/ft^3}$; &; &
+- **Organic nitrogen ($\rm{ON}$):** $\rm{gN/m^3}$; $\rm{lbN/ft^3}$; &; &
+- **Organic phosphorus ($\rm{OP}$):** $\rm{gP/m^3}$; $\rm{lbP/ft^3}$; &; &
+- **Temperature ($\rm{T}$):** $^\circ$C; $^\circ$F; &; &
+- **Total coliform bacteria ($\rm{TC}$):** TC/100 mL; TC/100 mL; &; &
 
 #### Dissolved oxygen {#dissolved-oxygen .unnumbered}
 
@@ -64,7 +62,7 @@ $$k_b(T) = k_b(20) \theta{^(T-20)_R}$$
 
 where $T$ is the temperature in degrees Celsius, $k_b$ is the biodegradation rate and $\theta_R$ is a temperature correction factor for every process. According to Chapra (2008), the correction factor is bounded by $1.01 < \theta_R < 1.1$ for most steady processes.
 
-In this study, following Edinger et al. (1968), a temperature transport model has been included assuming it as a scalar variable whose evolution can be formulated following also an advection--reaction equation. The total heat budget for a water body includes the effects of water depth, velocity and atmospheric conditions. For that purpose, it is useful to estimate the daily average stream temperature based on climate conditions (Gu & Li 2002; Herb & Stefan 2011).
+- **In this study, following Edinger et al. (1968), a temperature transport model has been included assuming it as a scalar variable whose evolution can be formulated following also an advection--reaction equation. The total heat budget for a water body includes the effects of water depth, velocity and atmospheric conditions. For that purpose, it is useful to estimate the daily average stream temperature based on climate conditions (Gu:** Li 2002; Herb; Stefan 2011).
 
 ## Hydrodynamic and Water Quality State Variable Equations
 
@@ -105,6 +103,4 @@ where $\phi_i$ is the average concentration of each state variable, $E$ is the d
 
 The term $R_i$ is established according to the Petersen matrix. The matrix is composed of processes (rows) and state variables (columns), with elements within the matrix that include stoichiometric coefficients that establish the relationships between the components in the individual processes. The general matrix to simulate the options in table , it will be defined according to the tables , , and
 
-::: turn
 90
-:::

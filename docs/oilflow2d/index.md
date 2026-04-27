@@ -8,12 +8,6 @@ title: OilFlow2D
 
 OilFlow2D is Hydronia's 2D oil-spill simulator for environmental-assessment, contingency-planning, and spill-response studies. Built on the same 2D hydraulic core as RiverFlow2D, OilFlow2D adds oil-specific physics: multi-phase transport, shoreline interaction, and spill-containment features such as boom and skimming.
 
-## Downloads
-
-<a href="../pdf/qgis-reference-oilflow2d-en.pdf" class="md-button md-button--primary">Download the OilFlow2D QGIS Reference (PDF)</a>
-
-<a href="../pdf/tutorials-oilflow2d-en.pdf" class="md-button md-button--primary">Download the OilFlow2D Tutorials (PDF)</a>
-
 ## Plugin reference
 
 Chapters follow the order of the QGIS plugin toolbar.

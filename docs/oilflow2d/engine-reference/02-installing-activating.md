@@ -12,14 +12,14 @@ RiverFlow2D is supported on 64-bit computers running MS-Windows Operating System
 2. Download your software from the link provided when purchased.
 3. Run the installation.
 
-    ::: shader
-    Reboot will be required. Please reboot before proceeding to the next section.
-    :::
+    !!! note
+
+        Reboot will be required. Please reboot before proceeding to the next section.
 
 ## Software Activation
 
-- Standalone � A single license for one computer.
-- Network � A centralized license that allows multiple concurrent users depending on license count purchased. This requires additional license manager software to be installed on an accessible computer on your network.
+- Standalone - A single license for one computer.
+- Network - A centralized license that allows multiple concurrent users depending on license count purchased. This requires additional license manager software to be installed on an accessible computer on your network.
 
 ### Standalone Activation
 
@@ -116,9 +116,9 @@ Once is running on the server, the RiverFlow2D or OilFlow2D programs and depende
 4. Select *Reactivate License*
 5. Select *Configure as a Network Client*.
 
-    ::: shader
-    Note: In most cases the software will automatically detect the presence of the Network Server and the details will be filled in. If it does not fill this information in, input the IP address or computer name followed by.
-    :::
+    !!! note
+
+        Note: In most cases the software will automatically detect the presence of the Network Server and the details will be filled in. If it does not fill this information in, input the IP address or computer name followed by.
 
 6. The window shows the name of the network server ( in this example):
 
@@ -127,9 +127,9 @@ Once is running on the server, the RiverFlow2D or OilFlow2D programs and depende
 7. Click *OK*.
 8. Repeat this process for each RiverFlow2D or OilFlow2D network client.
 
-::: shader
-Note: The software can installed and configured as a network client on as many computers as desired in the network. In that case, the model will only run concurrently on as many computers as the number of RiverFlow2D or OilFlow2D licenses that you have purchased.
-:::
+!!! note
+
+    Note: The software can installed and configured as a network client on as many computers as desired in the network. In that case, the model will only run concurrently on as many computers as the number of RiverFlow2D or OilFlow2D licenses that you have purchased.
 
 ## Enabling Hydronia Plugins in QGIS
 
@@ -159,9 +159,9 @@ Then verify that the OilFlow2D plugin icons appear in the QGIS toolbar area:
 
 Successfully using the RiverFlow2D plugin requires enabling the use of macros in QGIS. To do that, access the *Options* dialog by using the *Settings \| Options\...* menu, and in the *General* panel scroll down and select the *Always* option on the *Enable Macros* drop down list as indicated in the figure below.
 
-::: shader
-Please, do not pay attention to the (*Not Recommended*) warning on the option, since that is shown to warn about plugins of unknown origin, and that is not applicable to Hydronia Plugins.
-:::
+!!! note
+
+    Please, do not pay attention to the (*Not Recommended*) warning on the option, since that is shown to warn about plugins of unknown origin, and that is not applicable to Hydronia Plugins.
 
 ![](img/qgisenablemacros.png){ width=80% }
 
@@ -173,10 +173,10 @@ In this section we include solutions to some issues that may occur during the so
 
 If you ever have an issue related to your installation, you can find the license key in the following files depending on the type of installation that you are using:
 
-- Standalone License �
-- Network License �
+- Standalone: `C:\ProgramData\AVU\RF2DA.ini`
+- Network License Server: `C:\Program Files\Hydronia\LicenseManager\RF2DA.ini`
 
-Open the file with or any other text editor, and your license key will be indicated following "\". In the following example the license key is:
+Open the file with Notepad or any other text editor, and your license key will be indicated following "\". In the following example the license key is:
 
 ![](img/copymindernet10.png){ width=30% }
 

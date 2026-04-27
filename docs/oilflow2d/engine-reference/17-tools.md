@@ -9,25 +9,13 @@ There are two available methods for performing multiple runs using batch scripts
 - Using a MS-DOS script in a file.
 - Using a script written in the Python computer programming language.
 
-::: shader
-Note: The script files described in this chapter can be downloaded using the following link:
+!!! note
 
-[BarchRun-RF2D-OF2D.zip](https://www.dropbox.com/scl/fi/nmy8pcai4w5a1g2v6zola/BarchRun-RF2D-OF2D.zip?rlkey=luo9ezqtmndbn9f635ovynrea&dl=0)
-:::
+    Note: The script files described in this chapter can be downloaded using the following link:
+
+    [BarchRun-RF2D-OF2D.zip](https://www.dropbox.com/scl/fi/nmy8pcai4w5a1g2v6zola/BarchRun-RF2D-OF2D.zip?rlkey=luo9ezqtmndbn9f635ovynrea&dl=0)
 
 ### Using a MS-DOS script to perform multiple batch runs
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         C:
@@ -39,11 +27,9 @@ Note: The script files described in this chapter can be downloaded using the fol
          "D:\RiverFlow2D\Projects\ProjectA\Scenario2\Run2.log" 
 
 
-
 ### Using a Python script within QGIS to perform multiple batch runs
 
 This script runs within the QGIS Python Console, but has the disadvantage that blocks QGIS while running models.
-
 
 
     # -*- coding: utf-8 -*-
@@ -59,7 +45,6 @@ This script runs within the QGIS Python Console, but has the disadvantage that b
     for path in dat_paths:
         prjPath = rf2d_path + path 
         call(prjPath)
-
 
 
 ### Using a Python script through a batch file to perform multiple runs

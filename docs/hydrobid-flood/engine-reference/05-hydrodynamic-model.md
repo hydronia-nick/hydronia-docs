@@ -64,7 +64,7 @@ $$\widetilde{\mathbf{P}}_{k}^{-1} \widetilde{\mathbf{J}}_{\mathbf{n},k}  \wideti
 
 with $\widetilde{\boldsymbol{\Lambda}}_{k}$ is a diagonal matrix with eigenvalues $\widetilde{\lambda}^{m}_{k}$ in the main diagonal
 
-$$\widetilde{\boldsymbol{\Lambda}}_{k} =  \left( \begin{array}{ccccc}  \widetilde{\lambda}^{ 1} & 0 & 0  \\ 0 &  \widetilde{\lambda}^{ 2} & 0   \\ 0 & 0 &  \widetilde{\lambda}^{3}   \\  \end{array}\right)_{k}$$\
+- **$$\widetilde{\boldsymbol{\Lambda}}_{k} =  \left( \begin{array}{ccccc}  \widetilde{\lambda}^{ 1}:** 0; 0  \\ 0; \widetilde{\lambda}^{ 2}; 0   \\ 0; 0; \widetilde{\lambda}^{3}   \\  \end{array}\right)_{k}$$
 Both the difference in vector $\mathbf{U}$ across the grid edge and the the source term are projected onto the matrix eigenvectors basis
 $$\delta \mathbf{U}_{k}= \widetilde{\mathbf{P}}_{k} \mathbf{A}_{k} \quad (\mathbf{\bar {S }})_{k}= \widetilde{\mathbf{ P}}_{k} \mathbf{B}$$
 
@@ -124,51 +124,31 @@ There are two main boundary condition types that can be used in RiverFlow2D: Ope
 
 RiverFlow2D allows having any number of inflow and outflow boundaries with various combinations of imposed conditions. Proper use of these conditions is a critical component of a successful RiverFlow2D simulation. Shallow water equation theory indicates that for two-dimensional subcritical flow it is required to provide at least one condition at inflow boundaries and one for outflow boundaries. For supercritical flow all conditions must be imposed on the inflow boundaries and no boundary condition should be imposed at outflow boundaries. The table below helps determining which conditions to use for most applications.
 
-p2.9cmp3.8cmp3.9cm
 
-\
+- **Subcritical:** Q or Velocity; Water Surface Elevation
+- **Supercritical:** Q and Water Surface Elevation; None
 
-& &
+!!! note
 
-Table  -- continued from previous page\
-
-& &
-
-\
-
-Subcritical & Q or Velocity & Water Surface Elevation\
-Supercritical & Q and Water Surface Elevation & None\
-
-::: shader
-It is recommended to have at least one boundary where water surface or stage-discharge (e.g. Uniform Flow) is prescribed. Having only discharge and no water surface elevation condition may result in instabilities due to violation of the theoretical boundary condition requirements of the shallow water equations.
-:::
+    It is recommended to have at least one boundary where water surface or stage-discharge (e.g. Uniform Flow) is prescribed. Having only discharge and no water surface elevation condition may result in instabilities due to violation of the theoretical boundary condition requirements of the shallow water equations.
 
 The open boundary condition options are described in the table below.
 
-p0.7inm3.7in
-
-\
-
-& Table  -- continued from previous page\
-
-&
-
-\
 
 & Imposes Water Surface Elevation. An associated boundary condition file must be provided.\
-5 & Imposes water discharge and water surface elevation.\
-6 & Imposes water discharge inflow.\
-9 & Imposes single-valued stage-discharge rating table.\
-10 & "Free\" inflow or outflow condition. Velocities and water surface elevations are calculated by the model.\
-11 & "Free\" outflow condition. Velocities and water surface elevations are calculated by the model, but only outward flow is allowed.\
-12 & Uniform flow outflow condition.\
+- **5:** Imposes water discharge and water surface elevation.
+- **6:** Imposes water discharge inflow.
+- **9:** Imposes single-valued stage-discharge rating table.
+- **10:** Free\" inflow or outflow condition. Velocities and water surface elevations are calculated by the model.
+- **11:** Free\" outflow condition. Velocities and water surface elevations are calculated by the model, but only outward flow is allowed.
+- **12:** Uniform flow outflow condition.
 & Imposes Water Surface Elevation and forces perpendicular velocity directions. An associated boundary condition file must be provided.\
-18 & Imposes Water Surface Elevation and sediment or pollutant concentrations. It also forces perpendicular velocity directions. An associated boundary condition file must be provided.\
-26 & Imposes water and sediment discharge inflow. An associated boundary condition file must be provided.\
+- **18:** Imposes Water Surface Elevation and sediment or pollutant concentrations. It also forces perpendicular velocity directions. An associated boundary condition file must be provided.
+- **26:** Imposes water and sediment discharge inflow. An associated boundary condition file must be provided.
 
-::: shader
-If you need to impose open conditions on boundary segments that are adjacent, do it in such a way that each segment is separated by a gap more than one cell (see Figure ). Setting two or more open conditions without this separation will lead to incorrect detection of the open boundaries.
-:::
+!!! note
+
+    If you need to impose open conditions on boundary segments that are adjacent, do it in such a way that each segment is separated by a gap more than one cell (see Figure ). Setting two or more open conditions without this separation will lead to incorrect detection of the open boundaries.
 
 ![Required gap between adjacent open boundary conditions.](img/inflowbcgapqgis.png){ width=50% }
 
@@ -188,9 +168,9 @@ When using a single valued stage-discharge condition the model first computes th
 
 Since these condition may generate wave reflection that can propagate upstream, it is important to locate the downstream boundary on a reach sufficiently far from the area of interest, therefore minimizing artificial backwater effects. Unfortunately, there is no general way to select such place, but numerical experimenting with the actual model will be necessary to achieve a reasonable location.
 
-::: shader
-In most small slope rivers, the stage-discharge relationship is affected by hysteresis. In other words, the stage-discharge curve is looped with higher discharges occurring on the rising limb than on the rescission limb of the hydrograph. This is mainly caused by the depth gradient in the flow direction that changes in sign throughout the hydrograph. In practice, this implies that there can be two possible stages for the same discharge. Loop stage-discharge relationships are not considered in this RiverFlow2D version.
-:::
+!!! note
+
+    In most small slope rivers, the stage-discharge relationship is affected by hysteresis. In other words, the stage-discharge curve is looped with higher discharges occurring on the rising limb than on the rescission limb of the hydrograph. This is mainly caused by the depth gradient in the flow direction that changes in sign throughout the hydrograph. In practice, this implies that there can be two possible stages for the same discharge. Loop stage-discharge relationships are not considered in this RiverFlow2D version.
 
 ### "Free\" Open Boundaries (BCTYPE 10, 11)
 
