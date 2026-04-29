@@ -19,12 +19,16 @@ There are two available methods for performing multiple runs using batch scripts
 
 
         C:
-        C:\Program Files\Hydronia\RiverFlow2D
         cd "C:\Program Files\Hydronia\RiverFlow2D"
-        RiverFlow2Dm5 "D:\RiverFlow2D\Projects\ProjectA\Scenario1\Run1" >
-         "D:\RiverFlow2D\Projects\ProjectA\Scenario1\Run1.log" 
-        RiverFlow2Dm5 "D:\RiverFlow2D\Projects\ProjectA\Scenario2\Run2" >
-         "D:\RiverFlow2D\Projects\ProjectA\Scenario2\Run2.log" 
+        RiverFlow2Dm5 "D:\RiverFlow2D\Projects\ProjectA\Scenario1\Run1" > "D:\RiverFlow2D\Projects\ProjectA\Scenario1\Run1_batch.log"
+        RiverFlow2Dm5 "D:\RiverFlow2D\Projects\ProjectA\Scenario2\Run2" > "D:\RiverFlow2D\Projects\ProjectA\Scenario2\Run2_batch.log"
+
+
+!!! warning
+
+    The redirect log filename must not match `<projectname>.log`. The RiverFlow2D engine writes its own log file using that exact name, and redirecting to the same path locks the file for the duration of the command, preventing the RiverFlow2D Plus viewer from launching. Use a different suffix such as `_batch.log` (as shown above) or omit the redirect entirely.
+
+    Comment lines in MS-DOS batch files must start with `REM` or `::`. The `%` character begins variable expansion, so any line that starts with `%` will be parsed and executed as a command rather than ignored as a comment.
 
 
 ### Using a Python script within QGIS to perform multiple batch runs
