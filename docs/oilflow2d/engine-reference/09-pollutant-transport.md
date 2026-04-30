@@ -1,12 +1,12 @@
 # Pollutant Transport Model: PL
 
-The study of solute transport phenomena and river mixing has become a great concern in hydraulic and environmental problems. RiverFlow2D Pollutant Transport Model provides a tool to calculate concentrations of multiple pollutants in a variety of riverine and estuarine situations.
+The study of solute transport phenomena and river mixing has become a great concern in hydraulic and environmental problems. OilFlow2D Pollutant Transport Model provides a tool to calculate concentrations of multiple pollutants in a variety of riverine and estuarine situations.
 
 A solute or pollutant is defined as any substance that is advected by water and well mixed in the vertical direction. The interest of simulating pollutant transport is usually focused around determining the time evolution of a solute concentration within a complex hydrodynamic system, that is, given the solution concentration at a specific time and space, the model determines the spatial distribution of the solute concentrations at for future times. This physical process is accounted for the advection-dispersion equation and can incorporate the effect of reaction with the water and with other solutes
 
 ## Model Equations
 
-Although RiverFlow2D PL can handle multiple pollutants simultaneously, for the sake of clarity in this section the transport of only one solute is presented coupled to the 2D model. The pollutant transport equations will be expressed in a conservative form, assuming that the velocities and the water depth may not vary smoothly in space and time.
+Although OilFlow2D PL can handle multiple pollutants simultaneously, for the sake of clarity in this section the transport of only one solute is presented coupled to the 2D model. The pollutant transport equations will be expressed in a conservative form, assuming that the velocities and the water depth may not vary smoothly in space and time.
 
 Correspondingly, the 2D shallow water model with solute transport can be written in unique coupled system:
 
@@ -29,11 +29,11 @@ where $K$ is the uptake constant and $D$ is an empirical diffusion matrix.
 
 ## Pollutant Transport Finite-Volume Numerical Solution
 
-In RiverFlow2D, the solute transport has been considered letting aside the consideration concerning diffusion terms. However many strategies such as splitting and computing separately the advection and the diffusion terms or solving the diffusion implicitly , have been developed to avoid small values in the time step size due to the combination of the CFL and Peclet number.
+In OilFlow2D, the solute transport has been considered letting aside the consideration concerning diffusion terms. However many strategies such as splitting and computing separately the advection and the diffusion terms or solving the diffusion implicitly , have been developed to avoid small values in the time step size due to the combination of the CFL and Peclet number.
 
 The numerical resolution of the solute transport equation under an explicit finite-volume method is frequently performed by solving the depth-averaged concentration apart from the shallow water equations, that is, using a simpler decoupled algorithm. Once the hydrodynamic equations have been solved, the corresponding substances or solutes are advected with these flow field previously computed.
 
-In order to get a fully conservative method, RiverFlow2D considers the complete system including the hydrodynamic and the transport equations. Mathematically, the complete system conserves the hiperbolicity property, implying the existence of a $4 \times 4$ Jacobian matrix for the 2D model. On this basis we can apply the straightforward procedure described above, allowing a Roe's local linearization and expressing the contributions that arrive to the cell as a sum of waves. To ensure conservation and bounded values in the final solute concentration even in extreme cases, a conservative redistribution of the solute maximum fluxes as proposed in was implemented in RiverFlow2D.
+In order to get a fully conservative method, OilFlow2D considers the complete system including the hydrodynamic and the transport equations. Mathematically, the complete system conserves the hiperbolicity property, implying the existence of a $4 \times 4$ Jacobian matrix for the 2D model. On this basis we can apply the straightforward procedure described above, allowing a Roe's local linearization and expressing the contributions that arrive to the cell as a sum of waves. To ensure conservation and bounded values in the final solute concentration even in extreme cases, a conservative redistribution of the solute maximum fluxes as proposed in was implemented in OilFlow2D.
 
 According to , once the hydrodynamic part is properly formulated, a simple numerical flux $q^\downarrow$, directly related to the Roe's linearization, which is able to completely decouple the solute transport from the hydrodynamic system in a conservative way is used. Therefore,
 
@@ -70,7 +70,7 @@ To enter data for a pollutant transport simulation use the *Pollutant Transport*
 
 ## Assumptions of the Pollutant Transport Model
 
-The main assumptions involved in the present version of RiverFlow2D model are:
+The main assumptions involved in the present version of OilFlow2D model are:
 
 1. There is no predetermined limit to the number of pollutants.
 2. The pollutant concentration units are arbitrary. The user can use volume concentration, mg/l, ppt, ppm, or any other suitable units, provided that the inflow boundary conditions are consistent.

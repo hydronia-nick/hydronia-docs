@@ -1,10 +1,10 @@
-# Installing and Activating RiverFlow2D
+# Installing and Activating OilFlow2D
 
-RiverFlow2D installation includes the most current version of QGIS that has been tested to work with the model. This section will assist you in setting RiverFlow2D and enabling it in QGIS.
+OilFlow2D installation includes the most current version of QGIS that has been tested to work with the model. This section will assist you in setting up OilFlow2D and enabling it in QGIS.
 
 ## Hardware Requirements
 
-RiverFlow2D is supported on 64-bit computers running MS-Windows Operating System versions 7 through 11. It is recommended to use a computer with a minimum of 4 GB of RAM and at least 10 GB of free hard disk space. RiverFlow2D is capable of running in modern Intel single processor computers. If multiple-core processors (Duo, Quad, etc.) are available, the model can execute in parallel processor mode, thereby running much faster than in single processor computers. In addition, using the RiverFlow2D GPU option, the model can take advantage of NVIDIA Graphic Processing Unit (GPU) cards to run up to 700 times faster than in single-processor computers.
+OilFlow2D is supported on 64-bit computers running MS-Windows Operating System versions 7 through 11. It is recommended to use a computer with a minimum of 4 GB of RAM and at least 10 GB of free hard disk space. OilFlow2D is capable of running in modern Intel single processor computers. If multiple-core processors (Duo, Quad, etc.) are available, the model can execute in parallel processor mode, thereby running much faster than in single processor computers. In addition, using the OilFlow2D GPU option, the model can take advantage of NVIDIA Graphic Processing Unit (GPU) cards to run up to 700 times faster than in single-processor computers.
 
 ## Software Installation
 
@@ -52,7 +52,7 @@ Use the this activation mode if you have received a single-user stand-alone soft
 
     ![](img/copyminder4.png){ width=50% }
 
-11. Once registration is complete, please proceed to the section *Enabling Plugins for RiverFlow2D and OilFlow2D in QGIS* on page.
+11. Once registration is complete, please proceed to the section *Enabling Hydronia Plugins in QGIS*.
 
 ### Network Server Installation
 
@@ -103,7 +103,7 @@ The Network Administrator runs with its associated files (defined and distribute
 
 ### Network Client Installation
 
-Once is running on the server, the RiverFlow2D or OilFlow2D programs and dependencies must be installed on each client workstation computer. Please refer to installation steps in section : *Software Installation* on page. The steps below assume you have already run the installation program in the client computer, and are ready to activate.
+Once the network license server is running, the OilFlow2D program and dependencies must be installed on each client workstation computer. Please refer to the *Software Installation* section. The steps below assume you have already run the installation program in the client computer and are ready to activate.
 
 1. To activate your software, open DIP shortcut on your desktop.
 2. In the *Control Data* section on the left side, go to *Options* and select *License*.
@@ -125,25 +125,15 @@ Once is running on the server, the RiverFlow2D or OilFlow2D programs and depende
     ![](img/copymindernet7.png){ width=50% }
 
 7. Click *OK*.
-8. Repeat this process for each RiverFlow2D or OilFlow2D network client.
+8. Repeat this process for each OilFlow2D network client.
 
 !!! note
 
-    Note: The software can installed and configured as a network client on as many computers as desired in the network. In that case, the model will only run concurrently on as many computers as the number of RiverFlow2D or OilFlow2D licenses that you have purchased.
+    Note: The software can be installed and configured as a network client on as many computers as desired in the network. In that case, the model will only run concurrently on as many computers as the number of OilFlow2D licenses that you have purchased.
 
 ## Enabling Hydronia Plugins in QGIS
 
-By default, the first time you run QGIS, the plugins developed for RiverFlow2D or OilFlow2D will not be enabled.
-
-### Enabling RiverFlow2D Plugin
-
-For RiverFlow2D plugin, please enable it by selecting the *RiverFlow* check box using the *Plugins \| Manage and Install Plugins\... menu* as shown.
-
-![](img/copymindernet8.png){ width=80% }
-
-Then verify that the RiverFlow2D plugin icons appear in the QGIS toolbar area:
-
-![](img/qgisrf2dicons.png){ width=80% }
+By default, the first time you run QGIS, the OilFlow2D plugin will not be enabled.
 
 ### Enabling OilFlow2D Plugin
 
@@ -157,7 +147,7 @@ Then verify that the OilFlow2D plugin icons appear in the QGIS toolbar area:
 
 ### Enabling Macros in QGIS
 
-Successfully using the RiverFlow2D plugin requires enabling the use of macros in QGIS. To do that, access the *Options* dialog by using the *Settings \| Options\...* menu, and in the *General* panel scroll down and select the *Always* option on the *Enable Macros* drop down list as indicated in the figure below.
+Successfully using the OilFlow2D plugin requires enabling the use of macros in QGIS. To do that, access the *Options* dialog by using the *Settings \| Options\...* menu, and in the *General* panel scroll down and select the *Always* option on the *Enable Macros* drop down list as indicated in the figure below.
 
 !!! note
 
@@ -173,8 +163,8 @@ In this section we include solutions to some issues that may occur during the so
 
 If you ever have an issue related to your installation, you can find the license key in the following files depending on the type of installation that you are using:
 
-- Standalone: `C:\ProgramData\AVU\RF2DA.ini`
-- Network License Server: `C:\Program Files\Hydronia\LicenseManager\RF2DA.ini`
+- Standalone: `C:\ProgramData\AVU\OF2DA.ini`
+- Network License Server: `C:\Program Files\Hydronia\LicenseManager\OF2DA.ini`
 
 Open the file with Notepad or any other text editor, and your license key will be indicated following "\". In the following example the license key is:
 
@@ -210,24 +200,22 @@ This error is the result of having used a license key that is for network instal
 
 ### ERROR 739: \"This program has been installed or copied too many times.\"
 
-This error is generated when the RiverFlow2D program has been installed or re-activated more times than allowed by the protection program. It does not necessarily indicates improper use of the model. If you get this error please send an email to our support team at indicating the error and your license key. With that information we will reset the license server to release the license.
+This error is generated when the OilFlow2D program has been installed or re-activated more times than allowed by the protection program. It does not necessarily indicates improper use of the model. If you get this error please send an email to our support team at indicating the error and your license key. With that information we will reset the license server to release the license.
 
 If you do not know your license key, please refer to section on page.
 
-## RiverFlow2D Documentation
+## OilFlow2D Documentation
 
-Find RiverFlow2D documentation including this manual in the following folder:\
-usually installed under or (see Figure ).\
-Also under , you will find example projects, videos, and other useful resources.
+Find OilFlow2D documentation including this manual in the documentation folder installed with the software. The installation also includes example projects, videos, and other useful resources.
 
-![Location of RiverFlow2D Documentation folder.](img/documentationfolderqgis.png)
+![Location of OilFlow2D Documentation folder.](img/documentationfolderqgis.png)
 
-## RiverFlow2D Technical Support
+## OilFlow2D Technical Support
 
-If you have any questions or require assistance using RiverFlow2D, please send an email to our support team at:
+If you have any questions or require assistance using OilFlow2D, please send an email to our support team at:
 
 <mailto:support@hydronia.com>. Please make sure you visit our web site <https://www.hydronia.com> regularly to find out about new products and news about the software. Visit <https://www.hydronia.com/software-updates> to download the latest software update and the Release Notes document containing a list of the recent fixes, changes, and updates.
 
-## RiverFlow2D Tutorials
+## OilFlow2D Tutorials
 
-The best way to get acquainted and using RiverFlow2D capabilities is following the tutorials. In the accompanying RiverFlow2D there are tutorials to get started with the model, and several of the model components. Each tutorial includes a set of files that you can use to do each exercise.
+The best way to get acquainted with OilFlow2D capabilities is following the tutorials. The accompanying OilFlow2D tutorials help you get started with the model and several of the model components. Each tutorial includes a set of files that you can use to do each exercise.

@@ -1,8 +1,8 @@
-# Overview of RiverFlow2D
+# Overview of OilFlow2D
 
-When you create a new RiverFlow2D project in QGIS, the plug-in creates a number of empty layers, each one with an specific purpose, and associated with particular components or modules. The standard set includes the layers depicted in Figure. Description of each layer is included in Table.
+When you create a new OilFlow2D project in QGIS, the plug-in creates a number of empty layers, each one with an specific purpose, and associated with particular components or modules. The standard set includes the layers depicted in Figure. Description of each layer is included in Table.
 
-![Standard RiverFlow2D layers created when using the New OilFlow2D Project command.](img/oilqgislayers.png)
+![Standard OilFlow2D layers created when using the New OilFlow2D Project command.](img/oilqgislayers.png)
 
                                       **Content**
   ------------------------- --------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -38,4 +38,4 @@ When you create a new RiverFlow2D project in QGIS, the plug-in creates a number 
   Profiles                  Line      Defines profiles where the model will write in text files results for each report interval.
   Observation Points        Point     Container for locations where the model will write results each report interval.
   OUTPUT_RESULTS Group that include layers with model results that will be incorporated by the program when creating specific graphics with model results.
-  : RiverFlow2D layers.
+  : OilFlow2D layers.

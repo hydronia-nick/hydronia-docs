@@ -228,12 +228,9 @@ manuals:
       - 03-overview
       - 04-mesh-generation
       - 05-hydrodynamic-model
-      - 06-sediment-transport
-      - 07-mud-tailings
-      - 08-urban-drainage
+      - 06-oil-spill-on-water
       - 09-pollutant-transport
       - 10-water-quality
-      - 11-bridge-scour
       - 12-code-parallelization
       - 13-hydraulic-hydrologic-components
       - 14-dip

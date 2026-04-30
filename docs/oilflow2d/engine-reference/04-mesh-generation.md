@@ -1,12 +1,12 @@
-# Mesh Generation in RiverFlow2D
+# Mesh Generation in OilFlow2D
 
-The basis of RiverFlow2D computational engine, RiverFlow2D is the flexible mesh, also called unstructured mesh or Triangular Irregular Network (TIN). The mesh is formed by triangles most often of different size, and is called flexible because it can be adapted to irregular topography, boundaries, structures, or any obstacle that may exist on the modeling area (see Figure ).
+The basis of OilFlow2D computational engine, OilFlow2D is the flexible mesh, also called unstructured mesh or Triangular Irregular Network (TIN). The mesh is formed by triangles most often of different size, and is called flexible because it can be adapted to irregular topography, boundaries, structures, or any obstacle that may exist on the modeling area (see Figure ).
 
-![Typical RiverFlow2D flexible mesh.](img/flexiblemesh.png){ width=5in }
+![Typical OilFlow2D flexible mesh.](img/flexiblemesh.png){ width=5in }
 
-The fundamental computational unit in the RiverFlow2D model is the triangular cell, where velocities, depth, and other variables are computed.
+The fundamental computational unit in the OilFlow2D model is the triangular cell, where velocities, depth, and other variables are computed.
 
-There are several tools in RiverFlow2D that can be used to control the mesh generation. These tools make use of spatial objects such as polylines and polygons, and parameters that you can enter in the *Domain Outline*, *MeshDensityLine*, *MeshDensityPolygon* and *MeshBreakLine* layers.
+There are several tools in OilFlow2D that can be used to control the mesh generation. These tools make use of spatial objects such as polylines and polygons, and parameters that you can enter in the *Domain Outline*, *MeshDensityLine*, *MeshDensityPolygon* and *MeshBreakLine* layers.
 
 ## Cell-size control using the Domain outline
 
@@ -42,7 +42,7 @@ In addition to the control offered by the spatial objects entered in the *Domain
 
 ## Boundary Conditions
 
-Data to impose open boundary conditions in RiverFlow2D should be entered in the *Boundary Conditions* layer. This layer accepts only polygons. Lines or points are not allowed. To enter a polygon, first select the layer by clicking Boundary Conditions on the QGIS layers panel
+Data to impose open boundary conditions in OilFlow2D should be entered in the *Boundary Conditions* layer. This layer accepts only polygons. Lines or points are not allowed. To enter a polygon, first select the layer by clicking Boundary Conditions on the QGIS layers panel
 
 ![QGIS Layer Panel showing the *Boundary Conditions* layer selected.](img/boundaryconditionslayeractive.png){ width=2in }
 
@@ -70,7 +70,7 @@ You can define as many inflow and outflow boundaries as needed. All the boundary
 
 ### Mannings' n
 
-To assign spatially varied Manning's n coefficients in RiverFlow2D you enter polygons in the Manning N layer. This layer accepts only polygons. Lines or points are not allowed. To enter a polygon, first select the layer by clicking Manning N on the QGIS layers panel
+To assign spatially varied Manning's n coefficients in OilFlow2D you enter polygons in the Manning N layer. This layer accepts only polygons. Lines or points are not allowed. To enter a polygon, first select the layer by clicking Manning N on the QGIS layers panel
 
 ![QGIS Layer Panel showing the Manning N layer selected.](img/manningsnlayeractive.png){ width=2in }
 
@@ -86,9 +86,9 @@ To complete entering the polygon, right click and the following dialog will appe
 
 To complete the data, select the *BC Data* panel and enter the hydrograph as shown. All cells on the Manning's n polygon will be assigned the n value corresponding to that polygon on the mesh boundary that lie inside the polygon will be considered open boundary nodes.
 
-## RiverFlow2D Toolbar Functions
+## OilFlow2D Toolbar Functions
 
-### New RiverFlow2D Project 
+### New OilFlow2D Project 
 
 ![](img/of2d_new_project_icon.png){ width=6cm }
 
@@ -98,7 +98,7 @@ This icon is used to create a new project template from scratch. There are three
 2. Select the Coordinate Reference System or *Projection*.
 3. Enter the working *Project Directory*.
 
-Figure shows the *Create New RiverFlow2D Project Dialog*. Note that do not need to select all the available layers, but just the ones that you will be using initially in your project. You can always add more layers later using the *New Template Layer* command in the RiverFlow2D *Tools* icon described below.
+Figure shows the *Create New OilFlow2D Project Dialog*. Note that do not need to select all the available layers, but just the ones that you will be using initially in your project. You can always add more layers later using the *New Template Layer* command in the OilFlow2D *Tools* icon described below.
 
 ![New Project Dialog.](img/newprojectdialog.png){ width=3.5in }
 
@@ -108,7 +108,7 @@ Figure shows the *Create New RiverFlow2D Project Dialog*. Note that do not need 
 
 ![Mesh Generation Options.](img/rf2d_generate_mesh_options.png){ width=2.5in }
 
-### Export Files for RiverFlow2D 
+### Export Files for OilFlow2D 
 
 ![](img/of2d_export_files_icon.png){ width=6cm }
 

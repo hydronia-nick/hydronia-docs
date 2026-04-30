@@ -10,23 +10,23 @@ caption:
 
 # DIP (DIP)
 
-DIP (DIP) user interface provides the tools to enter non-spatial data, and run RiverFlow2D. All changes introduced on the DIP will be saved to the native RiverFlow2D data files.
+DIP (DIP) user interface provides the tools to enter non-spatial data, and run OilFlow2D. All changes introduced on the DIP will be saved to the native OilFlow2D data files.
 
-The DIP appears when you export the files to RiverFlow2D from QGIS. You can also access the DIP double-clicking on the DIP icon ![](img/icon01.png) on the desktop. In that case, the program will give you a list of previous projects and let you open any one of them:
+The DIP appears when you export the files to OilFlow2D from QGIS. You can also access the DIP double-clicking on the DIP icon ![](img/icon01.png) on the desktop. In that case, the program will give you a list of previous projects and let you open any one of them:
 
 ![DIP Open Project Dialog.](img/rf2ddipopenproject.png){ width=65% }
 
-DIP provides a data input environment with panels that include all the non-spatial options to run RiverFlow2D. The left column on the main window allows you select modules, components, output options, etc. When you click on one of the cells, the appropriate right side panel is activated. Each panel contains the data corresponding to each of RiverFlow2D data files. For example, the *Control Data* Panel has all the data of the file.
+DIP provides a data input environment with panels that include all the non-spatial options to run OilFlow2D. The left column on the main window allows you select modules, components, output options, etc. When you click on one of the cells, the appropriate right side panel is activated. Each panel contains the data corresponding to each of OilFlow2D data files. For example, the *Control Data* Panel has all the data of the file.
 
 ![Main DIP window.](img/controldatapanel.png){ width=100% }
 
-DIP lets you select different model engines. Using the options the Model Selection frame you can select between RiverFlow2D CPU or RiverFlow2D GPU. Note that to run the GPU version you need the appropriate GPU hardware. Please contact Hydronia at <mailto:support@hydronia.com> to inquire about the currently supported NVIDIA GPU cards.
+DIP lets you select different model engines. Using the options the Model Selection frame you can select between OilFlow2D CPU or OilFlow2D GPU. Note that to run the GPU version you need the appropriate GPU hardware. Please contact Hydronia at <mailto:support@hydronia.com> to inquire about the currently supported NVIDIA GPU cards.
 
 The following sections describe the panel dialogs of the DIP.
 
 ## Control Data Panel (.DAT file)
 
-This panel determines the general run options like time step control parameters, metric or English units, physical process (components), graphical outputs, and initial conditions. It also provides buttons to open and saving files, and running the RiverFlow2D model. The program will launch with the *Control Data* panel visible.
+This panel determines the general run options like time step control parameters, metric or English units, physical process (components), graphical outputs, and initial conditions. It also provides buttons to open and saving files, and running the OilFlow2D model. The program will launch with the *Control Data* panel visible.
 
 ![*Control Data* Panel.](img/controldatapanel.png){ width=100% }
 
@@ -34,9 +34,9 @@ This panel determines the general run options like time step control parameters,
 - **Open .DAT:** Opens an existing file.
 - **Save .DAT:** Saves a file with the data shown on the Panel.
 - **Open All Files:** Saves data from all enabled Tabs. *Note: This operation does not alter the node coordinates and elevations, triangular mesh topology, Manning roughness coefficients, and other mesh related parameters in the file*.
-- **Run RiverFlow2D:** Runs RiverFlow2D .
+- **Run OilFlow2D:** Runs OilFlow2D .
 - **Exit:** Closes DIP.
-- **About DIP:** Shows a concise description of RiverFlow2D.
+- **About DIP:** Shows a concise description of OilFlow2D.
 
 - **www.hydronia.com:** Opens Hydronia home page.
 
@@ -56,7 +56,7 @@ This panel determines the general run options like time step control parameters,
 
 !!! note
 
-    When exporting RiverFlow2D files from QGIS, units are automatically set according to the selected Projection. Changing to units different to those of the projection should not be attempted since it will certainly lead to incorrect model results.
+    When exporting OilFlow2D files from QGIS, units are automatically set according to the selected Projection. Changing to units different to those of the projection should not be attempted since it will certainly lead to incorrect model results.
 
 
 - **Manning's n factor:** Use the XNMAN factor to test the sensitivity of results to Manning's n and reduce the number of calibration runs. Using this option, will each cell Manning's n-value will be multiplied by XNMAN. Default is XNMAN = 1.
@@ -287,7 +287,7 @@ Use the *Pollutant Transport* panel to enter the parameters required to characte
 
 ## Graphic Output Options Tab (.PLT File)
 
-This panel allows entering options to control RiverFlow2D output. To activate this panel, first select *Graphic Output Options* from the *Output* group on the left panel DIP.
+This panel allows entering options to control OilFlow2D output. To activate this panel, first select *Graphic Output Options* from the *Output* group on the left panel DIP.
 
 ![Graphic Output Panel.](img/graphicoutputpanel.png){ width=100% }
 
@@ -315,7 +315,7 @@ This panel allows entering options to control RiverFlow2D output. To activate th
 - **Create DXF vector field files:** Generate velocity vector DXF (CAD) files. This option will also export the mesh in DXF format to the file: .
 
 - **Create graphic output files:** For future use.
-- **Create node result files using original algorithm.:** Using this option RiverFlow2D when running will generate files using an algorithm to compute nodal values from cell values that was available in versions older than 2018.
+- **Create node result files using original algorithm.:** Using this option OilFlow2D when running will generate files using an algorithm to compute nodal values from cell values that was available in versions older than 2018.
 
 - **Background image:** For future use.
 - **Background file:** For future use.
@@ -348,7 +348,7 @@ See output file section for output file content description.
 
 ## Cross Section Output Panel (.XSECS File)
 
-Use this panel to enter coordinates for cross sections that intersect the triangular-cell mesh where you want to output model results. RiverFlow2D will generate output and files. To activate this panel, first select the *Cross Section Output* from the *Output* group on the left panel of p p.\
+Use this panel to enter coordinates for cross sections that intersect the triangular-cell mesh where you want to output model results. OilFlow2D will generate output and files. To activate this panel, first select the *Cross Section Output* from the *Output* group on the left panel of p p.\
 
 ![Cross Section Output Panel.](img/crosssectionoutput.png){ width=100% }
 
@@ -518,7 +518,7 @@ This section describes various utilities that are available through DIP. To acti
 
 ### Process Rainfall and Evaporation Data from ASCII Grid Files Tool
 
-You can use this tool to process rainfall (e.g. NEXRAD) and evaporation ASCII Grid Files to prepare RiverFlow2D data files that can be used for hydrologic simulations. The program will let you extract data from a set of point rainfall and evaporation ASCII grid files and to create a file in the format readable by RiverFlow2D.
+You can use this tool to process rainfall (e.g. NEXRAD) and evaporation ASCII Grid Files to prepare OilFlow2D data files that can be used for hydrologic simulations. The program will let you extract data from a set of point rainfall and evaporation ASCII grid files and to create a file in the format readable by OilFlow2D.
 
 To use the tool, you need first to create file with a text editor (e.g Notepad) using the following format:\
 Line 1: Number of ASCII Rain Files\
@@ -534,7 +534,7 @@ NEV lines containing:\
 **Ti EVAPFILEi.ASC**\
 Where Ti is the time in hours and is the ASCII Grid file for the evaporation corresponding to time Ti.
 
-It is assumed that in the rain and evaporation ASCII files values are given in mm or in. Since RiverFlow2D uses intensities instead of mm or in, the values provided will be converted internally to mm/hr or in/hr using the time interval determined from the times provided in the file described above.
+It is assumed that in the rain and evaporation ASCII files values are given in mm or in. Since OilFlow2D uses intensities instead of mm or in, the values provided will be converted internally to mm/hr or in/hr using the time interval determined from the times provided in the file described above.
 
 If the number of files (NRF) in the first line is positive, the rainfall/evaporation will be assumed to be given in points, and will be interpolated to each cell. If the number is negative, the program will consider the rain/evaporation given in squares centered at each grid point, and then the cell precipitation will be that of the grid where the cell centroid is located. This last method does not involve interpolation and is faster than the first method.
 
@@ -567,7 +567,7 @@ To use the resulting file, you should copy it to the project folder making sure 
 
 ### HEC-RAS Data Extraction Tool
 
-The purpose of this tool is to facilitate migrating existing HEC-RAS projects to RiverFlow2D. The program allows extraction of point elevation data from geo-referenced cross-section from the HEC-RAS one-dimensional model developed by the USACE. The tool reads HEC-RAS geometry files with extension , , etc., and creates X Y Z files that can be readily imported in QGIS. The utility discriminates the elevations in the channel between the left and right bank on each cross section and exports the files as detailed in the following table.
+The purpose of this tool is to facilitate migrating existing HEC-RAS projects to OilFlow2D. The program allows extraction of point elevation data from geo-referenced cross-section from the HEC-RAS one-dimensional model developed by the USACE. The tool reads HEC-RAS geometry files with extension , , etc., and creates X Y Z files that can be readily imported in QGIS. The utility discriminates the elevations in the channel between the left and right bank on each cross section and exports the files as detailed in the following table.
 
 
 & Contains all elevation points in all cross sections in the for all reaches and cross sections in the file.\

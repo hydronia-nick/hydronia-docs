@@ -799,6 +799,15 @@ The Oil Pipeline Break Model tool generates spill source points along an Oilpipe
 -   The Oil Pipeline module executable and license must be available.
 
 ### Technical Details
+#### Spill Hydrograph Calculation
+The tool writes the pipeline geometry and user inputs to *datain.txt*, *output.txt*, and *pointZ.txt*, then runs the Oil Pipeline module to compute one discharge hydrograph for each generated spill point. The module first computes the initial steady energy head along the pipeline from the entered flow rate and pressure head, using Darcy-Weisbach pipe losses and a friction factor from either the user setting or the pipe roughness.
+
+For each break, the pipeline is split into an upstream and downstream contributing segment. The downstream segment is treated as gravity drainage from the pipe. The upstream segment uses the leak orifice equation
+
+$$Q_l = C_d A_l \sqrt{2 g h_p}$$
+
+where $Q_l$ is leak discharge, $C_d$ is the discharge coefficient, $A_l$ is leak area, $g$ is gravitational acceleration, and $h_p$ is the local pressure head. During the pre-closure and valve-closing period, the upstream inflow is held at the initial flow rate until the valve-closing start time, then reduced linearly to zero over the valve-closing time. The available pipe volume is updated at every calculation interval, and the pressure head is reduced in proportion to the remaining available volume.
+
 #### Outputs
 -   Creates spill source files in the scene directory:
 

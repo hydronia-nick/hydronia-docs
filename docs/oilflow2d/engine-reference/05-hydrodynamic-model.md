@@ -1,14 +1,14 @@
-# Overland Viscous Flow Model
+# Oil Spill on Land Model
 
 One-dimensional hydraulic models are not adequate to simulate flooding when flows are unconfined or velocities change direction during the course of the hydrograph. The cost of non-simplified three-dimensional numerical models can be avoided using depth averaged two-dimensional (2D) shallow water equations.
 
 When dealing with the shallow water equations, realistic applications always include source terms describing bed level variation and bed friction that, if not properly discretized, can lead to numerical instabilities. In the last decade, the main effort has been put on keeping a discrete balance between flux and source terms in cases of quiescent water, leading to the notion of well-balanced schemes or C property \[, , , \]. Recently, in order to include properly the effect of source terms in the weak solution, augmented approximate Riemann solvers have been presented \[Rosatti et al. (2003), \]. In this way, accurate solutions can be computed avoiding the need of imposing case dependent tuning parameters which are used frequently to avoid negative values of water depth and other numerical instabilities that appear when including source terms.
 
-This section presents the system of equations, the formulation of the boundary conditions, and the finite-volume scheme used in RiverFlow2D and the information can be expanded in the references.
+This section presents the system of equations, the formulation of the boundary conditions, and the finite-volume scheme used in OilFlow2D and the information can be expanded in the references.
 
 ## Assumptions of the Viscous Flow Model
 
-1. RiverFlow2D uses the Shallow Water Equations resulting from the vertical integration of the Navier-Stokes equation. Therefore, the model does not calculate vertical accelerations, vertical velocities and consequently cannot resolve secondary flows.
+1. OilFlow2D uses the Shallow Water Equations resulting from the vertical integration of the Navier-Stokes equation. Therefore, the model does not calculate vertical accelerations, vertical velocities and consequently cannot resolve secondary flows.
 2. The bed shear stress is assumed to follow the depth-average velocity directions.
 3. The model does not include dispersion nor turbulence terms. Turbulence dissipation and energy loses are accounted for only through the Manning's n term in the momentum equations.
 4. The model can consider heat transfer to calculate the oil temperature as it flows overland, and considers the density, viscosity and yield stress variation in time and space.
@@ -137,6 +137,130 @@ It is important to note that the oil retention depth, $h_{\text{retention}}$, re
 
 ![The Shear Infinite Landslide approach scheme.](img/oilretention.png){ width=65% }
 
+## Pipeline Break Spill Hydrograph Equations
+
+The OilFlow2D QGIS Oil Pipeline Break Model prepares a multiple-sources file and one discharge hydrograph for each generated pipeline break point. The calculation is performed before the OilFlow2D simulation; the resulting hydrograph files are then read by the model as source time series for the overland oil spill simulation. The following equations summarize the calculation used by the pipeline module.
+
+For a pipe diameter $D_p$ and leak diameter $D_l$, the pipe and leak areas are
+
+$$A_p = {\pi D_p^2 \over 4}$$
+
+$$A_l = {\pi D_l^2 \over 4}$$
+
+The gravitational acceleration is $g = 9.80665$ m/s$^2$ when the project is in metric units, or $g = 32.174$ ft/s$^2$ when the project is in English units. The leak loss coefficient associated with the user-entered discharge coefficient $C_d$ is
+
+$$K_l = {1 \over C_d^2} - 1$$
+
+### Initial Steady Pipeline Head
+
+The module first computes a steady energy head along the pipeline from the initial flow rate $Q_0$ and the initial pressure head entered at the pipe end. If $z_n$ is the elevation at the downstream pipe end and $H_{end}$ is the entered pressure head at that end, the downstream energy head is
+
+$$h_n = z_n + H_{end}$$
+
+Moving upstream by segment, the energy head is updated as
+
+$$h_i = h_{i+1} + {f_i \Delta x_i \over 2 g D_i A_i^2} Q_0^2$$
+
+where $h_i$ is the energy head at node $i$, $\Delta x_i$ is the segment length, $D_i$ is the pipe diameter, $A_i$ is the pipe area, and $f_i$ is the Darcy-Weisbach friction factor. The Reynolds number used for each segment is
+
+$$Re_i = {|Q_0| D_i \over A_i \nu}$$
+
+where $\nu$ is the kinematic viscosity. For laminar flow the friction factor is
+
+$$f_i = {64 \over Re_i}$$
+
+For turbulent flow, the module solves the Colebrook relation by Newton-Raphson iteration:
+
+$$ {1 \over \sqrt{f_i}} =
+-0.86 \ln \left({e_i \over 3.71 D_i} + {2.51 \over Re_i \sqrt{f_i}}\right) $$
+
+where $e_i$ is the pipe roughness. If the dialog option to calculate the friction coefficient from rugosity is enabled, this friction calculation is also used by the spill-drainage equations. Otherwise, the user-entered friction coefficient is used for the spill-drainage step.
+
+### Upstream Leak Flow
+
+For each break, the pressure head used at the break is
+
+$$h_p = h_b - z_b$$
+
+where $h_b$ is the computed energy head at the break and $z_b$ is the break elevation. The upstream leak discharge at each time step is calculated with the orifice equation
+
+$$Q_l = C_d A_l \sqrt{2 g h_p}$$
+
+The calculation interval is $\Delta t$. The inflow from the pipeline upstream of the break is initially $Q_0$. If $t_s$ is the valve-closing start time and $t_c$ is the valve-closing duration, the module uses
+
+$$Q_{in}(t) =
+\begin{cases}
+Q_0, & t \leq t_s \\
+Q_0 \left(1 - {t - t_s \over t_c}\right), & t_s < t \leq t_s + t_c \\
+0, & t > t_s + t_c
+\end{cases}$$
+
+At each time step the leaked volume, incoming volume, and net outgoing volume are
+
+$$V_l = Q_l \Delta t$$
+
+$$V_{in} = Q_{in} \Delta t$$
+
+$$V_{net} = V_l - V_{in}$$
+
+The available upstream pipe volume $V_a$ is reduced by the net outgoing volume. While available volume remains, the pressure head is reduced in proportion to the remaining volume:
+
+$$V_a^{new} = V_a - V_{net}$$
+
+$$h_p^{new} = h_p {V_a^{new} \over V_a}$$
+
+When the available volume is depleted, the upstream pressure head is set to zero and the upstream contribution ends.
+
+### Downstream Gravity Drainage
+
+The downstream portion of the pipe is assumed to drain by gravity from the pipe volume downstream of the break. For the contributing downstream length $L_a$, the available volume is
+
+$$V_a = L_a A_p$$
+
+The local pipe slope used to lower the oil surface during drainage is
+
+$$m = {|z_s - z_b| \over L_a}$$
+
+where $z_s$ is the elevation at the end of the contributing segment. At each time step the module solves the quadratic form
+
+$$A Q_l^2 + B Q_l + C = 0$$
+
+with
+
+$$A = {8 \over g \pi^2} \left({1 + K_l \over D_l^4} - {1 \over D_p^4}\right)$$
+
+$$B = f L_a$$
+
+$$C = {P_l - P_s \over \rho g} + z_b - z_s$$
+
+where $\rho$ is oil density, $P_l$ is the pressure at the leak, and $P_s$ is the pressure at the upstream end of the contributing segment. For downstream gravity drainage the module uses zero gauge pressure, so the pressure term is normally zero. The positive-root discharge is
+
+$$Q_l = {-B + \sqrt{B^2 - 4 A C} \over 2 A}$$
+
+The source discharge written to the spill hydrograph is $Q_l$. For the internal downstream pipe-volume update, the module also computes a downstream flow term $Q_o$ when an active downstream boundary or valve contribution is present; otherwise $Q_o = 0$. The net volume removed from the downstream contributing pipe volume is
+
+$$V_{net} = (Q_l - Q_o) \Delta t$$
+
+and the remaining downstream volume and contributing length are updated as
+
+$$V_a^{new} = V_a - V_{net}$$
+
+$$L_a^{new} = {V_a^{new} \over A_p}$$
+
+The oil surface elevation used by the next time step is lowered by
+
+$$z_s^{new} = z_s - m {V_{net} \over A_p}$$
+
+The downstream hydrograph ends when the remaining pipe volume no longer changes by more than the module tolerance.
+
+### Combined Source Hydrograph
+
+For each break point, the upstream and downstream hydrographs are combined by time step:
+
+$$Q_{source}(t) = Q_{upstream}(t) + Q_{downstream}(t)$$
+
+The combined hydrograph is written as the source time series referenced by the multiple-sources file. Each source is then applied by OilFlow2D as a point inflow at the generated break coordinates.
+
 ## Finite-Volume Numerical Solution
 
 To introduce the finite-volume scheme, is integrated in a volume or grid cell $\Omega$ using Gauss theorem:
@@ -209,15 +333,15 @@ $$\Delta t \leq  CFL \; \Delta t^{\widetilde{\lambda}} \qquad \Delta t^{\widetil
 
 with $CFL$=1/2, as the construction of finite-volume schemes from direct application of one-dimensional fluxes leads to reduced stability ranges.
 
-RiverFlow2D solution method uses variable time steps. The maximum allowed time-step is controlled by the user-set Courant-Friederich-Lewy (CFL) number that is proportional to the local cell size, but also inversely proportional to velocity and depth. Smaller cells lead to smaller time-steps. The maximum theoretical CFL value is 1, but in some runs it may be necessary to reduce this number to lower values.
+OilFlow2D solution method uses variable time steps. The maximum allowed time-step is controlled by the user-set Courant-Friederich-Lewy (CFL) number that is proportional to the local cell size, but also inversely proportional to velocity and depth. Smaller cells lead to smaller time-steps. The maximum theoretical CFL value is 1, but in some runs it may be necessary to reduce this number to lower values.
 
 ## Open Boundary Conditions
 
-There are two main boundary condition types that can be used in RiverFlow2D: Open boundaries where flow can enter of leave the modeling area and closed boundaries that are solid no-flow walls (see Figure ). There is no restriction on the number of inlet or outlet boundaries. This section describes the open boundary conditions.
+There are two main boundary condition types that can be used in OilFlow2D: Open boundaries where flow can enter of leave the modeling area and closed boundaries that are solid no-flow walls (see Figure ). There is no restriction on the number of inlet or outlet boundaries. This section describes the open boundary conditions.
 
 ![Open and closed boundary conditions.](img/boundaryconditions.png)
 
-RiverFlow2D allows having any number of inflow and outflow boundaries with various combinations of imposed conditions. Proper use of these conditions is a critical component of a successful RiverFlow2D simulation. Shallow water equation theory indicates that for two-dimensional subcritical flow it is required to provide at least one condition at inflow boundaries and one for outflow boundaries. For supercritical flow all conditions must be imposed on the inflow boundaries and no boundary condition should be imposed at outflow boundaries. The table below helps determining which conditions to use for most applications.
+OilFlow2D allows having any number of inflow and outflow boundaries with various combinations of imposed conditions. Proper use of these conditions is a critical component of a successful OilFlow2D simulation. Shallow water equation theory indicates that for two-dimensional subcritical flow it is required to provide at least one condition at inflow boundaries and one for outflow boundaries. For supercritical flow all conditions must be imposed on the inflow boundaries and no boundary condition should be imposed at outflow boundaries. The table below helps determining which conditions to use for most applications.
 
 
 - **Subcritical:** Q or Velocity; Water Surface Elevation
@@ -265,7 +389,7 @@ Since these condition may generate wave reflection that can propagate upstream, 
 
 !!! note
 
-    In most small slope rivers, the stage-discharge relationship is affected by hysteresis. In other words, the stage-discharge curve is looped with higher discharges occurring on the rising limb than on the rescission limb of the hydrograph. This is mainly caused by the depth gradient in the flow direction that changes in sign throughout the hydrograph. In practice, this implies that there can be two possible stages for the same discharge. Loop stage-discharge relationships are not considered in this RiverFlow2D version.
+    In most small slope rivers, the stage-discharge relationship is affected by hysteresis. In other words, the stage-discharge curve is looped with higher discharges occurring on the rising limb than on the rescission limb of the hydrograph. This is mainly caused by the depth gradient in the flow direction that changes in sign throughout the hydrograph. In practice, this implies that there can be two possible stages for the same discharge. Loop stage-discharge relationships are not considered in this OilFlow2D version.
 
 ### "Free\" Open Boundaries (BCTYPE 10, 11)
 
@@ -380,11 +504,11 @@ When the boundary cell belongs to an open boundary where the inlet flow discharg
 
 #### Outlet boundaries
 
-The analysis of the flow at the outlet boundary is simpler. For supercritical outflow no external conditions have to be imposed. In RiverFlow2D, a preliminary sweep is performed over the wet outlet boundary cells in order to evaluate the cell Froude number. If a supercritical cell is found, the whole flow at the outflow boundary section is considered supercritical and no external condition has to be enforced. Otherwise, all the cells are in a subcritical state, and receive an analogous treatment to that of the inlet boundary described above. As before, a uniform cross sectional water level is generated and a velocity distribution is set in cases in which a discharge rating curve is the boundary condition to impose.
+The analysis of the flow at the outlet boundary is simpler. For supercritical outflow no external conditions have to be imposed. In OilFlow2D, a preliminary sweep is performed over the wet outlet boundary cells in order to evaluate the cell Froude number. If a supercritical cell is found, the whole flow at the outflow boundary section is considered supercritical and no external condition has to be enforced. Otherwise, all the cells are in a subcritical state, and receive an analogous treatment to that of the inlet boundary described above. As before, a uniform cross sectional water level is generated and a velocity distribution is set in cases in which a discharge rating curve is the boundary condition to impose.
 
 ### Closed Boundaries
 
-Closed boundaries are rigid or solid walls that completely block the flow such as river banks or islands. They constitute vertical walls that the flow can never overtop. A very thin viscous sublayer occurs near these boundaries that would require extremely small cells to be appropriately resolved. RiverFlow2D uses slip condition on closed boundaries and the model will set zero normal flow across the boundary, but tangential velocities are allowed. RiverFlow2D detects closed boundaries automatically.
+Closed boundaries are rigid or solid walls that completely block the flow such as river banks or islands. They constitute vertical walls that the flow can never overtop. A very thin viscous sublayer occurs near these boundaries that would require extremely small cells to be appropriately resolved. OilFlow2D uses slip condition on closed boundaries and the model will set zero normal flow across the boundary, but tangential velocities are allowed. OilFlow2D detects closed boundaries automatically.
 
 This kind of boundary condition does not require any special treatment. As no flow must cross the boundary, the physical condition $\mathbf{u}\cdot\mathbf{n}=0$ is imposed on the cell velocity $\mathbf{u}$ after adding all the wave contributions from the rest of the cell edges, where $\mathbf{n}$ is the solid wall normal (Figure ). In other words, if the boundary is closed, the associated boundary edge $k_{\Gamma}$ is a solid wall, with a zero normal velocity component. As there are no contributions from that edge, $\delta\mathbf{M}_{i,k_{\Gamma}}^{-}=0$ is set in when updating the conserved values in the boundary cell at time level $n+1$.
 
@@ -392,9 +516,9 @@ This kind of boundary condition does not require any special treatment. As no fl
 
 ## Dry/Wet Cell Modeling
 
-RiverFlow2D is able to simulate the drying and wetting of the bed. This model capability is important when simulating flood wave progression down an initially dry channel. In this case both the channel bed and floodplain will get inundated. The channel bed can also dry again as the flood wave recedes.
+OilFlow2D is able to simulate the drying and wetting of the bed. This model capability is important when simulating flood wave progression down an initially dry channel. In this case both the channel bed and floodplain will get inundated. The channel bed can also dry again as the flood wave recedes.
 
-In RiverFlow2D the triangular-cell mesh can cover both dry and wet areas and the model will handle these conditions using two distinct algorithms and depending on the following cell classification.
+In OilFlow2D the triangular-cell mesh can cover both dry and wet areas and the model will handle these conditions using two distinct algorithms and depending on the following cell classification.
 
 ### Cell definitions Based on Dry and Wet Conditions
 
@@ -406,7 +530,7 @@ A cell is considered dry if its water depth is less than a fraction of a millime
 
 In that case, the procedure to follow is well described in.
 
-RiverFlow2D drying and wetting algorithm is an adaptation of the the one originally proposed by and later improved by and in the finite-volume context and works as follows:
+OilFlow2D drying and wetting algorithm is an adaptation of the the one originally proposed by and later improved by and in the finite-volume context and works as follows:
 
 1. At the beginning of each time-step all cells are classified as wet or dry according to the definition.
 2. If a cell is dry and completely surrounded by dry cells, it is removed from the computations and velocity components are set to zero for the ongoing time step.

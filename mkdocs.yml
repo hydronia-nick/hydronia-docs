@@ -194,13 +194,10 @@ nav:
           - Installing and Activating: oilflow2d/engine-reference/02-installing-activating.md
           - Overview: oilflow2d/engine-reference/03-overview.md
           - Mesh Generation: oilflow2d/engine-reference/04-mesh-generation.md
-          - Hydrodynamic Model: oilflow2d/engine-reference/05-hydrodynamic-model.md
-          - Sediment Transport: oilflow2d/engine-reference/06-sediment-transport.md
-          - Mud and Tailings: oilflow2d/engine-reference/07-mud-tailings.md
-          - Urban Drainage: oilflow2d/engine-reference/08-urban-drainage.md
+          - Oil Spill on Land: oilflow2d/engine-reference/05-hydrodynamic-model.md
+          - Oil Spill on Water: oilflow2d/engine-reference/06-oil-spill-on-water.md
           - Pollutant Transport: oilflow2d/engine-reference/09-pollutant-transport.md
           - Water Quality: oilflow2d/engine-reference/10-water-quality.md
-          - Bridge Scour: oilflow2d/engine-reference/11-bridge-scour.md
           - Code Parallelization: oilflow2d/engine-reference/12-code-parallelization.md
           - Hydraulic and Hydrologic Components: oilflow2d/engine-reference/13-hydraulic-hydrologic-components.md
           - Data Input Program: oilflow2d/engine-reference/14-dip.md

@@ -1,6 +1,6 @@
 # Introduction
 
-This section presents the system of equations, the formulation of the boundary conditions, and the finite-volume scheme used in RiverFlow2D and the information can be expanded in the references.
+This section presents the system of equations, the formulation of the boundary conditions, and the finite-volume scheme used in OilFlow2D. The information can be expanded in the references.
 
 OilFlow2D is a numerical model that simulates the spreading of oil and viscous fluids on the land surface, and the trajectory and fate of crude oils in water. OilFlow2D is part of the Hydronia suite of models that includes RiverFlow2D, and RiverFlow2D GPU. OilFlow2D overland spill component can simulate fluid depths and velocity over complex terrain at high resolution and with remarkable stability, accuracy and speed, accounting for oil evaporation and infiltration. The use of adaptive triangular-cell meshes enables resolving the flow field around key features in irregular geometry and complex terrain environments.
 
@@ -12,9 +12,9 @@ OilFlow2D computation engine uses an accurate, fast, and stable finite-volume so
 
 This reference manual provides instructions to install the OilFlow2D for QGIS software and explains the fundamentals of the model and its components, as well as the numerical methods used to solve the governing equations. It also presents a detailed description of the input data files and output files. A separate tutorial document provides detailed guidelines to get started using OilFlow2D capabilities.
 
-![RiverFlow2D triangular-cell mesh.](img/wseexample.png){ width=100% }
+![OilFlow2D triangular-cell mesh.](img/wseexample.png){ width=100% }
 
-## Summary of RiverFlow2D Features and Capabilities
+## Summary of OilFlow2D Features and Capabilities
 
 ### Main capability
 
