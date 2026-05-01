@@ -9,6 +9,8 @@ theme:
   name: material
   custom_dir: docs/overrides
   language: en
+  logo: assets/product-brand/documentation_open_book_icon.svg
+  favicon: assets/product-brand/hydronia_icon.png
   font:
     text: Inter
     code: JetBrains Mono
@@ -106,6 +108,7 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/mathjax.js
+  - javascripts/product-brand.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:

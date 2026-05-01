@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Documentation">
+  <defs>
+    <linearGradient id="cover" x1="10" y1="8" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d8f7ff"/>
+      <stop offset="0.5" stop-color="#76cde0"/>
+      <stop offset="1" stop-color="#2468b8"/>
+    </linearGradient>
+    <linearGradient id="pages" x1="16" y1="13" x2="48" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#c8e7f2"/>
+    </linearGradient>
+  </defs>
+  <path fill="#0e367c" opacity="0.22" d="M12 11h31a8 8 0 0 1 8 8v34H20a8 8 0 0 0-8 8V11z"/>
+  <path fill="url(#cover)" d="M10 8h32a10 10 0 0 1 10 10v34H20a10 10 0 0 0-10 10V8z"/>
+  <path fill="url(#pages)" d="M16 14h25a6 6 0 0 1 6 6v26H22a8 8 0 0 0-6 2.7V14z"/>
+  <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2" d="M16 14h25a6 6 0 0 1 6 6v26H22a8 8 0 0 0-6 2.7V14z"/>
+  <path fill="none" stroke="#0e367c" stroke-linecap="round" stroke-width="3" opacity="0.55" d="M24 24h14M24 32h14M24 40h10"/>
+  <path fill="#ffffff" opacity="0.62" d="M11 9h10l-10 10V9z"/>
+</svg>
