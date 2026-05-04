@@ -1231,7 +1231,7 @@ In this example, there are two polygons. The infiltration data file for the firs
 
 1. The spatial distribution of infiltration parameters is given as a number of non-overlapping polygons that would cover or not the mesh area. Zones not covered by any polygons would have no infiltration loss calculated.
 2. Each polygon can have a different infiltration method assigned.
-3. If the user has a file in the project folder, the program will apply the data contained in that file to the complementary area to the polygons provided.
+3. If the user has a `DefaultInfiltration.DAT` file in the project folder, the program will apply the data contained in that file to the complementary area to the polygons provided.
 
 #### Infiltration parameters data file
 
@@ -1314,7 +1314,8 @@ In this example, there are two polygons. The Manning's n data file for the first
 
 ### Comments for the .MANNN file
 
-1. The spatial distribution of Manning's n variable with depth is given as a number of non-overlapping polygons that would cover or not the mesh area. Zones not covered by any polygon (complementary area) would be assigned the default Manning's n file.
+1. The spatial distribution of Manning's n variable with depth is given as a number of polygons that cover the mesh area. Polygon borders may touch each other or leave a small gap; the model assigns Manning's n data to a cell based on which polygon contains the cell centroid, so exact boundary matching is not required. Zones not covered by any polygon (complementary area) are assigned data from the `DefaultManningsn.DAT` file (see below).
+2. When the `.MANNN` file is in use (IMANN=2 in the .DAT run control file), values defined in the regular Manning N layer (the `.MannN2` file) are ignored. The Manning N layer itself does not need to be deleted from the project.
 
 #### Manning's n variable with depth data file
 
@@ -1338,7 +1339,16 @@ NP lines containing:\
 ### Comments for the Mannign's n variable with depth data file
 
 1. To calculate the Manning's n over the mesh, the model will first identify the polygon over each cell and then will use the interpolated n value for cell depth from the table corresponding to the polygon. In the example above, for all depth between 0.3 and 1, Manning's n will be obtained by linear interpolation between 0.1 and 0.03.
-2. The user should provide a file in the project folder and the program will apply the data contained in that file to the complementary area to the polygons provided. If the does not exist, the model will apply a default value of 0.035 to the areas not covered by Manning's n polygons.
+2. The user should provide a `DefaultManningsn.DAT` file in the project folder and the program will apply the data contained in that file to the complementary area to the polygons provided. If the `DefaultManningsn.DAT` does not exist, the model will apply a default value of 0.035 to the areas not covered by Manning's n polygons.
+
+#### Default Manning's n data file: `DefaultManningsn.DAT`
+
+When the `.MANNN` file does not cover the entire mesh, the complementary area is assigned data from a `DefaultManningsn.DAT` file placed in the project folder. The model loads this file automatically. If it is not present, the model applies a default value of 0.035 to the complementary area.
+
+The file format is identical to the inner Manning's n variable with depth data file documented above:
+
+    Line 1: Number of points (NP).
+    NP lines: DEPTH(i) MANNINGS_N(i)
 
 ### Bridge Piers Drag Forces File: .PIERS 
 
@@ -1743,7 +1753,7 @@ In this example, there are two polygons. The $C_d$ coefficient is set to 0.009 a
 ### Comments for the File
 
 1. The spatial distribution of wind is given as a number of non-overlapping polygons that would cover or not the mesh area. Zones not covered by any polygons will be considered as having no wind stress.
-2. If the user has a file in the project folder, the program will apply the data contained in that file to the complementary area to the polygons provided.
+2. If the user has a `DefaultWind.DAT` file in the project folder, the program will apply the data contained in that file to the complementary area to the polygons provided.
 3. The following formula was proposed by Garrat (1971) to compute CD: CD = $(0.75 + 0.067W) 10^{-3}$, where $W$ is the wind velocity in m/s.
 
 ### Wind Velocity Data File
